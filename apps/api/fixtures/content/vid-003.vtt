@@ -1,0 +1,91 @@
+WEBVTT
+
+00:00:01.000 --> 00:00:06.000
+Welcome to the Reinforcement Learning seminar. I'm Dr. Sarah Chen.
+
+00:00:06.500 --> 00:00:13.000
+RL is fundamentally different from supervised learning — there are no labeled examples.
+
+00:00:13.500 --> 00:00:20.000
+Instead, an agent interacts with an environment, takes actions, and receives scalar reward signals.
+
+00:00:20.500 --> 00:00:27.000
+The agent's goal is to learn a policy — a mapping from states to actions — that maximizes reward.
+
+00:00:27.500 --> 00:00:34.000
+The Markov Decision Process, or MDP, is the formal framework for RL problems.
+
+00:00:34.500 --> 00:00:41.000
+An MDP is defined by states, actions, a transition function, a reward function, and a discount factor.
+
+00:00:41.500 --> 00:00:48.000
+The discount factor gamma determines how much future rewards are valued relative to immediate ones.
+
+00:00:48.500 --> 00:00:55.000
+A gamma close to 1 makes the agent far-sighted; close to 0 makes it greedy and short-sighted.
+
+00:00:55.500 --> 00:01:02.000
+Value functions estimate expected cumulative reward from a given state under a given policy.
+
+00:01:02.500 --> 00:01:09.000
+The Q-function extends this to state-action pairs — how good is taking action a in state s?
+
+00:01:09.500 --> 00:01:16.000
+Q-learning is a model-free algorithm that iteratively updates Q-values using the Bellman equation.
+
+00:01:16.500 --> 00:01:23.000
+Deep Q-Networks — DQN — use a neural network to approximate the Q-function over large state spaces.
+
+00:01:23.500 --> 00:01:30.000
+DeepMind's Atari-playing agent used DQN to achieve superhuman performance on dozens of games.
+
+00:01:30.500 --> 00:01:37.000
+Experience replay stores past transitions and samples them randomly during training.
+
+00:01:37.500 --> 00:01:44.000
+This breaks temporal correlations in training data and improves data efficiency significantly.
+
+00:01:44.500 --> 00:01:51.000
+Policy gradient methods directly optimize the policy by ascending the gradient of expected reward.
+
+00:01:51.500 --> 00:01:58.000
+REINFORCE is the simplest policy gradient algorithm, though it suffers from high variance.
+
+00:01:58.500 --> 00:02:05.000
+Actor-Critic methods combine a policy network with a value network to reduce variance.
+
+00:02:05.500 --> 00:02:12.000
+The critic evaluates the current state; the actor updates the policy based on that evaluation.
+
+00:02:12.500 --> 00:02:19.000
+Proximal Policy Optimization — PPO — is currently the most widely used RL algorithm in practice.
+
+00:02:19.500 --> 00:02:26.000
+PPO constrains policy updates to avoid destructive large steps that degrade performance.
+
+00:02:26.500 --> 00:02:33.000
+RLHF — Reinforcement Learning from Human Feedback — is how modern LLMs are fine-tuned.
+
+00:02:33.500 --> 00:02:40.000
+Human raters rank model outputs; a reward model is trained on those preferences.
+
+00:02:40.500 --> 00:02:47.000
+The language model is then fine-tuned with PPO against that reward model.
+
+00:02:47.500 --> 00:02:54.000
+This is how GPT-4, Claude, and Gemini align their outputs with human preferences.
+
+00:02:54.500 --> 00:03:01.000
+RL remains challenging due to sparse rewards, sample inefficiency, and reward hacking.
+
+00:03:01.500 --> 00:03:08.000
+Reward hacking occurs when an agent finds unintended ways to maximize reward without achieving the goal.
+
+00:03:08.500 --> 00:03:15.000
+Designing good reward functions is an open research problem — it's as much art as science.
+
+00:03:15.500 --> 00:03:22.000
+For the assignment, implement a simple Q-learning agent on the FrozenLake environment from Gymnasium.
+
+00:03:22.500 --> 00:03:28.000
+Focus on understanding the exploration-exploitation tradeoff. Questions? See you Thursday.

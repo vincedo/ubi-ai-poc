@@ -1,0 +1,61 @@
+<div class="course-list-page">
+  <div class="page-header">
+    <h1>Courses</h1>
+    @if (!showCreate()) {
+      <button class="btn-primary" (click)="showCreate.set(true)">
+        <span class="material-symbols-outlined">add</span>
+        New Course
+      </button>
+    }
+  </div>
+
+  @if (showCreate()) {
+    <form class="create-form" (submit)="$event.preventDefault(); createCourse()">
+      <label for="new-title" class="form-label">Title</label>
+      <input
+        id="new-title"
+        class="form-input"
+        [value]="newTitle()"
+        (input)="onInputTitle($event)"
+        required
+        placeholder="Course title"
+      />
+      <label for="new-desc" class="form-label">Description (optional)</label>
+      <input
+        id="new-desc"
+        class="form-input"
+        [value]="newDescription()"
+        (input)="onInputDescription($event)"
+        placeholder="Short description"
+      />
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="cancelCreate()">Cancel</button>
+        <button type="submit" class="btn-primary" [disabled]="!newTitle().trim()">Create</button>
+      </div>
+    </form>
+  }
+
+  @if (courses().length === 0 && !showCreate()) {
+    <div class="empty-state">
+      <span class="material-symbols-outlined empty-icon">school</span>
+      <p>No courses yet. Create one to organize your media.</p>
+    </div>
+  }
+
+  <div class="course-grid">
+    @for (c of courses(); track c.id) {
+      <a [routerLink]="['/courses', c.id]" class="course-card">
+        <div class="card-icon">
+          <span class="material-symbols-outlined">school</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{ c.title }}</h3>
+          @if (c.description) {
+            <p class="card-desc">{{ c.description }}</p>
+          }
+          <p class="card-meta">Created {{ c.createdAt | date }}</p>
+        </div>
+      </a>
+    }
+  </div>
+</div>

@@ -1,0 +1,649 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>UbiCast AI - Pipeline Status</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'inverse-on-surface': '#edf1fa',
+              secondary: '#4a5f83',
+              'outline-variant': '#c2c6d4',
+              'on-primary-container': '#c8daff',
+              'surface-dim': '#d6dae3',
+              'on-secondary-fixed-variant': '#32476a',
+              'on-error': '#ffffff',
+              'surface-bright': '#f8f9ff',
+              'on-tertiary': '#ffffff',
+              'surface-container': '#eaeef7',
+              'inverse-primary': '#a9c7ff',
+              'inverse-surface': '#2c3137',
+              'primary-fixed-dim': '#a9c7ff',
+              'surface-container-highest': '#dee3eb',
+              'on-tertiary-fixed-variant': '#793100',
+              'on-primary': '#ffffff',
+              'on-tertiary-fixed': '#341100',
+              'on-tertiary-container': '#ffcfb9',
+              error: '#ba1a1a',
+              'surface-container-high': '#e4e8f1',
+              'on-surface': '#171c22',
+              'primary-container': '#005eb8',
+              'on-primary-fixed': '#001b3d',
+              'on-background': '#171c22',
+              surface: '#f8f9ff',
+              'surface-container-lowest': '#ffffff',
+              tertiary: '#793100',
+              'on-secondary-container': '#475c80',
+              'on-secondary': '#ffffff',
+              'tertiary-container': '#9f4300',
+              'error-container': '#ffdad6',
+              'tertiary-fixed': '#ffdbcb',
+              'on-secondary-fixed': '#021b3c',
+              'secondary-fixed': '#d6e3ff',
+              'on-error-container': '#93000a',
+              'surface-variant': '#dee3eb',
+              'surface-tint': '#005db6',
+              'surface-container-low': '#f0f4fd',
+              'on-surface-variant': '#424752',
+              'on-primary-fixed-variant': '#00468c',
+              background: '#f8f9ff',
+              'secondary-container': '#c0d5ff',
+              'primary-fixed': '#d6e3ff',
+              primary: '#00478d',
+              outline: '#727783',
+              'secondary-fixed-dim': '#b2c7f0',
+              'tertiary-fixed-dim': '#ffb691',
+            },
+            fontFamily: {
+              headline: ['Manrope'],
+              body: ['Inter'],
+              label: ['Inter'],
+            },
+            borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .font-headline {
+        font-family: 'Manrope', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface min-h-screen">
+    <!-- TopNavBar (Shared Component) -->
+    <header
+      class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none flex justify-between items-center px-6 py-3"
+    >
+      <div class="flex items-center gap-4">
+        <span class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-headline"
+          >UbiCast AI</span
+        >
+      </div>
+      <nav class="hidden md:flex items-center gap-8">
+        <a
+          class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter font-semibold transition-colors"
+          href="#"
+          >Dashboard</a
+        >
+        <a
+          class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1 font-inter font-semibold transition-colors"
+          href="#"
+          >Pipeline</a
+        >
+        <a
+          class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter font-semibold transition-colors"
+          href="#"
+          >Enrichment</a
+        >
+        <a
+          class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-inter font-semibold transition-colors"
+          href="#"
+          >Chat</a
+        >
+      </nav>
+      <div class="flex items-center gap-4">
+        <button
+          class="p-2 text-slate-500 hover:bg-slate-50/50 rounded-full transition-transform active:scale-90"
+        >
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button
+          class="p-2 text-slate-500 hover:bg-slate-50/50 rounded-full transition-transform active:scale-90"
+        >
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+        <div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant/30">
+          <img
+            alt="User profile"
+            data-alt="Professional user avatar placeholder"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1XNv73v3PzE523fjVayBKaYHDH-KS8xcLfeFyAcc2HBAPa1CraCeWE-04gnM0vPkOIkGXB5fPw6d-fse5CFnY6wsEl-bjpa681AhnJj_UEmCw5f7aqlwLZ0B0YdHWB2_BMNrCS63PuNVkmx2bqZpUcsOHh_9p2z4uPmxhuGDO4RnT2b2yYQEX2GmU8JH-VOAZEVIH2urmPm8rrSg-P81bkaW1hNe4ADW1z8IkaMFq9-K1vUHOIT2R-c-m5qKq-ooBxKYak-GjlPQC"
+          />
+        </div>
+      </div>
+    </header>
+    <!-- SideNavBar (Shared Component) -->
+    <aside
+      class="fixed left-0 top-0 h-full w-64 pt-16 bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-lg flex flex-col hidden lg:flex"
+    >
+      <div class="p-6">
+        <div class="flex items-center gap-3 mb-1">
+          <span class="font-manrope font-bold text-blue-700 dark:text-blue-400 text-lg"
+            >Pipeline Manager</span
+          >
+        </div>
+        <span class="text-xs text-slate-500 font-medium tracking-wider">v2.4.0-alpha</span>
+      </div>
+      <nav class="flex-1 px-2 space-y-1">
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all hover:translate-x-1"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+          <span class="font-inter text-sm font-medium">Overview</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all hover:translate-x-1"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="video_library">video_library</span>
+          <span class="font-inter text-sm font-medium">Media Library</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-blue-700 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 border-l-4 border-blue-700 dark:border-blue-500 transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="Account_tree">account_tree</span>
+          <span class="font-inter text-sm font-medium">Ingestion Queue</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all hover:translate-x-1"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="database">database</span>
+          <span class="font-inter text-sm font-medium">Vector Store</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-all hover:translate-x-1"
+          href="#"
+        >
+          <span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+          <span class="font-inter text-sm font-medium">Logs</span>
+        </a>
+      </nav>
+      <div class="p-4 mt-auto border-t border-slate-100 dark:border-slate-800">
+        <button
+          class="w-full bg-primary text-white py-2.5 rounded shadow-sm hover:shadow-md transition-all active:scale-95 font-inter text-sm font-semibold"
+        >
+          Start Ingestion
+        </button>
+        <div class="mt-4 flex flex-col gap-2">
+          <a
+            class="flex items-center gap-3 px-4 py-2 text-slate-500 text-xs hover:text-slate-900"
+            href="#"
+          >
+            <span class="material-symbols-outlined text-sm" data-icon="help">help</span> Help
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-2 text-slate-500 text-xs hover:text-slate-900"
+            href="#"
+          >
+            <span class="material-symbols-outlined text-sm" data-icon="description"
+              >description</span
+            >
+            Documentation
+          </a>
+        </div>
+      </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="lg:ml-64 pt-20 px-6 pb-12">
+      <!-- Dashboard Header & Summary Bento Grid -->
+      <section class="mb-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+          <div>
+            <h1 class="text-3xl font-extrabold text-on-surface tracking-tight mb-2">
+              Ingestion Pipeline Status
+            </h1>
+            <p class="text-secondary font-medium">
+              Monitoring real-time synchronization between media assets and vector database.
+            </p>
+          </div>
+          <button
+            class="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-container text-white rounded shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all active:scale-95 font-semibold"
+          >
+            <span class="material-symbols-outlined">refresh</span>
+            Re-run Full Ingestion
+          </button>
+        </div>
+        <!-- Bento Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 hover:shadow-md transition-shadow"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="text-label-md font-bold text-secondary uppercase tracking-widest text-[0.7rem]"
+                >Total Media</span
+              >
+              <span class="material-symbols-outlined text-primary">inventory_2</span>
+            </div>
+            <div class="text-4xl font-extrabold text-on-surface">20</div>
+            <div class="mt-2 text-xs text-secondary font-medium italic">Across all sources</div>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 hover:shadow-md transition-shadow"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="text-label-md font-bold text-secondary uppercase tracking-widest text-[0.7rem]"
+                >Succeeded</span
+              >
+              <div
+                class="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"
+              ></div>
+            </div>
+            <div class="text-4xl font-extrabold text-emerald-600">16</div>
+            <div class="mt-2 text-xs text-secondary font-medium">80% of pipeline</div>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 hover:shadow-md transition-shadow"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="text-label-md font-bold text-secondary uppercase tracking-widest text-[0.7rem]"
+                >Failed</span
+              >
+              <span class="material-symbols-outlined text-error">error</span>
+            </div>
+            <div class="text-4xl font-extrabold text-error">02</div>
+            <div class="mt-2 text-xs text-error font-medium">Attention required</div>
+          </div>
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 hover:shadow-md transition-shadow"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="text-label-md font-bold text-secondary uppercase tracking-widest text-[0.7rem]"
+                >In Progress</span
+              >
+              <span class="material-symbols-outlined text-primary-container animate-pulse"
+                >sync</span
+              >
+            </div>
+            <div class="text-4xl font-extrabold text-primary-container">02</div>
+            <div class="mt-2 text-xs text-secondary font-medium">Processing chunks</div>
+          </div>
+        </div>
+        <!-- Global Progress Bar -->
+        <div class="mt-8 bg-surface-container-low p-6 rounded-xl">
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-sm font-bold text-on-surface font-headline uppercase tracking-wide"
+              >Total Ingestion Progress</span
+            >
+            <span class="text-sm font-bold text-primary">80%</span>
+          </div>
+          <div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+            <div
+              class="h-full bg-gradient-to-r from-primary to-primary-container rounded-full"
+              style="width: 80%"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <!-- Pipeline Queue (Table/List) -->
+        <div class="xl:col-span-2">
+          <div
+            class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/10"
+          >
+            <div
+              class="px-6 py-5 border-b border-surface-container-high flex justify-between items-center"
+            >
+              <h2 class="text-lg font-bold font-headline text-on-surface">Ingestion Queue</h2>
+              <div class="flex gap-2">
+                <span
+                  class="px-3 py-1 bg-surface-container-low text-xs font-semibold text-secondary rounded-full"
+                  >All Tasks</span
+                >
+                <span
+                  class="px-3 py-1 hover:bg-surface-container-low text-xs font-semibold text-slate-400 rounded-full cursor-pointer"
+                  >Failures only</span
+                >
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-surface-container-low/50">
+                  <tr>
+                    <th
+                      class="px-6 py-4 text-[0.7rem] font-bold text-secondary uppercase tracking-widest"
+                    >
+                      Media Title
+                    </th>
+                    <th
+                      class="px-6 py-4 text-[0.7rem] font-bold text-secondary uppercase tracking-widest"
+                    >
+                      Type
+                    </th>
+                    <th
+                      class="px-6 py-4 text-[0.7rem] font-bold text-secondary uppercase tracking-widest"
+                    >
+                      Status
+                    </th>
+                    <th
+                      class="px-6 py-4 text-[0.7rem] font-bold text-secondary uppercase tracking-widest"
+                    >
+                      Progress
+                    </th>
+                    <th class="px-6 py-4 text-right"></th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-surface-container">
+                  <!-- Row 1 -->
+                  <tr class="hover:bg-surface-container-low/30 transition-colors group">
+                    <td class="px-6 py-5">
+                      <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary opacity-60"
+                          >movie</span
+                        >
+                        <span class="font-medium text-on-surface text-sm"
+                          >Corporate_Townhall_Q3.mp4</span
+                        >
+                      </div>
+                    </td>
+                    <td class="px-6 py-5 text-sm text-secondary">Video</td>
+                    <td class="px-6 py-5">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100"
+                      >
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        Succeeded
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden"
+                        >
+                          <div class="h-full bg-emerald-500" style="width: 100%"></div>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-600">100%</span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-5 text-right">
+                      <button
+                        class="p-1.5 text-secondary hover:text-primary hover:bg-primary-fixed-dim/20 rounded transition-colors active:scale-90"
+                      >
+                        <span class="material-symbols-outlined">refresh</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- Row 2 -->
+                  <tr class="hover:bg-surface-container-low/30 transition-colors">
+                    <td class="px-6 py-5">
+                      <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary opacity-60"
+                          >description</span
+                        >
+                        <span class="font-medium text-on-surface text-sm"
+                          >Strategic_Roadmap_v2.pdf</span
+                        >
+                      </div>
+                    </td>
+                    <td class="px-6 py-5 text-sm text-secondary">PDF</td>
+                    <td class="px-6 py-5">
+                      <div class="flex flex-col gap-0.5">
+                        <span
+                          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container/30 text-error text-xs font-bold border border-error-container"
+                        >
+                          <span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                          Failed
+                        </span>
+                        <span class="text-[10px] text-error font-medium px-1"
+                          >Vector Store Unavailable</span
+                        >
+                      </div>
+                    </td>
+                    <td class="px-6 py-5">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden"
+                        >
+                          <div class="h-full bg-error/40" style="width: 45%"></div>
+                        </div>
+                        <span class="text-xs font-bold text-error">45%</span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-5 text-right">
+                      <button
+                        class="p-1.5 text-secondary hover:text-primary hover:bg-primary-fixed-dim/20 rounded transition-colors active:scale-90"
+                      >
+                        <span class="material-symbols-outlined">refresh</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- Row 3 -->
+                  <tr class="hover:bg-surface-container-low/30 transition-colors">
+                    <td class="px-6 py-5">
+                      <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary opacity-60"
+                          >audio_file</span
+                        >
+                        <span class="font-medium text-on-surface text-sm"
+                          >Interview_Transcript_01.vtt</span
+                        >
+                      </div>
+                    </td>
+                    <td class="px-6 py-5 text-sm text-secondary">Audio</td>
+                    <td class="px-6 py-5">
+                      <div class="flex flex-col gap-0.5">
+                        <span
+                          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed/30 text-primary-container text-xs font-bold border border-primary-fixed"
+                        >
+                          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                          Ingesting
+                        </span>
+                        <span class="text-[10px] text-primary-container font-medium px-1"
+                          >Embedding chunks</span
+                        >
+                      </div>
+                    </td>
+                    <td class="px-6 py-5">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden"
+                        >
+                          <div
+                            class="h-full bg-primary animate-[pulse_2s_ease-in-out_infinite]"
+                            style="width: 65%"
+                          ></div>
+                        </div>
+                        <span class="text-xs font-bold text-primary">65%</span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-5 text-right">
+                      <button class="p-1.5 text-secondary opacity-40 cursor-not-allowed">
+                        <span class="material-symbols-outlined">stop_circle</span>
+                      </button>
+                    </td>
+                  </tr>
+                  <!-- Row 4 -->
+                  <tr class="hover:bg-surface-container-low/30 transition-colors">
+                    <td class="px-6 py-5">
+                      <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary opacity-60"
+                          >article</span
+                        >
+                        <span class="font-medium text-on-surface text-sm"
+                          >Product_Specs_2024.docx</span
+                        >
+                      </div>
+                    </td>
+                    <td class="px-6 py-5 text-sm text-secondary">Document</td>
+                    <td class="px-6 py-5">
+                      <span
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-secondary text-xs font-bold border border-outline-variant/20"
+                      >
+                        <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                        Ready
+                      </span>
+                    </td>
+                    <td class="px-6 py-5">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden"
+                        >
+                          <div class="h-full bg-slate-300" style="width: 0%"></div>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400">0%</span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-5 text-right">
+                      <button
+                        class="p-1.5 text-secondary hover:text-primary hover:bg-primary-fixed-dim/20 rounded transition-colors active:scale-90"
+                      >
+                        <span class="material-symbols-outlined">play_arrow</span>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- Logs Panel -->
+        <div class="xl:col-span-1">
+          <div
+            class="bg-inverse-surface text-inverse-on-surface rounded-xl overflow-hidden shadow-2xl flex flex-col h-[500px]"
+          >
+            <div
+              class="px-5 py-3 bg-black/20 flex justify-between items-center border-b border-white/5"
+            >
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-fixed-dim text-sm"
+                  >terminal</span
+                >
+                <span
+                  class="text-[0.65rem] font-bold uppercase tracking-widest font-label opacity-80"
+                  >Live Event Logs</span
+                >
+              </div>
+              <div class="flex gap-1">
+                <div class="w-2.5 h-2.5 rounded-full bg-white/10"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-white/10"></div>
+              </div>
+            </div>
+            <div
+              class="flex-1 p-5 font-mono text-[0.75rem] leading-relaxed overflow-y-auto space-y-2"
+            >
+              <div class="flex gap-3">
+                <span class="text-slate-500">[10:41:45]</span>
+                <span class="text-emerald-400">INFO:</span>
+                <span>Initialization of pipeline engine successful.</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="text-slate-500">[10:41:50]</span>
+                <span class="text-blue-400">PROC:</span>
+                <span>Fetching 4 new documents from S3 bucket: 'media-ingest-prod'</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="text-slate-500">[10:42:01]</span>
+                <span class="text-blue-400">PROC:</span>
+                <span>Chunking Corporate_Townhall_Q3... 142/142 segments identified.</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="text-slate-500">[10:42:05]</span>
+                <span class="text-emerald-400">SYNC:</span>
+                <span>Upserted 12 points to Qdrant collection: 'global_embeddings_v2'</span>
+              </div>
+              <div class="flex gap-3 border-l-2 border-error/50 pl-3 py-1 bg-error/5 my-2">
+                <span class="text-slate-500">[10:43:12]</span>
+                <span class="text-error font-bold">ERR:</span>
+                <span>Connection timeout while reaching vector node-04. Retrying in 5s...</span>
+              </div>
+              <div class="flex gap-3">
+                <span class="text-slate-500">[10:44:02]</span>
+                <span class="text-primary-fixed-dim">EMBED:</span>
+                <span
+                  >Generating embeddings for Interview_Transcript_01 using
+                  text-embedding-3-large...</span
+                >
+              </div>
+              <div class="flex gap-3 animate-pulse">
+                <span class="text-slate-500">[10:44:58]</span>
+                <span class="text-blue-400">PROC:</span>
+                <span class="flex items-center gap-1"
+                  >Processing chunk 88/120
+                  <span class="h-1 w-1 bg-white rounded-full animate-bounce"></span
+                ></span>
+              </div>
+            </div>
+            <div class="p-3 bg-black/20 border-t border-white/5 flex justify-between items-center">
+              <span class="text-[0.6rem] text-slate-400 font-medium">Node: worker-us-east-42</span>
+              <button
+                class="text-[0.6rem] font-bold text-primary-fixed-dim hover:underline uppercase tracking-tighter"
+              >
+                Download Full Log
+              </button>
+            </div>
+          </div>
+          <!-- Contextual Info Card -->
+          <div
+            class="mt-6 bg-gradient-to-br from-primary-container to-primary p-6 rounded-xl text-white shadow-lg"
+          >
+            <h3 class="font-bold font-headline mb-2 flex items-center gap-2">
+              <span class="material-symbols-outlined">auto_awesome</span>
+              AI Optimization Active
+            </h3>
+            <p class="text-sm opacity-90 leading-relaxed mb-4">
+              The system has automatically prioritized text-based documents to optimize for the
+              current high-latency state of the Video Processor.
+            </p>
+            <div class="h-px bg-white/20 w-full mb-4"></div>
+            <div
+              class="flex justify-between items-center text-xs font-bold uppercase tracking-widest"
+            >
+              <span>Latency</span>
+              <span>12ms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Floating Action Button - Supressed as per Task Logic (it is a status/details focused screen) -->
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<div class="thread" #scrollContainer aria-live="polite" aria-label="Message thread">
+  @if (chatService.messages().length === 0) {
+    <div class="welcome">
+      <div class="welcome-icon">
+        <span class="material-symbols-outlined">auto_awesome</span>
+      </div>
+      <p class="welcome-text">Select items from the corpus and ask a question to get started.</p>
+    </div>
+  }
+
+  @for (msg of chatService.messages(); track $index) {
+    @if (msg.role === 'user') {
+      <div class="message-row user-row">
+        <div class="avatar avatar-user">
+          <span class="material-symbols-outlined">person</span>
+        </div>
+        <div class="bubble user-bubble">{{ msg.content }}</div>
+      </div>
+    } @else {
+      <div class="message-row ai-row">
+        <div class="avatar avatar-ai">
+          <span class="material-symbols-outlined">auto_awesome</span>
+        </div>
+        <div class="ai-body">
+          <div class="bubble ai-bubble">
+            @if (msg.content) {
+              <div [innerHTML]="msg.content | markdown"></div>
+            }
+            @if ($last && chatService.isStreaming()) {
+              <div class="streaming-indicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="streaming-text">Analyzing…</span>
+              </div>
+            }
+          </div>
+          @if (msg.sources && msg.sources.length > 0) {
+            <div class="sources">
+              <span class="sources-label">
+                <span class="material-symbols-outlined">link</span> Sources
+              </span>
+              <div class="source-chips">
+                @for (src of msg.sources; track $index) {
+                  <div class="source-chip">
+                    <span class="material-symbols-outlined source-icon">{{
+                      sourceIcon(src.mediaType)
+                    }}</span>
+                    <span class="source-title">{{ src.mediaTitle }}</span>
+                    @if (src.timestamp) {
+                      <span class="source-badge">{{ src.timestamp }}</span>
+                    }
+                    @if (src.pageNumber) {
+                      <span class="source-badge">Page {{ src.pageNumber }}</span>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
+</div>

@@ -1,0 +1,18 @@
+<div class="confirm-dialog">
+  <div class="dialog-header">
+    <span class="dialog-icon material-symbols-outlined">warning</span>
+    <h2>{{ data.title }}</h2>
+  </div>
+  <p class="dialog-message">{{ data.message }}</p>
+  <div class="dialog-actions">
+    <button class="btn-ghost" (click)="cancel()">
+      {{ data.cancelLabel ?? 'Cancel' }}
+    </button>
+    <button
+      [class]="data.confirmColor === 'danger' ? 'btn-danger' : 'btn-primary'"
+      (click)="confirm()"
+    >
+      {{ data.confirmLabel ?? 'Confirm' }}
+    </button>
+  </div>
+</div>

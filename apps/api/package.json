@@ -1,0 +1,37 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "drizzle-kit push && node dist/index.js",
+    "test": "vitest run src/lib src/repositories",
+    "test:integration": "vitest run \"integration\"",
+    "test:watch": "vitest src/lib"
+  },
+  "dependencies": {
+    "@ai-sdk/mistral": "^3.0.27",
+    "@ai-sdk/openai": "^3.0.48",
+    "@fastify/cors": "^11.2.0",
+    "@qdrant/js-client-rest": "^1.17.0",
+    "@ubi-ai/shared": "workspace:*",
+    "ai": "^6.0.137",
+    "better-sqlite3": "^12.8.0",
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "^0.45.1",
+    "fastify": "^5.8.4",
+    "fastify-plugin": "^5.1.0",
+    "sbd": "^1.0.19",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.5.0",
+    "@types/sbd": "^1.0.5",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.21.0",
+    "typescript": "*",
+    "vitest": "^4.1.1"
+  }
+}

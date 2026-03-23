@@ -1,0 +1,566 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>UbiCast AI - Enrichment Intelligence</title>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              secondary: '#4a5f83',
+              'outline-variant': '#c2c6d4',
+              'on-primary-fixed-variant': '#00468c',
+              'on-tertiary': '#ffffff',
+              'on-secondary-container': '#475c80',
+              'surface-container-high': '#e4e8f1',
+              'tertiary-container': '#9f4300',
+              'on-tertiary-fixed': '#341100',
+              'secondary-container': '#c0d5ff',
+              'surface-container': '#eaeef7',
+              'surface-container-low': '#f0f4fd',
+              'on-error-container': '#93000a',
+              'error-container': '#ffdad6',
+              'on-secondary': '#ffffff',
+              'inverse-surface': '#2c3137',
+              'tertiary-fixed-dim': '#ffb691',
+              surface: '#f8f9ff',
+              'primary-fixed-dim': '#a9c7ff',
+              'on-tertiary-container': '#ffcfb9',
+              'on-secondary-fixed': '#021b3c',
+              'on-surface': '#171c22',
+              'surface-container-lowest': '#ffffff',
+              'surface-dim': '#d6dae3',
+              'on-surface-variant': '#424752',
+              'inverse-primary': '#a9c7ff',
+              'primary-container': '#005eb8',
+              error: '#ba1a1a',
+              outline: '#727783',
+              background: '#f8f9ff',
+              'surface-tint': '#005db6',
+              primary: '#00478d',
+              'on-primary-container': '#c8daff',
+              'secondary-fixed-dim': '#b2c7f0',
+              'on-tertiary-fixed-variant': '#793100',
+              'on-primary': '#ffffff',
+              'on-error': '#ffffff',
+              'on-background': '#171c22',
+              'inverse-on-surface': '#edf1fa',
+              tertiary: '#793100',
+              'on-secondary-fixed-variant': '#32476a',
+              'surface-container-highest': '#dee3eb',
+              'surface-variant': '#dee3eb',
+              'primary-fixed': '#d6e3ff',
+              'surface-bright': '#f8f9ff',
+              'secondary-fixed': '#d6e3ff',
+              'on-primary-fixed': '#001b3d',
+              'tertiary-fixed': '#ffdbcb',
+            },
+            fontFamily: {
+              headline: ['Manrope'],
+              body: ['Inter'],
+              label: ['Inter'],
+            },
+            borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .font-headline {
+        font-family: 'Manrope', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface min-h-screen">
+    <!-- TopAppBar Shell -->
+    <header
+      class="fixed top-0 w-full flex justify-between items-center px-6 h-16 bg-slate-50/80 backdrop-blur-xl shadow-sm z-50"
+    >
+      <div class="flex items-center gap-4">
+        <span class="text-xl font-bold tracking-tight text-slate-900">UbiCast AI</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <div
+          class="hidden md:flex items-center bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/10"
+        >
+          <span class="material-symbols-outlined text-slate-500 text-sm">search</span>
+          <input
+            class="bg-transparent border-none focus:ring-0 text-sm w-64 text-on-surface placeholder:text-slate-400"
+            placeholder="Search media..."
+            type="text"
+          />
+        </div>
+        <button class="p-2 text-slate-500 hover:bg-slate-200/50 rounded-full transition-colors">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button class="p-2 text-slate-500 hover:bg-slate-200/50 rounded-full transition-colors">
+          <span class="material-symbols-outlined">help</span>
+        </button>
+        <div class="w-8 h-8 rounded-full overflow-hidden ml-2 bg-slate-200">
+          <img
+            alt="User avatar"
+            data-alt="Professional user profile avatar photo"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWyq5O5ZjdQSZDhb3mk62Xlk12ONcV3BTudaA5Fx4fFEVCSQZ3uyBqJrOl_r_Ju8j7t2MAmJfyHvJ3Xq39XHgmEx1A6vpcalVGliM36H3YHgVGuq3zZVozpvHa60Db_foXxVVzABQmQGBKd3GHpvtmCizP1bK9UAA7jAUJSXlcZj5MK6DaUMJB7gisZJjuf6qItV-p48M601iIIxHDEMBk5KtlJmI900JqMGgCGLnRI7ykafK2oLIosGtjpuP_aNQz5Ay2AqaK2Hp5"
+          />
+        </div>
+      </div>
+    </header>
+    <!-- SideNavBar Shell -->
+    <aside
+      class="fixed left-0 top-0 h-full w-64 bg-slate-50/90 backdrop-blur-md flex flex-col py-8 z-40"
+    >
+      <div class="px-6 mb-10">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-on-primary shadow-lg shadow-primary/20"
+          >
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1"
+              >analytics</span
+            >
+          </div>
+          <div>
+            <h2 class="font-black text-blue-800 text-sm leading-none">Media Intelligence</h2>
+            <p class="text-[10px] font-medium text-slate-500 uppercase tracking-widest mt-1">
+              AI Orchestrator
+            </p>
+          </div>
+        </div>
+      </div>
+      <nav class="flex-1 px-4 space-y-1">
+        <!-- Enrichment - Active Tab -->
+        <a
+          class="flex items-center gap-3 px-4 py-3 border-l-4 border-blue-600 bg-blue-50/50 text-blue-700 font-bold transition-all duration-300"
+          href="#"
+        >
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1"
+            >auto_awesome</span
+          >
+          <span class="text-sm font-label">Enrichment</span>
+        </a>
+        <!-- Chat - Inactive Tab -->
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:text-blue-600 hover:bg-slate-200/40 transition-all duration-300"
+          href="#"
+        >
+          <span class="material-symbols-outlined">forum</span>
+          <span class="text-sm font-label">Chat</span>
+        </a>
+      </nav>
+      <div class="px-4 mb-8">
+        <button
+          class="w-full bg-gradient-to-r from-primary to-primary-container text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all active:scale-95"
+        >
+          <span class="material-symbols-outlined text-sm">add</span>
+          <span class="text-sm">New Project</span>
+        </button>
+      </div>
+      <div class="px-4 border-t border-slate-100 pt-6 space-y-1">
+        <a
+          class="flex items-center gap-3 px-4 py-2 text-slate-600 hover:bg-slate-200/40 rounded-lg transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-lg">settings</span>
+          <span class="text-[12px] font-medium">Settings</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-2 text-slate-600 hover:bg-slate-200/40 rounded-lg transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined text-lg">contact_support</span>
+          <span class="text-[12px] font-medium">Support</span>
+        </a>
+      </div>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="pl-64 pt-16 min-h-screen flex">
+      <!-- Left Column: Media Catalog -->
+      <section
+        class="w-80 bg-surface-container-low p-6 flex flex-col gap-6 overflow-y-auto max-h-[calc(100vh-64px)]"
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-headline font-semibold text-slate-800">Media Library</h3>
+          <span class="material-symbols-outlined text-slate-400 cursor-pointer">filter_list</span>
+        </div>
+        <div class="flex flex-col gap-3">
+          <!-- Selected Media Item -->
+          <div
+            class="bg-surface-container-lowest p-4 rounded-xl border-2 border-primary/20 shadow-sm cursor-pointer hover:shadow-md transition-shadow flex items-start gap-4"
+          >
+            <div
+              class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center text-primary"
+            >
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1"
+                >movie</span
+              >
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-semibold text-on-surface truncate">
+                Corporate_Townhall_Q3.mp4
+              </p>
+              <p class="text-[10px] text-slate-500 uppercase font-medium mt-1">
+                Processing Complete
+              </p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="px-1.5 py-0.5 bg-secondary-container text-on-secondary-container text-[9px] font-bold rounded"
+                  >VIDEO</span
+                >
+                <span class="text-[10px] text-slate-400">14:22</span>
+              </div>
+            </div>
+          </div>
+          <!-- PDF Item -->
+          <div
+            class="bg-surface-container-lowest p-4 rounded-xl border border-transparent hover:border-outline-variant/20 hover:shadow-sm cursor-pointer transition-all flex items-start gap-4"
+          >
+            <div
+              class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-slate-500"
+            >
+              <span class="material-symbols-outlined">picture_as_pdf</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-700 truncate">Strategic_Roadmap_v2.pdf</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="px-1.5 py-0.5 bg-surface-container-highest text-on-surface-variant text-[9px] font-bold rounded uppercase"
+                  >Document</span
+                >
+                <span class="text-[10px] text-slate-400">2.4 MB</span>
+              </div>
+            </div>
+          </div>
+          <!-- Audio Item -->
+          <div
+            class="bg-surface-container-lowest p-4 rounded-xl border border-transparent hover:border-outline-variant/20 hover:shadow-sm cursor-pointer transition-all flex items-start gap-4"
+          >
+            <div
+              class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-slate-500"
+            >
+              <span class="material-symbols-outlined">audio_file</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-700 truncate">Interview_Transcript_01.wav</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="px-1.5 py-0.5 bg-surface-container-highest text-on-surface-variant text-[9px] font-bold rounded uppercase"
+                  >Audio</span
+                >
+                <span class="text-[10px] text-slate-400">05:40</span>
+              </div>
+            </div>
+          </div>
+          <!-- Another Video -->
+          <div
+            class="bg-surface-container-lowest p-4 rounded-xl border border-transparent hover:border-outline-variant/20 hover:shadow-sm cursor-pointer transition-all flex items-start gap-4 opacity-75"
+          >
+            <div
+              class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center text-slate-500"
+            >
+              <span class="material-symbols-outlined">movie</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-700 truncate">Demo_Scene_Final.mp4</p>
+              <div class="flex items-center gap-2 mt-2">
+                <span
+                  class="px-1.5 py-0.5 bg-surface-container-highest text-on-surface-variant text-[9px] font-bold rounded uppercase"
+                  >Video</span
+                >
+                <span class="text-[10px] text-slate-400">22:05</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Right Column: Enrichment Details -->
+      <section class="flex-1 p-8 overflow-y-auto max-h-[calc(100vh-64px)] bg-surface">
+        <div class="max-w-4xl mx-auto space-y-8">
+          <!-- Header Actions -->
+          <div class="flex items-end justify-between border-b border-outline-variant/10 pb-6">
+            <div>
+              <span class="text-[11px] font-bold text-primary uppercase tracking-widest"
+                >Enrichment Editor</span
+              >
+              <h2 class="text-3xl font-headline font-extrabold text-slate-900 mt-1">
+                Corporate Townhall Q3
+              </h2>
+            </div>
+            <div class="flex gap-3">
+              <button
+                class="px-5 py-2.5 rounded-lg border border-outline-variant/30 text-slate-700 font-medium text-sm flex items-center gap-2 hover:bg-slate-100 transition-colors"
+              >
+                <span class="material-symbols-outlined text-sm">visibility</span>
+                Preview
+              </button>
+              <button
+                class="px-5 py-2.5 bg-gradient-to-r from-primary to-primary-container text-white rounded-lg font-semibold text-sm flex items-center gap-2 shadow-lg shadow-primary/20 hover:translate-y-[-1px] transition-all"
+              >
+                <span
+                  class="material-symbols-outlined text-sm"
+                  style="font-variation-settings: 'FILL' 1"
+                  >publish</span
+                >
+                Publish
+              </button>
+            </div>
+          </div>
+          <!-- Grid Layout for Content -->
+          <div class="grid grid-cols-1 gap-6">
+            <!-- Title Card -->
+            <div
+              class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/5"
+            >
+              <div class="flex justify-between items-start mb-4">
+                <label
+                  class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined text-sm">title</span>
+                  Title
+                </label>
+                <button
+                  class="text-primary hover:bg-primary/5 p-1.5 rounded-lg transition-colors flex items-center gap-1.5"
+                >
+                  <span class="material-symbols-outlined text-[18px]">refresh</span>
+                  <span class="text-xs font-semibold">Regenerate</span>
+                </button>
+              </div>
+              <input
+                class="w-full text-xl font-headline font-bold text-slate-800 border-none p-0 focus:ring-0 placeholder:text-slate-300"
+                type="text"
+                value="Q3 Corporate Vision &amp; Strategic Alignment Townhall"
+              />
+            </div>
+            <!-- Summary Card -->
+            <div
+              class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/5"
+            >
+              <div class="flex justify-between items-start mb-4">
+                <label
+                  class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined text-sm">subject</span>
+                  Summary
+                </label>
+                <button
+                  class="text-primary hover:bg-primary/5 p-1.5 rounded-lg transition-colors flex items-center gap-1.5"
+                >
+                  <span class="material-symbols-outlined text-[18px]">refresh</span>
+                  <span class="text-xs font-semibold">Regenerate</span>
+                </button>
+              </div>
+              <textarea
+                class="w-full text-slate-600 leading-relaxed border-none p-0 focus:ring-0 resize-none"
+                rows="4"
+              >
+This session covers the third quarter performance metrics, upcoming product pivots, and the organizational restructure planned for the next fiscal year. Key speakers discuss the integration of AI-driven workflows across the marketing and engineering departments, emphasizing the core value of "Precision at Scale."</textarea
+              >
+            </div>
+            <!-- Keywords Card -->
+            <div
+              class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/5"
+            >
+              <div class="flex justify-between items-start mb-4">
+                <label
+                  class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined text-sm">tag</span>
+                  Keywords
+                </label>
+                <button
+                  class="text-primary hover:bg-primary/5 p-1.5 rounded-lg transition-colors flex items-center gap-1.5"
+                >
+                  <span class="material-symbols-outlined text-[18px]">refresh</span>
+                  <span class="text-xs font-semibold">Regenerate</span>
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="bg-surface-container px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 flex items-center gap-2 border border-outline-variant/10"
+                >
+                  AI Integration
+                  <span
+                    class="material-symbols-outlined text-sm cursor-pointer text-slate-400 hover:text-error"
+                    >close</span
+                  >
+                </span>
+                <span
+                  class="bg-surface-container px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 flex items-center gap-2 border border-outline-variant/10"
+                >
+                  Strategic Roadmap
+                  <span
+                    class="material-symbols-outlined text-sm cursor-pointer text-slate-400 hover:text-error"
+                    >close</span
+                  >
+                </span>
+                <span
+                  class="bg-surface-container px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 flex items-center gap-2 border border-outline-variant/10"
+                >
+                  Fiscal Planning
+                  <span
+                    class="material-symbols-outlined text-sm cursor-pointer text-slate-400 hover:text-error"
+                    >close</span
+                  >
+                </span>
+                <span
+                  class="bg-surface-container px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 flex items-center gap-2 border border-outline-variant/10"
+                >
+                  Engineering
+                  <span
+                    class="material-symbols-outlined text-sm cursor-pointer text-slate-400 hover:text-error"
+                    >close</span
+                  >
+                </span>
+                <button
+                  class="px-3 py-1.5 rounded-lg text-xs font-bold text-primary border border-primary/20 hover:bg-primary/5 transition-colors"
+                >
+                  + Add Keyword
+                </button>
+              </div>
+            </div>
+            <!-- MCQs Card -->
+            <div
+              class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/5"
+            >
+              <div class="flex justify-between items-start mb-6">
+                <label
+                  class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined text-sm">quiz</span>
+                  Assessment (MCQ)
+                </label>
+                <button
+                  class="text-primary hover:bg-primary/5 p-1.5 rounded-lg transition-colors flex items-center gap-1.5"
+                >
+                  <span class="material-symbols-outlined text-[18px]">refresh</span>
+                  <span class="text-xs font-semibold">Regenerate</span>
+                </button>
+              </div>
+              <div class="space-y-6">
+                <div>
+                  <h4 class="text-base font-semibold text-slate-800 mb-4">
+                    According to the townhall, what is the primary objective of the "AI-driven
+                    workflows" initiative?
+                  </h4>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div
+                      class="p-4 rounded-xl border-2 border-primary/10 bg-primary/5 flex items-start gap-3"
+                    >
+                      <div
+                        class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold mt-0.5"
+                      >
+                        A
+                      </div>
+                      <p class="text-sm font-medium text-slate-800">
+                        Achieving "Precision at Scale" across departments.
+                      </p>
+                      <span
+                        class="material-symbols-outlined text-primary text-sm ml-auto"
+                        style="font-variation-settings: 'FILL' 1"
+                        >check_circle</span
+                      >
+                    </div>
+                    <div
+                      class="p-4 rounded-xl border border-outline-variant/20 hover:bg-surface-container flex items-start gap-3 transition-colors cursor-pointer"
+                    >
+                      <div
+                        class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[10px] text-slate-500 font-bold mt-0.5"
+                      >
+                        B
+                      </div>
+                      <p class="text-sm text-slate-700">
+                        Reducing total engineering headcount by 15%.
+                      </p>
+                    </div>
+                    <div
+                      class="p-4 rounded-xl border border-outline-variant/20 hover:bg-surface-container flex items-start gap-3 transition-colors cursor-pointer"
+                    >
+                      <div
+                        class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[10px] text-slate-500 font-bold mt-0.5"
+                      >
+                        C
+                      </div>
+                      <p class="text-sm text-slate-700">
+                        Moving all data storage to on-premise servers.
+                      </p>
+                    </div>
+                    <div
+                      class="p-4 rounded-xl border border-outline-variant/20 hover:bg-surface-container flex items-start gap-3 transition-colors cursor-pointer"
+                    >
+                      <div
+                        class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-[10px] text-slate-500 font-bold mt-0.5"
+                      >
+                        D
+                      </div>
+                      <p class="text-sm text-slate-700">
+                        Focusing exclusively on consumer-facing marketing.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-tertiary-fixed-dim/10 p-4 rounded-lg border-l-4 border-tertiary">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="material-symbols-outlined text-tertiary text-sm">info</span>
+                    <span class="text-[10px] font-bold text-tertiary uppercase tracking-wider"
+                      >Explanation</span
+                    >
+                  </div>
+                  <p class="text-xs text-on-tertiary-fixed-variant leading-relaxed">
+                    CEO Sarah Miller explicitly stated that the AI integration isn't about
+                    cost-cutting but about amplifying human output, coining the phrase "Precision at
+                    Scale" as the quarter's guiding principle.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Final Action Hub -->
+            <div class="flex items-center justify-center pt-10 pb-20">
+              <div class="flex flex-col items-center gap-4">
+                <p class="text-sm text-slate-500">
+                  All changes are saved to the orchestrator cloud.
+                </p>
+                <button
+                  class="px-12 py-4 bg-gradient-to-r from-primary to-primary-container text-white rounded-xl font-bold text-lg shadow-xl shadow-primary/30 hover:shadow-2xl hover:translate-y-[-2px] active:translate-y-[1px] active:shadow-md transition-all"
+                >
+                  Finalize &amp; Publish Enrichment
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Contextual FAB (Hidden as per rule: Only on Home/Dash) -->
+    <!-- Suppression logic applied -->
+  </body>
+</html>

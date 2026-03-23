@@ -1,0 +1,94 @@
+WEBVTT
+
+00:00:01.000 --> 00:00:06.000
+Today we go deep on neural networks. I'm Dr. Sarah Chen, welcome back to CS401.
+
+00:00:06.500 --> 00:00:13.000
+Neural networks are loosely inspired by the structure of the brain, though the analogy is imperfect.
+
+00:00:13.500 --> 00:00:20.000
+The basic unit is the artificial neuron, which computes a weighted sum of its inputs.
+
+00:00:20.500 --> 00:00:27.000
+That sum passes through an activation function, introducing the non-linearity networks need.
+
+00:00:27.500 --> 00:00:34.000
+Without non-linear activations, stacking layers would just collapse into a single linear transformation.
+
+00:00:34.500 --> 00:00:41.000
+Common activation functions include ReLU, sigmoid, tanh, and the newer GELU.
+
+00:00:41.500 --> 00:00:48.000
+ReLU — Rectified Linear Unit — is simply max(0, x). Fast to compute, avoids vanishing gradients.
+
+00:00:48.500 --> 00:00:55.000
+A feedforward network organizes neurons into layers: input, one or more hidden, and output.
+
+00:00:55.500 --> 00:01:02.000
+Information flows in one direction — forward — from input to output during inference.
+
+00:01:02.500 --> 00:01:09.000
+Training requires propagating errors backward through the network — this is backpropagation.
+
+00:01:09.500 --> 00:01:16.000
+Backpropagation applies the chain rule of calculus to compute gradients layer by layer.
+
+00:01:16.500 --> 00:01:23.000
+Each parameter receives a gradient indicating how much it contributed to the loss.
+
+00:01:23.500 --> 00:01:30.000
+Gradient descent then nudges each parameter slightly in the direction that reduces loss.
+
+00:01:30.500 --> 00:01:37.000
+Convolutional Neural Networks — CNNs — are specialized for grid-like data such as images.
+
+00:01:37.500 --> 00:01:44.000
+A convolutional layer slides a learned filter across the input, detecting local features.
+
+00:01:44.500 --> 00:01:51.000
+Early layers detect edges and textures; deeper layers detect complex objects and patterns.
+
+00:01:51.500 --> 00:01:58.000
+Pooling layers reduce spatial dimensions while retaining the most salient activations.
+
+00:01:58.500 --> 00:02:05.000
+Recurrent Neural Networks — RNNs — process sequential data by maintaining a hidden state.
+
+00:02:05.500 --> 00:02:12.000
+At each time step, the hidden state is updated using both the current input and the previous state.
+
+00:02:12.500 --> 00:02:19.000
+LSTMs solve the vanishing gradient problem in plain RNNs using gating mechanisms.
+
+00:02:19.500 --> 00:02:26.000
+The forget gate, input gate, and output gate control what information is retained or discarded.
+
+00:02:26.500 --> 00:02:33.000
+Dropout is a regularization technique that randomly zeros activations during training.
+
+00:02:33.500 --> 00:02:40.000
+It prevents co-adaptation of neurons and acts like training an ensemble of sub-networks.
+
+00:02:40.500 --> 00:02:47.000
+Batch normalization normalizes activations within a mini-batch, stabilizing and accelerating training.
+
+00:02:47.500 --> 00:02:54.000
+Weight initialization matters enormously — poor initialization can prevent the network from learning.
+
+00:02:54.500 --> 00:03:01.000
+Xavier and He initialization set initial weights based on layer size to preserve gradient flow.
+
+00:03:01.500 --> 00:03:08.000
+Transfer learning lets us reuse weights from a pretrained network on a related task.
+
+00:03:08.500 --> 00:03:15.000
+Fine-tuning adjusts a small number of layers while keeping the pretrained backbone frozen.
+
+00:03:15.500 --> 00:03:22.000
+This dramatically reduces training data requirements and computation time.
+
+00:03:22.500 --> 00:03:30.000
+Next lecture we'll look at the Transformer architecture, which has largely replaced RNNs for sequences.
+
+00:03:30.500 --> 00:03:36.000
+Read the Attention Is All You Need paper before class — it's dense but foundational.

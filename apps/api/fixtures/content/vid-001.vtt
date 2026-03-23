@@ -1,0 +1,100 @@
+WEBVTT
+
+00:00:01.000 --> 00:00:05.000
+Welcome to Introduction to Machine Learning. I'm Dr. Sarah Chen.
+
+00:00:05.200 --> 00:00:11.000
+Today we'll cover the fundamental concepts that underpin all of modern AI.
+
+00:00:11.500 --> 00:00:17.000
+Machine learning is the science of getting computers to act without being explicitly programmed.
+
+00:00:17.200 --> 00:00:24.000
+Instead of writing rules by hand, we feed data to algorithms and let them learn patterns.
+
+00:00:24.500 --> 00:00:31.000
+There are three main paradigms: supervised learning, unsupervised learning, and reinforcement learning.
+
+00:00:31.500 --> 00:00:38.000
+In supervised learning, we train a model on labeled examples — input-output pairs.
+
+00:00:38.500 --> 00:00:45.000
+The model learns a mapping from inputs to outputs that generalizes to new, unseen data.
+
+00:00:45.500 --> 00:00:52.000
+Classic examples include spam detection, image classification, and price prediction.
+
+00:00:52.500 --> 00:01:00.000
+Unsupervised learning deals with unlabeled data — finding hidden structure without guidance.
+
+00:01:00.500 --> 00:01:08.000
+Clustering algorithms like k-means group similar data points together based on distance metrics.
+
+00:01:08.500 --> 00:01:16.000
+Dimensionality reduction techniques like PCA compress data while preserving its essential variance.
+
+00:01:16.500 --> 00:01:24.000
+Reinforcement learning is inspired by how animals learn through reward and punishment.
+
+00:01:24.500 --> 00:01:32.000
+An agent takes actions in an environment and receives rewards or penalties based on outcomes.
+
+00:01:32.500 --> 00:01:40.000
+Over many iterations, the agent learns a policy that maximizes cumulative reward.
+
+00:01:40.500 --> 00:01:48.000
+AlphaGo and modern game-playing AIs are famous examples of reinforcement learning at scale.
+
+00:01:48.500 --> 00:01:56.000
+Let's talk about the bias-variance tradeoff — one of the most important concepts in ML.
+
+00:01:56.500 --> 00:02:04.000
+Bias is error from overly simplistic assumptions. A high-bias model underfits the data.
+
+00:02:04.500 --> 00:02:12.000
+Variance is error from sensitivity to fluctuations in training data. High variance means overfitting.
+
+00:02:12.500 --> 00:02:20.000
+The goal is to find a sweet spot — a model complex enough to capture patterns but not noise.
+
+00:02:20.500 --> 00:02:28.000
+Cross-validation is our primary tool for estimating how well a model generalizes.
+
+00:02:28.500 --> 00:02:36.000
+We split data into folds, train on some, evaluate on others, and average the results.
+
+00:02:36.500 --> 00:02:44.000
+Feature engineering is the process of transforming raw data into representations useful for learning.
+
+00:02:44.500 --> 00:02:52.000
+Good features encode domain knowledge and often matter more than algorithm choice.
+
+00:02:52.500 --> 00:03:00.000
+Normalization and standardization ensure features with different scales don't dominate the model.
+
+00:03:00.500 --> 00:03:08.000
+Now let's discuss gradient descent — the optimization engine behind most ML algorithms.
+
+00:03:08.500 --> 00:03:16.000
+We define a loss function that measures how wrong our model's predictions are.
+
+00:03:16.500 --> 00:03:24.000
+Gradient descent iteratively adjusts parameters to move downhill on the loss surface.
+
+00:03:24.500 --> 00:03:32.000
+The learning rate controls the step size. Too large and we overshoot; too small and training is slow.
+
+00:03:32.500 --> 00:03:40.000
+Stochastic gradient descent uses random mini-batches, which adds noise but speeds up convergence.
+
+00:03:40.500 --> 00:03:48.000
+Modern optimizers like Adam adapt the learning rate per parameter using momentum estimates.
+
+00:03:48.500 --> 00:03:56.000
+To summarize: ML is about learning patterns from data using algorithms that generalize.
+
+00:03:56.500 --> 00:04:04.000
+Next week we'll dive into linear regression and logistic regression as foundational supervised models.
+
+00:04:04.500 --> 00:04:10.000
+Please complete the assigned readings on chapters 2 and 3 before then. See you next time.

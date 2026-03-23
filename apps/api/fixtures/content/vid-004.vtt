@@ -1,0 +1,82 @@
+WEBVTT
+
+00:00:01.000 --> 00:00:06.000
+Hello everyone, this session covers the CS401 capstone project guidelines.
+
+00:00:06.500 --> 00:00:13.000
+The capstone represents 40% of your final grade and is due at the end of week 12.
+
+00:00:13.500 --> 00:00:20.000
+You'll work in teams of two or three to build an end-to-end machine learning system.
+
+00:00:20.500 --> 00:00:27.000
+The project must include data collection or sourcing, preprocessing, model training, and evaluation.
+
+00:00:27.500 --> 00:00:34.000
+A short written report documenting your methodology and results is also required.
+
+00:00:34.500 --> 00:00:41.000
+Approved project domains include computer vision, natural language processing, and tabular prediction.
+
+00:00:41.500 --> 00:00:48.000
+You may also propose a custom domain — submit a one-paragraph pitch to me by end of week 3.
+
+00:00:48.500 --> 00:00:55.000
+Your dataset must have at least 1000 labeled examples. Using an existing public dataset is fine.
+
+00:00:55.500 --> 00:01:02.000
+Kaggle, HuggingFace Datasets, and the UCI ML Repository are all acceptable sources.
+
+00:01:02.500 --> 00:01:09.000
+If you collect your own data, you must include a data collection methodology section in your report.
+
+00:01:09.500 --> 00:01:16.000
+Baseline models must be included — you need something to compare your final model against.
+
+00:01:16.500 --> 00:01:23.000
+A logistic regression or decision tree is sufficient as a baseline for most problems.
+
+00:01:23.500 --> 00:01:30.000
+Your primary model should be a neural network of some form — this is a deep learning course.
+
+00:01:30.500 --> 00:01:37.000
+You'll present your project in a 12-minute presentation during the final exam period.
+
+00:01:37.500 --> 00:01:44.000
+The presentation should cover problem framing, data, model architecture, results, and learnings.
+
+00:01:44.500 --> 00:01:51.000
+Grading rubric: 30% methodology, 30% results, 20% presentation quality, 20% written report.
+
+00:01:51.500 --> 00:01:58.000
+All code must be submitted as a GitHub repository with a clear README and reproducibility instructions.
+
+00:01:58.500 --> 00:02:05.000
+Use virtual environments and pin your dependencies. We must be able to reproduce your results.
+
+00:02:05.500 --> 00:02:12.000
+Academic integrity policy: all work must be your own. Using pretrained models is allowed with attribution.
+
+00:02:12.500 --> 00:02:19.000
+Using ChatGPT or similar tools to write code is permitted if you document and understand it.
+
+00:02:19.500 --> 00:02:26.000
+You cannot submit AI-generated code you do not understand or cannot explain in the presentation.
+
+00:02:26.500 --> 00:02:33.000
+Milestones: team registration by week 2, dataset confirmed by week 4, checkpoint demo in week 8.
+
+00:02:33.500 --> 00:02:40.000
+The week 8 checkpoint demo is ungraded but mandatory — it keeps teams on track.
+
+00:02:40.500 --> 00:02:47.000
+Office hours are Tuesday 2 to 4pm. My PhD students are also available Wednesday afternoons.
+
+00:02:47.500 --> 00:02:54.000
+Strong projects from previous years are linked on the course portal — highly recommend reviewing them.
+
+00:02:54.500 --> 00:03:01.000
+Remember: the goal is not a perfect model but a rigorous, reproducible scientific process.
+
+00:03:01.500 --> 00:03:07.000
+Good luck with your team formation. Let me know if you have any questions.

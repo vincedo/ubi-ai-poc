@@ -1,0 +1,207 @@
+.detail-page {
+  padding: 2rem;
+  max-width: 720px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.back-link:hover {
+  color: var(--color-primary);
+}
+
+.course-info h1 {
+  margin: 0 0 0.25rem;
+}
+
+.course-desc {
+  color: var(--color-on-surface-variant);
+  margin: 0 0 1rem;
+}
+
+.info-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.edit-form {
+  background: var(--color-surface-container-lowest);
+  border-radius: 0.5rem;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+}
+
+.form-input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+  border: 1px solid rgba(194, 198, 212, 0.15);
+  font-size: 0.875rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-outline-variant);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface-container);
+}
+
+.media-section {
+  margin-top: 1rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+.add-media-panel {
+  background: var(--color-surface-container-lowest);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.add-media-panel h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+}
+
+.media-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--color-on-surface);
+  cursor: pointer;
+  border-radius: 0.375rem;
+}
+
+.media-add-btn:hover {
+  background: var(--color-surface-container-low);
+}
+
+.muted {
+  color: var(--color-on-surface-variant);
+}
+
+.media-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.media-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--color-surface-container-lowest);
+}
+
+.order-num {
+  width: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.media-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.media-title {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-on-surface);
+}
+
+.media-type {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-on-surface-variant);
+}
+
+.media-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  background: none;
+  border: none;
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+}
+
+.icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.icon-btn:disabled:hover {
+  background: none;
+  color: var(--color-on-surface-variant);
+}
+
+.icon-btn.danger:hover {
+  color: var(--color-error);
+}

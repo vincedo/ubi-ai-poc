@@ -1,0 +1,82 @@
+WEBVTT
+
+00:00:01.000 --> 00:00:07.000
+Good afternoon. I'm Dr. Liu Wei, and this is Ethics in Artificial Intelligence, CS490.
+
+00:00:07.500 --> 00:00:14.000
+AI ethics is not soft philosophy — it's an engineering discipline with real-world consequences.
+
+00:00:14.500 --> 00:00:21.000
+Every design decision encodes values. The question is whether those values are made explicit.
+
+00:00:21.500 --> 00:00:28.000
+Let's start with bias. Machine learning models learn patterns from historical data.
+
+00:00:28.500 --> 00:00:35.000
+If that data reflects historical discrimination, the model will reproduce and amplify it.
+
+00:00:35.500 --> 00:00:42.000
+Amazon's hiring algorithm, trained on past resumes, systematically downgraded women's applications.
+
+00:00:42.500 --> 00:00:49.000
+COMPAS, used to predict recidivism in US courts, showed racial bias in its risk scores.
+
+00:00:49.500 --> 00:00:56.000
+These are not edge cases — they are predictable outcomes of training on biased human data.
+
+00:00:56.500 --> 00:01:03.000
+Fairness is not a single metric — there are over 20 mathematical definitions, many incompatible.
+
+00:01:03.500 --> 00:01:10.000
+Demographic parity requires equal positive prediction rates across groups. Simple but often misleading.
+
+00:01:10.500 --> 00:01:17.000
+Equalized odds requires equal true positive and false positive rates — a stronger guarantee.
+
+00:01:17.500 --> 00:01:24.000
+Calibration requires that predicted probabilities match actual outcomes across groups.
+
+00:01:24.500 --> 00:01:31.000
+It has been proven mathematically that you cannot satisfy all three definitions simultaneously.
+
+00:01:31.500 --> 00:01:38.000
+Choosing which fairness criterion to optimize is a value judgment, not a technical decision.
+
+00:01:38.500 --> 00:01:45.000
+Transparency and explainability are often confused. Transparency means open access to the model.
+
+00:01:45.500 --> 00:01:52.000
+Explainability means the ability to understand why a specific decision was made.
+
+00:01:52.500 --> 00:01:59.000
+GDPR's right to explanation creates legal requirements for explainability in automated decisions.
+
+00:01:59.500 --> 00:02:06.000
+LIME and SHAP are post-hoc methods that approximate local explanations for black-box models.
+
+00:02:06.500 --> 00:02:13.000
+But these approximations can be manipulated — an adversary can game them to produce misleading explanations.
+
+00:02:13.500 --> 00:02:20.000
+Privacy is another critical dimension. Models can memorize training data and leak it.
+
+00:02:20.500 --> 00:02:27.000
+Membership inference attacks can determine whether a specific person was in the training set.
+
+00:02:27.500 --> 00:02:34.000
+Differential privacy adds calibrated noise to training to provide formal privacy guarantees.
+
+00:02:34.500 --> 00:02:41.000
+The privacy-utility tradeoff is real — more privacy typically means worse model performance.
+
+00:02:41.500 --> 00:02:48.000
+Autonomy and human oversight are increasingly important as AI systems make high-stakes decisions.
+
+00:02:48.500 --> 00:02:55.000
+The EU AI Act classifies AI systems by risk level and mandates human oversight for high-risk uses.
+
+00:02:55.500 --> 00:03:02.000
+For your essay this week: pick one real-world AI system and analyze it through two fairness lenses.
+
+00:03:02.500 --> 00:03:08.000
+Argue which lens is most appropriate given the context, and justify your choice.

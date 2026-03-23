@@ -1,0 +1,181 @@
+<div class="ingestion-page">
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Ingestion Pipeline Status</h1>
+      <p class="page-sub">Monitoring synchronization between media assets and vector database.</p>
+    </div>
+    <button
+      class="btn-primary"
+      [disabled]="ingestionService.isRunning()"
+      (click)="ingestionService.runAll()"
+    >
+      <span class="material-symbols-outlined">refresh</span>
+      Re-run Full Ingestion
+    </button>
+  </div>
+
+  <!-- Bento summary cards -->
+  <div class="bento-grid">
+    <div class="bento-card">
+      <div class="bento-row">
+        <span class="bento-label">Total Media</span>
+        <span class="material-symbols-outlined bento-icon">inventory_2</span>
+      </div>
+      <div class="bento-value">{{ mediaService.catalogue().length }}</div>
+      <div class="bento-hint">Across all sources</div>
+    </div>
+    <div class="bento-card">
+      <div class="bento-row">
+        <span class="bento-label">Succeeded</span>
+        <span class="status-dot dot-success"></span>
+      </div>
+      <div class="bento-value success">{{ ingestionService.succeededCount() }}</div>
+      <div class="bento-hint">{{ ingestionService.progressPct() }}% of pipeline</div>
+    </div>
+    <div class="bento-card">
+      <div class="bento-row">
+        <span class="bento-label">Failed</span>
+        <span class="material-symbols-outlined bento-icon error">error</span>
+      </div>
+      <div class="bento-value error">{{ ingestionService.failedCount() }}</div>
+      <div class="bento-hint error">Attention required</div>
+    </div>
+    <div class="bento-card">
+      <div class="bento-row">
+        <span class="bento-label">In Progress</span>
+        <span
+          class="material-symbols-outlined bento-icon primary"
+          [class.pulse]="ingestionService.isRunning()"
+          >sync</span
+        >
+      </div>
+      <div class="bento-value primary">{{ ingestionService.ingestingCount() }}</div>
+      <div class="bento-hint">Processing chunks</div>
+    </div>
+  </div>
+
+  <!-- Global progress bar -->
+  <div class="progress-bar-card">
+    <div class="progress-header">
+      <span class="progress-label">Total Ingestion Progress</span>
+      <span class="progress-pct">{{ ingestionService.progressPct() }}%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" [style.width.%]="ingestionService.progressPct()"></div>
+    </div>
+  </div>
+
+  <!-- Main grid: queue table + logs -->
+  <div class="main-grid">
+    <!-- Queue table -->
+    <div class="queue-card">
+      <div class="queue-header">
+        <h2 class="queue-title">Ingestion Queue</h2>
+      </div>
+      <table class="queue-table">
+        <thead>
+          <tr>
+            <th scope="col">Media Title</th>
+            <th scope="col">Type</th>
+            <th scope="col">Status</th>
+            <th scope="col">Progress</th>
+            <th scope="col"><span class="sr-only">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of mediaService.catalogue(); track item.id) {
+            <tr>
+              <td>
+                <div class="title-cell">
+                  <span class="material-symbols-outlined type-icon">{{ iconFor(item.type) }}</span>
+                  <span>{{ item.title }}</span>
+                </div>
+              </td>
+              <td class="type-cell">{{ item.type }}</td>
+              <td>
+                @switch (ingestionService.getState(item.id).status) {
+                  @case ('succeeded') {
+                    <span class="badge badge-success"
+                      ><span class="dot dot-success"></span> Succeeded</span
+                    >
+                  }
+                  @case ('failed') {
+                    <div>
+                      <span class="badge badge-error"
+                        ><span class="dot dot-error"></span> Failed</span
+                      >
+                      @if (ingestionService.getState(item.id).error) {
+                        <p class="error-msg">{{ ingestionService.getState(item.id).error }}</p>
+                      }
+                    </div>
+                  }
+                  @case ('ingesting') {
+                    <span class="badge badge-ingesting"
+                      ><span class="dot dot-pulse"></span> Ingesting</span
+                    >
+                  }
+                  @default {
+                    <span class="badge badge-ready"><span class="dot dot-ready"></span> Ready</span>
+                  }
+                }
+              </td>
+              <td>
+                <div class="mini-progress">
+                  <div class="mini-track">
+                    <div
+                      class="mini-fill"
+                      [class.fill-success]="
+                        ingestionService.getState(item.id).status === 'succeeded'
+                      "
+                      [class.fill-error]="ingestionService.getState(item.id).status === 'failed'"
+                      [class.fill-active]="
+                        ingestionService.getState(item.id).status === 'ingesting'
+                      "
+                      [style.width.%]="
+                        ingestionService.getState(item.id).status === 'succeeded' ? 100 : 0
+                      "
+                    ></div>
+                  </div>
+                </div>
+              </td>
+              <td class="action-cell">
+                <button
+                  class="action-btn"
+                  [disabled]="ingestionService.getState(item.id).status === 'ingesting'"
+                  (click)="ingestionService.runOne(item.id)"
+                  [attr.aria-label]="'Re-ingest ' + item.title"
+                >
+                  <span class="material-symbols-outlined">refresh</span>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Logs panel -->
+    <div class="logs-card">
+      <div class="logs-header">
+        <div class="logs-title-row">
+          <span class="material-symbols-outlined">terminal</span>
+          <span class="logs-label">Live Event Logs</span>
+        </div>
+      </div>
+      <div class="logs-body">
+        @if (ingestionService.logs().length === 0) {
+          <span class="log-idle">Awaiting ingestion run…</span>
+        }
+        @for (line of ingestionService.logs(); track $index) {
+          <div class="log-line" [class.log-err]="line.startsWith('[ERR]')">
+            <span class="log-text">{{ line }}</span>
+          </div>
+        }
+      </div>
+      <div class="logs-footer">
+        <span>Node: worker-local</span>
+      </div>
+    </div>
+  </div>
+</div>

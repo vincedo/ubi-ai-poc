@@ -1,0 +1,261 @@
+WEBVTT - Guest Lecture: AI in Healthcare · Prof. James Martin
+
+NOTE
+Series: Digital Health Innovation · Spring 2026
+Speaker: Prof. James Martin, Stanford Medical AI Lab
+Recorded: 2026-03-10 · Duration: 52 minutes (excerpt: first 18 minutes)
+
+NOTE
+Transcription by AutoCaption v3.2
+Review pass: manual corrections applied to cues 12, 27, 34, 41
+
+STYLE
+::cue {
+  font-family: system-ui, sans-serif;
+  font-size: 1.05em;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+STYLE
+::cue(.highlight) {
+  color: #fde68a;
+  font-style: italic;
+}
+
+::cue(.term) {
+  color: #86efac;
+  text-decoration: underline;
+}
+
+00:00:05.000 --> 00:00:10.200
+Good morning, everyone. Thank you for having me.
+I know 8am lectures are — let's say — an acquired taste.
+
+00:00:10.400 --> 00:00:15.800
+Today we're going to talk about artificial intelligence in healthcare.
+Not the science fiction version. The real, messy, imperfect version.
+
+00:00:16.000 --> 00:00:21.300
+I want to start with a question I ask every new cohort at Stanford:
+what problem are we actually trying to solve?
+
+00:00:21.500 --> 00:00:27.100
+Because AI is not a solution. It's a capability.
+And capabilities without clear problem statements are just expensive toys.
+
+00:00:27.300 --> 00:00:33.600
+In healthcare, the problem statements are painfully clear.
+Clinician burnout. Diagnostic error rates. Unequal access to specialist care.
+
+00:00:33.800 --> 00:00:39.200
+Let me give you a number: radiologists review an average of
+200 to 300 images per day in a busy hospital.
+
+00:00:39.400 --> 00:00:45.100
+That's not reading a handful of scans carefully over a coffee.
+That's sustained, high-stakes pattern recognition for eight-plus hours.
+
+00:00:45.300 --> 00:00:51.700
+Fatigue degrades performance. We know this.
+Error rates climb measurably in the final hours of a shift.
+
+00:00:51.900 --> 00:00:57.400
+This is where AI offers something genuinely valuable —
+not replacing the radiologist, but being the second pair of eyes that never gets tired.
+
+00:00:57.600 --> 00:01:03.200
+The first clinical AI systems approved by the FDA were narrow.
+Very narrow. One model, one task, one imaging modality.
+
+00:01:03.400 --> 00:01:09.800
+IDx-DR, approved in 2018, detected diabetic retinopathy from retinal photographs.
+That was it. Nothing else.
+
+00:01:10.000 --> 00:01:16.300
+And that narrowness was a feature, not a bug.
+You could validate it. You could audit it. You could trust the failure modes.
+
+00:01:16.500 --> 00:01:22.900
+The field has since moved toward foundation models — large,
+general-purpose models pre-trained on massive biomedical datasets.
+
+00:01:23.100 --> 00:01:29.400
+Med-PaLM, BioGPT, ClinicalBERT — these can handle radiology reports,
+clinical notes, genomic data, and patient history simultaneously.
+
+00:01:29.600 --> 00:01:35.100
+That's extraordinarily powerful. It's also where the validation problem
+becomes orders of magnitude harder.
+
+00:01:35.300 --> 00:01:41.700
+How do you build a ground truth dataset for a model that operates
+across five specialties and four data modalities?
+
+00:01:41.900 --> 00:01:48.200
+Short answer: you don't. Not cleanly.
+You build approximations, and you're transparent about their limits.
+
+00:01:48.400 --> 00:01:54.800
+Let's talk about diagnostic AI specifically.
+The benchmark everyone cites is the Stanford CheXNet paper from 2017.
+
+00:01:55.000 --> 00:02:01.300
+A CNN trained on 100,000 chest X-rays outperformed
+the average radiologist on pneumonia detection.
+
+00:02:01.500 --> 00:02:07.900
+That headline traveled fast. What traveled less fast was the methodology critique
+published six months later by Oakden-Rayner and colleagues.
+
+00:02:08.100 --> 00:02:14.400
+The comparison was against radiologists operating under artificial constraints —
+time pressure, no clinical context, no prior imaging.
+
+00:02:14.600 --> 00:02:20.800
+In real clinical conditions, with access to patient history and prior scans,
+the performance gap largely disappeared.
+
+00:02:21.000 --> 00:02:27.300
+This is a pattern you will see repeatedly in this field.
+Benchmark performance and clinical performance are not the same thing.
+
+00:02:27.500 --> 00:02:33.900
+Distribution shift is probably the single most important concept
+for anyone working on deployed medical AI.
+
+00:02:34.100 --> 00:02:40.400
+A model trained at a well-resourced urban academic medical center
+will see a very different data distribution than a rural clinic in Mississippi.
+
+00:02:40.600 --> 00:02:46.900
+Different scanner manufacturers. Different patient demographics.
+Different prevalence rates for the same conditions.
+
+00:02:47.100 --> 00:02:53.400
+A model that performs at 94% AUC in your training environment
+might degrade to 81% in deployment. That delta has clinical consequences.
+
+00:02:53.600 --> 00:02:59.800
+I want to shift now to a domain where AI has had unambiguous,
+well-documented positive impact: pathology.
+
+00:03:00.000 --> 00:03:06.300
+Whole slide imaging combined with deep learning has transformed
+how we approach cancer grading — particularly in prostate and breast cancer.
+
+00:03:06.500 --> 00:03:12.700
+Gleason grading of prostate cancer is famously subjective.
+Inter-observer agreement among expert pathologists is around 60 to 70 percent.
+
+00:03:12.900 --> 00:03:19.100
+AI systems trained on large annotated slide libraries
+have demonstrated agreement rates above 85% against expert consensus panels.
+
+00:03:19.300 --> 00:03:25.600
+That's not replacing the pathologist.
+That's giving every pathologist access to a second opinion grounded in thousands of cases.
+
+00:03:25.800 --> 00:03:32.100
+The workflow integration question is where most implementations fail.
+And I want to be honest with you about this.
+
+00:03:32.300 --> 00:03:38.500
+You can build a technically excellent model and watch it gather dust
+because it adds three clicks to an already overloaded clinical workflow.
+
+00:03:38.700 --> 00:03:44.900
+Clinician adoption is a UX problem as much as an AI problem.
+The best model in the world is useless if no one runs it.
+
+00:03:45.100 --> 00:03:51.400
+I spent two years on an implementation project at UCSF.
+We had a sepsis prediction model with genuinely strong performance metrics.
+
+00:03:51.600 --> 00:03:57.800
+Alert fatigue killed it. Nurses were receiving 40-plus alerts per shift.
+The sepsis alert became noise. Actionability collapsed.
+
+00:03:58.000 --> 00:04:04.200
+We rebuilt the interface. Reduced alert volume by 60% through better thresholding.
+Adoption recovered. Outcomes improved. Same model.
+
+00:04:04.400 --> 00:04:10.700
+The lesson: deployment is a sociotechnical problem,
+not a technical problem with some social considerations bolted on.
+
+00:04:10.900 --> 00:04:17.100
+Now I want to address the equity dimension directly,
+because it's often treated as a footnote and it should be a headline.
+
+00:04:17.300 --> 00:04:23.500
+The 2019 Obermeyer et al. study in Science is required reading for this course.
+If you haven't read it, read it this week.
+
+00:04:23.700 --> 00:04:29.900
+They analyzed a widely deployed commercial algorithm used to allocate
+care management resources to high-risk patients.
+
+00:04:30.100 --> 00:04:36.300
+The algorithm used healthcare cost as a proxy for health need.
+Black patients, at the same level of illness, generated lower costs.
+
+00:04:36.500 --> 00:04:42.700
+Why? Systemic underutilization of healthcare due to access barriers,
+historical mistrust, economic constraints.
+
+00:04:42.900 --> 00:04:49.100
+The model learned the bias baked into the training data.
+It then systematically under-referred Black patients for care management.
+
+00:04:49.300 --> 00:04:55.500
+At scale. Across hundreds of hospitals. For years.
+Before anyone caught it.
+
+00:04:55.700 --> 00:05:01.900
+This is not a hypothetical. This is not a thought experiment.
+This happened. It is documented. It is a warning.
+
+00:05:02.100 --> 00:05:08.300
+Proxy variables are one of the most dangerous failure modes in applied ML,
+and healthcare is saturated with them.
+
+00:05:08.500 --> 00:05:14.700
+Any time you use a downstream outcome as a label —
+readmission, cost, length of stay — ask what that outcome is a proxy for.
+
+00:05:14.900 --> 00:05:21.000
+And ask who is underrepresented in the historical data
+that generated those outcomes.
+
+00:05:21.200 --> 00:05:27.400
+Let me close this section with something more optimistic:
+large language models in clinical documentation.
+
+00:05:27.600 --> 00:05:33.800
+Ambient AI scribes — models that listen to a patient encounter
+and generate a structured clinical note — are in active deployment right now.
+
+00:05:34.000 --> 00:05:40.200
+Nuance DAX, Suki, Abridge. Clinicians using these tools
+report saving 60 to 90 minutes of documentation time per day.
+
+00:05:40.400 --> 00:05:46.600
+That is time returned to patient care.
+That is a direct, measurable reduction in burnout vector.
+
+00:05:46.800 --> 00:05:53.000
+The accuracy challenges are real — hallucination in a clinical note
+is a patient safety issue, not just an inconvenience.
+
+00:05:53.200 --> 00:05:59.400
+But the human-in-the-loop model here is natural.
+The clinician reviews and signs the note. The AI drafts. The human audits.
+
+00:05:59.600 --> 00:06:05.800
+That's a workflow that maps well to how trust in AI-assisted systems
+should be built incrementally.
+
+00:06:06.000 --> 00:06:10.500
+We'll pick up after the break with drug discovery and genomics.
+Questions so far? Yes — go ahead.

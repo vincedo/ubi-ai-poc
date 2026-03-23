@@ -1,0 +1,17 @@
+<div class="enrichment-layout">
+  <app-media-tree
+    [courseTree]="courseService.tree()"
+    selectionMode="radio"
+    title="Media Library"
+    [selectedMediaId]="selectedItem()?.id ?? null"
+    (mediaSelected)="selectMedia($event)"
+  />
+  <app-enrichment-editor
+    [item]="selectedItem()"
+    [result]="currentResult()"
+    [loading]="loading()"
+    [saving]="saving()"
+    (enrich)="onEnrich($event)"
+    (save)="onSave($event)"
+  />
+</div>

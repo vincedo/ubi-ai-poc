@@ -1,0 +1,39 @@
+<div class="input-area">
+  <div class="input-wrapper">
+    <label for="chat-input" class="sr-only">Ask a question about your media</label>
+    <textarea
+      #textarea
+      id="chat-input"
+      class="chat-textarea"
+      placeholder="Ask a question about your media…"
+      rows="1"
+      (keydown)="onKeydown($event, textarea)"
+    ></textarea>
+    <div class="input-actions">
+      @if (chatService.isStreaming()) {
+        <button class="stop-btn" title="Stop generating" (click)="chatService.stop()">
+          <span class="material-symbols-outlined">stop_circle</span>
+        </button>
+      }
+      <button class="send-btn" [disabled]="chatService.isStreaming()" (click)="send(textarea)">
+        <span class="material-symbols-outlined">send</span>
+      </button>
+    </div>
+  </div>
+  <div class="input-footer">
+    <p class="input-hint">Powered by UbiCast AI Engine · Mistral + Qdrant</p>
+    <div class="model-picker">
+      <mat-form-field appearance="outline" class="model-field">
+        <mat-select
+          [value]="chatService.selectedModel()"
+          (selectionChange)="chatService.selectedModel.set($event.value)"
+          aria-label="Select language model"
+        >
+          @for (m of models; track m) {
+            <mat-option [value]="m">{{ m }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

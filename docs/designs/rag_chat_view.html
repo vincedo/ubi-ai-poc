@@ -1,0 +1,524 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>UbiCast AI - Media Intelligence Chat</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              secondary: '#4a5f83',
+              'outline-variant': '#c2c6d4',
+              'on-primary-fixed-variant': '#00468c',
+              'on-tertiary': '#ffffff',
+              'on-secondary-container': '#475c80',
+              'surface-container-high': '#e4e8f1',
+              'tertiary-container': '#9f4300',
+              'on-tertiary-fixed': '#341100',
+              'secondary-container': '#c0d5ff',
+              'surface-container': '#eaeef7',
+              'surface-container-low': '#f0f4fd',
+              'on-error-container': '#93000a',
+              'error-container': '#ffdad6',
+              'on-secondary': '#ffffff',
+              'inverse-surface': '#2c3137',
+              'tertiary-fixed-dim': '#ffb691',
+              surface: '#f8f9ff',
+              'primary-fixed-dim': '#a9c7ff',
+              'on-tertiary-container': '#ffcfb9',
+              'on-secondary-fixed': '#021b3c',
+              'on-surface': '#171c22',
+              'surface-container-lowest': '#ffffff',
+              'surface-dim': '#d6dae3',
+              'on-surface-variant': '#424752',
+              'inverse-primary': '#a9c7ff',
+              'primary-container': '#005eb8',
+              error: '#ba1a1a',
+              outline: '#727783',
+              background: '#f8f9ff',
+              'surface-tint': '#005db6',
+              primary: '#00478d',
+              'on-primary-container': '#c8daff',
+              'secondary-fixed-dim': '#b2c7f0',
+              'on-tertiary-fixed-variant': '#793100',
+              'on-primary': '#ffffff',
+              'on-error': '#ffffff',
+              'on-background': '#171c22',
+              'inverse-on-surface': '#edf1fa',
+              tertiary: '#793100',
+              'on-secondary-fixed-variant': '#32476a',
+              'surface-container-highest': '#dee3eb',
+              'surface-variant': '#dee3eb',
+              'primary-fixed': '#d6e3ff',
+              'surface-bright': '#f8f9ff',
+              'secondary-fixed': '#d6e3ff',
+              'on-primary-fixed': '#001b3d',
+              'tertiary-fixed': '#ffdbcb',
+            },
+            fontFamily: {
+              headline: ['Manrope'],
+              body: ['Inter'],
+              label: ['Inter'],
+            },
+            borderRadius: { DEFAULT: '0.125rem', lg: '0.25rem', xl: '0.5rem', full: '0.75rem' },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      .brand-font {
+        font-family: 'Manrope', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-surface text-on-surface selection:bg-primary-fixed-dim">
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full flex justify-between items-center px-6 h-16 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none z-50"
+    >
+      <div class="flex items-center gap-4">
+        <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 brand-font"
+          >UbiCast AI</span
+        >
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="relative group">
+          <button
+            class="p-2 rounded-full hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors scale-95 duration-150 ease-in-out"
+          >
+            <span class="material-symbols-outlined text-slate-500 dark:text-slate-400"
+              >notifications</span
+            >
+          </button>
+        </div>
+        <button
+          class="p-2 rounded-full hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors scale-95 duration-150 ease-in-out"
+        >
+          <span class="material-symbols-outlined text-slate-500 dark:text-slate-400">help</span>
+        </button>
+        <div
+          class="ml-2 w-8 h-8 rounded-full overflow-hidden bg-secondary-container flex items-center justify-center"
+        >
+          <img
+            alt="User avatar"
+            class="w-full h-full object-cover"
+            data-alt="Professional user profile avatar photo"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNsZcP2QGgB2uP0ryJoZyD7fFlpWKw1Dbb2WeTsAHs3SpiW8L8mRNtTiOFnIBUTzmMjDcRlLF3pxnPtHBrbSr4NF8KeoPGacpDD_0Ni3ds8wmEpc_n7IiLF7hnis3rh3K7D3ZdGLbIRGfsAK1E3ZFBJY7pNl1llnH0Cmf6cFNCt3lth5sYuhw83F88QF-MNDw80qE5v2ViHwPIh3HqTighTh-kDxv8b-RmOdmnSQrxepCE09bcp7jtZwY7q7YvnHbpuFh05fNAibNX"
+          />
+        </div>
+      </div>
+    </header>
+    <div class="flex min-h-screen pt-16">
+      <!-- SideNavBar -->
+      <nav
+        class="fixed left-0 top-0 h-full flex flex-col py-8 z-40 bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-md w-64 pt-20"
+      >
+        <div class="px-6 mb-8 flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center shadow-lg shadow-primary/20"
+          >
+            <span
+              class="material-symbols-outlined text-on-primary-container"
+              style="font-variation-settings: 'FILL' 1"
+              >auto_awesome</span
+            >
+          </div>
+          <div>
+            <div class="font-black text-blue-800 dark:text-blue-300 brand-font text-sm">
+              Media Intelligence
+            </div>
+            <div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
+              AI Orchestrator
+            </div>
+          </div>
+        </div>
+        <div class="px-4 mb-6">
+          <button
+            class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary-container text-white py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all active:scale-95"
+          >
+            <span class="material-symbols-outlined text-[20px]">add</span>
+            <span>New Project</span>
+          </button>
+        </div>
+        <div class="flex-1 space-y-1">
+          <a
+            class="mx-2 px-4 py-3 flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-200/40 dark:hover:bg-slate-800/40 transition-all duration-300 ease-in-out rounded-xl"
+            href="#"
+          >
+            <span class="material-symbols-outlined">auto_awesome</span>
+            <span class="text-sm font-medium">Enrichment</span>
+          </a>
+          <a
+            class="mx-2 px-4 py-3 flex items-center gap-3 border-l-4 border-blue-600 bg-blue-50/50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 font-bold transition-all duration-300 ease-in-out rounded-r-xl"
+            href="#"
+          >
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1"
+              >forum</span
+            >
+            <span class="text-sm">Chat</span>
+          </a>
+        </div>
+        <div class="mt-auto space-y-1">
+          <a
+            class="mx-2 px-4 py-3 flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-200/40 transition-all rounded-xl"
+            href="#"
+          >
+            <span class="material-symbols-outlined">settings</span>
+            <span class="text-sm font-medium">Settings</span>
+          </a>
+          <a
+            class="mx-2 px-4 py-3 flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-200/40 transition-all rounded-xl"
+            href="#"
+          >
+            <span class="material-symbols-outlined">contact_support</span>
+            <span class="text-sm font-medium">Support</span>
+          </a>
+        </div>
+      </nav>
+      <!-- Main Content Area -->
+      <main class="ml-64 flex-1 flex flex-row h-[calc(100vh-64px)] overflow-hidden">
+        <!-- Left Column: Corpus Selection -->
+        <aside
+          class="w-80 bg-surface-container-low border-r border-outline-variant/10 overflow-y-auto p-6 hidden lg:block"
+        >
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="headline-md font-bold text-slate-800">Corpus</h2>
+            <span
+              class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
+              >4 Items Selected</span
+            >
+          </div>
+          <div class="space-y-8">
+            <!-- Class Group -->
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="material-symbols-outlined text-blue-600 text-[18px]">folder</span>
+                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500">
+                  Video Lectures
+                </h3>
+              </div>
+              <div class="space-y-3">
+                <label
+                  class="group flex items-center p-3 rounded-xl bg-surface-container-lowest hover:bg-white transition-all cursor-pointer border border-transparent hover:border-blue-200/50"
+                >
+                  <input
+                    checked=""
+                    class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    type="checkbox"
+                  />
+                  <div class="ml-3 overflow-hidden">
+                    <p class="text-sm font-semibold text-slate-800 truncate">Quantum Physics 101</p>
+                    <p class="text-[10px] text-slate-400">Duration: 45:12</p>
+                  </div>
+                </label>
+                <label
+                  class="group flex items-center p-3 rounded-xl bg-surface-container-lowest hover:bg-white transition-all cursor-pointer border border-transparent hover:border-blue-200/50"
+                >
+                  <input
+                    checked=""
+                    class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    type="checkbox"
+                  />
+                  <div class="ml-3 overflow-hidden">
+                    <p class="text-sm font-semibold text-slate-800 truncate">
+                      Advanced Optics Seminar
+                    </p>
+                    <p class="text-[10px] text-slate-400">Duration: 1:12:05</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <!-- Module Group -->
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="material-symbols-outlined text-blue-600 text-[18px]">topic</span>
+                <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500">
+                  PDF Documentation
+                </h3>
+              </div>
+              <div class="space-y-3">
+                <label
+                  class="group flex items-center p-3 rounded-xl bg-surface-container-lowest hover:bg-white transition-all cursor-pointer border border-transparent hover:border-blue-200/50"
+                >
+                  <input
+                    checked=""
+                    class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    type="checkbox"
+                  />
+                  <div class="ml-3 overflow-hidden">
+                    <p class="text-sm font-semibold text-slate-800 truncate">
+                      Syllabus_Physics_2024.pdf
+                    </p>
+                    <p class="text-[10px] text-slate-400">12 Pages</p>
+                  </div>
+                </label>
+                <label
+                  class="group flex items-center p-3 rounded-xl bg-surface-container-lowest hover:bg-white transition-all cursor-pointer border border-transparent hover:border-blue-200/50"
+                >
+                  <input
+                    checked=""
+                    class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    type="checkbox"
+                  />
+                  <div class="ml-3 overflow-hidden">
+                    <p class="text-sm font-semibold text-slate-800 truncate">
+                      Lab_Safety_Protocol.pdf
+                    </p>
+                    <p class="text-[10px] text-slate-400">4 Pages</p>
+                  </div>
+                </label>
+                <label
+                  class="group flex items-center p-3 rounded-xl bg-surface-container-lowest/50 opacity-60 hover:bg-white transition-all cursor-pointer border border-transparent"
+                >
+                  <input
+                    class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    type="checkbox"
+                  />
+                  <div class="ml-3 overflow-hidden">
+                    <p class="text-sm font-semibold text-slate-800 truncate">
+                      Extra_Reading_Ref.pdf
+                    </p>
+                    <p class="text-[10px] text-slate-400">32 Pages</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <!-- Center: Chat Interface -->
+        <section class="flex-1 flex flex-col bg-surface overflow-hidden relative">
+          <!-- Chat History -->
+          <div class="flex-1 overflow-y-auto px-6 py-10 space-y-10 scroll-smooth">
+            <!-- System Date Marker -->
+            <div class="flex justify-center">
+              <span
+                class="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100/50 px-3 py-1 rounded-full"
+                >Today, October 24</span
+              >
+            </div>
+            <!-- AI Welcome Message -->
+            <div class="flex items-start gap-4 max-w-4xl mx-auto">
+              <div
+                class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1"
+              >
+                <span
+                  class="material-symbols-outlined text-blue-600 text-xl"
+                  style="font-variation-settings: 'FILL' 1"
+                  >auto_awesome</span
+                >
+              </div>
+              <div class="space-y-4 flex-1">
+                <div
+                  class="bg-surface-container-high p-5 rounded-2xl rounded-tl-none text-slate-800 leading-relaxed shadow-sm"
+                >
+                  Hello! I'm your Media Intelligence assistant. I've indexed the 4 selected items in
+                  your corpus. You can ask me to summarize lectures, find specific moments in
+                  videos, or explain complex concepts from the PDFs. How can I help you today?
+                </div>
+              </div>
+            </div>
+            <!-- User Message -->
+            <div class="flex items-start gap-4 max-w-4xl mx-auto flex-row-reverse">
+              <div
+                class="w-8 h-8 rounded-lg bg-slate-200 flex items-center justify-center flex-shrink-0 mt-1"
+              >
+                <span class="material-symbols-outlined text-slate-600 text-xl">person</span>
+              </div>
+              <div class="space-y-4 flex-1 flex flex-col items-end">
+                <div
+                  class="bg-primary-container text-on-primary-container p-5 rounded-2xl rounded-tr-none leading-relaxed shadow-md shadow-primary/10"
+                >
+                  Can you explain the Heisenberg Uncertainty Principle as mentioned in the Quantum
+                  Physics 101 lecture and link it to the syllabus?
+                </div>
+                <span class="text-[10px] text-slate-400 mr-2">10:42 AM</span>
+              </div>
+            </div>
+            <!-- AI Response with Sources -->
+            <div class="flex items-start gap-4 max-w-4xl mx-auto">
+              <div
+                class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1"
+              >
+                <span
+                  class="material-symbols-outlined text-blue-600 text-xl"
+                  style="font-variation-settings: 'FILL' 1"
+                  >auto_awesome</span
+                >
+              </div>
+              <div class="space-y-4 flex-1">
+                <div
+                  class="bg-surface-container-high p-6 rounded-2xl rounded-tl-none text-slate-800 leading-relaxed shadow-sm border border-white/40"
+                >
+                  <p class="mb-4">
+                    The Heisenberg Uncertainty Principle, as discussed in your lecture, states that
+                    it is fundamentally impossible to measure both the position and momentum of a
+                    particle with absolute precision simultaneously.
+                  </p>
+                  <p class="mb-4">
+                    In the
+                    <span class="font-semibold text-blue-700">Quantum Physics 101</span> session,
+                    the instructor emphasized that this is not a limitation of our measuring
+                    instruments but a fundamental property of quantum systems. This aligns with
+                    <span class="font-semibold text-blue-700">Section 3.2</span> of your syllabus,
+                    which lists "The limits of classical determinism" as a key learning outcome for
+                    the mid-term exam.
+                  </p>
+                  <div class="mt-6 pt-4 border-t border-slate-300/30">
+                    <div
+                      class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-1"
+                    >
+                      <span class="material-symbols-outlined text-[14px]">link</span> Sources
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <div
+                        class="flex items-center gap-2 bg-white/60 hover:bg-white px-3 py-1.5 rounded-lg border border-slate-200/50 cursor-pointer transition-colors group"
+                      >
+                        <span class="material-symbols-outlined text-[16px] text-blue-600"
+                          >play_circle</span
+                        >
+                        <span class="text-xs font-medium text-slate-700">Quantum Physics 101</span>
+                        <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 rounded font-bold"
+                          >12:45</span
+                        >
+                      </div>
+                      <div
+                        class="flex items-center gap-2 bg-white/60 hover:bg-white px-3 py-1.5 rounded-lg border border-slate-200/50 cursor-pointer transition-colors group"
+                      >
+                        <span class="material-symbols-outlined text-[16px] text-red-500"
+                          >description</span
+                        >
+                        <span class="text-xs font-medium text-slate-700"
+                          >Syllabus_Physics_2024.pdf</span
+                        >
+                        <span
+                          class="text-[10px] bg-slate-100 text-slate-600 px-1.5 rounded font-bold"
+                          >Page 4</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 ml-2">
+                  <button
+                    class="flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 hover:text-blue-600 transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">thumb_up</span> Helpful
+                  </button>
+                  <button
+                    class="flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 hover:text-slate-600 transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">thumb_down</span>
+                  </button>
+                  <button
+                    class="flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-slate-400 hover:text-slate-600 transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">content_copy</span> Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Streaming Indicator (Simulation) -->
+            <div class="flex items-start gap-4 max-w-4xl mx-auto pb-8">
+              <div
+                class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1"
+              >
+                <span
+                  class="material-symbols-outlined text-blue-600 text-xl animate-pulse"
+                  style="font-variation-settings: 'FILL' 1"
+                  >auto_awesome</span
+                >
+              </div>
+              <div
+                class="bg-surface-container-high p-5 rounded-2xl rounded-tl-none border border-blue-200/30 flex items-center gap-2"
+              >
+                <span
+                  class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.3s]"
+                ></span>
+                <span
+                  class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.15s]"
+                ></span>
+                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce"></span>
+                <span class="ml-2 text-xs text-slate-500 font-medium italic"
+                  >Analyzing transcript data...</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Chat Input Area -->
+          <div class="p-6 bg-surface/80 backdrop-blur-md border-t border-outline-variant/5">
+            <div class="max-w-4xl mx-auto">
+              <div
+                class="relative flex items-end gap-3 bg-surface-container-low p-3 rounded-2xl border border-outline-variant/20 shadow-lg shadow-slate-200/50"
+              >
+                <button class="p-2 text-slate-400 hover:text-blue-600 transition-colors">
+                  <span class="material-symbols-outlined">attach_file</span>
+                </button>
+                <textarea
+                  class="flex-1 bg-transparent border-none focus:ring-0 resize-none py-2 text-sm text-slate-800 placeholder-slate-400 max-h-32"
+                  placeholder="Ask a question about your media..."
+                  rows="1"
+                ></textarea>
+                <div class="flex gap-2">
+                  <button
+                    class="p-2 text-error hover:bg-error/10 rounded-xl transition-all flex items-center justify-center"
+                    title="Stop generating"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      style="font-variation-settings: 'FILL' 1"
+                      >stop_circle</span
+                    >
+                  </button>
+                  <button
+                    class="bg-gradient-to-br from-primary to-primary-container text-white p-2.5 rounded-xl shadow-md hover:scale-105 transition-all flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined">send</span>
+                  </button>
+                </div>
+              </div>
+              <div class="flex items-center justify-center gap-6 mt-4">
+                <span class="text-[10px] text-slate-400 font-medium"
+                  >Supported formats: Video, Audio, PDF, DOCX</span
+                >
+                <div class="h-1 w-1 bg-slate-300 rounded-full"></div>
+                <span class="text-[10px] text-slate-400 font-medium"
+                  >Powered by UbiCast AI Engine v2.4</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

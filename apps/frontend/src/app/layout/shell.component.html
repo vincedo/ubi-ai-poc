@@ -1,0 +1,55 @@
+<header class="app-header">
+  <div class="brand">
+    <div class="brand-icon">
+      <span class="material-symbols-outlined">analytics</span>
+    </div>
+    <div>
+      <h2 class="brand-name">Media Intelligence</h2>
+      <p class="brand-sub">AI Orchestrator</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Notifications">
+      <span class="material-symbols-outlined">notifications</span>
+    </button>
+    <button class="icon-btn" aria-label="Help">
+      <span class="material-symbols-outlined">help</span>
+    </button>
+    <div class="avatar"></div>
+  </div>
+</header>
+
+<aside class="app-sidebar">
+  <nav class="sidebar-nav">
+    <a routerLink="/enrich" routerLinkActive="nav-active" class="nav-item">
+      <span class="material-symbols-outlined">auto_awesome</span>
+      <span>Enrichment</span>
+    </a>
+    <a routerLink="/chat" routerLinkActive="nav-active" class="nav-item">
+      <span class="material-symbols-outlined">forum</span>
+      <span>Chat</span>
+    </a>
+    <a routerLink="/courses" routerLinkActive="nav-active" class="nav-item">
+      <span class="material-symbols-outlined">school</span>
+      <span>Courses</span>
+    </a>
+    <a routerLink="/ingest" routerLinkActive="nav-active" class="nav-item">
+      <span class="material-symbols-outlined">account_tree</span>
+      <span>Ingestion</span>
+    </a>
+    <a routerLink="/settings" routerLinkActive="nav-active" class="nav-item">
+      <span class="material-symbols-outlined">settings</span>
+      <span>Settings</span>
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="btn-primary sidebar-cta" routerLink="/courses">
+      <span class="material-symbols-outlined">add</span>
+      New Course
+    </button>
+  </div>
+</aside>
+
+<main class="app-main">
+  <router-outlet />
+</main>

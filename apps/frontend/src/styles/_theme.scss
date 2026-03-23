@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+
+// Minimal M3 theme — use CSS vars for fine-grained control, Material for component base
+$theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$orange-palette,
+    ),
+  )
+);
+
+html {
+  @include mat.all-component-themes($theme);
+}

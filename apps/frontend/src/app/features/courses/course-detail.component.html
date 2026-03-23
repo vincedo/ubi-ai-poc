@@ -1,0 +1,114 @@
+<div class="detail-page">
+  @if (course(); as c) {
+    <div class="page-header">
+      <a routerLink="/courses" class="back-link">
+        <span class="material-symbols-outlined">arrow_back</span>
+        Courses
+      </a>
+    </div>
+
+    @if (editing()) {
+      <form class="edit-form" (submit)="$event.preventDefault(); saveEdit()">
+        <label for="edit-title" class="form-label">Title</label>
+        <input
+          id="edit-title"
+          class="form-input"
+          [value]="editTitle()"
+          (input)="onInputTitle($event)"
+          required
+        />
+        <label for="edit-desc" class="form-label">Description</label>
+        <input
+          id="edit-desc"
+          class="form-input"
+          [value]="editDescription()"
+          (input)="onInputDescription($event)"
+        />
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" (click)="editing.set(false)">Cancel</button>
+          <button type="submit" class="btn-primary">Save</button>
+        </div>
+      </form>
+    } @else {
+      <div class="course-info">
+        <h1>{{ c.title }}</h1>
+        @if (c.description) {
+          <p class="course-desc">{{ c.description }}</p>
+        }
+        <div class="info-actions">
+          <button class="btn-secondary" (click)="startEdit()">
+            <span class="material-symbols-outlined">edit</span> Edit
+          </button>
+          <a class="btn-secondary" [routerLink]="['/chat']">
+            <span class="material-symbols-outlined">forum</span> Chat
+          </a>
+        </div>
+      </div>
+    }
+
+    <section class="media-section">
+      <div class="section-header">
+        <h2>Media ({{ c.media.length }})</h2>
+        <button class="btn-primary" (click)="showAddMedia.set(!showAddMedia())">
+          <span class="material-symbols-outlined">add</span> Add Media
+        </button>
+      </div>
+
+      @if (showAddMedia()) {
+        <div class="add-media-panel">
+          <h3>Available Media</h3>
+          @if (availableMedia().length === 0) {
+            <p class="muted">All media already added or no media seeded yet.</p>
+          }
+          @for (m of availableMedia(); track m.id) {
+            <button class="media-add-btn" (click)="addMedia(m.id)">
+              <span class="material-symbols-outlined">add_circle</span>
+              <span>{{ m.title }}</span>
+            </button>
+          }
+        </div>
+      }
+
+      @if (c.media.length === 0) {
+        <p class="muted">No media in this course yet.</p>
+      }
+
+      <div class="media-list">
+        @for (m of c.media; track m.id; let i = $index; let last = $last; let first = $first) {
+          <div class="media-item">
+            <span class="order-num">{{ i + 1 }}</span>
+            <div class="media-info">
+              <p class="media-title">{{ m.title }}</p>
+              <p class="media-type">{{ m.type }}</p>
+            </div>
+            <div class="media-actions">
+              <button
+                class="icon-btn"
+                [disabled]="first"
+                (click)="moveMedia(i, i - 1)"
+                aria-label="Move up"
+              >
+                <span class="material-symbols-outlined">arrow_upward</span>
+              </button>
+              <button
+                class="icon-btn"
+                [disabled]="last"
+                (click)="moveMedia(i, i + 1)"
+                aria-label="Move down"
+              >
+                <span class="material-symbols-outlined">arrow_downward</span>
+              </button>
+              <button class="icon-btn danger" (click)="removeMedia(m.id)" aria-label="Remove">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  } @else if (loading()) {
+    <p class="muted">Loading...</p>
+  } @else {
+    <p class="muted">Course not found.</p>
+  }
+</div>

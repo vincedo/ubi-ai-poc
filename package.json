@@ -1,0 +1,25 @@
+{
+  "name": "ubi-ai-poc",
+  "private": true,
+  "scripts": {
+    "api": "pnpm --filter api dev",
+    "frontend": "pnpm --filter @ubi-ai/shared build && pnpm --filter frontend start",
+    "dev": "concurrently \"pnpm api\" \"pnpm frontend\"",
+    "test": "pnpm --filter api test",
+    "format": "prettier --write \"**/*.{ts,html,scss,json}\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prettier": "^3.8.1",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "material-symbols": "^0.42.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  }
+}

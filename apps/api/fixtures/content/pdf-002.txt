@@ -1,0 +1,49 @@
+--- Page 1 ---
+UNIVERSITY DEPARTMENT OF COMPUTER SCIENCE
+Lab Safety and Computing Ethics Policy
+Effective: September 2024
+
+All students using departmental computing resources must read and acknowledge this document before the end of week 1. Acknowledgment is recorded via the course portal.
+
+SECTION 1: ACCEPTABLE USE OF COMPUTING RESOURCES
+
+Departmental computing resources — including lab workstations, the GPU cluster, shared storage, and remote access servers — are provided for educational and research purposes only. Use of these resources is a privilege, not a right, and is subject to the conditions outlined in this document.
+
+Permitted uses include: coursework, programming assignments, research supervised by a faculty member, open-source software development related to academic work.
+
+Prohibited uses include: cryptocurrency mining, running commercial workloads for personal profit, attempting to access systems or data you are not authorized to access, storing or transmitting illegal content, intentional disruption of services used by other students or faculty.
+
+--- Page 2 ---
+SECTION 2: GPU CLUSTER USAGE POLICY
+
+The departmental GPU cluster (8x A100 nodes, 640GB VRAM total) is a shared resource. Fair use is enforced by a job scheduling system (SLURM). All jobs must be submitted via the scheduler — do not run training jobs interactively on login nodes.
+
+Resource limits per student:
+- Maximum wall time: 48 hours per job
+- Maximum concurrent GPU allocation: 2 GPUs
+- Maximum storage in /scratch: 500GB (auto-purged after 30 days)
+
+When requesting resources, match your request to your actual needs. Requesting 8 GPUs for a job that uses 1 is inconsiderate to other users and may result in access suspension.
+
+Etiquette: If you finish a job early and no longer need your allocated resources, cancel the job to free the GPUs for others. The cluster usage dashboard is visible at cluster.cs.university.edu.
+
+Data storage: Do not store personal data, medical data, or any data subject to privacy regulations on the cluster without explicit written approval from the Data Protection Officer.
+
+--- Page 3 ---
+SECTION 3: RESPONSIBLE AI DEVELOPMENT
+
+Students building AI systems as part of coursework or research are expected to adhere to the following principles:
+
+Transparency: Document your models, datasets, and evaluation methodology thoroughly. Other students and researchers must be able to understand and reproduce your work.
+
+Fairness: Before deploying a model that makes decisions affecting people, analyze it for potential disparate impact across demographic groups. Document known limitations prominently.
+
+Privacy: Do not use real personal data for coursework projects without IRB approval. Use anonymized or synthetic datasets. Be aware that ML models can leak training data — do not train on sensitive data without appropriate privacy protections.
+
+Accountability: You are responsible for the behavior of systems you build. "The model did it" is not an acceptable explanation for harmful outcomes. Build in human oversight for high-stakes decisions.
+
+Dual-use awareness: Some AI techniques have legitimate research applications and potential for harm. If your research touches on surveillance, autonomous weapons, or large-scale manipulation, consult with your advisor and the department ethics committee before proceeding.
+
+Violations of this policy may result in grade penalties, loss of computing access, or referral to the university disciplinary committee depending on severity.
+
+Questions? Contact the department administrator at cs-admin@university.edu or speak with your course instructor.

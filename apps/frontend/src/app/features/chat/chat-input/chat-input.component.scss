@@ -1,0 +1,135 @@
+.input-area {
+  padding: 1.5rem;
+  background: rgba(248, 249, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(194, 198, 212, 0.05);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  background: var(--color-surface-container-low);
+  padding: 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(194, 198, 212, 0.2);
+  box-shadow: 0 4px 16px rgba(203, 213, 225, 0.3);
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.chat-textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--color-on-surface);
+  padding: 0.5rem 0;
+  max-height: 8rem;
+  line-height: 1.5;
+  &::placeholder {
+    color: #94a3b8;
+  }
+}
+
+.input-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.stop-btn {
+  padding: 0.625rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  color: var(--color-error);
+  background: none;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  &:hover {
+    background: rgba(186, 26, 26, 0.08);
+  }
+}
+
+.send-btn {
+  padding: 0.625rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  background: var(--gradient-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 71, 141, 0.25);
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+  &:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 71, 141, 0.3);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.input-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.375rem;
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-hint {
+  text-align: center;
+  font-size: 0.625rem;
+  color: var(--color-on-surface-variant);
+  margin: 0;
+}
+
+.model-picker {
+  flex-shrink: 0;
+}
+
+.model-field {
+  width: auto;
+
+  // Note: ::ng-deep is deprecated but remains the only reliable way to pierce
+  // Angular Material's encapsulated DOM. Track Angular's replacement API and
+  // migrate when available. See: https://github.com/angular/angular/issues/54482
+  ::ng-deep .mat-mdc-form-field-infix {
+    min-height: 28px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+
+  ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading,
+  ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing,
+  ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__notch {
+    border-color: color-mix(in srgb, var(--color-on-surface-variant) 30%, transparent);
+  }
+
+  ::ng-deep .mat-mdc-select-value-text {
+    font-size: 0.6875rem;
+    color: var(--color-on-surface-variant);
+  }
+}

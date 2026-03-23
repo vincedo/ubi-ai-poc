@@ -1,0 +1,31 @@
+:root {
+  --color-primary: #00478d;
+  --color-primary-container: #005eb8;
+  --color-primary-fixed: #d6e3ff;
+  --color-primary-fixed-dim: #a9c7ff;
+  --color-surface: #f8f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0f4fd;
+  --color-surface-container: #eaeef7;
+  --color-surface-container-high: #e4e8f1;
+  --color-surface-container-highest: #dee3eb;
+  --color-on-surface: #171c22;
+  --color-on-surface-variant: #424752;
+  --color-secondary: #4a5f83;
+  --color-secondary-container: #c0d5ff;
+  --color-on-secondary-container: #475c80;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #c8daff;
+  --color-outline-variant: #c2c6d4;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-tertiary: #793100;
+  --color-tertiary-fixed-dim: #ffb691;
+  --color-inverse-surface: #2c3137;
+  --color-inverse-on-surface: #edf1fa;
+  --color-success: #1b5e20;
+  --color-success-container: #e8f5e9;
+  --color-warning: #e65100;
+  --color-warning-container: #fff3e0;
+  --gradient-primary: linear-gradient(to right, #00478d, #005eb8);
+}

@@ -1,0 +1,10 @@
+.enrichment-layout {
+  display: flex;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+
+  app-media-tree {
+    width: 320px;
+    flex-shrink: 0;
+  }
+}

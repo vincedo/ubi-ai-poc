@@ -1,0 +1,83 @@
+<section class="tree-panel">
+  <div class="panel-header">
+    <h3 class="panel-title" id="tree-label">{{ title() }}</h3>
+    @if (selectionMode() === 'checkboxes' && selectedCount() > 0) {
+      <span class="count-badge">{{ selectedCount() }} selected</span>
+    }
+  </div>
+
+  <ul class="tree-list" role="tree" aria-labelledby="tree-label">
+    @for (course of courseTree(); track course.id) {
+      <!-- Course header -->
+      <li class="course-node" role="treeitem" [attr.aria-expanded]="isExpanded(course.id)">
+        <button type="button" class="course-header" (click)="toggleExpand(course.id)">
+          <span
+            class="material-symbols-outlined chevron"
+            [class.expanded]="isExpanded(course.id)"
+            aria-hidden="true"
+            >chevron_right</span
+          >
+          @if (selectionMode() === 'checkboxes') {
+            <input
+              type="checkbox"
+              class="course-checkbox"
+              [checked]="isCourseFullySelected(course)"
+              [indeterminate]="isCoursePartiallySelected(course)"
+              (click)="$event.stopPropagation()"
+              (change)="toggleCourse(course)"
+              [attr.aria-label]="'Select all media in ' + course.title"
+            />
+          }
+          <span class="course-title">{{ course.title }}</span>
+        </button>
+
+        <!-- Media children -->
+        @if (isExpanded(course.id)) {
+          <ul class="media-group" role="group">
+            @for (media of course.media; track media.id) {
+              <li role="treeitem">
+                @if (selectionMode() === 'checkboxes') {
+                  <label
+                    class="media-node checkbox-mode"
+                    [class.checked]="isMediaSelected(media.id)"
+                    [title]="media.title"
+                  >
+                    <input
+                      type="checkbox"
+                      [checked]="isMediaSelected(media.id)"
+                      (change)="toggleMedia(media.id)"
+                    />
+                    <span class="media-icon material-symbols-outlined" aria-hidden="true">{{
+                      iconFor(media.type)
+                    }}</span>
+                    <div class="media-info">
+                      <p class="media-title">{{ media.title }}</p>
+                      <p class="media-teacher">{{ media.teacher }}</p>
+                    </div>
+                  </label>
+                } @else {
+                  <button
+                    type="button"
+                    class="media-node radio-mode"
+                    [class.selected]="media.id === selectedMediaId()"
+                    [attr.aria-pressed]="media.id === selectedMediaId()"
+                    [title]="media.title"
+                    (click)="selectMedia(media)"
+                  >
+                    <span class="media-icon material-symbols-outlined" aria-hidden="true">{{
+                      iconFor(media.type)
+                    }}</span>
+                    <div class="media-info">
+                      <p class="media-title">{{ media.title }}</p>
+                      <p class="media-teacher">{{ media.teacher }}</p>
+                    </div>
+                  </button>
+                }
+              </li>
+            }
+          </ul>
+        }
+      </li>
+    }
+  </ul>
+</section>

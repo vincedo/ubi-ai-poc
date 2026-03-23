@@ -1,0 +1,82 @@
+WEBVTT
+
+00:00:01.000 --> 00:00:07.000
+Welcome back. Today's guest speaker needs no introduction — she's a principal researcher at a major AI lab.
+
+00:00:07.500 --> 00:00:14.000
+Thank you. I'm thrilled to talk about where large language models are heading.
+
+00:00:14.500 --> 00:00:21.000
+Five years ago, GPT-2's 1.5 billion parameters felt enormous. Today that's a small model.
+
+00:00:21.500 --> 00:00:28.000
+The scaling hypothesis has largely been validated: more compute, more data, better models.
+
+00:00:28.500 --> 00:00:35.000
+But we're seeing diminishing returns on pure scale. The field is pivoting toward efficiency.
+
+00:00:35.500 --> 00:00:42.000
+Mixture of Experts architectures route tokens to specialized subnetworks, reducing active parameter count.
+
+00:00:42.500 --> 00:00:49.000
+GPT-4 and Gemini are believed to use MoE — you get large model capacity at lower inference cost.
+
+00:00:49.500 --> 00:00:56.000
+Reasoning capabilities are the next frontier. Chain-of-thought prompting showed models can self-explain.
+
+00:00:56.500 --> 00:01:03.000
+o1 and its successors demonstrate that extended thinking at inference time dramatically improves accuracy.
+
+00:01:03.500 --> 00:01:10.000
+The model learns to verify its own reasoning steps, catching errors before outputting a final answer.
+
+00:01:10.500 --> 00:01:17.000
+Multimodality is now table stakes. Text, images, audio, video — models need to process all of them.
+
+00:01:17.500 --> 00:01:24.000
+The interesting question is whether separate encoders per modality beat a unified architecture.
+
+00:01:24.500 --> 00:01:31.000
+Early evidence suggests native multimodal training outperforms bolt-on vision adapters.
+
+00:01:31.500 --> 00:01:38.000
+Context windows have grown from 4K to over a million tokens. Does this replace RAG?
+
+00:01:38.500 --> 00:01:45.000
+Not entirely. Long contexts have attention costs that scale quadratically with length.
+
+00:01:45.500 --> 00:01:52.000
+RAG is still more cost-effective for large dynamic corpora that change frequently.
+
+00:01:52.500 --> 00:01:59.000
+Agentic AI is the paradigm shift I'm most excited about. Models that plan, use tools, and self-correct.
+
+00:01:59.500 --> 00:02:06.000
+Function calling lets models invoke external APIs — search, code execution, database queries.
+
+00:02:06.500 --> 00:02:13.000
+The challenge is reliability. Agents fail in unpredictable ways when pipelines grow complex.
+
+00:02:13.500 --> 00:02:20.000
+Evaluation is the hardest unsolved problem. Benchmarks saturate quickly; real-world performance varies.
+
+00:02:20.500 --> 00:02:27.000
+Alignment research is keeping pace imperfectly with capability gains — that gap concerns me.
+
+00:02:27.500 --> 00:02:34.000
+Constitutional AI and RLHF are our current best tools, but they're not sufficient at frontier scale.
+
+00:02:34.500 --> 00:02:41.000
+The most important skill for engineers entering this field is rigorous evaluation methodology.
+
+00:02:41.500 --> 00:02:48.000
+Anyone can prompt an LLM. Very few people can tell you whether it actually works reliably.
+
+00:02:48.500 --> 00:02:55.000
+My advice: build things, measure them carefully, and stay skeptical of your own results.
+
+00:02:55.500 --> 00:03:02.000
+The field moves fast but the fundamentals — data quality, eval rigor, clear problem framing — are stable.
+
+00:03:02.500 --> 00:03:08.000
+Happy to take questions. What are you all most curious about?

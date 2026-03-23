@@ -1,0 +1,141 @@
+<section class="editor-panel">
+  @if (!item()) {
+    <div class="empty-state">
+      <span class="material-symbols-outlined empty-icon">auto_awesome</span>
+      <p>Select a media item to begin enrichment</p>
+    </div>
+  }
+
+  @if (item()) {
+    <div class="editor-header">
+      <div>
+        <span class="editor-label">Enrichment Editor</span>
+        <h2 class="editor-title">{{ item()!.title }}</h2>
+      </div>
+      <div class="header-actions">
+        <mat-form-field appearance="outline" class="model-select">
+          <mat-label>Model</mat-label>
+          <mat-select [value]="selectedModel()" (selectionChange)="selectedModel.set($event.value)">
+            @for (m of models; track m) {
+              <mat-option [value]="m">{{ m }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        @if (result()) {
+          <button class="btn-ghost" (click)="onEnrich()" [disabled]="loading()">
+            <span class="material-symbols-outlined">refresh</span> Regenerate
+          </button>
+          <button class="btn-primary" (click)="onSave()" [disabled]="saving()">
+            @if (saving()) {
+              <span class="material-symbols-outlined spin">autorenew</span>
+              Saving...
+            } @else if (saveConfirmed()) {
+              <span class="material-symbols-outlined save-confirmed-icon">check_circle</span>
+              Saved!
+            } @else {
+              <span class="material-symbols-outlined">save</span>
+              Save
+            }
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (!result() && !loading()) {
+      <div class="enrich-cta">
+        <button class="btn-primary btn-lg" (click)="onEnrich()">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          Enrich this media
+        </button>
+      </div>
+    }
+
+    @if (loading()) {
+      <div class="loading-state">
+        <span class="material-symbols-outlined spin">autorenew</span>
+        <p>Generating enrichment data…</p>
+      </div>
+    }
+
+    @if (result()) {
+      <div class="field-cards">
+        <div class="field-card">
+          <div class="card-header">
+            <label class="card-label" for="edit-title"
+              ><span class="material-symbols-outlined">title</span> Title</label
+            >
+          </div>
+          <input
+            id="edit-title"
+            class="field-input title-input"
+            [value]="editTitle()"
+            (input)="editTitle.set($any($event.target).value)"
+          />
+        </div>
+
+        <div class="field-card">
+          <div class="card-header">
+            <label class="card-label" for="edit-summary"
+              ><span class="material-symbols-outlined">subject</span> Summary</label
+            >
+          </div>
+          <textarea
+            id="edit-summary"
+            class="field-input"
+            rows="4"
+            [value]="editSummary()"
+            (input)="editSummary.set($any($event.target).value)"
+          ></textarea>
+        </div>
+
+        <div class="field-card">
+          <div class="card-header">
+            <label class="card-label"
+              ><span class="material-symbols-outlined">tag</span> Keywords</label
+            >
+          </div>
+          <div class="keyword-chips">
+            @for (kw of editKeywords(); track kw) {
+              <span class="chip">{{ kw }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="field-card">
+          <div class="card-header">
+            <label class="card-label"
+              ><span class="material-symbols-outlined">quiz</span> Assessment (MCQ)</label
+            >
+          </div>
+          <div class="mcq-list">
+            @for (mcq of result()!.mcqs; track $index) {
+              <div class="mcq-item">
+                <h4 class="mcq-question">{{ mcq.question }}</h4>
+                <div class="mcq-options">
+                  @for (opt of mcq.options; track $index) {
+                    <div class="mcq-option" [class.correct]="$index === mcq.correctIndex">
+                      <div class="option-label" [class.correct-label]="$index === mcq.correctIndex">
+                        {{ optionLabel($index) }}
+                      </div>
+                      <p class="option-text">{{ opt }}</p>
+                      @if ($index === mcq.correctIndex) {
+                        <span class="material-symbols-outlined correct-icon">check_circle</span>
+                      }
+                    </div>
+                  }
+                </div>
+                <div class="mcq-explanation">
+                  <div class="explanation-header">
+                    <span class="material-symbols-outlined">info</span>
+                    <span class="explanation-label">Explanation</span>
+                  </div>
+                  <p class="explanation-text">{{ mcq.explanation }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  }
+</section>
