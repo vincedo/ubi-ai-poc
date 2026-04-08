@@ -1,17 +1,24 @@
 <div class="enrichment-layout">
   <app-media-tree
     [courseTree]="courseService.tree()"
+    [loading]="courseService.treeLoading()"
     selectionMode="radio"
     title="Media Library"
     [selectedMediaId]="selectedItem()?.id ?? null"
     (mediaSelected)="selectMedia($event)"
   />
-  <app-enrichment-editor
-    [item]="selectedItem()"
-    [result]="currentResult()"
-    [loading]="loading()"
-    [saving]="saving()"
-    (enrich)="onEnrich($event)"
-    (save)="onSave($event)"
-  />
+  <div class="enrichment-right">
+    <app-enrichment-editor
+      [item]="selectedItem()"
+      [result]="currentResult()"
+      [loading]="loading()"
+      [saving]="saving()"
+      [llmCallId]="llmCallId()"
+      [enrichmentPresets]="presetService.enrichmentPresets()"
+      [selectedPresetId]="selectedEnrichmentPresetId()"
+      (enrich)="onEnrich($event)"
+      (save)="onSave($event)"
+      (presetChange)="selectedEnrichmentPresetId.set($event)"
+    />
+  </div>
 </div>

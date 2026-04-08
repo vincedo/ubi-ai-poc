@@ -1,5 +1,6 @@
 @use './styles/design-tokens';
 @use './styles/theme';
+@use './styles/buttons';
 @use 'material-symbols/outlined';
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
@@ -44,35 +45,6 @@ h3,
   border: 0;
 }
 
-// Primary CTA button (design system rule: gradient fill, 0.375rem radius, no pills)
-.btn-primary {
-  background: var(--gradient-primary);
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.375rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 71, 141, 0.2);
-  transition:
-    box-shadow 0.2s,
-    transform 0.2s;
-
-  &:hover {
-    box-shadow: 0 6px 10px rgba(0, 71, 141, 0.3);
-    transform: translateY(-1px);
-  }
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-  }
-}
-
 // Snackbar severity styles (global because MatSnackBar renders in CDK overlay)
 .snackbar-success .mdc-snackbar__surface {
   background: var(--color-success) !important;
@@ -101,5 +73,44 @@ h3,
 .snackbar-info {
   .mat-mdc-snack-bar-action {
     color: inherit !important;
+  }
+}
+
+// LLM Inspect dialog panel
+.inspect-dialog-panel {
+  max-width: min(90vw, 960px) !important;
+  max-height: 90vh !important;
+
+  .mat-mdc-dialog-surface {
+    padding: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+}
+
+// Shared inspect button style (used in chat and enrichment)
+.btn-inspect {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-on-surface-variant);
+  opacity: 0.4;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+  transition:
+    opacity 0.15s ease,
+    background 0.15s ease;
+  font-size: 1.125rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+
+  .material-symbols-outlined {
+    font-size: 1.125rem;
+  }
+
+  &:hover {
+    opacity: 1;
+    background: var(--color-surface-container-high);
   }
 }

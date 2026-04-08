@@ -8,21 +8,38 @@
 
   @if (item()) {
     <div class="editor-header">
-      <div>
+      <div class="editor-title-row">
         <span class="editor-label">Enrichment Editor</span>
         <h2 class="editor-title">{{ item()!.title }}</h2>
       </div>
       <div class="header-actions">
-        <mat-form-field appearance="outline" class="model-select">
-          <mat-label>Model</mat-label>
-          <mat-select [value]="selectedModel()" (selectionChange)="selectedModel.set($event.value)">
-            @for (m of models; track m) {
-              <mat-option [value]="m">{{ m }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+        @if (llmCallId()) {
+          <button class="btn-ghost" (click)="openInspect()">
+            <span class="material-symbols-outlined">data_object</span> Inspect
+          </button>
+        }
         @if (result()) {
-          <button class="btn-ghost" (click)="onEnrich()" [disabled]="loading()">
+          <div class="preset-picker">
+            <label for="enrichment-preset-select-header" class="preset-label">Preset</label>
+            <select
+              id="enrichment-preset-select-header"
+              class="preset-select"
+              [value]="selectedPresetId() ?? ''"
+              (change)="onPresetChange($event)"
+              [disabled]="enrichmentPresets().length === 0"
+              aria-label="Select enrichment preset"
+            >
+              @if (enrichmentPresets().length === 0) {
+                <option value="" disabled selected>No preset — create one first</option>
+              } @else {
+                <option value="" disabled selected>Select…</option>
+                @for (preset of enrichmentPresets(); track preset.id) {
+                  <option [value]="preset.id">{{ preset.name }}</option>
+                }
+              }
+            </select>
+          </div>
+          <button class="btn-ghost" (click)="onEnrich()" [disabled]="loading() || !selectedPresetId()">
             <span class="material-symbols-outlined">refresh</span> Regenerate
           </button>
           <button class="btn-primary" (click)="onSave()" [disabled]="saving()">
@@ -43,7 +60,27 @@
 
     @if (!result() && !loading()) {
       <div class="enrich-cta">
-        <button class="btn-primary btn-lg" (click)="onEnrich()">
+        <div class="preset-picker">
+          <label for="enrichment-preset-select" class="preset-label">Enrichment Preset</label>
+          <select
+            id="enrichment-preset-select"
+            class="preset-select"
+            [value]="selectedPresetId() ?? ''"
+            (change)="onPresetChange($event)"
+            [disabled]="enrichmentPresets().length === 0"
+            aria-label="Select enrichment preset"
+          >
+            @if (enrichmentPresets().length === 0) {
+              <option value="" disabled selected>No preset — create one first</option>
+            } @else {
+              <option value="" disabled selected>Select…</option>
+              @for (preset of enrichmentPresets(); track preset.id) {
+                <option [value]="preset.id">{{ preset.name }}</option>
+              }
+            }
+          </select>
+        </div>
+        <button class="btn-primary btn-lg" (click)="onEnrich()" [disabled]="!selectedPresetId()">
           <span class="material-symbols-outlined">auto_awesome</span>
           Enrich this media
         </button>
@@ -69,7 +106,7 @@
             id="edit-title"
             class="field-input title-input"
             [value]="editTitle()"
-            (input)="editTitle.set($any($event.target).value)"
+            (input)="onTitleInput($event)"
           />
         </div>
 
@@ -84,7 +121,7 @@
             class="field-input"
             rows="4"
             [value]="editSummary()"
-            (input)="editSummary.set($any($event.target).value)"
+            (input)="onSummaryInput($event)"
           ></textarea>
         </div>
 

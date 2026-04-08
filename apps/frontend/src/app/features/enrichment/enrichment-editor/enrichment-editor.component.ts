@@ -3,18 +3,21 @@ import {
   Component,
   computed,
   effect,
+  inject,
   input,
   output,
   signal,
 } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import type { EnrichmentResult, MediaItem, LanguageModel, MCQ } from '@ubi-ai/shared';
-import { LANGUAGE_MODELS } from '@ubi-ai/shared';
+import { MatDialog } from '@angular/material/dialog';
+import type { EnrichmentPreset, EnrichmentResult, MediaItem, MCQ } from '@ubi-ai/shared';
+import {
+  LlmInspectDialogComponent,
+  type LlmInspectDialogData,
+} from '../../../shared/llm-inspect-dialog/llm-inspect-dialog.component';
 
 @Component({
   selector: 'app-enrichment-editor',
-  imports: [MatFormFieldModule, MatSelectModule],
+  imports: [],
   templateUrl: './enrichment-editor.component.html',
   styleUrl: './enrichment-editor.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,14 +27,17 @@ export class EnrichmentEditorComponent {
   result = input<EnrichmentResult | null>(null);
   loading = input(false);
   saving = input(false);
-  enrich = output<{ mediaId: string; model: LanguageModel }>();
+  llmCallId = input<string | null>(null);
+  enrichmentPresets = input<EnrichmentPreset[]>([]);
+  selectedPresetId = input<string | null>(null);
+
+  private dialog = inject(MatDialog);
+  enrich = output<{ mediaId: string }>();
+  presetChange = output<string>();
   save = output<{
     mediaId: string;
     data: { title: string; summary: string; keywords: string[]; mcqs: MCQ[] };
   }>();
-
-  readonly models = LANGUAGE_MODELS;
-  selectedModel = signal<LanguageModel>('mistral-large-latest');
 
   // Editable form state — synced from result input
   editTitle = signal('');
@@ -43,6 +49,13 @@ export class EnrichmentEditorComponent {
   private saveConfirmedTimer: ReturnType<typeof setTimeout> | null = null;
 
   optionLabel = (i: number) => ['A', 'B', 'C', 'D'][i];
+
+  /** Name of the preset that produced the existing enrichment result, for the Inspect dialog. */
+  resultPresetName = computed(() => {
+    const id = this.result()?.enrichmentPresetId;
+    if (!id) return null;
+    return this.enrichmentPresets().find((p) => p.id === id)?.name ?? null;
+  });
 
   isDirty = computed(() => {
     const r = this.result();
@@ -65,8 +78,6 @@ export class EnrichmentEditorComponent {
     });
 
     // Detect save completion (saving transitions from true → false).
-    // Track previous state locally since effect() has no "previous value" API.
-    // Show "Saved!" confirmation for 2.5s after each save completes.
     let wasSaving = false;
     effect(() => {
       const isSaving = this.saving();
@@ -79,9 +90,33 @@ export class EnrichmentEditorComponent {
     });
   }
 
+  onTitleInput(event: Event): void {
+    this.editTitle.set((event.target as HTMLInputElement).value);
+  }
+
+  onSummaryInput(event: Event): void {
+    this.editSummary.set((event.target as HTMLTextAreaElement).value);
+  }
+
+  onPresetChange(event: Event): void {
+    this.presetChange.emit((event.target as HTMLSelectElement).value);
+  }
+
   onEnrich() {
     const item = this.item();
-    if (item) this.enrich.emit({ mediaId: item.id, model: this.selectedModel() });
+    if (item) this.enrich.emit({ mediaId: item.id });
+  }
+
+  openInspect() {
+    const id = this.llmCallId();
+    if (id) {
+      this.dialog.open(LlmInspectDialogComponent, {
+        data: { llmCallId: id, presetName: this.resultPresetName() } satisfies LlmInspectDialogData,
+        autoFocus: 'dialog',
+        panelClass: 'inspect-dialog-panel',
+        height: '90vh',
+      });
+    }
   }
 
   onSave() {

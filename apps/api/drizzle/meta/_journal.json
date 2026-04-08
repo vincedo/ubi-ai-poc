@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1774605026235,
+      "tag": "0000_rapid_the_twelve",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1774626514355,
+      "tag": "0001_dark_betty_brant",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1774626690005,
+      "tag": "0002_cooing_princess_powerful",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1774670000000,
+      "tag": "0003_slim_nova",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1775700000000,
+      "tag": "0004_add_guardrails_to_llm_call",
+      "breakpoints": true
+    }
+  ]
+}

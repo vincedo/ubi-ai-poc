@@ -1,5 +1,5 @@
 <header class="app-header">
-  <div class="brand">
+  <a class="brand" routerLink="/">
     <div class="brand-icon">
       <span class="material-symbols-outlined">analytics</span>
     </div>
@@ -7,7 +7,7 @@
       <h2 class="brand-name">Media Intelligence</h2>
       <p class="brand-sub">AI Orchestrator</p>
     </div>
-  </div>
+  </a>
   <div class="header-actions">
     <button class="icon-btn" aria-label="Notifications">
       <span class="material-symbols-outlined">notifications</span>
@@ -37,9 +37,9 @@
       <span class="material-symbols-outlined">account_tree</span>
       <span>Ingestion</span>
     </a>
-    <a routerLink="/settings" routerLinkActive="nav-active" class="nav-item">
-      <span class="material-symbols-outlined">settings</span>
-      <span>Settings</span>
+    <a routerLink="/presets" routerLinkActive="nav-active" class="nav-item">
+      <span class="material-symbols-outlined">tune</span>
+      <span>Presets</span>
     </a>
   </nav>
   <div class="sidebar-footer">
@@ -47,6 +47,22 @@
       <span class="material-symbols-outlined">add</span>
       New Course
     </button>
+    <div class="sidebar-danger-zone">
+      <button
+        class="btn-danger sidebar-reset"
+        [disabled]="isResetting()"
+        (click)="confirmReset()"
+        aria-label="Reset all data"
+      >
+        @if (isResetting()) {
+          <span class="material-symbols-outlined rotating">sync</span>
+          Resetting…
+        } @else {
+          <span class="material-symbols-outlined">delete_forever</span>
+          Reset everything
+        }
+      </button>
+    </div>
   </div>
 </aside>
 

@@ -1,88 +1,142 @@
-import { FastifyPluginAsync } from 'fastify';
+import type { FastifyPluginAsync } from 'fastify';
+import { z } from 'zod';
 import { ingestItem } from '../lib/ingest-item.js';
 import { estimateCost } from '../lib/cost.js';
-import type { MediaType } from '@ubi-ai/shared';
+import { qdrant } from '../config.js';
+import type { IngestResult, MediaType } from '@ubi-ai/shared';
 
 const VALID_MEDIA_TYPES: MediaType[] = ['video', 'audio', 'pdf'];
 
+const ingestBodySchema = z.object({
+  presetId: z.string().uuid(),
+});
+
 export const ingestRoutes: FastifyPluginAsync = async (fastify) => {
-  fastify.post<{ Params: { mediaId: string } }>('/ingest/:mediaId', async (req, reply) => {
-    const { mediaId } = req.params;
-    const { repos } = fastify;
-
-    // 1. Fetch media item
-    const mediaItem = await repos.media.findById(mediaId);
-    if (!mediaItem) return reply.code(404).send({ error: 'media not found' });
-
-    // 2. Validate media type at runtime
-    if (!VALID_MEDIA_TYPES.includes(mediaItem.type as MediaType)) {
-      return reply.code(400).send({ error: `unsupported media type: ${mediaItem.type}` });
+  // POST /ingest — bulk ingest all media into a preset's Qdrant collection
+  fastify.post('/ingest', async (req, reply) => {
+    const parsed = ingestBodySchema.safeParse(req.body);
+    if (!parsed.success) {
+      return reply.code(400).send({ error: 'presetId (UUID) is required' });
     }
-    const mediaType = mediaItem.type as MediaType;
+    const { presetId } = parsed.data;
 
-    // 3. Fetch transcript
-    const transcript = await repos.ingestion.findTranscriptByMedia(mediaId);
-    if (!transcript) return reply.code(404).send({ error: 'transcript not found — seed first' });
+    const preset = await fastify.repos.preset.findChatPresetById(presetId);
+    if (!preset) return reply.code(404).send({ error: 'Preset not found' });
+    if (preset.ingestionStatus === 'running') {
+      return reply.code(409).send({ error: 'Ingestion already running for this preset' });
+    }
 
-    const settings = await fastify.repos.settings.get();
+    await fastify.repos.preset.updateIngestionStatus(presetId, 'running');
 
-    // 4. Create ingestion job
-    const jobId = crypto.randomUUID();
-    await repos.ingestion.createIngestionJob({
-      id: jobId,
-      mediaId,
-      model: settings.embeddingModel,
-      status: 'running',
-      startedAt: new Date().toISOString(),
-    });
+    const allMedia = await fastify.repos.media.findAll();
+    const result: IngestResult = { succeeded: [], failed: [] };
+
+    let totalChunks = 0;
+    let totalTokens = 0;
+    let totalCost = 0;
 
     try {
-      // 5. Run ingestion (parse, chunk, embed, upsert)
-      const { chunkCount, tokenCount } = await ingestItem(
-        {
-          id: mediaItem.id,
-          type: mediaType,
-          title: mediaItem.title,
-          teacher: mediaItem.teacher ?? '',
-          module: mediaItem.module ?? '',
-        },
-        transcript.rawText,
-        settings,
-      );
+      for (const mediaItem of allMedia) {
+        if (!VALID_MEDIA_TYPES.includes(mediaItem.type as MediaType)) {
+          result.failed.push({
+            id: mediaItem.id,
+            error: `Unsupported media type: ${mediaItem.type}`,
+          });
+          continue;
+        }
+        const mediaType = mediaItem.type as MediaType;
 
-      // 6. On success: update job and media status
-      await repos.ingestion.updateIngestionJob(jobId, {
-        status: 'done',
-        chunkCount,
-        tokenCount,
-        estimatedCost: estimateCost(settings.embeddingModel, tokenCount),
-        completedAt: new Date().toISOString(),
-      });
-      await repos.media.updateIngestionStatus(mediaId, 'done');
+        const transcript = await fastify.repos.ingestion.findTranscriptByMedia(mediaItem.id);
+        if (!transcript) {
+          result.failed.push({ id: mediaItem.id, error: 'Transcript not found — seed first' });
+          continue;
+        }
 
-      return { succeeded: true, chunkCount, tokenCount };
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : String(err);
-      fastify.log.error({ err, mediaId, jobId }, 'Ingestion failed');
-
-      // 7. On failure: update job and media status (best-effort)
-      try {
-        await repos.ingestion.updateIngestionJob(jobId, {
-          status: 'failed',
-          error: errorMessage,
-          completedAt: new Date().toISOString(),
-        });
-        await repos.media.updateIngestionStatus(mediaId, 'failed');
-      } catch (cleanupErr) {
-        // Best-effort cleanup failed — log it but don't let it mask the original error
-        fastify.log.error(
-          { err: cleanupErr, mediaId, jobId, originalError: errorMessage },
-          'Failed to update job/media status after ingestion error — status may be stale',
-        );
+        try {
+          const { chunkCount, tokenCount } = await ingestItem(
+            {
+              id: mediaItem.id,
+              type: mediaType,
+              title: mediaItem.title,
+              teacher: mediaItem.teacher ?? '',
+              module: mediaItem.module ?? '',
+            },
+            transcript.rawText,
+            {
+              chunkSize: preset.chunkSize,
+              chunkOverlap: preset.chunkOverlap,
+              sentenceAwareSplitting: preset.sentenceAwareSplitting,
+              embeddingModel: preset.embeddingModel,
+            },
+            preset.collectionName,
+          );
+          totalChunks += chunkCount;
+          totalTokens += tokenCount;
+          totalCost += estimateCost(preset.embeddingModel, tokenCount);
+          result.succeeded.push(mediaItem.id);
+        } catch (err) {
+          const errorMessage = err instanceof Error ? err.message : String(err);
+          fastify.log.error({ err, mediaId: mediaItem.id, presetId }, 'Ingestion failed');
+          result.failed.push({ id: mediaItem.id, error: errorMessage });
+        }
       }
-
-      // Always return the original ingestion error to the client
-      return reply.code(500).send({ succeeded: false, error: errorMessage });
+    } catch (err) {
+      fastify.log.error({ err, presetId }, 'Unexpected error during ingestion — resetting status');
+      await fastify.repos.preset.updateIngestionStatus(presetId, 'failed');
+      throw err;
     }
+
+    const finalStatus =
+      result.failed.length > 0 && result.succeeded.length === 0 ? 'failed' : 'done';
+    await fastify.repos.preset.updateIngestionStatus(presetId, finalStatus, {
+      chunkCount: totalChunks,
+      tokenCount: totalTokens,
+      estimatedCost: totalCost,
+    });
+
+    return result;
+  });
+
+  // DELETE /ingest — reset a preset's Qdrant collection (delete all points, reset status to pending)
+  fastify.delete('/ingest', async (req, reply) => {
+    const parsed = ingestBodySchema.safeParse(req.body);
+    if (!parsed.success) {
+      return reply.code(400).send({ error: 'presetId (UUID) is required' });
+    }
+    const { presetId } = parsed.data;
+
+    const preset = await fastify.repos.preset.findChatPresetById(presetId);
+    if (!preset) return reply.code(404).send({ error: 'Preset not found' });
+
+    // Scroll and batch-delete all points by ID
+    try {
+      let offset: string | number | null = null;
+      do {
+        const response = await qdrant.scroll(preset.collectionName, {
+          limit: 100,
+          offset: offset ?? undefined,
+          with_payload: false,
+          with_vector: false,
+        });
+        const ids = response.points.map((p) => p.id);
+        if (ids.length > 0) {
+          await qdrant.delete(preset.collectionName, { points: ids });
+        }
+        offset = (response.next_page_offset ?? null) as string | number | null;
+      } while (offset !== null);
+    } catch (err) {
+      fastify.log.error(
+        { err, collectionName: preset.collectionName },
+        'Failed to clear Qdrant collection',
+      );
+      return reply.code(500).send({ error: 'Failed to clear vector collection' });
+    }
+
+    await fastify.repos.preset.updateIngestionStatus(presetId, 'pending', {
+      chunkCount: null,
+      tokenCount: null,
+      estimatedCost: null,
+    });
+    return reply.code(204).send();
   });
 };

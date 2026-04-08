@@ -2,59 +2,90 @@ import { describe, it, expect } from 'vitest';
 import { parsePdf } from '../parse-pdf.js';
 
 describe('parsePdf', () => {
-  it('splits by page marker and returns page numbers', () => {
+  it('concatenates page texts into a single string separated by newlines', () => {
     const input = `--- Page 1 ---\nFirst page.\n\n--- Page 2 ---\nSecond page.`;
-    const result = parsePdf(input);
-    expect(result).toHaveLength(2);
-    expect(result[0]).toEqual({ text: 'First page.', pageNumber: 1 });
-    expect(result[1]).toEqual({ text: 'Second page.', pageNumber: 2 });
+    const { text } = parsePdf(input);
+    expect(text).toBe('First page.\nSecond page.');
+  });
+
+  it('produces one anchor per non-empty page', () => {
+    const input = `--- Page 1 ---\nFirst page.\n\n--- Page 2 ---\nSecond page.`;
+    const { anchors } = parsePdf(input);
+    expect(anchors).toHaveLength(2);
+  });
+
+  it('first anchor is at position 0 with pageNumber 1', () => {
+    const input = `--- Page 1 ---\nFirst page.\n\n--- Page 2 ---\nSecond page.`;
+    const { anchors } = parsePdf(input);
+    expect(anchors[0]).toEqual({ pos: 0, pageNumber: 1 });
+  });
+
+  it('second anchor position equals length of first page text plus separator', () => {
+    const input = `--- Page 1 ---\nFirst page.\n\n--- Page 2 ---\nSecond page.`;
+    const { anchors } = parsePdf(input);
+    // 'First page.' is 11 chars, separator is '\n' (1 char) → pos = 12
+    expect(anchors[1]).toEqual({ pos: 12, pageNumber: 2 });
+  });
+
+  it('anchor pos points to the start of that page in the concatenated text', () => {
+    const input = `--- Page 1 ---\nFirst page.\n\n--- Page 2 ---\nSecond page.`;
+    const { text, anchors } = parsePdf(input);
+    expect(text.slice(anchors[0].pos).startsWith('First page.')).toBe(true);
+    expect(text.slice(anchors[1].pos).startsWith('Second page.')).toBe(true);
   });
 
   it('splits by form feed character', () => {
-    const result = parsePdf('Page one.\fPage two.');
-    expect(result).toHaveLength(2);
-    expect(result[0].pageNumber).toBe(1);
-    expect(result[1].pageNumber).toBe(2);
+    const { anchors } = parsePdf('Page one.\fPage two.');
+    expect(anchors).toHaveLength(2);
+    expect(anchors[0].pageNumber).toBe(1);
+    expect(anchors[1].pageNumber).toBe(2);
   });
 
   it('trims whitespace from page text', () => {
-    const result = parsePdf('--- Page 1 ---\n  trimmed  \n');
-    expect(result[0].text).toBe('trimmed');
+    const { text } = parsePdf('--- Page 1 ---\n  trimmed  \n');
+    expect(text).toBe('trimmed');
   });
 
   it('returns single page for content with no delimiters', () => {
-    const result = parsePdf('Just some text.');
-    expect(result).toHaveLength(1);
-    expect(result[0]).toEqual({ text: 'Just some text.', pageNumber: 1 });
+    const { text, anchors } = parsePdf('Just some text.');
+    expect(text).toBe('Just some text.');
+    expect(anchors).toHaveLength(1);
+    expect(anchors[0]).toEqual({ pos: 0, pageNumber: 1 });
   });
 
-  it('returns empty array for empty content', () => {
-    expect(parsePdf('')).toHaveLength(0);
-    expect(parsePdf('   ')).toHaveLength(0);
+  it('returns empty text and no anchors for empty content', () => {
+    expect(parsePdf('')).toEqual({ text: '', anchors: [] });
+    expect(parsePdf('   ')).toEqual({ text: '', anchors: [] });
   });
 
-  it('handles multiple consecutive form feeds by filtering empty pages', () => {
-    const result = parsePdf('First page.\f\f\fLast page.');
-    // Form feed split → ['First page.', '', '', 'Last page.'] → page numbers assigned before filtering
-    expect(result).toHaveLength(2);
-    expect(result[0]).toEqual({ text: 'First page.', pageNumber: 1 });
-    expect(result[1]).toEqual({ text: 'Last page.', pageNumber: 4 });
+  it('skips empty pages from form feed splits and preserves correct page numbers', () => {
+    const { text, anchors } = parsePdf('First page.\f\f\fLast page.');
+    expect(anchors).toHaveLength(2);
+    expect(anchors[0]).toEqual({ pos: 0, pageNumber: 1 });
+    expect(anchors[1]).toEqual({ pos: 12, pageNumber: 4 });
+    expect(text).toBe('First page.\nLast page.');
   });
 
-  it('filters out pages with only whitespace', () => {
+  it('filters out whitespace-only pages', () => {
     const input = `--- Page 1 ---\nContent here.\n\n--- Page 2 ---\n   \n\n--- Page 3 ---\nMore content.`;
-    const result = parsePdf(input);
-    // Page numbers reflect original position, not filtered index
-    expect(result).toHaveLength(2);
-    expect(result[0]).toEqual({ text: 'Content here.', pageNumber: 1 });
-    expect(result[1]).toEqual({ text: 'More content.', pageNumber: 3 });
+    const { anchors } = parsePdf(input);
+    expect(anchors).toHaveLength(2);
+    expect(anchors[0].pageNumber).toBe(1);
+    expect(anchors[1].pageNumber).toBe(3);
   });
 
   it('normalizes page numbers sequentially regardless of marker values', () => {
     const input = `--- Page 1 ---\nFirst.\n\n--- Page 999 ---\nNine-ninety-nine.`;
-    const result = parsePdf(input);
-    expect(result).toHaveLength(2);
-    expect(result[0]).toEqual({ text: 'First.', pageNumber: 1 });
-    expect(result[1]).toEqual({ text: 'Nine-ninety-nine.', pageNumber: 2 });
+    const { anchors } = parsePdf(input);
+    expect(anchors[0].pageNumber).toBe(1);
+    expect(anchors[1].pageNumber).toBe(2);
+  });
+
+  it('chunk spanning multiple pages gets the page number of the page where it starts', () => {
+    // Verifies the anchor lookup contract
+    const input = `--- Page 1 ---\nPage one content.\n\n--- Page 2 ---\nPage two content.`;
+    const { anchors } = parsePdf(input);
+    expect(anchors[0]).toEqual({ pos: 0, pageNumber: 1 });
+    expect(anchors[1].pageNumber).toBe(2);
   });
 });

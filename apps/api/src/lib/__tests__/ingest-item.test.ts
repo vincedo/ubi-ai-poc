@@ -1,371 +1,264 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// Mock declarations - paths are relative to this file location
-vi.mock('ai', () => ({
-  embedMany: vi.fn(),
-}));
+vi.mock('ai', () => ({ embedMany: vi.fn() }));
 
 vi.mock('../../config.js', () => ({
-  mistral: {
-    embedding: vi.fn(() => 'mock-mistral-embedding-model'),
-  },
-  qdrant: {
-    delete: vi.fn(),
-    upsert: vi.fn(),
-  },
-  COLLECTION_NAME: 'test-collection',
+  qdrant: { delete: vi.fn(), upsert: vi.fn() },
 }));
 
-vi.mock('../parse-vtt.js', () => ({
-  parseVtt: vi.fn(),
-}));
-
-vi.mock('../parse-pdf.js', () => ({
-  parsePdf: vi.fn(),
-}));
-
-vi.mock('../chunk.js', () => ({
-  chunkText: vi.fn(),
-}));
-
-vi.mock('../embedding.js', () => ({
-  getEmbeddingModel: vi.fn(() => 'mock-embedding-model'),
-}));
+vi.mock('../parse-vtt.js', () => ({ parseVtt: vi.fn() }));
+vi.mock('../parse-pdf.js', () => ({ parsePdf: vi.fn() }));
+vi.mock('../chunk.js', () => ({ chunkText: vi.fn() }));
+vi.mock('../embedding.js', () => ({ getEmbeddingModel: vi.fn(() => 'mock-embedding-model') }));
 
 import { ingestItem } from '../ingest-item.js';
 import { embedMany } from 'ai';
-import { qdrant, COLLECTION_NAME } from '../../config.js';
+import { qdrant } from '../../config.js';
 import { parseVtt } from '../parse-vtt.js';
 import { parsePdf } from '../parse-pdf.js';
 import { chunkText } from '../chunk.js';
 import { DEFAULT_SETTINGS } from '@ubi-ai/shared';
 import type { MediaItem } from '@ubi-ai/shared';
 
+const VIDEO_ITEM: MediaItem = { id: 'video-1', type: 'video', title: 'Test Video', teacher: 'John Doe', module: 'M1' };
+const PDF_ITEM: MediaItem = { id: 'pdf-1', type: 'pdf', title: 'Test PDF', teacher: 'Jane Smith', module: 'M2' };
+
+function mockEmbedMany(count: number) {
+  (embedMany as any).mockResolvedValue({
+    embeddings: Array.from({ length: count }, (_, i) => [i * 0.1]),
+    usage: { tokens: count * 10 },
+  });
+}
+
 describe('ingestItem', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    vi.spyOn(crypto, 'randomUUID').mockReturnValue('mock-uuid-123' as any);
-  });
-
-  it('should ingest a video item with VTT parsing', async () => {
-    const mediaItem: MediaItem = {
-      id: 'video-1',
-      type: 'video',
-      title: 'Test Video',
-      teacher: 'John Doe',
-      module: 'Module 1',
-    };
-
-    const vttText = 'WEBVTT\n\n00:00:01.000 --> 00:00:05.000\nHello world';
-
-    (parseVtt as any).mockReturnValue([{ text: 'Hello world', timestamp: '00:00:01' }]);
-
-    (chunkText as any).mockReturnValue([
-      {
-        text: 'Hello world',
-        citation: { timestamp: '00:00:01' },
-        chunkIndex: 0,
-      },
-    ]);
-
-    (embedMany as any).mockResolvedValue({
-      embeddings: [[0.1, 0.2, 0.3]],
-      usage: { tokens: 10 },
-    });
-
+    vi.spyOn(crypto, 'randomUUID').mockReturnValue('mock-uuid' as any);
     (qdrant.delete as any).mockResolvedValue(undefined);
     (qdrant.upsert as any).mockResolvedValue(undefined);
-
-    const result = await ingestItem(mediaItem, vttText, DEFAULT_SETTINGS);
-
-    expect(qdrant.delete).toHaveBeenCalledWith(COLLECTION_NAME, {
-      filter: { must: [{ key: 'mediaId', match: { value: 'video-1' } }] },
-    });
-
-    expect(chunkText).toHaveBeenCalledWith(
-      'Hello world',
-      { timestamp: '00:00:01' },
-      0,
-      expect.any(Object),
-    );
-
-    expect(embedMany).toHaveBeenCalledWith({
-      model: 'mock-embedding-model',
-      values: ['Hello world'],
-    });
-
-    expect(qdrant.upsert).toHaveBeenCalledWith(COLLECTION_NAME, {
-      points: expect.arrayContaining([
-        expect.objectContaining({
-          id: 'mock-uuid-123',
-          vector: [0.1, 0.2, 0.3],
-          payload: expect.objectContaining({
-            mediaId: 'video-1',
-            mediaTitle: 'Test Video',
-            mediaType: 'video',
-            chunkText: 'Hello world',
-            chunkIndex: 0,
-            timestamp: '00:00:01',
-          }),
-        }),
-      ]),
-    });
-
-    expect(result).toEqual({
-      chunkCount: 1,
-      tokenCount: 10,
-    });
   });
 
-  it('should ingest a PDF item with PDF parsing and pageNumber citations', async () => {
-    const mediaItem: MediaItem = {
-      id: 'pdf-1',
-      type: 'pdf',
-      title: 'Test PDF',
-      teacher: 'Jane Smith',
-      module: 'Module 2',
-    };
-
-    const pdfText = 'Page 1 content\n\fPage 2 content';
-
-    (parsePdf as any).mockReturnValue([
-      { text: 'Page 1 content', pageNumber: 1 },
-      { text: 'Page 2 content', pageNumber: 2 },
-    ]);
-
-    (chunkText as any)
-      .mockReturnValueOnce([
-        {
-          text: 'Page 1 content',
-          citation: { pageNumber: 1 },
-          chunkIndex: 0,
-        },
-      ])
-      .mockReturnValueOnce([
-        {
-          text: 'Page 2 content',
-          citation: { pageNumber: 2 },
-          chunkIndex: 1,
-        },
+  describe('VTT (video/audio)', () => {
+    it('calls parseVtt once and chunkText once on the full concatenated text', async () => {
+      (parseVtt as any).mockReturnValue({
+        text: 'First cue. Second cue. Third cue.',
+        anchors: [
+          { pos: 0, timestamp: '00:00:01' },
+          { pos: 11, timestamp: '00:00:05' },
+          { pos: 23, timestamp: '00:00:10' },
+        ],
+      });
+      (chunkText as any).mockReturnValue([
+        { text: 'First cue. Second cue. Third cue.', startPos: 0, chunkIndex: 0 },
       ]);
+      mockEmbedMany(1);
 
-    (embedMany as any).mockResolvedValue({
-      embeddings: [
-        [0.1, 0.2],
-        [0.3, 0.4],
-      ],
-      usage: { tokens: 20 },
+      await ingestItem(VIDEO_ITEM, 'raw vtt', DEFAULT_SETTINGS, 'test-collection');
+
+      expect(parseVtt).toHaveBeenCalledTimes(1);
+      expect(chunkText).toHaveBeenCalledTimes(1);
+      expect(chunkText).toHaveBeenCalledWith('First cue. Second cue. Third cue.', 0, expect.any(Object));
     });
 
-    (qdrant.delete as any).mockResolvedValue(undefined);
-    (qdrant.upsert as any).mockResolvedValue(undefined);
-
-    const result = await ingestItem(mediaItem, pdfText, DEFAULT_SETTINGS);
-
-    expect(qdrant.delete).toHaveBeenCalledWith(COLLECTION_NAME, {
-      filter: { must: [{ key: 'mediaId', match: { value: 'pdf-1' } }] },
-    });
-
-    expect(chunkText).toHaveBeenNthCalledWith(
-      1,
-      'Page 1 content',
-      { pageNumber: 1 },
-      0,
-      expect.any(Object),
-    );
-    expect(chunkText).toHaveBeenNthCalledWith(
-      2,
-      'Page 2 content',
-      { pageNumber: 2 },
-      1,
-      expect.any(Object),
-    );
-
-    expect(qdrant.upsert).toHaveBeenCalledWith(COLLECTION_NAME, {
-      points: expect.arrayContaining([
-        expect.objectContaining({
-          payload: expect.objectContaining({
-            pageNumber: 1,
-          }),
-        }),
-        expect.objectContaining({
-          payload: expect.objectContaining({
-            pageNumber: 2,
-          }),
-        }),
-      ]),
-    });
-
-    expect(result).toEqual({
-      chunkCount: 2,
-      tokenCount: 20,
-    });
-  });
-
-  it('should call qdrant.delete before qdrant.upsert (idempotency)', async () => {
-    const mediaItem: MediaItem = {
-      id: 'item-1',
-      type: 'video',
-      title: 'Test Item',
-      teacher: 'Teacher',
-      module: 'Module',
-    };
-
-    (parseVtt as any).mockReturnValue([{ text: 'Test', timestamp: '00:00:00' }]);
-    (chunkText as any).mockReturnValue([
-      { text: 'Test', citation: { timestamp: '00:00:00' }, chunkIndex: 0 },
-    ]);
-    (embedMany as any).mockResolvedValue({
-      embeddings: [[0.1]],
-      usage: { tokens: 5 },
-    });
-
-    (qdrant.delete as any).mockResolvedValue(undefined);
-    (qdrant.upsert as any).mockResolvedValue(undefined);
-
-    await ingestItem(mediaItem, 'Test', DEFAULT_SETTINGS);
-
-    const deleteCall = (qdrant.delete as any).mock.invocationCallOrder[0];
-    const upsertCall = (qdrant.upsert as any).mock.invocationCallOrder[0];
-
-    expect(deleteCall).toBeLessThan(upsertCall);
-  });
-
-  it('should return correct chunkCount and tokenCount', async () => {
-    const mediaItem: MediaItem = {
-      id: 'item-1',
-      type: 'video',
-      title: 'Test',
-      teacher: 'Teacher',
-      module: 'Module',
-    };
-
-    (parseVtt as any).mockReturnValue([
-      { text: 'Chunk 1', timestamp: '00:00:01' },
-      { text: 'Chunk 2', timestamp: '00:00:05' },
-      { text: 'Chunk 3', timestamp: '00:00:10' },
-    ]);
-
-    (chunkText as any)
-      .mockReturnValueOnce([
-        { text: 'Chunk 1', citation: { timestamp: '00:00:01' }, chunkIndex: 0 },
-      ])
-      .mockReturnValueOnce([
-        { text: 'Chunk 2', citation: { timestamp: '00:00:05' }, chunkIndex: 1 },
-      ])
-      .mockReturnValueOnce([
-        { text: 'Chunk 3', citation: { timestamp: '00:00:10' }, chunkIndex: 2 },
+    it('assigns timestamp from the anchor at or before the chunk start position', async () => {
+      (parseVtt as any).mockReturnValue({
+        text: 'First cue. Second cue.',
+        anchors: [
+          { pos: 0, timestamp: '00:00:01' },
+          { pos: 11, timestamp: '00:00:05' },
+        ],
+      });
+      // Two chunks: one starting at pos 0, one starting at pos 11
+      (chunkText as any).mockReturnValue([
+        { text: 'First cue.', startPos: 0, chunkIndex: 0 },
+        { text: 'Second cue.', startPos: 11, chunkIndex: 1 },
       ]);
+      mockEmbedMany(2);
 
-    (embedMany as any).mockResolvedValue({
-      embeddings: [[0.1], [0.2], [0.3]],
-      usage: { tokens: 150 },
+      await ingestItem(VIDEO_ITEM, 'raw vtt', DEFAULT_SETTINGS, 'test-collection');
+
+      const points = (qdrant.upsert as any).mock.calls[0][1].points;
+      expect(points[0].payload.timestamp).toBe('00:00:01');
+      expect(points[1].payload.timestamp).toBe('00:00:05');
     });
 
-    (qdrant.delete as any).mockResolvedValue(undefined);
-    (qdrant.upsert as any).mockResolvedValue(undefined);
+    it('attributes a chunk spanning multiple cues to the cue where it starts', async () => {
+      (parseVtt as any).mockReturnValue({
+        text: 'Short. A much longer second cue that spans beyond the first.',
+        anchors: [
+          { pos: 0, timestamp: '00:00:01' },
+          { pos: 7, timestamp: '00:01:00' },
+        ],
+      });
+      // One large chunk starting at pos 0 — spans both cues
+      (chunkText as any).mockReturnValue([
+        { text: 'Short. A much longer second cue that spans beyond the first.', startPos: 0, chunkIndex: 0 },
+      ]);
+      mockEmbedMany(1);
 
-    const result = await ingestItem(mediaItem, 'Test', DEFAULT_SETTINGS);
+      await ingestItem(VIDEO_ITEM, 'raw vtt', DEFAULT_SETTINGS, 'test-collection');
 
-    expect(result.chunkCount).toBe(3);
-    expect(result.tokenCount).toBe(150);
+      const point = (qdrant.upsert as any).mock.calls[0][1].points[0];
+      expect(point.payload.timestamp).toBe('00:00:01');
+    });
+
+    it('does not call chunkText per-cue (no per-cue chunking)', async () => {
+      (parseVtt as any).mockReturnValue({
+        text: 'Cue one. Cue two. Cue three.',
+        anchors: [
+          { pos: 0, timestamp: '00:00:01' },
+          { pos: 9, timestamp: '00:00:05' },
+          { pos: 18, timestamp: '00:00:10' },
+        ],
+      });
+      (chunkText as any).mockReturnValue([
+        { text: 'Cue one. Cue two. Cue three.', startPos: 0, chunkIndex: 0 },
+      ]);
+      mockEmbedMany(1);
+
+      await ingestItem(VIDEO_ITEM, 'raw vtt', DEFAULT_SETTINGS, 'test-collection');
+
+      // Must be exactly 1 call regardless of how many cues the VTT had
+      expect(chunkText).toHaveBeenCalledTimes(1);
+    });
   });
 
-  it('should handle tokenCount as 0 when usage is undefined', async () => {
-    const mediaItem: MediaItem = {
-      id: 'item-1',
-      type: 'video',
-      title: 'Test',
-      teacher: 'Teacher',
-      module: 'Module',
-    };
+  describe('PDF', () => {
+    it('calls parsePdf once and chunkText once on the full concatenated text', async () => {
+      (parsePdf as any).mockReturnValue({
+        text: 'Page one content.\nPage two content.',
+        anchors: [
+          { pos: 0, pageNumber: 1 },
+          { pos: 18, pageNumber: 2 },
+        ],
+      });
+      (chunkText as any).mockReturnValue([
+        { text: 'Page one content.\nPage two content.', startPos: 0, chunkIndex: 0 },
+      ]);
+      mockEmbedMany(1);
 
-    (parseVtt as any).mockReturnValue([{ text: 'Test', timestamp: '00:00:00' }]);
-    (chunkText as any).mockReturnValue([
-      { text: 'Test', citation: { timestamp: '00:00:00' }, chunkIndex: 0 },
-    ]);
+      await ingestItem(PDF_ITEM, 'raw pdf', DEFAULT_SETTINGS, 'test-collection');
 
-    (embedMany as any).mockResolvedValue({
-      embeddings: [[0.1]],
-      usage: undefined,
+      expect(parsePdf).toHaveBeenCalledTimes(1);
+      expect(chunkText).toHaveBeenCalledTimes(1);
+      expect(chunkText).toHaveBeenCalledWith('Page one content.\nPage two content.', 0, expect.any(Object));
     });
 
-    (qdrant.delete as any).mockResolvedValue(undefined);
-    (qdrant.upsert as any).mockResolvedValue(undefined);
+    it('assigns pageNumber from the anchor at or before the chunk start position', async () => {
+      (parsePdf as any).mockReturnValue({
+        text: 'Page one.\nPage two.',
+        anchors: [
+          { pos: 0, pageNumber: 1 },
+          { pos: 10, pageNumber: 2 },
+        ],
+      });
+      (chunkText as any).mockReturnValue([
+        { text: 'Page one.', startPos: 0, chunkIndex: 0 },
+        { text: 'Page two.', startPos: 10, chunkIndex: 1 },
+      ]);
+      mockEmbedMany(2);
 
-    const result = await ingestItem(mediaItem, 'Test', DEFAULT_SETTINGS);
+      await ingestItem(PDF_ITEM, 'raw pdf', DEFAULT_SETTINGS, 'test-collection');
 
-    expect(result.tokenCount).toBe(0);
+      const points = (qdrant.upsert as any).mock.calls[0][1].points;
+      expect(points[0].payload.pageNumber).toBe(1);
+      expect(points[1].payload.pageNumber).toBe(2);
+    });
+
+    it('does not call chunkText per-page (no per-page chunking)', async () => {
+      (parsePdf as any).mockReturnValue({
+        text: 'Page 1.\nPage 2.\nPage 3.',
+        anchors: [
+          { pos: 0, pageNumber: 1 },
+          { pos: 8, pageNumber: 2 },
+          { pos: 16, pageNumber: 3 },
+        ],
+      });
+      (chunkText as any).mockReturnValue([
+        { text: 'Page 1.\nPage 2.\nPage 3.', startPos: 0, chunkIndex: 0 },
+      ]);
+      mockEmbedMany(1);
+
+      await ingestItem(PDF_ITEM, 'raw pdf', DEFAULT_SETTINGS, 'test-collection');
+
+      expect(chunkText).toHaveBeenCalledTimes(1);
+    });
   });
 
-  it('should propagate error when qdrant.upsert fails', async () => {
-    const mediaItem: MediaItem = {
-      id: 'item-1',
-      type: 'video',
-      title: 'Test',
-      teacher: 'Teacher',
-      module: 'Module',
-    };
+  describe('Qdrant operations', () => {
+    it('calls qdrant.delete before qdrant.upsert (idempotency)', async () => {
+      (parseVtt as any).mockReturnValue({
+        text: 'Test.',
+        anchors: [{ pos: 0, timestamp: '00:00:00' }],
+      });
+      (chunkText as any).mockReturnValue([{ text: 'Test.', startPos: 0, chunkIndex: 0 }]);
+      mockEmbedMany(1);
 
-    (parseVtt as any).mockReturnValue([{ text: 'Test', timestamp: '00:00:00' }]);
-    (chunkText as any).mockReturnValue([
-      { text: 'Test', citation: { timestamp: '00:00:00' }, chunkIndex: 0 },
-    ]);
-    (embedMany as any).mockResolvedValue({
-      embeddings: [[0.1]],
-      usage: { tokens: 5 },
+      await ingestItem(VIDEO_ITEM, 'Test', DEFAULT_SETTINGS, 'test-collection');
+
+      const deleteOrder = (qdrant.delete as any).mock.invocationCallOrder[0];
+      const upsertOrder = (qdrant.upsert as any).mock.invocationCallOrder[0];
+      expect(deleteOrder).toBeLessThan(upsertOrder);
     });
 
-    (qdrant.delete as any).mockResolvedValue(undefined);
+    it('includes all chunk metadata in the Qdrant payload', async () => {
+      (parsePdf as any).mockReturnValue({
+        text: 'Content.',
+        anchors: [{ pos: 0, pageNumber: 3 }],
+      });
+      (chunkText as any).mockReturnValue([{ text: 'Content.', startPos: 0, chunkIndex: 42 }]);
+      mockEmbedMany(1);
 
-    const error = new Error('Qdrant upsert failed');
-    (qdrant.upsert as any).mockRejectedValue(error);
+      await ingestItem(PDF_ITEM, 'Content', DEFAULT_SETTINGS, 'test-collection');
 
-    await expect(ingestItem(mediaItem, 'Test', DEFAULT_SETTINGS)).rejects.toThrow(
-      'Qdrant upsert failed',
-    );
-  });
-
-  it('should include all chunk metadata in payload', async () => {
-    const mediaItem: MediaItem = {
-      id: 'item-1',
-      type: 'pdf',
-      title: 'PDF Title',
-      teacher: 'Teacher',
-      module: 'Module',
-    };
-
-    (parsePdf as any).mockReturnValue([{ text: 'Content', pageNumber: 1 }]);
-    (chunkText as any).mockReturnValue([
-      {
-        text: 'Content',
-        citation: { pageNumber: 1 },
-        chunkIndex: 42,
-      },
-    ]);
-
-    (embedMany as any).mockResolvedValue({
-      embeddings: [[0.1, 0.2]],
-      usage: { tokens: 10 },
-    });
-
-    (qdrant.delete as any).mockResolvedValue(undefined);
-    (qdrant.upsert as any).mockResolvedValue(undefined);
-
-    await ingestItem(mediaItem, 'Content', DEFAULT_SETTINGS);
-
-    const upsertCall = (qdrant.upsert as any).mock.calls[0];
-    const point = upsertCall[1].points[0];
-
-    expect(point.payload).toEqual(
-      expect.objectContaining({
-        mediaId: 'item-1',
-        mediaTitle: 'PDF Title',
+      const point = (qdrant.upsert as any).mock.calls[0][1].points[0];
+      expect(point.payload).toEqual(expect.objectContaining({
+        mediaId: 'pdf-1',
+        mediaTitle: 'Test PDF',
         mediaType: 'pdf',
-        chunkText: 'Content',
+        chunkText: 'Content.',
         chunkIndex: 42,
-        pageNumber: 1,
-      }),
-    );
+        pageNumber: 3,
+      }));
+    });
+  });
+
+  describe('return values', () => {
+    it('returns correct chunkCount and tokenCount', async () => {
+      (parseVtt as any).mockReturnValue({
+        text: 'A. B. C.',
+        anchors: [{ pos: 0, timestamp: '00:00:00' }],
+      });
+      (chunkText as any).mockReturnValue([
+        { text: 'A.', startPos: 0, chunkIndex: 0 },
+        { text: 'B.', startPos: 3, chunkIndex: 1 },
+        { text: 'C.', startPos: 6, chunkIndex: 2 },
+      ]);
+      mockEmbedMany(3);
+
+      const result = await ingestItem(VIDEO_ITEM, 'A. B. C.', DEFAULT_SETTINGS, 'test-collection');
+
+      expect(result.chunkCount).toBe(3);
+      expect(result.tokenCount).toBe(30);
+    });
+
+    it('returns tokenCount of 0 when usage is undefined', async () => {
+      (parseVtt as any).mockReturnValue({ text: 'Test.', anchors: [{ pos: 0, timestamp: '00:00:00' }] });
+      (chunkText as any).mockReturnValue([{ text: 'Test.', startPos: 0, chunkIndex: 0 }]);
+      (embedMany as any).mockResolvedValue({ embeddings: [[0.1]], usage: undefined });
+
+      const result = await ingestItem(VIDEO_ITEM, 'Test', DEFAULT_SETTINGS, 'test-collection');
+      expect(result.tokenCount).toBe(0);
+    });
+  });
+
+  it('propagates error when qdrant.upsert fails', async () => {
+    (parseVtt as any).mockReturnValue({ text: 'Test.', anchors: [{ pos: 0, timestamp: '00:00:00' }] });
+    (chunkText as any).mockReturnValue([{ text: 'Test.', startPos: 0, chunkIndex: 0 }]);
+    (embedMany as any).mockResolvedValue({ embeddings: [[0.1]], usage: { tokens: 5 } });
+    (qdrant.upsert as any).mockRejectedValue(new Error('Qdrant upsert failed'));
+
+    await expect(ingestItem(VIDEO_ITEM, 'Test', DEFAULT_SETTINGS, 'test-collection'))
+      .rejects.toThrow('Qdrant upsert failed');
   });
 });

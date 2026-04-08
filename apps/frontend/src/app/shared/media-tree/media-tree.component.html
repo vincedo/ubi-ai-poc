@@ -6,7 +6,25 @@
     }
   </div>
 
-  <ul class="tree-list" role="tree" aria-labelledby="tree-label">
+  @if (loading()) {
+    <div class="empty-state">
+      <span class="material-symbols-outlined empty-icon">hourglass_top</span>
+      <p class="empty-text">Loading media&hellip;</p>
+    </div>
+  } @else if (courseTree().length === 0) {
+    <div class="empty-state">
+      <span class="material-symbols-outlined empty-icon">folder_open</span>
+      <p class="empty-text">No media available</p>
+      <p class="empty-hint">Seed the database to populate the media library.</p>
+    </div>
+  }
+
+  <ul
+    class="tree-list"
+    role="tree"
+    aria-labelledby="tree-label"
+    [hidden]="loading() || courseTree().length === 0"
+  >
     @for (course of courseTree(); track course.id) {
       <!-- Course header -->
       <li class="course-node" role="treeitem" [attr.aria-expanded]="isExpanded(course.id)">

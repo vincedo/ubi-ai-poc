@@ -1,6 +1,6 @@
 import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import type { EnrichmentResult, LanguageModel, MCQ } from '@ubi-ai/shared';
+import type { EnrichmentResult, MCQ } from '@ubi-ai/shared';
 import { Observable } from 'rxjs';
 import { API_BASE_URL } from '../api-base-url.token';
 
@@ -16,8 +16,14 @@ export class EnrichmentService {
     return this.http.get<EnrichmentResult | null>(`${this.API}/enrich/${mediaId}`);
   }
 
-  generate(mediaId: string, model: LanguageModel): Observable<EnrichmentResult> {
-    return this.http.post<EnrichmentResult>(`${this.API}/enrich/${mediaId}`, { model });
+  generate(
+    mediaId: string,
+    presetId: string,
+  ): Observable<EnrichmentResult & { llmCallId?: string }> {
+    return this.http.post<EnrichmentResult & { llmCallId?: string }>(
+      `${this.API}/enrich/${mediaId}`,
+      { presetId },
+    );
   }
 
   saveResult(

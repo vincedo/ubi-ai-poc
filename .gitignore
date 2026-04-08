@@ -2,6 +2,7 @@
 
 # Compiled output
 dist/
+*.tsbuildinfo
 /tmp
 /out-tsc
 /bazel-out

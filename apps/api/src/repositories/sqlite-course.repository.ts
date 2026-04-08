@@ -2,7 +2,7 @@ import { eq, asc, sql, inArray } from 'drizzle-orm';
 import { course, courseMedia } from '../db/schema/course.js';
 import { media, mediaTranscript } from '../db/schema/media.js';
 import { enrichmentResult, enrichmentJob } from '../db/schema/enrichment.js';
-import { transcriptionJob, ingestionJob } from '../db/schema/ingestion.js';
+import { transcriptionJob } from '../db/schema/ingestion.js';
 import type { Course, NewCourse } from '../db/schema/course.js';
 import type { Media } from '../db/schema/media.js';
 import type { AppDatabase } from '../plugins/db.js';
@@ -57,7 +57,6 @@ export class SqliteCourseRepository implements CourseRepository {
       await this.db
         .delete(transcriptionJob)
         .where(inArray(transcriptionJob.mediaId, orphanedMediaIds));
-      await this.db.delete(ingestionJob).where(inArray(ingestionJob.mediaId, orphanedMediaIds));
       await this.db
         .delete(mediaTranscript)
         .where(inArray(mediaTranscript.mediaId, orphanedMediaIds));

@@ -1,95 +1,98 @@
+# CLAUDE.md
 
-You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Architecture
+
+RAG AI POC for e-learning. Monorepo with three packages:
+
+- `apps/api/` — Fastify v5 REST API (TypeScript ESM)
+- `apps/frontend/` — Angular v21 SPA
+- `packages/shared/` — Types and constants shared by both (`@ubi-ai/shared`)
+
+**Data stores:** SQLite via Drizzle ORM (`app.db`) for relational data; Qdrant (Docker) for vector embeddings. Each chat preset owns a dedicated Qdrant collection.
+
+**Guardrails sidecar:** `apps/guardrails/` — minimal Python FastAPI app (not `guardrails-api`) wrapping a single `input-safety` guard (`DetectPII` via presidio). Exposes `POST /guards/{name}/validate` on port 8000. The Fastify API calls it via `apps/api/src/lib/guardrails-client.ts`; fail-open if unreachable.
+
+**API plugin order:** `dbPlugin` (SQLite + Drizzle migrations) → `repositoriesPlugin` (decorates `fastify.repos.*`) → route plugins. Domain routes: `media`, `ingest`, `enrich`, `chat`, `courses`, `presets`, `inspect`, `reset`.
+
+**Presets** are named configuration profiles (no auto-created defaults):
+- *Chat preset* — controls the full RAG pipeline (chunking, embedding model/metric, retrieval top-K, LLM, system prompt). Owns a Qdrant collection; ingestion tracks status + stats (chunk/token count).
+- *Enrichment preset* — controls AI enrichment jobs (LLM, enrichment prompt level).
+
+## Running Locally & Commands
+
+```bash
+docker compose up --build     # Qdrant + Guardrails + API in Docker (use --build on first run or after changes)
+pnpm frontend                 # frontend locally (no Docker image)
+```
+
+> `packages/shared` is only rebuilt by `pnpm frontend`. If you edit `packages/shared/src/`, restart via this command — never restart the frontend individually.
+
+```bash
+pnpm format                                                # prettier
+cd apps/api && pnpm test                                   # unit tests
+cd apps/api && pnpm run test:integration                   # integration tests
+cd apps/api && pnpm exec vitest run src/lib/chunk.test.ts  # single file
+```
 
 ## Documentation Lookups (MANDATORY)
 
-Before writing any code that uses the libraries listed below, you MUST use the context7 MCP tool to fetch current documentation. Do NOT rely on training knowledge — these libraries evolve fast and training data is stale.
+Before writing code using these libraries, use context7 MCP: `resolve-library-id` then `query-docs`. Do NOT rely on training data.
 
-Steps:
-1. Call `mcp__plugin_context7_context7__resolve-library-id` with the library name
-2. Call `mcp__plugin_context7_context7__query-docs` for the relevant feature/topic
-3. Only then write code, using exclusively syntax confirmed by the docs
+- `ai` / Vercel AI SDK (v6), `@ai-sdk/*` providers (v3)
+- `angular` / `@angular/*` (v21) — signals, control flow, standalone APIs
+- `fastify` (v5) — plugin/lifecycle APIs changed from v4
+- `zod` (v4) — breaking changes from v3
+- `drizzle-orm` (v0.45), `drizzle-kit` (v0.31)
+- `better-sqlite3` (v12)
 
-Libraries requiring context7 lookup:
-- `ai` / Vercel AI SDK (current: v6) — API surface changes frequently
-- `@ai-sdk/*` providers (current: v3) — provider-specific options change between versions
-- `angular` / `@angular/*` (current: v21) — signals, control flow, standalone APIs
-- `fastify` (current: v5) — plugin and lifecycle APIs changed from v4
-- `zod` (current: v4) — breaking changes from v3
-- `drizzle-orm` (current: v0.45) — query builder API evolves frequently
-- `drizzle-kit` (current: v0.31) — CLI flags and config format change between versions
-- `better-sqlite3` (current: v12) — verify sync API and TypeScript usage
+## TypeScript
 
-## TypeScript Best Practices
+- Strict mode; prefer inference; `unknown` over `any`
+- TS6: always set explicit `rootDir` when using `outDir` with `declaration: true`
 
-- Use strict type checking
-- Prefer type inference when the type is obvious
-- Avoid the `any` type; use `unknown` when type is uncertain
-- TypeScript 6 requires explicit `rootDir` in tsconfig when using `outDir` with `declaration: true`. Always set `rootDir` to match the `include` path (e.g. `"rootDir": "./src"`).
+## API / Fastify
 
-## Angular Best Practices
+- **Routes:** `FastifyPluginAsync`, one file per domain, registered in `index.ts`. Type with generics: `fastify.get<{ Params: { id: string } }>()`
+- **Validation:** Zod schemas in `src/schemas/` via `safeParse()`. Invalid → `reply.code(400).send({ error: 'reason' })`
+- **Errors:** `{ error: 'message', details?: [...] }`. Check 404 preconditions early. Log: `fastify.log.error({ err, mediaId })`
+- **Plugins:** `fp()` + module augmentation; declare dependencies; infra plugins before routes
+- **Repositories:** Interfaces in `*.repository.ts`, SQLite impls in `sqlite-*.repository.ts`. Access via `fastify.repos.<domain>.<method>()` — no service layer
+- **Streaming:** `pipeUIMessageStreamToResponse()` + manually set CORS headers on `reply.raw`
+- **Long-running ops:** Create job record first, update with result or error on completion
 
-- Always use standalone components over NgModules
-- Must NOT set `standalone: true` inside Angular decorators. It's the default in Angular v19+.
-- Use signals for state management
-- Implement lazy loading for feature routes
-- Do NOT use the `@HostBinding` and `@HostListener` decorators. Put host bindings inside the `host` object of the `@Component` or `@Directive` decorator instead
-- Use `NgOptimizedImage` for all static images.
-  - `NgOptimizedImage` does not work for inline base64 images.
-- Do NOT use `@angular/animations` (`provideAnimations`, `provideAnimationsAsync`, `BrowserAnimationsModule`) — the entire package is deprecated since Angular v20.2. Use native CSS animations/transitions with `animate.enter` and `animate.leave` directives instead.
+## Angular
 
-## Accessibility Requirements
+- Do NOT set `standalone: true` — default in v19+
+- Do NOT use `@HostBinding`/`@HostListener` — use `host` object in decorator instead
+- Do NOT use `@angular/animations` — use native CSS `animate.enter`/`animate.leave`
+- Use `NgOptimizedImage` for static images (not inline base64)
+- `input()`/`output()` functions, not decorators; `inject()` not constructor injection
+- `ChangeDetectionStrategy.OnPush`; external `.html`/`.scss` files (no inline)
+- Reactive forms; `class`/`style` bindings (not `ngClass`/`ngStyle`)
+- Signals for local state; `computed()` for derived state; `update`/`set` (not `mutate`)
+- Native control flow (`@if`, `@for`, `@switch`); async pipe for observables
+- Lazy-load all feature routes
+- **Never `$any()` or `as` casts in templates** — delegate to typed component method instead
+- `providedIn: 'root'` for singletons
 
-- It MUST pass all AXE checks.
-- It MUST follow all WCAG AA minimums, including focus management, color contrast, and ARIA attributes.
+## Styling
 
-### Components
+- `@use`/`@forward` only (not `@import`)
+- Consult `docs/designs/DESIGN.md` before writing component styles
+- Angular Material: `--mat-sys-*` for theme overrides, MDC tokens for component internals — no `::ng-deep` except for structural properties (padding, min-height, display) with no token equivalent
+- **Buttons:** use global classes from `apps/frontend/src/styles/_buttons.scss` (`btn-primary`, `btn-secondary`, `btn-ghost`, `btn-danger`, `btn-icon`, `btn-sm`, `btn-lg`). Never define button styles locally.
+- Icons: `<span class="material-symbols-outlined">icon_name</span>` only
 
-- Keep components small and focused on a single responsibility
-- Use `input()` and `output()` functions instead of decorators
-- Use `computed()` for derived state
-- Set `changeDetection: ChangeDetectionStrategy.OnPush` in `@Component` decorator
-- Always use external template (`.html`) and style (`.scss`) files — no inline `template:` or `styles:`
-- Prefer Reactive forms instead of Template-driven ones
-- Do NOT use `ngClass`, use `class` bindings instead
-- Do NOT use `ngStyle`, use `style` bindings instead
-- When using external templates/styles, use paths relative to the component TS file.
+## Accessibility
 
-## State Management
-
-- Use signals for local component state
-- Use `computed()` for derived state
-- Keep state transformations pure and predictable
-- Do NOT use `mutate` on signals, use `update` or `set` instead
-
-## Templates
-
-- Keep templates simple and avoid complex logic
-- Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
-- Use the async pipe to handle observables
-- Do not assume globals like (`new Date()`) are available.
-
-## Sass Best Practices
-
-- Always use `@use` and `@forward` instead of `@import` — `@import` is deprecated in Dart Sass and will be removed in v3.0.0
-- This applies to both local partials and third-party packages (e.g. `@use 'material-symbols/outlined'`)
-
-## Testing
-
-- Unit tests use the `*.test.ts` suffix (e.g. `chunk.test.ts`)
-- Integration tests use the `*.integration.test.ts` suffix (e.g. `chat.integration.test.ts`)
-- Test scripts in `apps/api` target tests by filename substring, not by directory:
-  - `npm test` — runs unit tests (`vitest run src/lib src/repositories`)
-  - `npm run test:integration` — runs integration tests (`vitest run "integration"`)
-- When adding new tests, use the correct suffix so the right script picks them up
+MUST pass AXE checks and WCAG AA minimums (focus, contrast, ARIA).
 
 ## Error Handling
 
-- A global HTTP interceptor (`errorNotificationInterceptor` in `app.config.ts`) catches all `HttpErrorResponse` errors and surfaces them to the user via `NotificationService` (snackbar). Components and services do NOT need to duplicate this — `console.error()` in subscribe error callbacks is intentional supplementary logging, not a silent failure.
-- Only flag missing error handling for non-HttpClient calls (e.g. raw `fetch()`, non-HTTP operations, bootstrap failures).
+`errorNotificationInterceptor` in `app.config.ts` handles all `HttpErrorResponse` globally — components must not duplicate this. Only add handling for non-HttpClient calls.
 
-## Services
+## Skills
 
-- Design services around a single responsibility
-- Use the `providedIn: 'root'` option for singleton services
-- Use the `inject()` function instead of constructor injection
+Skip brainstorming for simple, clearly-scoped changes. Only brainstorm for genuinely ambiguous or multi-component features where the approach isn't obvious.

@@ -1,0 +1,117 @@
+# TypeScript Utility Types
+
+TypeScript provides globally available utility types for common type transformations.
+
+## Property Modifiers
+
+**`Partial<Type>`** — Makes all properties of `Type` optional.
+
+```ts
+interface Todo { title: string; description: string; }
+function updateTodo(todo: Todo, fields: Partial<Todo>) {
+  return { ...todo, ...fields };
+}
+```
+
+**`Required<Type>`** — Makes all properties of `Type` required. Opposite of `Partial`.
+
+**`Readonly<Type>`** — Makes all properties read-only. Useful for representing objects that should not be modified after creation.
+
+```ts
+const todo: Readonly<Todo> = { title: 'Delete inactive users', completed: false };
+todo.completed = true; // Error
+```
+
+## Object Manipulation
+
+**`Record<Keys, Type>`** — Constructs an object type with keys of type `Keys` and values of type `Type`.
+
+```ts
+type CatName = 'miffy' | 'boris' | 'mordred';
+const cats: Record<CatName, { age: number }> = {
+  miffy: { age: 10 },
+  boris: { age: 5 },
+  mordred: { age: 16 },
+};
+```
+
+**`Pick<Type, Keys>`** — Constructs a type by picking specific properties from `Type`.
+
+```ts
+type TodoPreview = Pick<Todo, 'title' | 'completed'>;
+```
+
+**`Omit<Type, Keys>`** — Constructs a type by removing specific properties from `Type`. Opposite of `Pick`.
+
+```ts
+type TodoPreview = Omit<Todo, 'description'>;
+```
+
+## Union Type Operations
+
+**`Exclude<UnionType, ExcludedMembers>`** — Removes union members assignable to `ExcludedMembers`.
+
+```ts
+type T = Exclude<'a' | 'b' | 'c', 'a'>; // 'b' | 'c'
+```
+
+**`Extract<Type, Union>`** — Keeps only union members assignable to `Union`.
+
+```ts
+type T = Extract<'a' | 'b' | 'c', 'a' | 'f'>; // 'a'
+```
+
+**`NonNullable<Type>`** — Removes `null` and `undefined` from `Type`.
+
+```ts
+type T = NonNullable<string | null | undefined>; // string
+```
+
+## Function-Related Types
+
+**`Parameters<Type>`** — Extracts the parameter types of a function as a tuple.
+
+```ts
+type T = Parameters<(s: string, n: number) => void>; // [s: string, n: number]
+```
+
+**`ReturnType<Type>`** — Gets the return type of a function.
+
+```ts
+type T = ReturnType<() => string>; // string
+```
+
+**`ConstructorParameters<Type>`** — Extracts constructor parameter types as a tuple.
+
+**`InstanceType<Type>`** — Gets the instance type produced by a constructor.
+
+## Advanced Types
+
+**`Awaited<Type>`** — Recursively unwraps `Promise` types, modelling operations like `await`.
+
+```ts
+type A = Awaited<Promise<string>>; // string
+type B = Awaited<Promise<Promise<number>>>; // number
+```
+
+**`NoInfer<Type>`** — Prevents TypeScript from inferring a type from a specific location, useful for controlling inference in generic functions.
+
+**`ThisParameterType<Type>`** — Extracts the type of the `this` parameter from a function.
+
+**`OmitThisParameter<Type>`** — Removes the `this` parameter from a function type.
+
+**`ThisType<Type>`** — Marks the contextual `this` type in object literals.
+
+## String Manipulation Types
+
+These intrinsic types operate on string literals:
+
+- **`Uppercase<StringType>`**
+- **`Lowercase<StringType>`**
+- **`Capitalize<StringType>`**
+- **`Uncapitalize<StringType>`**
+
+```ts
+type Greeting = 'hello world';
+type ShoutyGreeting = Uppercase<Greeting>; // 'HELLO WORLD'
+```

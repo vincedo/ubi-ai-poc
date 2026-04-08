@@ -1,0 +1,76 @@
+# Two-way binding
+
+**Two way binding** is a shorthand to simultaneously bind a value into an element, while also giving that element the ability to propagate changes back through this binding.
+
+## Syntax
+
+The syntax for two-way binding is a combination of square brackets and parentheses, `[()]`. It combines the syntax from property binding, `[]`, and the syntax from event binding, `()`. The Angular community informally refers to this syntax as "banana-in-a-box".
+
+## Two-way binding with form controls
+
+Developers commonly use two-way binding to keep component data in sync with a form control as a user interacts with the control.
+
+```angular-ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+
+@Component({
+  imports: [FormsModule],
+  template: `
+    <main>
+      <h2>Hello {{ firstName }}!</h2>
+      <input type="text" [(ngModel)]="firstName" />
+    </main>
+  `,
+})
+export class App {
+  firstName = 'Ada';
+}
+```
+
+To use two-way binding with native form controls, you need to:
+
+1. Import the `FormsModule` from `@angular/forms`
+1. Use the `ngModel` directive with the two-way binding syntax (e.g., `[(ngModel)]`)
+1. Assign it the state that you want it to update (e.g., `firstName`)
+
+## Two-way binding between components
+
+Leveraging two-way binding between a parent and child component requires more configuration. The child component must contain a `model` property:
+
+```angular-ts
+import {Component, model} from '@angular/core';
+
+@Component({
+  selector: 'app-counter',
+  template: `
+    <button (click)="updateCount(-1)">-</button>
+    <span>{{ count() }}</span>
+    <button (click)="updateCount(+1)">+</button>
+  `,
+})
+export class Counter {
+  count = model<number>(0);
+
+  updateCount(amount: number): void {
+    this.count.update((currentCount) => currentCount + amount);
+  }
+}
+```
+
+The parent component must wrap the `model` property name in the two-way binding syntax:
+
+```angular-ts
+@Component({
+  selector: 'app-root',
+  imports: [Counter],
+  template: `
+    <main>
+      <app-counter [(count)]="initialCount"></app-counter>
+    </main>
+  `,
+})
+export class App {
+  initialCount = 18;
+}
+```

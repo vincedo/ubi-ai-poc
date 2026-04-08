@@ -1,10 +1,13 @@
 import { index, integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
 import type { ChatRole } from '@ubi-ai/shared';
+import { chatPreset } from './preset.js';
 
 export const chatSession = sqliteTable('chat_session', {
   id: text('id').primaryKey(),
-  model: text('model').notNull(),
+  chatPresetId: text('chat_preset_id').references(() => chatPreset.id, { onDelete: 'cascade' }),
+  chatPresetName: text('chat_preset_name').notNull().default(''),
+  title: text('title').notNull().default(''),
   scopeCourseIds: text('scope_course_ids')
     .$type</* JSON string[] */ string>()
     .notNull()
@@ -26,10 +29,11 @@ export const chatMessage = sqliteTable(
     id: text('id').primaryKey(),
     chatSessionId: text('chat_session_id')
       .notNull()
-      .references(() => chatSession.id),
+      .references(() => chatSession.id, { onDelete: 'cascade' }),
     role: text('role').$type<ChatRole>().notNull(),
     content: text('content').notNull(),
     sources: text('sources').notNull().default('[]'),
+    llmCallId: text('llm_call_id'),
     createdAt: text('created_at')
       .notNull()
       .default(sql`(strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))`),

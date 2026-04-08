@@ -8,10 +8,11 @@ import {
   DestroyRef,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import type { EnrichmentResult, LanguageModel, MCQ } from '@ubi-ai/shared';
+import type { EnrichmentResult, MCQ } from '@ubi-ai/shared';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EnrichmentService } from '../../services/enrichment.service';
 import { CourseService } from '../../services/course.service';
+import { PresetService } from '../../services/preset.service';
 import { NotificationService } from '../../services/notification.service';
 import { EnrichmentEditorComponent } from './enrichment-editor/enrichment-editor.component';
 import { MediaTreeComponent } from '../../shared/media-tree/media-tree.component';
@@ -26,10 +27,13 @@ import { MediaTreeComponent } from '../../shared/media-tree/media-tree.component
 export class EnrichmentComponent {
   readonly courseService = inject(CourseService);
   readonly enrichmentService = inject(EnrichmentService);
+  readonly presetService = inject(PresetService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
   private readonly notification = inject(NotificationService);
   private readonly destroyRef = inject(DestroyRef);
+
+  readonly selectedEnrichmentPresetId = signal<string | null>(null);
 
   private readonly mediaIdFromRoute = signal<string | null>(null);
 
@@ -46,9 +50,16 @@ export class EnrichmentComponent {
   readonly currentResult = signal<EnrichmentResult | null>(null);
   readonly loading = signal(false);
   readonly saving = signal(false);
+  readonly llmCallId = signal<string | null>(null);
 
   constructor() {
     this.courseService.loadTree();
+    this.presetService.loadEnrichmentPresets().then(() => {
+      const presets = this.presetService.enrichmentPresets();
+      if (presets.length > 0) {
+        this.selectedEnrichmentPresetId.set(presets[0].id);
+      }
+    });
 
     // Sync route param → signal
     this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
@@ -66,7 +77,10 @@ export class EnrichmentComponent {
         .getResult(item.id)
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
-          next: (result) => this.currentResult.set(result),
+          next: (result) => {
+            this.currentResult.set(result);
+            this.llmCallId.set(result?.llmCallId ?? null);
+          },
           error: (err) => {
             console.error('Failed to load enrichment result:', err);
             this.currentResult.set(null);
@@ -79,14 +93,20 @@ export class EnrichmentComponent {
     this.router.navigate(['/enrich', mediaId]);
   }
 
-  onEnrich(event: { mediaId: string; model: LanguageModel }) {
+  onEnrich(event: { mediaId: string }) {
+    const presetId = this.selectedEnrichmentPresetId();
+    if (!presetId) {
+      this.notification.error('Select an enrichment preset first');
+      return;
+    }
     this.loading.set(true);
     this.enrichmentService
-      .generate(event.mediaId, event.model)
+      .generate(event.mediaId, presetId)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (result) => {
           this.currentResult.set(result);
+          this.llmCallId.set(result.llmCallId ?? null);
           this.loading.set(false);
           this.notification.success('Enrichment complete');
         },

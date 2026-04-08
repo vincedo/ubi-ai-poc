@@ -40,6 +40,41 @@
   letter-spacing: 0.05em;
 }
 
+// Empty / loading state
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  color: var(--color-on-surface-variant);
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+}
+
+.empty-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+  margin: 0;
+}
+
+.empty-hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-on-surface-variant);
+  opacity: 0.7;
+  margin: 0;
+}
+
 .tree-list {
   display: flex;
   flex-direction: column;

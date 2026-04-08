@@ -16,6 +16,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/chat/chat.component').then((m) => m.ChatComponent),
   },
   {
+    path: 'chat/:sessionId',
+    loadComponent: () => import('./features/chat/chat.component').then((m) => m.ChatComponent),
+  },
+  {
     path: 'ingest',
     loadComponent: () =>
       import('./features/ingestion/ingestion.component').then((m) => m.IngestionComponent),
@@ -31,9 +35,14 @@ export const routes: Routes = [
       import('./features/courses/course-detail.component').then((m) => m.CourseDetailComponent),
   },
   {
-    path: 'settings',
+    path: 'presets',
+    redirectTo: 'presets/chat',
+    pathMatch: 'full',
+  },
+  {
+    path: 'presets/:tab',
     loadComponent: () =>
-      import('./features/settings/settings.component').then((m) => m.SettingsComponent),
+      import('./features/presets/presets.component').then((m) => m.PresetsComponent),
   },
   { path: '', redirectTo: 'enrich', pathMatch: 'full' },
 ];

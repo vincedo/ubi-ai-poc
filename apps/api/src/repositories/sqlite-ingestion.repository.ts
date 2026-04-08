@@ -1,13 +1,8 @@
 import { eq } from 'drizzle-orm';
 import { mediaTranscript } from '../db/schema/media.js';
-import { transcriptionJob, ingestionJob } from '../db/schema/ingestion.js';
+import { transcriptionJob } from '../db/schema/ingestion.js';
 import type { MediaTranscript } from '../db/schema/media.js';
-import type {
-  TranscriptionJob,
-  NewTranscriptionJob,
-  IngestionJob,
-  NewIngestionJob,
-} from '../db/schema/ingestion.js';
+import type { TranscriptionJob, NewTranscriptionJob } from '../db/schema/ingestion.js';
 import type { AppDatabase } from '../plugins/db.js';
 import type { IngestionRepository } from './ingestion.repository.js';
 
@@ -53,28 +48,5 @@ export class SqliteIngestionRepository implements IngestionRepository {
     >,
   ): Promise<void> {
     await this.db.update(transcriptionJob).set(data).where(eq(transcriptionJob.id, id));
-  }
-
-  async createIngestionJob(data: NewIngestionJob): Promise<IngestionJob> {
-    const rows = await this.db.insert(ingestionJob).values(data).returning();
-    return rows[0];
-  }
-
-  async updateIngestionJob(
-    id: string,
-    data: Partial<
-      Pick<
-        IngestionJob,
-        | 'status'
-        | 'chunkCount'
-        | 'tokenCount'
-        | 'estimatedCost'
-        | 'startedAt'
-        | 'completedAt'
-        | 'error'
-      >
-    >,
-  ): Promise<void> {
-    await this.db.update(ingestionJob).set(data).where(eq(ingestionJob.id, id));
   }
 }

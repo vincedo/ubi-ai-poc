@@ -1,11 +1,9 @@
 import {
   ApplicationConfig,
   inject,
-  provideAppInitializer,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { SettingsService } from './services/settings.service';
 import { provideRouter } from '@angular/router';
 import {
   HttpErrorResponse,
@@ -23,8 +21,11 @@ function extractErrorMessage(err: HttpErrorResponse): string {
     return err.error.error;
   }
   if (err.status === 0) return 'Network error — check your connection';
+  if (err.status === 401) return 'Unauthorized — please log in';
+  if (err.status === 403) return 'Forbidden — you do not have permission';
   if (err.status === 404) return 'Not found';
   if (err.status >= 400 && err.status < 500) return 'Bad request';
+  if (err.status === 503) return 'Service unavailable — please try again later';
   if (err.status >= 500) return 'Server error — please try again';
   return 'An unexpected error occurred';
 }
@@ -45,6 +46,5 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideHttpClient(withInterceptors([errorNotificationInterceptor])),
     provideRouter(routes),
-    provideAppInitializer(() => inject(SettingsService).load()),
   ],
 };

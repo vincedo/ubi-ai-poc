@@ -20,6 +20,7 @@ export class MediaTreeComponent {
   courseTree = input.required<CourseWithMedia[]>();
   selectionMode = input.required<'checkboxes' | 'radio'>();
   title = input.required<string>();
+  loading = input(false);
 
   selectedMediaIds = model<string[]>([]);
   selectedMediaId = model<string | null>(null);

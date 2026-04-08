@@ -8,10 +8,12 @@ export interface EnrichmentResultWithParsedData extends Omit<
 > {
   keywords: string[];
   mcqs: MCQ[];
+  llmCallId?: string | null;
 }
 
 export interface EnrichmentUpsertData {
   mediaId: string;
+  enrichmentPresetId?: string | null;
   title: string;
   summary: string;
   keywords: string[];
@@ -23,4 +25,6 @@ export interface EnrichmentRepository {
   upsertResult(data: EnrichmentUpsertData): Promise<void>;
   createJob(data: NewEnrichmentJob): Promise<EnrichmentJob>;
   updateJob(id: string, data: EnrichmentJobUpdate): Promise<void>;
+  updateJobLlmCallId(jobId: string, llmCallId: string): Promise<void>;
+  deleteResultsByEnrichmentPreset(presetId: string): Promise<void>;
 }

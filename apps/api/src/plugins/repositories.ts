@@ -4,7 +4,8 @@ import type { CourseRepository } from '../repositories/course.repository.js';
 import type { EnrichmentRepository } from '../repositories/enrichment.repository.js';
 import type { IngestionRepository } from '../repositories/ingestion.repository.js';
 import type { ChatRepository } from '../repositories/chat.repository.js';
-import type { SettingsRepository } from '../repositories/settings.repository.js';
+import type { LlmCallRepository } from '../repositories/llm-call.repository.js';
+import type { PresetRepository } from '../repositories/preset.repository.js';
 
 export interface Repositories {
   media: MediaRepository;
@@ -12,7 +13,8 @@ export interface Repositories {
   enrichment: EnrichmentRepository;
   ingestion: IngestionRepository;
   chat: ChatRepository;
-  settings: SettingsRepository;
+  preset: PresetRepository;
+  llmCall: LlmCallRepository;
 }
 
 export default fp(
@@ -24,8 +26,9 @@ export default fp(
     const { SqliteIngestionRepository } =
       await import('../repositories/sqlite-ingestion.repository.js');
     const { SqliteChatRepository } = await import('../repositories/sqlite-chat.repository.js');
-    const { SqliteSettingsRepository } =
-      await import('../repositories/sqlite-settings.repository.js');
+    const { SqlitePresetRepository } = await import('../repositories/sqlite-preset.repository.js');
+    const { SqliteLlmCallRepository } =
+      await import('../repositories/sqlite-llm-call.repository.js');
 
     const repos: Repositories = {
       media: new SqliteMediaRepository(fastify.db),
@@ -33,7 +36,8 @@ export default fp(
       enrichment: new SqliteEnrichmentRepository(fastify.db),
       ingestion: new SqliteIngestionRepository(fastify.db),
       chat: new SqliteChatRepository(fastify.db),
-      settings: new SqliteSettingsRepository(fastify.db),
+      preset: new SqlitePresetRepository(fastify.db),
+      llmCall: new SqliteLlmCallRepository(fastify.db),
     };
 
     fastify.decorate('repos', repos);

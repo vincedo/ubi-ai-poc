@@ -14,12 +14,19 @@ beforeEach(async () => {
     id: 'm1',
     title: 'Video 1',
     type: 'video',
+    teacher: 'Test Teacher',
     transcriptionStatus: 'none',
-    ingestionStatus: 'none',
   });
 });
 
 describe('SqliteIngestionRepository', () => {
+  it('media fixture has correct fields including teacher', async () => {
+    const mediaRepo = new SqliteMediaRepository(db);
+    const media = await mediaRepo.findById('m1');
+    expect(media).not.toBeNull();
+    expect(media!.teacher).toBe('Test Teacher');
+  });
+
   it('upsertTranscript and findTranscriptByMedia', async () => {
     await repo.upsertTranscript({ mediaId: 'm1', rawText: 'Hello world', format: 'vtt' });
     const found = await repo.findTranscriptByMedia('m1');
@@ -37,13 +44,6 @@ describe('SqliteIngestionRepository', () => {
   it('findTranscriptByMedia returns null for missing', async () => {
     const found = await repo.findTranscriptByMedia('nonexistent');
     expect(found).toBeNull();
-  });
-
-  it('createIngestionJob and updateIngestionJob', async () => {
-    const job = await repo.createIngestionJob({ id: 'j1', mediaId: 'm1', model: 'mistral-embed' });
-    expect(job.status).toBe('queued');
-
-    await repo.updateIngestionJob('j1', { status: 'done', chunkCount: 10, tokenCount: 500 });
   });
 
   it('createTranscriptionJob and updateTranscriptionJob', async () => {

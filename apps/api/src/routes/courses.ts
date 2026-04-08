@@ -96,11 +96,11 @@ export const courseRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.delete<{ Params: { id: string; mediaId: string } }>(
     '/courses/:id/media/:mediaId',
     async (req, reply) => {
-      // Note: SQLite serializes writes, so the count-then-delete is safe against
-      // concurrent orphaning in this single-writer environment.
+      // SQLite serializes writes so the count-then-delete is safe here.
+      // WARNING: if this ever runs against a multi-writer backend, wrap in a transaction.
       const count = await fastify.repos.course.countCoursesForMedia(req.params.mediaId);
       if (count <= 1) {
-        return reply.code(400).send({ error: 'Cannot remove media from its last course' });
+        return reply.code(409).send({ error: 'Cannot remove media from its last course' });
       }
       try {
         await fastify.repos.course.removeMedia(req.params.id, req.params.mediaId);

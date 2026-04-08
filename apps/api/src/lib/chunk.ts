@@ -6,7 +6,7 @@ export type Citation =
 
 export interface Chunk {
   text: string;
-  citation: Citation;
+  startPos: number; // character offset of this chunk's start in the source text
   chunkIndex: number;
 }
 
@@ -18,7 +18,6 @@ export interface ChunkOptions {
 
 export function chunkText(
   text: string,
-  citation: Citation,
   startIndex = 0,
   options: ChunkOptions = { chunkSize: 2000, chunkOverlap: 400, sentenceAwareSplitting: false },
 ): Chunk[] {
@@ -48,7 +47,7 @@ export function chunkText(
 
     chunks.push({
       text: text.slice(pos, end),
-      citation,
+      startPos: pos,
       chunkIndex: startIndex + chunks.length,
     });
 

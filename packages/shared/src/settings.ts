@@ -1,21 +1,37 @@
 // --- Types ---
 
-export interface SettingOption<T> {
+export interface SettingOption<T = unknown> {
   value: T;
   label: string;
   description: string;
 }
 
-export interface SettingDefinition<T = unknown> {
+interface SettingDefinitionBase {
   key: keyof SettingsValues;
   label: string;
-  category: 'chunking' | 'retrieval' | 'embedding';
-  type: 'number' | 'string' | 'boolean';
-  defaultValue: T;
+  category: 'chunking' | 'retrieval' | 'embedding' | 'prompts';
   requiresReingestion: boolean;
-  options?: SettingOption<T>[];
   description?: string;
 }
+
+export type SettingDefinition =
+  | (SettingDefinitionBase & {
+      type: 'number';
+      defaultValue: number;
+      options?: SettingOption<number>[];
+    })
+  | (SettingDefinitionBase & {
+      type: 'string';
+      defaultValue: string;
+      options?: SettingOption<string>[];
+    })
+  | (SettingDefinitionBase & {
+      type: 'boolean';
+      defaultValue: boolean;
+      options?: SettingOption<boolean>[];
+    });
+
+export type PromptLevel = 'minimal' | 'average' | 'optimized' | 'optimized_fr';
 
 export interface SettingsValues {
   chunkSize: number;
@@ -24,6 +40,8 @@ export interface SettingsValues {
   topK: number;
   embeddingModel: string;
   distanceMetric: string;
+  chatSystemPrompt: PromptLevel;
+  enrichmentPrompt: PromptLevel;
 }
 
 export interface EmbeddingModelConfig {
@@ -31,6 +49,13 @@ export interface EmbeddingModelConfig {
   provider: 'mistral' | 'openai';
   dimensions: number;
 }
+
+/** Maps provider identifiers to their corresponding environment variable names. */
+export const PROVIDER_API_KEY_NAMES: Record<string, string> = {
+  mistral: 'MISTRAL_API_KEY',
+  openai: 'OPENAI_API_KEY',
+  anthropic: 'ANTHROPIC_API_KEY',
+};
 
 // --- Constants ---
 
@@ -47,6 +72,8 @@ export const DEFAULT_SETTINGS: SettingsValues = {
   topK: 5,
   embeddingModel: 'mistral-embed',
   distanceMetric: 'Cosine',
+  chatSystemPrompt: 'minimal',
+  enrichmentPrompt: 'minimal',
 };
 
 export const SETTINGS_DEFINITIONS: SettingDefinition[] = [
@@ -210,6 +237,66 @@ export const SETTINGS_DEFINITIONS: SettingDefinition[] = [
         label: 'Dot Product',
         description:
           'Measures alignment and magnitude. Fast, but requires normalized vectors for fair comparison.',
+      },
+    ],
+  },
+  // --- Prompts ---
+  {
+    key: 'chatSystemPrompt',
+    label: 'Chat System Prompt',
+    category: 'prompts',
+    type: 'string',
+    defaultValue: 'minimal',
+    requiresReingestion: false,
+    description: 'The system prompt that guides the LLM when answering questions in chat.',
+    options: [
+      {
+        value: 'minimal',
+        label: 'Minimal',
+        description:
+          'Basic instruction only. Short and generic — the LLM gets little guidance on tone, sourcing, or fallback behavior.',
+      },
+      {
+        value: 'average',
+        label: 'Average',
+        description:
+          'Adds source-citation instructions and an explicit "say I don\'t know" fallback. A good middle ground.',
+      },
+      {
+        value: 'optimized',
+        label: 'Optimized',
+        description:
+          'Full role framing, citation rules, structured-answer guidance, "I don\'t know" fallback, and few-shot examples.',
+      },
+    ],
+  },
+  {
+    key: 'enrichmentPrompt',
+    label: 'Enrichment Prompt',
+    category: 'prompts',
+    type: 'string',
+    defaultValue: 'minimal',
+    requiresReingestion: false,
+    description:
+      'The prompt used to generate enrichment metadata (title, summary, keywords, MCQs) from media transcripts.',
+    options: [
+      {
+        value: 'minimal',
+        label: 'Minimal',
+        description:
+          'One-line instruction. The LLM must infer output structure from the schema alone — no quality guidance.',
+      },
+      {
+        value: 'average',
+        label: 'Average',
+        description:
+          'Explicit requirements for each output field (title, summary, keywords, MCQs) with brief quality guidance.',
+      },
+      {
+        value: 'optimized',
+        label: 'Optimized',
+        description:
+          'Expert role framing, detailed per-field instructions, difficulty-varied MCQs, and a concrete few-shot example.',
       },
     ],
   },

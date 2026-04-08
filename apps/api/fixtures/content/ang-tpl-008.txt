@@ -1,0 +1,134 @@
+# Pipes
+
+## Overview
+
+Pipes are a special operator in Angular template expressions that allows you to transform data declaratively in your template. Angular pipes use the vertical bar character (`|`).
+
+```angular-ts
+import {Component} from '@angular/core';
+import {CurrencyPipe, DatePipe, TitleCasePipe} from '@angular/common';
+
+@Component({
+  selector: 'app-root',
+  imports: [CurrencyPipe, DatePipe, TitleCasePipe],
+  template: `
+    <main>
+      <h1>Purchases from {{ company | titlecase }} on {{ purchasedOn | date }}</h1>
+      <p>Total: {{ amount | currency }}</p>
+    </main>
+  `,
+})
+export class ShoppingCart {
+  amount = 123.45;
+  company = 'acme corporation';
+  purchasedOn = '2024-07-08';
+}
+```
+
+NOTE: Angular's pipe syntax deviates from standard JavaScript, which uses the vertical bar character for the bitwise OR operator. Angular template expressions do not support bitwise operators.
+
+### Built-in Pipes
+
+Angular includes a set of built-in pipes in the `@angular/common` package:
+
+| Name | Description |
+| --- | --- |
+| `AsyncPipe` | Read the value from a `Promise` or an RxJS `Observable`. |
+| `CurrencyPipe` | Transforms a number to a currency string, formatted according to locale rules. |
+| `DatePipe` | Formats a `Date` value according to locale rules. |
+| `DecimalPipe` | Transforms a number into a string with a decimal point, formatted according to locale rules. |
+| `I18nPluralPipe` | Maps a value to a string that pluralizes the value according to locale rules. |
+| `I18nSelectPipe` | Maps a key to a custom selector that returns a desired value. |
+| `JsonPipe` | Transforms an object to a string representation via `JSON.stringify`, intended for debugging. |
+| `KeyValuePipe` | Transforms Object or Map into an array of key value pairs. |
+| `LowerCasePipe` | Transforms text to all lower case. |
+| `PercentPipe` | Transforms a number to a percentage string, formatted according to locale rules. |
+| `SlicePipe` | Creates a new Array or String containing a subset (slice) of the elements. |
+| `TitleCasePipe` | Transforms text to title case. |
+| `UpperCasePipe` | Transforms text to all upper case. |
+
+## Using pipes
+
+```angular-html
+<p>Total: {{ amount | currency }}</p>
+```
+
+### Combining multiple pipes in the same expression
+
+```angular-html
+<p>The event will occur on {{ scheduledOn | date | uppercase }}.</p>
+```
+
+### Passing parameters to pipes
+
+```angular-html
+<p>The event will occur at {{ scheduledOn | date: 'hh:mm' }}.</p>
+```
+
+Some pipes may accept multiple parameters separated by the colon character (`:`):
+
+```angular-html
+<p>The event will occur at {{ scheduledOn | date: 'hh:mm' : 'UTC' }}.</p>
+```
+
+## How pipes work
+
+Conceptually, pipes are functions that accept an input value and return a transformed value.
+
+### Pipe operator precedence
+
+The pipe operator has lower precedence than other binary operators, including `+`, `-`, `*`, `/`, `%`, `&&`, `||`, and `??`.
+
+```angular-html
+{{ firstName + lastName | uppercase }}
+```
+
+The pipe operator has higher precedence than the conditional (ternary) operator. Always use parentheses in your expressions when operator precedence may be ambiguous.
+
+### Change detection with pipes
+
+By default, all pipes are considered `pure`, which means that it only executes when a primitive input value or an object reference is changed. Pure pipes offer a performance advantage.
+
+Mutations to object properties or array items are not detected unless the entire object or array reference is replaced.
+
+## Creating custom pipes
+
+```angular-ts
+import {Pipe, PipeTransform} from '@angular/core';
+
+@Pipe({
+  name: 'kebabCase',
+})
+export class KebabCasePipe implements PipeTransform {
+  transform(value: string): string {
+    return value.toLowerCase().replace(/ /g, '-');
+  }
+}
+```
+
+### Naming convention for custom pipes
+
+- `name` - camelCase is recommended. Do not use hyphens.
+- `class name` - PascalCase version of the `name` with `Pipe` appended to the end
+
+### Adding parameters to a custom pipe
+
+You can add parameters to your transformation by adding additional parameters to the `transform` method.
+
+### Detecting change within arrays or objects
+
+When you want a pipe to detect changes within arrays or objects, it must be marked as an impure function by passing the `pure` flag with a value of `false`.
+
+```angular-ts
+@Pipe({
+  name: 'joinNamesImpure',
+  pure: false,
+})
+export class JoinNamesImpurePipe implements PipeTransform {
+  transform(names: string[]): string {
+    return names.join();
+  }
+}
+```
+
+IMPORTANT: Avoid creating impure pipes unless absolutely necessary, as they can incur a significant performance penalty.

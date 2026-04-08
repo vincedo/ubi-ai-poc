@@ -1,0 +1,486 @@
+<div class="presets-page">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Presets</h1>
+      <p class="page-sub">Create and manage chat and enrichment presets</p>
+    </div>
+  </div>
+
+  <mat-tab-group [selectedIndex]="activeTabIndex()" (selectedIndexChange)="onTabChange($event)">
+    <!-- Chat Presets Tab -->
+    <mat-tab label="Chat Presets">
+      <div class="tab-content">
+        @if (loadingChat()) {
+          <div class="loading-spinner">
+            <mat-spinner diameter="40"></mat-spinner>
+            <p>Loading chat presets...</p>
+          </div>
+        } @else if (chatPresets() && chatPresets().length > 0) {
+          <div class="presets-list">
+            @for (preset of chatPresets(); track preset.id) {
+              <div class="preset-card">
+                <div class="preset-header">
+                  @if (editingId() === preset.id) {
+                    <div class="preset-rename">
+                      <input
+                        class="rename-input"
+                        type="text"
+                        [value]="editingName()"
+                        (input)="onEditNameInput($event)"
+                        (keydown)="onEditNameKey($event, () => saveRenameChatPreset(preset.id))"
+                        aria-label="Rename preset"
+                        autofocus
+                      />
+                      <button class="btn-primary btn-sm" (click)="saveRenameChatPreset(preset.id)">Save</button>
+                      <button class="btn-ghost btn-sm" (click)="cancelRename()">Cancel</button>
+                    </div>
+                  } @else {
+                    <h3 class="preset-name">
+                      {{ preset.name }}
+                      <button
+                        class="btn-icon rename-btn"
+                        (click)="startRename(preset.id, preset.name)"
+                        aria-label="Rename preset"
+                        title="Rename"
+                      >
+                        <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+                      </button>
+                    </h3>
+                  }
+                  <div class="preset-actions">
+                    <button
+                      class="btn-danger btn-sm"
+                      (click)="deleteChatPreset(preset)"
+                      [disabled]="deletingId() === preset.id"
+                    >
+                      {{ deletingId() === preset.id ? 'Deleting...' : 'Delete' }}
+                    </button>
+                  </div>
+                </div>
+                <div class="preset-groups">
+                  <div class="preset-group">
+                    <span class="group-label">Chunking</span>
+                    <div class="group-row">
+                      <span class="row-key">Size</span>
+                      <span class="row-val">{{ labelFor(chunkSizeDef, preset.chunkSize) }}</span>
+                    </div>
+                    <div class="group-row">
+                      <span class="row-key">Overlap</span>
+                      <span class="row-val">{{ labelFor(chunkOverlapDef, preset.chunkOverlap) }}</span>
+                    </div>
+                    <div class="group-row">
+                      <span class="row-key">Sentence</span>
+                      <span class="row-val">{{ preset.sentenceAwareSplitting ? 'On' : 'Off' }}</span>
+                    </div>
+                  </div>
+                  <div class="preset-group">
+                    <span class="group-label">Embedding</span>
+                    <div class="group-row">
+                      <span class="row-key">Model</span>
+                      <span class="row-val">{{ labelFor(embeddingModelDef, preset.embeddingModel) }}</span>
+                    </div>
+                    <div class="group-row">
+                      <span class="row-key">Metric</span>
+                      <span class="row-val">{{ labelFor(distanceMetricDef, preset.distanceMetric) }}</span>
+                    </div>
+                  </div>
+                  <div class="preset-group">
+                    <span class="group-label">Retrieval</span>
+                    <div class="group-row">
+                      <span class="row-key">Top-K</span>
+                      <span class="row-val">{{ labelFor(topKDef, preset.retrievalTopK) }}</span>
+                    </div>
+                  </div>
+                  <div class="preset-group">
+                    <span class="group-label">Generation</span>
+                    <div class="group-row">
+                      <span class="row-key">Model</span>
+                      <span class="row-val">{{ lmLabel(preset.languageModel) }}</span>
+                    </div>
+                    <div class="group-row">
+                      <span class="row-key">Prompt</span>
+                      <span class="row-val">{{ labelFor(chatSystemPromptDef, preset.chatSystemPrompt) }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="preset-meta">
+                  <span class="status-badge" [class.done]="preset.ingestionStatus === 'done'">{{
+                    preset.ingestionStatus
+                  }}</span>
+                  @if (preset.chunkCount !== null) {
+                    <span class="meta-text">{{ preset.chunkCount }} chunks</span>
+                  }
+                  @if (preset.tokenCount !== null) {
+                    <span class="meta-text">{{ preset.tokenCount }} tokens</span>
+                  }
+                  <span class="preset-id">
+                    <span class="preset-id__value">{{ preset.id }}</span>
+                    <button
+                      class="btn-ghost btn-sm preset-id__copy"
+                      title="Copy preset ID"
+                      (click)="copyPresetId(preset.id)"
+                    >
+                      <span class="material-symbols-outlined">content_copy</span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="empty-state">
+            <p>No chat presets yet. Create one to get started.</p>
+          </div>
+        }
+
+        <div class="create-form-section">
+          <h3 class="form-title">Create New Chat Preset</h3>
+          <form [formGroup]="chatForm" (ngSubmit)="createChatPreset()" class="preset-form">
+
+            <!-- Preset Name -->
+            <div class="form-field">
+              <label for="chat-name" class="field-label">Preset Name *</label>
+              <input
+                type="text"
+                id="chat-name"
+                formControlName="name"
+                placeholder="e.g., Video Indexing"
+                class="form-input"
+              />
+              @if (chatForm.get('name')?.errors?.['minlength'] && chatForm.get('name')?.touched) {
+                <p class="field-error">Name must be at least 5 characters.</p>
+              }
+            </div>
+
+            <!-- Chunking -->
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Chunking</legend>
+
+              <div class="form-field">
+                <p class="field-label">{{ chunkSizeDef.label }} *</p>
+                <p class="field-description">{{ chunkSizeDef.description }}</p>
+                <div class="radio-card-group" role="group" aria-label="Chunk size">
+                  @for (opt of chunkSizeDef.options ?? []; track opt.value) {
+                    <label class="radio-card" [class.selected]="chatValues().chunkSize === opt.value">
+                      <input type="radio" formControlName="chunkSize" [value]="opt.value" />
+                      {{ opt.label }}
+                    </label>
+                  }
+                </div>
+                @if (chunkSizeHint()) {
+                  <p class="option-hint">{{ chunkSizeHint() }}</p>
+                }
+              </div>
+
+              <div class="form-field">
+                <p class="field-label">{{ chunkOverlapDef.label }} *</p>
+                <p class="field-description">{{ chunkOverlapDef.description }}</p>
+                <div class="radio-card-group" role="group" aria-label="Chunk overlap">
+                  @for (opt of chunkOverlapDef.options ?? []; track opt.value) {
+                    <label class="radio-card" [class.selected]="chatValues().chunkOverlap === opt.value">
+                      <input type="radio" formControlName="chunkOverlap" [value]="opt.value" />
+                      {{ opt.label }}
+                    </label>
+                  }
+                </div>
+                @if (chunkOverlapHint()) {
+                  <p class="option-hint">{{ chunkOverlapHint() }}</p>
+                }
+              </div>
+
+              <div class="form-field">
+                <p class="field-label">{{ sentenceAwareDef.label }}</p>
+                <p class="field-description">{{ sentenceAwareDef.description }}</p>
+                <label class="toggle-switch">
+                  <input type="checkbox" class="toggle-input" formControlName="sentenceAwareSplitting" />
+                  <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                  <span class="toggle-label">{{ chatValues().sentenceAwareSplitting ? 'On' : 'Off' }}</span>
+                </label>
+                @if (sentenceAwareHint()) {
+                  <p class="option-hint">{{ sentenceAwareHint() }}</p>
+                }
+              </div>
+            </fieldset>
+
+            <!-- Embedding -->
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Embedding</legend>
+
+              <div class="form-field">
+                <p class="field-label">{{ embeddingModelDef.label }} *</p>
+                <p class="field-description">{{ embeddingModelDef.description }}</p>
+                <div class="radio-card-group" role="group" aria-label="Embedding model">
+                  @for (opt of embeddingModelDef.options ?? []; track opt.value) {
+                    <label
+                      class="radio-card"
+                      [class.selected]="chatValues().embeddingModel === opt.value"
+                      [class.disabled]="!isEmbeddingModelAvailable(opt.value)"
+                    >
+                      <input
+                        type="radio"
+                        formControlName="embeddingModel"
+                        [value]="opt.value"
+                        [attr.disabled]="!isEmbeddingModelAvailable(opt.value) ? true : null"
+                      />
+                      {{ opt.label }}
+                      @if (!isEmbeddingModelAvailable(opt.value)) {
+                        <span class="no-key-badge">No API key</span>
+                      }
+                    </label>
+                  }
+                </div>
+                @if (embeddingModelHint()) {
+                  <p class="option-hint">{{ embeddingModelHint() }}</p>
+                }
+              </div>
+
+              <div class="form-field">
+                <p class="field-label">{{ distanceMetricDef.label }} *</p>
+                <p class="field-description">{{ distanceMetricDef.description }}</p>
+                <div class="radio-card-group" role="group" aria-label="Distance metric">
+                  @for (opt of distanceMetricDef.options ?? []; track opt.value) {
+                    <label class="radio-card" [class.selected]="chatValues().distanceMetric === opt.value">
+                      <input type="radio" formControlName="distanceMetric" [value]="opt.value" />
+                      {{ opt.label }}
+                    </label>
+                  }
+                </div>
+                @if (distanceMetricHint()) {
+                  <p class="option-hint">{{ distanceMetricHint() }}</p>
+                }
+              </div>
+            </fieldset>
+
+            <!-- Retrieval -->
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Retrieval</legend>
+
+              <div class="form-field">
+                <p class="field-label">{{ topKDef.label }} *</p>
+                <p class="field-description">{{ topKDef.description }}</p>
+                <div class="radio-card-group" role="group" aria-label="Top-K">
+                  @for (opt of topKDef.options ?? []; track opt.value) {
+                    <label class="radio-card" [class.selected]="chatValues().retrievalTopK === opt.value">
+                      <input type="radio" formControlName="retrievalTopK" [value]="opt.value" />
+                      {{ opt.label }}
+                    </label>
+                  }
+                </div>
+                @if (topKHint()) {
+                  <p class="option-hint">{{ topKHint() }}</p>
+                }
+              </div>
+            </fieldset>
+
+            <!-- Generation -->
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Generation</legend>
+
+              <div class="form-field">
+                <p class="field-label">Language Model *</p>
+                <div class="radio-card-group" role="group" aria-label="Language model">
+                  @for (model of languageModels; track model.id) {
+                    <label
+                      class="radio-card"
+                      [class.selected]="chatValues().languageModel === model.id"
+                      [class.disabled]="!isProviderAvailable(model.provider)"
+                    >
+                      <input
+                        type="radio"
+                        formControlName="languageModel"
+                        [value]="model.id"
+                        [attr.disabled]="!isProviderAvailable(model.provider) ? true : null"
+                      />
+                      {{ model.label }}
+                      @if (!isProviderAvailable(model.provider)) {
+                        <span class="no-key-badge">No API key</span>
+                      }
+                    </label>
+                  }
+                </div>
+                @if (languageModelChatHint()) {
+                  <p class="option-hint">{{ languageModelChatHint() }}</p>
+                }
+              </div>
+
+              <div class="form-field">
+                <p class="field-label">{{ chatSystemPromptDef.label }} *</p>
+                <p class="field-description">{{ chatSystemPromptDef.description }}</p>
+                <div class="radio-card-group" role="group" aria-label="System prompt">
+                  @for (opt of chatSystemPromptDef.options ?? []; track opt.value) {
+                    <label class="radio-card" [class.selected]="chatValues().chatSystemPrompt === opt.value">
+                      <input type="radio" formControlName="chatSystemPrompt" [value]="opt.value" />
+                      {{ opt.label }}
+                    </label>
+                  }
+                </div>
+                @if (chatSystemPromptHint()) {
+                  <p class="option-hint">{{ chatSystemPromptHint() }}</p>
+                }
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" [disabled]="creatingChat()">
+                {{ creatingChat() ? 'Creating...' : 'Create Chat Preset' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Enrichment Presets Tab -->
+    <mat-tab label="Enrichment Presets">
+      <div class="tab-content">
+        @if (loadingEnrichment()) {
+          <div class="loading-spinner">
+            <mat-spinner diameter="40"></mat-spinner>
+            <p>Loading enrichment presets...</p>
+          </div>
+        } @else if (enrichmentPresets() && enrichmentPresets().length > 0) {
+          <div class="presets-list">
+            @for (preset of enrichmentPresets(); track preset.id) {
+              <div class="preset-card">
+                <div class="preset-header">
+                  @if (editingId() === preset.id) {
+                    <div class="preset-rename">
+                      <input
+                        class="rename-input"
+                        type="text"
+                        [value]="editingName()"
+                        (input)="onEditNameInput($event)"
+                        (keydown)="onEditNameKey($event, () => saveRenameEnrichmentPreset(preset.id))"
+                        aria-label="Rename preset"
+                        autofocus
+                      />
+                      <button class="btn-primary btn-sm" (click)="saveRenameEnrichmentPreset(preset.id)">Save</button>
+                      <button class="btn-ghost btn-sm" (click)="cancelRename()">Cancel</button>
+                    </div>
+                  } @else {
+                    <h3 class="preset-name">
+                      {{ preset.name }}
+                      <button
+                        class="btn-icon rename-btn"
+                        (click)="startRename(preset.id, preset.name)"
+                        aria-label="Rename preset"
+                        title="Rename"
+                      >
+                        <span class="material-symbols-outlined" aria-hidden="true">edit</span>
+                      </button>
+                    </h3>
+                  }
+                  <div class="preset-actions">
+                    <button
+                      class="btn-danger btn-sm"
+                      (click)="deleteEnrichmentPreset(preset)"
+                      [disabled]="deletingId() === preset.id"
+                    >
+                      {{ deletingId() === preset.id ? 'Deleting...' : 'Delete' }}
+                    </button>
+                  </div>
+                </div>
+                <div class="preset-groups">
+                  <div class="preset-group">
+                    <span class="group-label">Generation</span>
+                    <div class="group-row">
+                      <span class="row-key">Model</span>
+                      <span class="row-val">{{ lmLabel(preset.languageModel) }}</span>
+                    </div>
+                    <div class="group-row">
+                      <span class="row-key">Prompt</span>
+                      <span class="row-val">{{ labelFor(enrichmentPromptDef, preset.enrichmentPrompt) }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="empty-state">
+            <p>No enrichment presets yet. Create one to get started.</p>
+          </div>
+        }
+
+        <div class="create-form-section">
+          <h3 class="form-title">Create New Enrichment Preset</h3>
+          <form
+            [formGroup]="enrichmentForm"
+            (ngSubmit)="createEnrichmentPreset()"
+            class="preset-form"
+          >
+
+            <!-- Preset Name -->
+            <div class="form-field">
+              <label for="enrich-name" class="field-label">Preset Name *</label>
+              <input
+                type="text"
+                id="enrich-name"
+                formControlName="name"
+                placeholder="e.g., Standard Enrichment"
+                class="form-input"
+              />
+              @if (enrichmentForm.get('name')?.errors?.['minlength'] && enrichmentForm.get('name')?.touched) {
+                <p class="field-error">Name must be at least 5 characters.</p>
+              }
+            </div>
+
+            <!-- Generation -->
+            <fieldset class="form-fieldset">
+              <legend class="fieldset-legend">Generation</legend>
+
+              <div class="form-field">
+                <p class="field-label">Language Model *</p>
+                <div class="radio-card-group" role="group" aria-label="Language model">
+                  @for (model of languageModels; track model.id) {
+                    <label
+                      class="radio-card"
+                      [class.selected]="enrichValues().languageModel === model.id"
+                      [class.disabled]="!isProviderAvailable(model.provider)"
+                    >
+                      <input
+                        type="radio"
+                        formControlName="languageModel"
+                        [value]="model.id"
+                        [attr.disabled]="!isProviderAvailable(model.provider) ? true : null"
+                      />
+                      {{ model.label }}
+                      @if (!isProviderAvailable(model.provider)) {
+                        <span class="no-key-badge">No API key</span>
+                      }
+                    </label>
+                  }
+                </div>
+                @if (languageModelEnrichHint()) {
+                  <p class="option-hint">{{ languageModelEnrichHint() }}</p>
+                }
+              </div>
+
+              <div class="form-field">
+                <p class="field-label">{{ enrichmentPromptDef.label }} *</p>
+                <p class="field-description">{{ enrichmentPromptDef.description }}</p>
+                <div class="radio-card-group" role="group" aria-label="Enrichment prompt">
+                  @for (opt of enrichmentPromptDef.options ?? []; track opt.value) {
+                    <label class="radio-card" [class.selected]="enrichValues().enrichmentPrompt === opt.value">
+                      <input type="radio" formControlName="enrichmentPrompt" [value]="opt.value" />
+                      {{ opt.label }}
+                    </label>
+                  }
+                </div>
+                @if (enrichmentPromptHint()) {
+                  <p class="option-hint">{{ enrichmentPromptHint() }}</p>
+                }
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" [disabled]="creatingEnrichment()">
+                {{ creatingEnrichment() ? 'Creating...' : 'Create Enrichment Preset' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

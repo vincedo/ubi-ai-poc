@@ -6,10 +6,16 @@ import {
   OnInit,
   DestroyRef,
 } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatDialog } from '@angular/material/dialog';
 import { CourseService, type CourseDetail } from '../../services/course.service';
 import { MediaService } from '../../services/media.service';
+import { NotificationService } from '../../services/notification.service';
+import {
+  ConfirmDialogComponent,
+  type ConfirmDialogData,
+} from '../../shared/confirm-dialog/confirm-dialog.component';
 import type { MediaItem } from '@ubi-ai/shared';
 
 @Component({
@@ -21,8 +27,11 @@ import type { MediaItem } from '@ubi-ai/shared';
 })
 export class CourseDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
   private courseService = inject(CourseService);
   private mediaService = inject(MediaService);
+  private notification = inject(NotificationService);
   private destroyRef = inject(DestroyRef);
 
   course = signal<CourseDetail | null>(null);
@@ -128,5 +137,31 @@ export class CourseDetailComponent implements OnInit {
 
   onInputDescription(event: Event): void {
     this.editDescription.set((event.target as HTMLInputElement).value);
+  }
+
+  deleteCourse(): void {
+    const c = this.course()!;
+    const data: ConfirmDialogData = {
+      title: 'Delete Course',
+      message: `Are you sure you want to delete "${c.title}"? This cannot be undone.`,
+      confirmLabel: 'Delete',
+      confirmColor: 'danger',
+    };
+    this.dialog
+      .open(ConfirmDialogComponent, { data, autoFocus: 'dialog' })
+      .afterClosed()
+      .subscribe((confirmed) => {
+        if (!confirmed) return;
+        this.courseService
+          .delete(c.id)
+          .pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe({
+            next: () => {
+              this.notification.success(`"${c.title}" deleted`);
+              void this.router.navigate(['/courses']);
+            },
+            error: (err) => console.error('Failed to delete course:', err),
+          });
+      });
   }
 }

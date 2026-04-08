@@ -19,7 +19,7 @@
   justify-content: center;
   height: 60%;
   gap: 1rem;
-  color: #94a3b8;
+  color: var(--color-on-surface-variant);
 
   .empty-icon {
     font-size: 3rem;
@@ -31,8 +31,8 @@
 
 .editor-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  gap: 1rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid rgba(194, 198, 212, 0.15);
   margin-bottom: 2rem;
@@ -48,7 +48,7 @@
     font-family: 'Manrope', sans-serif;
     font-size: 1.875rem;
     font-weight: 800;
-    color: #0f172a;
+    color: var(--color-on-surface);
     margin: 0.25rem 0 0;
   }
   .header-actions {
@@ -60,6 +60,10 @@
 
 .model-select {
   font-size: 0.8125rem;
+
+  ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
 
   ::ng-deep .mat-mdc-form-field-infix {
     min-height: 36px;
@@ -73,23 +77,6 @@
   }
 }
 
-.btn-ghost {
-  padding: 0.625rem 1.25rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(194, 198, 212, 0.3);
-  background: none;
-  color: #374151;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  &:hover {
-    background: #f8fafc;
-  }
-}
-
 .enrich-cta,
 .loading-state,
 .publish-cta {
@@ -100,16 +87,35 @@
   gap: 1rem;
 }
 
+.preset-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.preset-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.preset-select {
+  background: var(--color-surface-container);
+  border: 1px solid rgba(194, 198, 212, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-on-surface);
+  cursor: pointer;
+}
+
 .publish-hint {
   font-size: 0.875rem;
-  color: #64748b;
+  color: var(--color-on-surface-variant);
   margin: 0;
-}
-.btn-lg {
-  padding: 1rem 3rem;
-  border-radius: 0.75rem;
-  font-size: 1.125rem;
-  box-shadow: 0 8px 16px rgba(0, 71, 141, 0.25);
 }
 
 .spin {
@@ -122,7 +128,7 @@
 }
 
 .save-confirmed-icon {
-  color: #16a34a;
+  color: var(--color-success);
 }
 
 .field-cards {
@@ -150,7 +156,7 @@
 .card-label {
   font-size: 0.6875rem;
   font-weight: 700;
-  color: #94a3b8;
+  color: var(--color-on-surface-variant);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: flex;
@@ -192,7 +198,7 @@
   width: 100%;
   border: none;
   background: transparent;
-  color: #1e293b;
+  color: var(--color-on-surface);
   font-family: 'Inter', sans-serif;
   resize: none;
   &:focus {
@@ -216,7 +222,7 @@
   align-items: center;
   gap: 0.5rem;
   background: var(--color-surface-container);
-  color: #374151;
+  color: var(--color-on-surface-variant);
   padding: 0.375rem 0.75rem;
   border-radius: 0.5rem;
   font-size: 0.75rem;
@@ -225,7 +231,7 @@
   .chip-close {
     font-size: 1rem;
     cursor: pointer;
-    color: #94a3b8;
+    color: var(--color-on-surface-variant);
     &:hover {
       color: var(--color-error);
     }
@@ -251,7 +257,7 @@
 .mcq-question {
   font-size: 1rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--color-on-surface);
   margin: 0 0 1rem;
 }
 
@@ -284,8 +290,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e2e8f0;
-  color: #64748b;
+  background: var(--color-surface-container-highest);
+  color: var(--color-on-surface-variant);
   font-size: 0.625rem;
   font-weight: 700;
   &.correct-label {
@@ -296,7 +302,7 @@
 
 .option-text {
   font-size: 0.875rem;
-  color: #374151;
+  color: var(--color-on-surface-variant);
   flex: 1;
   margin: 0;
 }
@@ -334,7 +340,7 @@
 }
 .explanation-text {
   font-size: 0.75rem;
-  color: #793100;
+  color: var(--color-tertiary);
   line-height: 1.5;
   margin: 0;
 }

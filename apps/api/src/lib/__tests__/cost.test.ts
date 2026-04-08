@@ -12,9 +12,9 @@ describe('estimateCost', () => {
     expect(cost).toBeCloseTo(0.2 + 0.6);
   });
 
-  it('calculates cost for open-mistral-nemo', () => {
-    const cost = estimateCost('open-mistral-nemo', 1_000_000, 1_000_000);
-    expect(cost).toBeCloseTo(0.15 + 0.15);
+  it('calculates cost for claude-sonnet-4-20250514', () => {
+    const cost = estimateCost('claude-sonnet-4-20250514', 1_000_000, 1_000_000);
+    expect(cost).toBeCloseTo(2.76 + 13.8);
   });
 
   it('calculates cost for mistral-embed (output tokens = 0)', () => {
@@ -22,9 +22,10 @@ describe('estimateCost', () => {
     expect(cost).toBeCloseTo(0.1);
   });
 
-  it('returns 0 for unknown model', () => {
-    const cost = estimateCost('unknown-model', 1000, 500);
-    expect(cost).toBe(0);
+  it('throws for unknown model', () => {
+    expect(() => estimateCost('unknown-model', 1000, 500)).toThrow(
+      'Unknown model for cost estimation: "unknown-model"',
+    );
   });
 
   it('returns 0 for zero tokens', () => {

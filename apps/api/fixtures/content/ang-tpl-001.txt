@@ -1,0 +1,130 @@
+# Binding Dynamic Text, Properties and Attributes
+
+In Angular, a **binding** creates a dynamic connection between a component's template and its data. This connection ensures that changes to the component's data automatically update the rendered template.
+
+## Render dynamic text with text interpolation
+
+You can bind dynamic text in templates with double curly braces, which tells Angular that it is responsible for the expression inside and ensuring it is updated correctly. This is called **text interpolation**.
+
+```angular-ts
+@Component({
+  template: `
+    <p>Your color preference is {{ theme }}.</p>
+  `,
+  ...
+})
+export class App {
+  theme = 'dark';
+}
+```
+
+Bindings that change over time should read values from signals. Angular tracks the signals read in the template, and updates the rendered page when those signal values change.
+
+```angular-ts
+@Component({
+  template: `
+    <p>{{ welcomeMessage }}</p>
+    <p>Your color preference is {{ theme() }}.</p>
+  `
+  ...
+})
+export class App {
+  welcomeMessage = "Welcome, enjoy this app that we built for you";
+  theme = signal('dark');
+}
+```
+
+You can use text interpolation anywhere you would normally write text in HTML. All expression values are converted to a string.
+
+## Binding dynamic properties and attributes
+
+Angular supports binding dynamic values into object properties and HTML attributes with square brackets.
+
+### Native element properties
+
+```angular-html
+<!-- Bind the `disabled` property on the button element's DOM object -->
+<button [disabled]="isFormValid()">Save</button>
+```
+
+### Component and directive properties
+
+```angular-html
+<!-- Bind the `value` property on the `MyListbox` component instance. -->
+<my-listbox [value]="mySelection()" />
+```
+
+### Attributes
+
+When you need to set HTML attributes that do not have corresponding DOM properties, use the `attr.` prefix:
+
+```angular-html
+<ul [attr.role]="listRole()">
+```
+
+If the value of an attribute binding is `null`, Angular removes the attribute by calling `removeAttribute`.
+
+### Text interpolation in properties and attributes
+
+```angular-html
+<img src="profile-photo.jpg" alt="Profile photo of {{ firstName() }}" />
+```
+
+## CSS class and style property bindings
+
+### CSS classes
+
+```angular-html
+<!-- When `isExpanded` is truthy, add the `expanded` CSS class. -->
+<ul [class.expanded]="isExpanded()">
+```
+
+You can also bind directly to the `class` property. Angular accepts three types of value:
+
+| Description of `class` value | TypeScript type |
+| --- | --- |
+| A string containing one or more CSS classes separated by spaces | `string` |
+| An array of CSS class strings | `string[]` |
+| An object where each property name is a CSS class name and each value determines whether that class is applied | `Record<string, any>` |
+
+```angular-ts
+@Component({
+  template: `
+    <ul [class]="listClasses"> ... </ul>
+    <section [class]="sectionClasses()"> ... </section>
+    <button [class]="buttonClasses()"> ... </button>
+  `,
+  ...
+})
+export class UserProfile {
+  listClasses = 'full-width outlined';
+  sectionClasses = signal(['expandable', 'elevated']);
+  buttonClasses = signal({
+    highlighted: true,
+    embiggened: false,
+  });
+}
+```
+
+When binding `class` to an array or an object, Angular compares the previous value to the current value with the triple-equals operator (`===`). You must create a new object or array instance when you modify these values in order for Angular to apply any updates.
+
+### CSS style properties
+
+```angular-html
+<section [style.display]="isExpanded() ? 'block' : 'none'">
+<section [style.height.px]="sectionHeightInPixels()">
+```
+
+You can also set multiple style values in one binding. Angular accepts `string` or `Record<string, any>`.
+
+## ARIA attributes
+
+Angular supports binding string values to ARIA attributes:
+
+```angular-html
+<button type="button" [aria-label]="actionLabel()">
+  {{ actionLabel() }}
+</button>
+```
+
+Angular writes the string value to the element's `aria-label` attribute and removes it when the bound value is `null`.

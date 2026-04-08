@@ -1,0 +1,67 @@
+# TypeScript Narrowing
+
+TypeScript's narrowing feature automatically refines variable types through control flow analysis. The documentation covers multiple techniques for narrowing types:
+
+## Type Guard Mechanisms
+
+**`typeof` Guards**: Check primitive types using `typeof` operator, though notably "typeof null" returns "object"—a JavaScript quirk that TypeScript accounts for.
+
+**Truthiness Checks**: JavaScript conditionals coerce values like `0`, `null`, and `undefined` to `false`. This behavior helps eliminate null/undefined from union types, though the documentation warns: "truthiness checking on primitives can often be error prone."
+
+**Equality Narrowing**: Comparisons with `===`, `!==`, `==`, and `!=` allow TypeScript to narrow types by determining which possibilities remain after comparison.
+
+**`in` Operator**: Checks property existence within objects, useful for distinguishing between types in a union that have different properties.
+
+**`instanceof` Narrowing**: Verifies prototype chain membership, particularly helpful for class instances.
+
+## Advanced Patterns
+
+**User-Defined Type Predicates**: Functions returning `parameterName is Type` enable custom narrowing logic beyond built-in mechanisms.
+
+```ts
+function isString(value: unknown): value is string {
+  return typeof value === 'string';
+}
+```
+
+**Discriminated Unions**: Structures with a common literal-typed property (discriminant) allow type-safe narrowing. For example, `Circle` and `Square` interfaces sharing a `kind` property:
+
+```ts
+interface Circle {
+  kind: 'circle';
+  radius: number;
+}
+interface Square {
+  kind: 'square';
+  sideLength: number;
+}
+type Shape = Circle | Square;
+
+function getArea(shape: Shape) {
+  if (shape.kind === 'circle') {
+    return Math.PI * shape.radius ** 2;
+  }
+  return shape.sideLength ** 2;
+}
+```
+
+**Exhaustiveness Checking**: The `never` type catches unhandled cases in switch statements, ensuring all union members receive coverage.
+
+```ts
+function assertNever(x: never): never {
+  throw new Error('Unexpected object: ' + x);
+}
+
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case 'circle':
+      return Math.PI * shape.radius ** 2;
+    case 'square':
+      return shape.sideLength ** 2;
+    default:
+      return assertNever(shape);
+  }
+}
+```
+
+The core principle: "TypeScript's type system aims to make it as easy as possible to write typical JavaScript code without bending over backwards to get type safety."

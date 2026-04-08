@@ -1,0 +1,72 @@
+<nav class="session-panel" aria-label="Chat sessions" (keydown)="onDeleteKeydown($event)">
+  <button class="btn-primary new-chat-btn" (click)="chatService.newChat()">
+    <span class="material-symbols-outlined">add</span>
+    New Chat
+  </button>
+
+  <div class="session-list">
+    @if (chatService.sessions().length === 0) {
+      <p class="empty-state">No conversations yet. Start a new chat!</p>
+    }
+
+    @for (session of chatService.sessions(); track session.id) {
+      @if (confirmingDeleteId() === session.id) {
+        <div class="session-card confirming" role="alertdialog" aria-label="Confirm delete">
+          <p class="confirm-text">Delete this conversation?</p>
+          <div class="confirm-actions">
+            <button class="btn-danger btn-sm" (click)="confirmDelete($event, session.id)">
+              Delete
+            </button>
+            <button class="btn-ghost btn-sm" (click)="cancelDelete($event)">Cancel</button>
+          </div>
+        </div>
+      } @else {
+        <button
+          class="session-card"
+          [class.active]="chatService.currentSessionId() === session.id"
+          [attr.aria-current]="chatService.currentSessionId() === session.id ? 'true' : null"
+          (click)="selectSession(session)"
+        >
+          @if (editingSessionId() === session.id) {
+            <input
+              class="session-title-input"
+              type="text"
+              [ngModel]="editingTitle()"
+              (ngModelChange)="editingTitle.set($event)"
+              (keydown)="onRenameKeydown($event, session.id)"
+              (blur)="commitRename(session.id)"
+              (click)="$event.stopPropagation()"
+              aria-label="Rename session"
+              autofocus
+            />
+          } @else {
+            <span class="session-title">{{ session.title || 'Untitled conversation' }}</span>
+          }
+          <span class="session-meta">
+            {{ session.createdAt | date: 'short' }} · {{ session.chatPresetName }}
+          </span>
+          <span class="session-stats">
+            {{ session.totalTokens | formatTokens }} tokens · {{ session.totalCost | formatCost }} ·
+            {{ session.scopeSummary.mediaCount }} media
+          </span>
+          <div class="session-actions">
+            <button
+              class="btn-icon-sm"
+              (click)="startRename($event, session)"
+              aria-label="Rename session"
+            >
+              <span class="material-symbols-outlined">edit</span>
+            </button>
+            <button
+              class="btn-icon-sm btn-icon-sm--danger"
+              (click)="startDelete($event, session.id)"
+              aria-label="Delete session"
+            >
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </div>
+        </button>
+      }
+    }
+  </div>
+</nav>

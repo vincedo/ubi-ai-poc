@@ -1,10 +1,5 @@
 import type { MediaTranscript } from '../db/schema/media.js';
-import type {
-  TranscriptionJob,
-  NewTranscriptionJob,
-  IngestionJob,
-  NewIngestionJob,
-} from '../db/schema/ingestion.js';
+import type { TranscriptionJob, NewTranscriptionJob } from '../db/schema/ingestion.js';
 
 export interface IngestionRepository {
   upsertTranscript(data: Omit<MediaTranscript, 'createdAt'>): Promise<void>;
@@ -18,22 +13,6 @@ export interface IngestionRepository {
         | 'status'
         | 'promptTokens'
         | 'completionTokens'
-        | 'estimatedCost'
-        | 'startedAt'
-        | 'completedAt'
-        | 'error'
-      >
-    >,
-  ): Promise<void>;
-  createIngestionJob(data: NewIngestionJob): Promise<IngestionJob>;
-  updateIngestionJob(
-    id: string,
-    data: Partial<
-      Pick<
-        IngestionJob,
-        | 'status'
-        | 'chunkCount'
-        | 'tokenCount'
         | 'estimatedCost'
         | 'startedAt'
         | 'completedAt'

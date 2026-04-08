@@ -1,0 +1,469 @@
+@use '../../../styles/design-tokens' as tokens;
+
+.presets-page {
+  padding: 2rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0;
+  max-width: 56rem;
+}
+
+// Header
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.page-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--color-on-surface);
+  margin: 0 0 0.25rem;
+}
+
+.page-sub {
+  font-size: 0.875rem;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+// Tab content
+.tab-content {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+// Loading spinner
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+
+  p {
+    color: var(--color-on-surface-variant);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+}
+
+// Presets list
+.presets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.preset-card {
+  background: var(--color-surface-container-lowest);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.preset-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.preset-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.preset-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.75rem 1.25rem;
+}
+
+.preset-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.group-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 0.15rem;
+}
+
+.group-row {
+  display: flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  font-size: 0.8125rem;
+}
+
+.row-key {
+  color: var(--color-on-surface-variant);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+
+  &::after {
+    content: ':';
+  }
+}
+
+.row-val {
+  color: var(--color-on-surface);
+  font-weight: 500;
+}
+
+.preset-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.preset-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface-variant);
+
+  &.done {
+    background: var(--color-success-container);
+    color: var(--color-on-success-container);
+  }
+}
+
+.meta-text {
+  font-size: 0.8125rem;
+  color: var(--color-on-surface-variant);
+}
+
+.preset-id {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+
+  &__value {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--color-on-surface-variant);
+    opacity: 0.7;
+  }
+
+  &__copy {
+    padding: 0;
+    min-width: unset;
+    line-height: 1;
+
+    .material-symbols-outlined {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+// Empty state
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-on-surface-variant);
+  font-size: 0.875rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+// Create form section
+.create-form-section {
+  padding: 1.75rem;
+  background: var(--color-surface-container-low);
+  border-radius: 0.75rem;
+}
+
+.form-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  margin: 0 0 1.5rem;
+}
+
+.preset-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// Fieldset groups (pipeline steps)
+.form-fieldset {
+  border: none;
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-surface-container-lowest);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fieldset-legend {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-on-surface-variant);
+  padding: 0 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+// Single-field rows
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+.field-description {
+  font-size: 0.8125rem;
+  color: var(--color-on-surface-variant);
+  margin: 0;
+}
+
+.field-error {
+  font-size: 0.8125rem;
+  color: var(--color-error);
+  margin: 0;
+}
+
+// Plain text input (name field)
+.form-input {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-outline-variant);
+  background: var(--color-surface-container-lowest);
+  color: var(--color-on-surface);
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s;
+  max-width: 28rem;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+}
+
+// Radio card group
+.radio-card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.radio-card {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--color-surface-container-low);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-on-surface);
+  transition:
+    background 0.15s,
+    color 0.15s;
+  user-select: none;
+
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background: var(--color-surface-container-high);
+  }
+
+  &.selected {
+    background: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    font-weight: 600;
+  }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.no-key-badge {
+  margin-left: 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-on-surface-variant);
+  background: var(--color-surface-container-highest);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+// Reactive option description
+.option-hint {
+  font-size: 0.8125rem;
+  color: var(--color-on-surface-variant);
+  background: var(--color-surface-container-lowest);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0;
+}
+
+// Toggle switch
+.toggle-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+
+  .toggle-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+}
+
+.toggle-track {
+  position: relative;
+  width: 2.5rem;
+  height: 1.375rem;
+  background: var(--color-outline-variant);
+  border-radius: 999px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+
+  .toggle-switch:has(.toggle-input:checked) & {
+    background: var(--color-primary);
+  }
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-surface-container-lowest);
+  border-radius: 50%;
+  transition: transform 0.2s;
+
+  .toggle-switch:has(.toggle-input:checked) & {
+    transform: translateX(1.125rem);
+  }
+}
+
+.toggle-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  min-width: 2rem;
+}
+
+// Inline rename
+.preset-rename {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.rename-input {
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  border: 1px solid color-mix(in srgb, var(--color-outline-variant) 15%, transparent);
+  background: var(--color-surface-container-lowest);
+  color: var(--color-on-surface);
+  font-size: 1rem;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  flex: 1;
+  min-width: 0;
+
+  &:focus {
+    outline: none;
+    border-color: color-mix(in srgb, var(--color-outline-variant) 15%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 10%, transparent);
+  }
+}
+
+.rename-btn {
+  opacity: 0;
+  transition: opacity 0.15s;
+  color: var(--color-on-surface-variant);
+
+  &:hover {
+    color: var(--color-on-surface);
+  }
+}
+
+.preset-name:hover .rename-btn,
+.preset-name:focus-within .rename-btn {
+  opacity: 1;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+}

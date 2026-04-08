@@ -39,7 +39,7 @@ describe('ragQuery', () => {
       points: [],
     });
 
-    await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     expect(embed).toHaveBeenCalledWith({
       model: 'mock-embedding-model',
@@ -47,7 +47,7 @@ describe('ragQuery', () => {
     });
 
     expect(qdrant.query).toHaveBeenCalledWith(
-      COLLECTION_NAME,
+      'ubi-ai-test',
       expect.objectContaining({
         query: [0.1, 0.2, 0.3],
         limit: 5,
@@ -69,10 +69,10 @@ describe('ragQuery', () => {
       points: [],
     });
 
-    await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     expect(qdrant.query).toHaveBeenCalledWith(
-      COLLECTION_NAME,
+      'ubi-ai-test',
       expect.objectContaining({
         query: [0.4, 0.5, 0.6],
         limit: 5,
@@ -119,7 +119,7 @@ describe('ragQuery', () => {
       ],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     expect(result.sources).toHaveLength(2);
     expect(result.context).not.toContain('point-2');
@@ -148,7 +148,7 @@ describe('ragQuery', () => {
       ],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     const source = result.sources[0] as any;
     expect(source.mediaType).toBe('video');
@@ -179,7 +179,7 @@ describe('ragQuery', () => {
       ],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     const source = result.sources[0] as any;
     expect(source.mediaType).toBe('audio');
@@ -209,7 +209,7 @@ describe('ragQuery', () => {
       ],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     const source = result.sources[0] as any;
     expect(source.timestamp).toBe('00:00:00');
@@ -238,7 +238,7 @@ describe('ragQuery', () => {
       ],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     const source = result.sources[0] as any;
     expect(source.mediaType).toBe('pdf');
@@ -279,7 +279,7 @@ describe('ragQuery', () => {
       ],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     expect(result.context).toBe('[Title A]\nContent A\n\n---\n\n[Title B]\nContent B');
   });
@@ -296,7 +296,7 @@ describe('ragQuery', () => {
       points: [],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     expect(result.sources).toEqual([]);
     expect(result.context).toBe('');
@@ -314,10 +314,10 @@ describe('ragQuery', () => {
       points: [],
     });
 
-    await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     expect(qdrant.query).toHaveBeenCalledWith(
-      COLLECTION_NAME,
+      'ubi-ai-test',
       expect.objectContaining({
         limit: 5,
       }),
@@ -331,7 +331,9 @@ describe('ragQuery', () => {
     const error = new Error('Embed failed');
     (embed as any).mockRejectedValue(error);
 
-    await expect(ragQuery(query, corpusIds, DEFAULT_SETTINGS)).rejects.toThrow('Embed failed');
+    await expect(ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test')).rejects.toThrow(
+      'Embed failed',
+    );
   });
 
   it('should propagate error when qdrant.query fails', async () => {
@@ -345,7 +347,7 @@ describe('ragQuery', () => {
     const error = new Error('Qdrant query failed');
     (qdrant.query as any).mockRejectedValue(error);
 
-    await expect(ragQuery(query, corpusIds, DEFAULT_SETTINGS)).rejects.toThrow(
+    await expect(ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test')).rejects.toThrow(
       'Qdrant query failed',
     );
   });
@@ -374,7 +376,7 @@ describe('ragQuery', () => {
       ],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     const source = result.sources[0] as any;
     expect(source).toMatchObject({
@@ -397,10 +399,10 @@ describe('ragQuery', () => {
       points: [],
     });
 
-    await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     expect(qdrant.query).toHaveBeenCalledWith(
-      COLLECTION_NAME,
+      'ubi-ai-test',
       expect.objectContaining({
         filter: {
           must: [
@@ -457,7 +459,7 @@ describe('ragQuery', () => {
       ],
     });
 
-    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS);
+    const result = await ragQuery(query, corpusIds, DEFAULT_SETTINGS, 'ubi-ai-test');
 
     expect(result.sources).toHaveLength(3);
 

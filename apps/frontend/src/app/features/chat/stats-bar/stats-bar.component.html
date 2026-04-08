@@ -1,0 +1,20 @@
+@if (chatService.activeSession(); as session) {
+  <div class="stats-bar" aria-live="polite">
+    <div class="stat">
+      <span class="stat-label">PRESET</span>
+      <span class="stat-value">{{ session.chatPresetName }}</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">TOKENS</span>
+      <span class="stat-value">{{ session.totalTokens | number }}</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">COST</span>
+      <span class="stat-value">{{ session.totalCost | formatCost }}</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">MEDIA</span>
+      <span class="stat-value">{{ session.individualMediaIds.length }}</span>
+    </div>
+  </div>
+}

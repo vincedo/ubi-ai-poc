@@ -1,82 +1,154 @@
 [
   {
-    "id": "vid-001",
-    "type": "video",
-    "title": "Introduction to Machine Learning",
-    "teacher": "Dr. Sarah Chen",
-    "class": "CS401",
-    "module": "Module 1 - Foundations"
-  },
-  {
-    "id": "vid-002",
-    "type": "video",
-    "title": "Neural Networks Deep Dive",
-    "teacher": "Dr. Sarah Chen",
-    "class": "CS401",
-    "module": "Module 2 - Neural Networks"
-  },
-  {
-    "id": "vid-003",
-    "type": "video",
-    "title": "Reinforcement Learning Seminar",
-    "teacher": "Dr. Sarah Chen",
-    "class": "CS401",
-    "module": "Module 4 - Advanced"
-  },
-  {
-    "id": "vid-004",
-    "type": "video",
-    "title": "Capstone Project Guidelines",
-    "teacher": "Dr. Sarah Chen",
-    "class": "CS401",
-    "module": "Administrative"
-  },
-  {
-    "id": "aud-001",
-    "type": "audio",
-    "title": "Guest Lecture: AI in Healthcare",
-    "teacher": "Prof. James Martin",
-    "class": "CS401",
-    "module": "Module 3 - Applications"
-  },
-  {
-    "id": "aud-002",
-    "type": "audio",
-    "title": "Ethics in Artificial Intelligence",
-    "teacher": "Dr. Liu Wei",
-    "class": "CS490",
-    "module": "Module 1 - Ethics"
-  },
-  {
-    "id": "aud-003",
-    "type": "audio",
-    "title": "Interview: Future of LLMs",
-    "teacher": "External Speaker",
-    "class": "CS490",
-    "module": "Module 2 - LLMs"
-  },
-  {
-    "id": "pdf-001",
+    "id": "ang-sig-001",
     "type": "pdf",
-    "title": "CS401 Course Syllabus 2024",
-    "teacher": "Dr. Sarah Chen",
-    "class": "CS401",
-    "module": "Administrative"
+    "title": "Angular Signals — Overview",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Signals API"
   },
   {
-    "id": "pdf-002",
+    "id": "ang-sig-002",
     "type": "pdf",
-    "title": "Lab Safety and Computing Ethics",
-    "teacher": "Department",
-    "class": "CS401",
-    "module": "Administrative"
+    "title": "Angular Signals — Effects",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Signals API"
   },
   {
-    "id": "pdf-003",
+    "id": "ang-sig-003",
     "type": "pdf",
-    "title": "Research Paper: Transformer Architecture",
-    "teacher": "Vaswani et al.",
-    "class": "CS401",
-    "module": "Module 2 - Neural Networks"
+    "title": "Angular Signals — linkedSignal",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Signals API"
+  },
+  {
+    "id": "ang-sig-004",
+    "type": "pdf",
+    "title": "Angular Signals — resource",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Signals API"
+  },
+  {
+    "id": "ang-tpl-001",
+    "type": "pdf",
+    "title": "Angular Templates — Binding",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-002",
+    "type": "pdf",
+    "title": "Angular Templates — Control Flow",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-003",
+    "type": "pdf",
+    "title": "Angular Templates — Deferred Loading (@defer)",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-004",
+    "type": "pdf",
+    "title": "Angular Templates — Event Listeners",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-005",
+    "type": "pdf",
+    "title": "Angular Templates — Expression Syntax",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-006",
+    "type": "pdf",
+    "title": "Angular Templates — ng-container",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-007",
+    "type": "pdf",
+    "title": "Angular Templates — ng-template",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-008",
+    "type": "pdf",
+    "title": "Angular Templates — Pipes",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-009",
+    "type": "pdf",
+    "title": "Angular Templates — Two-way Binding",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ang-tpl-010",
+    "type": "pdf",
+    "title": "Angular Templates — Variables (@let and template reference variables)",
+    "teacher": "Angular Team",
+    "class": "Angular v21",
+    "module": "Template Syntax"
+  },
+  {
+    "id": "ts-001",
+    "type": "pdf",
+    "title": "TypeScript — Narrowing",
+    "teacher": "TypeScript Team",
+    "class": "TypeScript",
+    "module": "Type System"
+  },
+  {
+    "id": "ts-002",
+    "type": "pdf",
+    "title": "TypeScript — Generics",
+    "teacher": "TypeScript Team",
+    "class": "TypeScript",
+    "module": "Type System"
+  },
+  {
+    "id": "ts-003",
+    "type": "pdf",
+    "title": "TypeScript — Utility Types",
+    "teacher": "TypeScript Team",
+    "class": "TypeScript",
+    "module": "Type System"
+  },
+  {
+    "id": "ts-004",
+    "type": "pdf",
+    "title": "TypeScript — Decorators",
+    "teacher": "TypeScript Team",
+    "class": "TypeScript",
+    "module": "Language Features"
+  },
+  {
+    "id": "ped-001",
+    "type": "video",
+    "title": "Faut-il en finir avec le cours magistral ?",
+    "teacher": "Inconnu",
+    "class": "Pédagogie",
+    "module": "Pratiques d'enseignement"
   }
 ]

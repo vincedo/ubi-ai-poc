@@ -1,0 +1,5087 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.463
+Nous allons commencer notre webinaire.
+
+2
+00:00:02.502 --> 00:00:04.502
+Voilà, c'est parti !
+
+3
+00:00:04.502 --> 00:00:07.887
+Bonjour à tous et bienvenue à ce webinaire consacré au
+distanciel,
+
+4
+00:00:07.969 --> 00:00:12.352
+ou plutôt à la remise en cause de dogme qu'on avait intégré
+dans
+
+5
+00:00:12.353 --> 00:00:16.859
+l'éducation qui s'intitule « Faut-il en finir avec le cours
+magistral ? »
+
+6
+00:00:16.891 --> 00:00:18.891
+Eh bien oui,
+
+7
+00:00:18.891 --> 00:00:22.125
+à l'heure où l'attention des étudiants est de plus en plus
+difficile à retenir et que leurs attentes
+
+8
+00:00:22.156 --> 00:00:26.672
+évoluent, comment réinventer les cours, et notamment le
+cours magistral descendant ?
+
+9
+00:00:26.688 --> 00:00:28.688
+Vous savez d'ailleurs, les enfants, ils sont souvent
+descendants.
+
+10
+00:00:28.852 --> 00:00:31.596
+Alors, quels sont les outils pour créer l'amphi de demain ?
+
+11
+00:00:32.596 --> 00:00:37.541
+On parle beaucoup de classe inversée, de réalité virtuelle,
+l'usage des vidéos,
+
+12
+00:00:38.080 --> 00:00:40.080
+bien entendu.
+
+13
+00:00:40.080 --> 00:00:40.947
+Alors, les pistes sont extrêmement nombreuses.
+
+14
+00:00:40.948 --> 00:00:42.948
+Et puis, comment dirais-je,
+
+15
+00:00:43.744 --> 00:00:47.486
+les formats proposés aux étudiants pour renforcer leur
+engagement, évidemment,
+
+16
+00:00:47.814 --> 00:00:51.971
+se sont développés et confortés dans tous les
+établissements, y compris les grandes universités.
+
+17
+00:00:52.393 --> 00:00:56.596
+Nos experts pour en parler, il vient de Belgique, mais il
+est en Suisse.
+
+18
+00:00:57.140 --> 00:01:01.024
+Jeff Vandepeau, directeur adjoint aux affaires numériques de
+l'université de Lausanne.
+
+19
+00:01:01.606 --> 00:01:03.606
+Bienvenue Jeff.
+
+20
+00:01:03.606 --> 00:01:05.547
+Merci.
+
+21
+00:01:05.547 --> 00:01:07.934
+On fait un petit test en même temps, c'est pour ça que je
+vous passe la parole.
+
+22
+00:01:08.254 --> 00:01:12.051
+Anne-Edwire, directrice de l'expérience étudiante à
+l'Effray, l'école d'ingénieurs,
+
+23
+00:01:12.778 --> 00:01:16.801
+qui est tournée vers le numérique, mais aussi qui est
+tournée vers un certain nombre d'audaces.
+
+24
+00:01:17.083 --> 00:01:21.708
+J'en parlais avant de commencer l'émission avec vous, Anne,
+notamment l'initiative avec l'université d'Assas.
+
+25
+00:01:21.989 --> 00:01:26.114
+Alors pour ceux qui sont en Belgique ou en Suisse, Assas,
+c'est la grande université du droit.
+
+26
+00:01:26.504 --> 00:01:29.347
+Et avec les frais et l'université de droit,
+
+27
+00:01:29.407 --> 00:01:31.669
+ils ont développé des choses autour de l'IA.
+
+28
+00:01:31.931 --> 00:01:33.931
+Mais on ne sera pas là pour parler de ça.
+
+29
+00:01:33.931 --> 00:01:35.876
+Mais Anne, je voulais juste tenir à dire bienvenue, Anne.
+
+30
+00:01:36.556 --> 00:01:38.556
+Merci, bonjour.
+
+31
+00:01:39.017 --> 00:01:41.900
+Et Bertrand David, professeur et doyen des études à Télécom
+Paris.
+
+32
+00:01:42.056 --> 00:01:46.868
+Alors, Télécom Paris, qui n'en présente pas aussi, en grande
+école d'ingénieurs.
+
+33
+00:01:47.525 --> 00:01:51.447
+Il y a Télécom Paris, il y en a même partout en France,
+Télécom, si j'ai envie de dire.
+
+34
+00:01:51.728 --> 00:01:53.728
+Bienvenue, Bertrand.
+
+35
+00:01:53.728 --> 00:01:55.728
+Bienvenue à tous.
+
+36
+00:01:55.728 --> 00:01:56.650
+Bonjour à toutes et tous.
+
+37
+00:01:56.650 --> 00:02:00.342
+D'ailleurs, un des patrons de Télécom me disait, on est
+l'école de l'IA, vous voyez,
+
+38
+00:02:00.639 --> 00:02:02.639
+l'école du numérique.
+
+39
+00:02:02.639 --> 00:02:05.545
+C'est un peu comme ça qu'ils se positionnaient, donc ça veut
+dire qu'on est en plein cœur du débat.
+
+40
+00:02:05.904 --> 00:02:09.592
+Et puis, notre dernier invité, Jean-Marie Cogné, CEO
+d'Ubicas.
+
+41
+00:02:09.772 --> 00:02:12.131
+Ubicas qui est notre partenaire, merci Jean-Marie de nous
+accompagner.
+
+42
+00:02:12.490 --> 00:02:15.287
+Et il est également vice-président de l'association EdTech
+France.
+
+43
+00:02:15.537 --> 00:02:20.459
+EdTech France qui réunit tout l'écosystème digital autour de
+l'éducation en France.
+
+44
+00:02:21.397 --> 00:02:23.397
+Bonjour Jean-Marie.
+
+45
+00:02:23.397 --> 00:02:24.928
+Et si vous êtes d'accord, on va commencer avec vous.
+
+46
+00:02:25.440 --> 00:02:30.164
+Parce que quand on a élaboré ce sujet, on s'est dit, est-ce
+qu'on n'est pas trop iconoclaste, voire provoquant ?
+
+47
+00:02:30.625 --> 00:02:32.809
+Et vous m'avez dit, non, non, il faut bousculer les choses.
+
+48
+00:02:34.410 --> 00:02:36.410
+Effectivement, merci Gilbert.
+
+49
+00:02:36.410 --> 00:02:37.793
+Bonjour à toutes, bonjour à tous.
+
+50
+00:02:37.793 --> 00:02:42.231
+Je me présente, je suis Jean-Marie Cognet, je suis le
+cofondateur et le CEO de Ubicast,
+
+51
+00:02:42.309 --> 00:02:47.059
+une EdTech qui va fêter ses 18 ans dans quelques mois, donc
+ça commence à faire.
+
+52
+00:02:48.356 --> 00:02:53.090
+Et je suis une deuxième casquette puisque je suis
+vice-président de l'association EdTech France en charge de
+
+53
+00:02:53.309 --> 00:02:55.309
+l'enseignement supérieur.
+
+54
+00:02:55.368 --> 00:02:58.691
+Alors chez Ubicast, on édite une solution qui s'appelle
+Nudgis,
+
+55
+00:02:58.712 --> 00:03:01.755
+qui est une plateforme vidéo privée à visée pédagogique.
+
+56
+00:03:02.154 --> 00:03:06.978
+Et aujourd'hui, un peu plus d'un million d'étudiants ont
+accès à notre solution via leur établissement,
+
+57
+00:03:07.697 --> 00:03:09.697
+majoritairement en Europe.
+
+58
+00:03:09.697 --> 00:03:12.369
+Alors, depuis 2020,
+
+59
+00:03:12.869 --> 00:03:17.072
+on conduit une enquête sur les usages de la vidéo
+pédagogique dans l'enseignement supérieur.
+
+60
+00:03:17.431 --> 00:03:22.259
+Et il y a une tendance qui nous a interpellés ces dernières
+années autour de la capsule vidéo,
+
+61
+00:03:22.400 --> 00:03:24.400
+en fait une courte vidéo pédagogique.
+
+62
+00:03:24.776 --> 00:03:26.776
+En 2022,
+
+63
+00:03:26.776 --> 00:03:30.222
+c'était le troisième usage qui était utilisé chez
+
+64
+00:03:30.281 --> 00:03:34.988
+60% de nos répondants et en 2024, c'est devenu le premier
+usage avec
+
+65
+00:03:35.425 --> 00:03:37.425
+85% d'adoption chez nos répondants.
+
+66
+00:03:38.050 --> 00:03:40.448
+Donc, avènement des formats courts,
+
+67
+00:03:41.573 --> 00:03:43.855
+d'où la controverse qu'on a souhaité vous proposer ce matin,
+
+68
+00:03:44.698 --> 00:03:46.698
+faut-il en finir avec le cours magistral ?
+
+69
+00:03:47.495 --> 00:03:50.823
+Alors personnellement, j'avancerai trois raisons, trois
+arguments.
+
+70
+00:03:51.808 --> 00:03:54.089
+Premièrement, le développement des solutions numériques.
+
+71
+00:03:54.824 --> 00:03:56.824
+des solutions EdTech.
+
+72
+00:03:56.846 --> 00:04:01.032
+On est très loin de ce que pouvait proposer le e-learning
+dans les années 2000,
+
+73
+00:04:01.571 --> 00:04:05.391
+assez ennuyeux, un copier-coller de ce qu'on pouvait voir en
+classe.
+
+74
+00:04:06.055 --> 00:04:11.055
+Les solutions se sont fortement développées et se sont
+nourries notamment des échanges qu'il y
+
+75
+00:04:11.056 --> 00:04:15.758
+a eu avec les équipes d'ingénierie pédagogique qui ont
+grandi dans les établissements au cours des
+
+76
+00:04:15.759 --> 00:04:17.759
+dernières années.
+
+77
+00:04:17.759 --> 00:04:18.726
+Et je peux en attester moi-même, chez Ubicast,
+
+78
+00:04:19.087 --> 00:04:22.909
+on a fortement fait évoluer la solution avec des retours de
+nos clients,
+
+79
+00:04:22.952 --> 00:04:27.358
+mais aussi de nos prospects sur ce qui manquait, ce qui
+n'était pas adapté, ce qui pourrait être mieux fait, etc.
+
+80
+00:04:28.499 --> 00:04:30.499
+au service des étudiants.
+
+81
+00:04:30.499 --> 00:04:33.358
+Le deuxième point, c'est celui du patrimoine immobilier, en
+fait.
+
+82
+00:04:33.905 --> 00:04:37.265
+Est-ce un fardeau économique et écologique ?
+
+83
+00:04:38.530 --> 00:04:40.530
+Je pose la question.
+
+84
+00:04:40.702 --> 00:04:45.312
+Dans l'enseignement supérieur public, il y a un rapport du
+Sénat fin 2022 qui expliquait que Merci.
+
+85
+00:04:45.424 --> 00:04:49.629
+un tiers du patrimoine immobilier était dans un état peu ou
+pas satisfaisant,
+
+86
+00:04:50.110 --> 00:04:54.633
+et cela sans même parler de la sobriété énergétique de ces
+mêmes bâtiments.
+
+87
+00:04:55.172 --> 00:04:57.172
+Et dans l'enseignement supérieur privé,
+
+88
+00:04:57.172 --> 00:05:00.196
+se pose la question du coût des mètres carrés,
+
+89
+00:05:01.063 --> 00:05:05.938
+qui ont un réel impact sur le budget et donc sur les frais
+de scolarité pour
+
+90
+00:05:05.969 --> 00:05:07.969
+les étudiants.
+
+91
+00:05:07.969 --> 00:05:11.938
+Le troisième point, qui est non des moindres d'ailleurs,
+c'est les questions d'inclusion,
+
+92
+00:05:12.297 --> 00:05:14.297
+d'accessibilité et de flexibilité.
+
+93
+00:05:15.733 --> 00:05:17.733
+Est-ce que vous pouvez...
+
+94
+00:05:17.970 --> 00:05:20.671
+dans un amphithéâtre de plusieurs centaines d'étudiants,
+
+95
+00:05:20.931 --> 00:05:24.331
+mettre le prof en pause pour finir votre prise de note ?
+
+96
+00:05:24.952 --> 00:05:26.952
+Non, vous ne pouvez pas.
+
+97
+00:05:26.952 --> 00:05:29.073
+Est-ce que dans un amphithéâtre, en présentiel,
+
+98
+00:05:29.409 --> 00:05:34.089
+vous pouvez faire rembobiner le prof de 10 secondes pour
+pouvoir répéter
+
+99
+00:05:34.292 --> 00:05:39.136
+ce qu'il a dit et mieux intégrer un
+
+100
+00:05:39.151 --> 00:05:41.151
+concept complexe ?
+
+101
+00:05:41.151 --> 00:05:42.589
+On ne peut pas.
+
+102
+00:05:42.589 --> 00:05:46.636
+Est-ce que dans un amphithéâtre, si on est mal positionné,
+on est au fond, on voit mal, on entend mal, au pire,
+
+103
+00:05:46.637 --> 00:05:48.637
+on est un étudiant...
+
+104
+00:05:48.637 --> 00:05:49.678
+10.
+
+105
+00:05:49.678 --> 00:05:51.903
+Est-ce qu'on peut faire afficher des sous-titres au-dessus
+de la tête du prof ou en dessous,
+
+106
+00:05:52.403 --> 00:05:54.403
+dans une langue ou dans une autre ?
+
+107
+00:05:54.403 --> 00:05:55.723
+Non, on ne peut pas.
+
+108
+00:05:55.723 --> 00:05:58.770
+Donc, toutes ces questions nous font poser ce thème ce
+matin.
+
+109
+00:06:00.129 --> 00:06:02.832
+Est-ce que le cours magistral,
+
+110
+00:06:03.176 --> 00:06:07.004
+en tout cas dans le transfert des savoir-faire fondamentaux,
+des savoirs fondamentaux,
+
+111
+00:06:07.457 --> 00:06:11.442
+ne serait pas plus efficace en ligne où chacun pourrait
+apprendre à son rythme,
+
+112
+00:06:11.864 --> 00:06:16.004
+selon son style d'apprentissage, avant de mettre en pratique
+dans des plus petits groupes ?
+
+113
+00:06:16.574 --> 00:06:18.574
+lors de TP ou TD.
+
+114
+00:06:18.857 --> 00:06:23.062
+Eh bien, dis-donc, quand Jean-Marie vous pose ses bases, on
+a envie de dire, ben voilà, c'est plié,
+
+115
+00:06:23.562 --> 00:06:25.562
+le game.
+
+116
+00:06:25.562 --> 00:06:29.750
+Justement, c'est là que les contre-arguments vont arriver et
+nous sommes tous à l'écoute.
+
+117
+00:06:30.187 --> 00:06:34.625
+Alors, pardonnez-moi, je vais commencer par notre invité de
+Lausanne, Jeff, parce qu'on m'a dit,
+
+118
+00:06:35.156 --> 00:06:38.859
+vous êtes une star dans le milieu de l'enseignement à
+distance et j'ai envie d'avoir votre...
+
+119
+00:06:39.250 --> 00:06:41.671
+C'est notre directeur de la rédaction qui m'a dit, quelle
+chance d'avoir Jeff.
+
+120
+00:06:41.875 --> 00:06:43.875
+Ça ne veut pas dire que ce n'est pas une chance d'avoir
+Bertrand et Anne.
+
+121
+00:06:44.109 --> 00:06:46.109
+Je dis simplement que...
+
+122
+00:06:46.109 --> 00:06:48.084
+que vous avez pas mal réfléchi également sur ces sujets.
+
+123
+00:06:48.445 --> 00:06:50.445
+Et quand on a préparé cette émission,
+
+124
+00:06:50.445 --> 00:06:55.174
+vous nous parliez de la cérémonie du cours magistral
+quasiment messianique.
+
+125
+00:06:55.455 --> 00:06:58.752
+Alors dites-nous, qu'est-ce que ça vous inspire, ce que
+vient de dire Jean-Marie ?
+
+126
+00:07:00.400 --> 00:07:03.900
+Je pense que la réflexion, il est en effet tendance à poser
+parce qu'en effet,
+
+127
+00:07:03.978 --> 00:07:07.244
+garder des étudiants qui sont relativement passifs dans un
+amphi,
+
+128
+00:07:07.322 --> 00:07:09.322
+ça ne leur déplaît pas.
+
+129
+00:07:09.323 --> 00:07:13.275
+Il faut se dire aussi que les étudiants, ça ne leur déplaît
+pas vraiment de ne pas être systématiquement mobilisés.
+
+130
+00:07:13.726 --> 00:07:18.572
+Par contre, si on envisage un peu la notion d'apprentissage
+au sens strict du terme,
+
+131
+00:07:19.431 --> 00:07:21.654
+il y a plusieurs niveaux de maîtrise des compétences,
+
+132
+00:07:21.716 --> 00:07:26.138
+et quelque part quand on est aux positions de réception
+d'une information dans un amphi,
+
+133
+00:07:26.599 --> 00:07:30.568
+c'est clair qu'on n'est pas dans des paradigmes
+d'apprentissage extrêmement élevés et qui vont en
+profondeur.
+
+134
+00:07:31.099 --> 00:07:35.068
+Et donc moi j'ai envie de dire que la question se pose aussi
+en imaginant qu'est-ce qu'un cours.
+
+135
+00:07:35.787 --> 00:07:39.052
+Un cours, c'est des objectifs pédagogiques, c'est des
+moments de rencontre avec l'enseignant.
+
+136
+00:07:39.602 --> 00:07:44.468
+C'est des activités variées à proposer pour que nos
+étudiants aillent en profondeur
+
+137
+00:07:44.488 --> 00:07:46.488
+dans les apprentissages.
+
+138
+00:07:46.488 --> 00:07:50.855
+Et ça, on voit typiquement que dans un cours strictement
+magistral, on va toucher,
+
+139
+00:07:51.496 --> 00:07:54.277
+à part le paradigme de la réception, on ne va pas toucher
+grand-chose.
+
+140
+00:07:54.879 --> 00:07:56.879
+Et donc la question qu'il faut se poser, c'est justement,
+
+141
+00:07:57.652 --> 00:08:01.730
+est-ce que le cours présentiel magistral est le seul moment
+où, quelque part,
+
+142
+00:08:01.746 --> 00:08:03.746
+il y a de l'apprentissage ?
+
+143
+00:08:03.746 --> 00:08:04.966
+Ce n'est pas le cas.
+
+144
+00:08:04.966 --> 00:08:07.996
+Donc il faut aussi imaginer comment rendre le cours
+magistral complémentaire à des ressources.
+
+145
+00:08:08.242 --> 00:08:10.345
+à disponibilité en ligne par nos étudiants.
+
+146
+00:08:10.864 --> 00:08:15.468
+Et donc, à Lausanne, par exemple, on envisage l'usage du
+numérique comme une amélioration du présentiel,
+
+147
+00:08:15.831 --> 00:08:17.831
+un enrichissement du présentiel.
+
+148
+00:08:17.831 --> 00:08:22.514
+Et donc, j'aimerais qu'on discute plutôt de ça aussi en se
+disant, en effet, pour des parties un peu transmissives,
+
+149
+00:08:22.515 --> 00:08:26.796
+parce que l'étudiant ne peut pas se préparer au préalable,
+regarder des courtes vidéos qui sont faites par le prof,
+
+150
+00:08:27.202 --> 00:08:32.139
+et du coup, quand il est en amphi, utiliser des systèmes
+comme OPLAP ou autres pour être plus interactif,
+
+151
+00:08:32.233 --> 00:08:36.671
+travailler en diade ou en triade, peut faire travailler des
+étudiants à 3 ans, en amphi, 400, ce n'est pas impossible.
+
+152
+00:08:37.146 --> 00:08:39.146
+Et donc,
+
+153
+00:08:39.146 --> 00:08:42.171
+c'est plutôt cette question de quelle est la place de la
+rencontre avec l'enseignant
+
+154
+00:08:42.570 --> 00:08:47.238
+dans l'ensemble de l'écologie du cours, y compris les
+activités en ligne, et faire que ces moments de rencontre du
+prof,
+
+155
+00:08:47.239 --> 00:08:51.441
+qui est extrêmement important, j'aime bien cette solennité
+de l'amphi, où on est tous ensemble.
+
+156
+00:08:51.777 --> 00:08:56.441
+Alors, je faisais la métaphore quand on préparait ça de la
+messe et toute forme de religion,
+
+157
+00:08:56.472 --> 00:08:59.394
+on est bien sûr groupés ensemble, et voilà, ça fait partie
+de notre culture aussi.
+
+158
+00:08:59.941 --> 00:09:03.550
+Et donc, voilà, cette question, c'est qu'est-ce qu'on fait
+quand on rencontre nos étudiants ?
+
+159
+00:09:03.910 --> 00:09:05.972
+Donc, le présentiel reste hyper important.
+
+160
+00:09:06.482 --> 00:09:08.884
+même si c'est des grands groupes, mais alors peut-être en
+effet,
+
+161
+00:09:09.466 --> 00:09:11.669
+allons vers des paradigmes d'apprentissage plus compliqués.
+
+162
+00:09:12.388 --> 00:09:15.091
+Voilà, je vous avais dit, il fallait commencer avec Jeff.
+
+163
+00:09:15.271 --> 00:09:17.271
+Anne, qu'est-ce que vous en pensez ?
+
+164
+00:09:18.615 --> 00:09:20.615
+Justement, oui,
+
+165
+00:09:20.615 --> 00:09:24.661
+moi j'en ai parlé avec quelques enseignants,
+
+166
+00:09:24.724 --> 00:09:26.927
+à l'effret des responsables de département,
+
+167
+00:09:28.365 --> 00:09:32.568
+je leur ai demandé un petit peu leur sentiment là-dessus, et
+c'est vrai qu'eux,
+
+168
+00:09:33.021 --> 00:09:35.318
+ils aiment ce moment un peu solennel.
+
+169
+00:09:36.354 --> 00:09:40.976
+démarre un nouveau module et on va donner des
+
+170
+00:09:41.015 --> 00:09:44.312
+informations qui vont être ensuite cruciales pour le reste
+du module.
+
+171
+00:09:44.914 --> 00:09:49.593
+Et je suis d'accord également avec Jean-Marie sur le fait
+qu'il faut
+
+172
+00:09:49.617 --> 00:09:54.218
+varier les formats, c'est-à-dire que le cours magistral, il
+a sa place,
+
+173
+00:09:54.312 --> 00:09:56.312
+mais ensuite on varie les formats.
+
+174
+00:09:56.906 --> 00:10:01.015
+On se rend compte que les étudiants, il faut capter leur
+attention en permanence,
+
+175
+00:10:01.515 --> 00:10:03.734
+il faut les intéresser par des...
+
+176
+00:10:04.302 --> 00:10:07.886
+des changements de rythme, des changements de format.
+
+177
+00:10:08.788 --> 00:10:11.210
+La gamification, on parle même de gamification.
+
+178
+00:10:12.171 --> 00:10:14.936
+Oui, voilà, alors qu'est-ce qu'on fait ?
+
+179
+00:10:14.991 --> 00:10:17.757
+On va faire un petit QCM sur Oclap.
+
+180
+00:10:17.898 --> 00:10:21.318
+On va tout d'un coup leur demander
+
+181
+00:10:22.097 --> 00:10:24.097
+d'utiliser… Là,
+
+182
+00:10:24.097 --> 00:10:28.718
+j'ai un enseignant qui me racontait qu'il avait fait
+fabriquer des éléments au
+
+183
+00:10:28.742 --> 00:10:33.523
+Fab Lab de l'Effray pour représenter la physique,
+
+184
+00:10:33.539 --> 00:10:35.539
+l'électronique.
+
+185
+00:10:35.539 --> 00:10:36.429
+Donc, tout d'un coup, hop,
+
+186
+00:10:36.429 --> 00:10:40.086
+on s'arrête et puis on va toucher des pièces et puis
+
+187
+00:10:40.148 --> 00:10:42.648
+essayer de les assembler comme ça par petits groupes.
+
+188
+00:10:42.649 --> 00:10:45.601
+Enfin, voilà, il faut toujours…
+
+189
+00:10:47.366 --> 00:10:51.090
+peut-être ponctuer une vidéo, on peut très bien mettre une
+vidéo aussi.
+
+190
+00:10:51.990 --> 00:10:53.990
+Et puis,
+
+191
+00:10:54.592 --> 00:10:57.615
+le moment le plus important dans le début d'un module,
+
+192
+00:10:58.115 --> 00:11:01.599
+c'est vraiment d'énoncer les règles du jeu, et par exemple,
+
+193
+00:11:01.678 --> 00:11:06.560
+de dire que pendant le cours Magique Stral, il y a des
+choses qui seront dites,
+
+194
+00:11:07.060 --> 00:11:11.904
+et qui seront questionnées dans l'évaluation.
+
+195
+00:11:12.782 --> 00:11:17.089
+Donc ça oblige les étudiants à être attentifs, à prendre des
+notes et tout ça.
+
+196
+00:11:17.186 --> 00:11:19.186
+Parce que
+
+197
+00:11:22.190 --> 00:11:24.190
+d'un point de vue pédagogique,
+
+198
+00:11:26.159 --> 00:11:30.721
+un cours magistral, c'est évidemment pour délivrer du fond,
+mais aussi dans la forme,
+
+199
+00:11:31.096 --> 00:11:35.612
+c'est d'apprendre aux étudiants à être attentifs plus de
+trois
+
+200
+00:11:35.690 --> 00:11:39.549
+secondes, à prendre des notes,
+
+201
+00:11:40.456 --> 00:11:42.456
+à formuler un feedback.
+
+202
+00:11:42.574 --> 00:11:47.400
+à formuler des questions devant un auditoire, donc à parler
+aussi en public.
+
+203
+00:11:48.021 --> 00:11:50.021
+Toutes ces choses-là,
+
+204
+00:11:50.021 --> 00:11:54.287
+c'est important et on ne les a pas ailleurs.
+
+205
+00:11:56.044 --> 00:11:58.044
+Bertrand, est-ce qu'on peut vous rembobiner ?
+
+206
+00:12:00.318 --> 00:12:04.818
+Il y a beaucoup de choses très
+
+207
+00:12:04.880 --> 00:12:06.880
+intéressantes qui ont été dites.
+
+208
+00:12:06.880 --> 00:12:08.630
+Je trouve que...
+
+209
+00:12:08.630 --> 00:12:09.958
+Alors...
+
+210
+00:12:09.958 --> 00:12:12.603
+Sur la question, parce qu'en fait, c'était un peu aussi le
+point de départ de se dire est-ce que la question…
+
+211
+00:12:14.404 --> 00:12:19.326
+Alors, moi, j'ai les limites, donc je trouve que la question
+posée un peu tranchante, un peu provoquante,
+
+212
+00:12:20.310 --> 00:12:23.490
+c'est très bien de partir comme ça pour se donner une idée
+du débat.
+
+213
+00:12:25.115 --> 00:12:27.115
+Et en fait, oui,
+
+214
+00:12:27.115 --> 00:12:31.115
+elle a quand même énormément de sens dans la mesure où il y
+a quand même des gens dans la société qui
+
+215
+00:12:31.287 --> 00:12:34.240
+apprennent autrement qu'en venant dans des écoles, autrement
+qu'en venant en cours.
+
+216
+00:12:34.943 --> 00:12:38.755
+Donc, je trouve que ça a permis quand même des gens à des
+gens d'accéder au savoir,
+
+217
+00:12:38.835 --> 00:12:40.835
+par le numérique notamment,
+
+218
+00:12:42.358 --> 00:12:44.542
+du coup sans venir dans des cours magistraux.
+
+219
+00:12:45.100 --> 00:12:48.604
+Mais après, la question, ce n'est pas forcément le
+distanciel versus le présentiel,
+
+220
+00:12:48.963 --> 00:12:51.932
+c'était le cours magistral versus autre chose.
+
+221
+00:12:52.792 --> 00:12:56.120
+Et ça, je trouve que c'est vraiment la bonne question.
+
+222
+00:12:57.979 --> 00:13:01.620
+Alors, quand je la pose autour de moi, de manière aussi
+provocante,
+
+223
+00:13:01.635 --> 00:13:04.917
+j'ai beaucoup de retours pour me dire, bien sûr qu'il faut
+continuer.
+
+224
+00:13:05.478 --> 00:13:07.478
+Alors, pourquoi est-ce qu'il faut continuer ?
+
+225
+00:13:07.501 --> 00:13:10.963
+On a évoqué l'aspect un peu socialisation.
+
+226
+00:13:11.143 --> 00:13:14.467
+Bon, la messe, c'est peut-être un peu trop… Voilà,
+
+227
+00:13:15.327 --> 00:13:18.991
+il y a déjà un fort parti pris, mais il y a peut-être… C'est
+un moins-sédiat, enfin, qui l'a tiré.
+
+228
+00:13:19.608 --> 00:13:21.608
+C'est un moins-sédiat dans le cours magistral.
+
+229
+00:13:21.889 --> 00:13:26.827
+Mais de là à en faire un mode aussi, je dirais, généralisé,
+
+230
+00:13:26.905 --> 00:13:31.186
+parce qu'il faut quand même se dire que, en tout cas dans
+nos écoles, je ne sais pas comment c'est à l'effraie,
+
+231
+00:13:31.436 --> 00:13:33.842
+on a commencé des choses sur l'université pédagogique.
+
+232
+00:13:34.214 --> 00:13:38.975
+Moi, j'en ai fait beaucoup côté apprentissage actif, de la
+classe inversée, justement à base de capsules,
+
+233
+00:13:39.373 --> 00:13:44.299
+mais reste que quand même, le cours magistral a encore des
+beaux jours devant lui.
+
+234
+00:13:44.377 --> 00:13:46.377
+D'ailleurs,
+
+235
+00:13:46.713 --> 00:13:51.315
+vous me disiez qu'il y en a une période, le Covid, les gens
+voulaient revenir.
+
+236
+00:13:52.018 --> 00:13:54.018
+Absolument.
+
+237
+00:13:54.018 --> 00:13:57.205
+Ça, c'était le sens, effectivement, sur distanciel versus
+présentiel.
+
+238
+00:13:57.893 --> 00:14:01.943
+On a dit, les gens… Ce n'est pas le même débat parce que…
+Pour moi,
+
+239
+00:14:02.023 --> 00:14:04.926
+c'est très clair qu'après le Covid, les gens avaient envie
+de revenir en présentiel,
+
+240
+00:14:05.067 --> 00:14:09.547
+élèvent comme enseignants pour une raison d'engagement
+essentiellement,
+
+241
+00:14:09.953 --> 00:14:11.953
+d'engagement dans les apprentissages.
+
+242
+00:14:11.953 --> 00:14:13.392
+C'est-à-dire, est-ce qu'on apprend bien ?
+
+243
+00:14:13.414 --> 00:14:18.235
+Si c'est apprendre, c'est douloureux, si c'est painful, tout
+ça, on met un temps fou à apprendre,
+
+244
+00:14:19.766 --> 00:14:21.766
+tout le monde est embêté.
+
+245
+00:14:21.766 --> 00:14:25.360
+Donc, le fait d'avoir quelqu'un en cours magistral qui vient
+raconter une très belle histoire,
+
+246
+00:14:25.750 --> 00:14:30.344
+alors ça, c'est limite, le storyteller, parce qu'il faut que
+ce soit un bon storyteller, mais
+
+247
+00:14:30.906 --> 00:14:33.489
+Ça permet d'engager les gens sur un tremplin.
+
+248
+00:14:33.809 --> 00:14:38.412
+Donc, socialisation, raconter l'histoire et donc engagement
+dans les enseignements.
+
+249
+00:14:39.213 --> 00:14:44.198
+Maintenant, si on prend l'autre partie de la question qui
+est vraiment sur le cours magistral,
+
+250
+00:14:44.502 --> 00:14:46.502
+je pense qu'il faut vraiment essayer d'autres choses.
+
+251
+00:14:46.502 --> 00:14:51.065
+Le cours magistral est un des moyens qu'on a dans un arsenal
+de techniques possibles.
+
+252
+00:14:51.066 --> 00:14:53.987
+On a parlé classe inversée, on a parlé capsule, il y en a
+plein d'autres.
+
+253
+00:14:54.143 --> 00:14:56.877
+Donc, on peut le rendre plus interactif, pourquoi pas,
+
+254
+00:14:57.190 --> 00:14:59.190
+mais on peut aussi se dire où est sa place.
+
+255
+00:14:59.650 --> 00:15:01.650
+dans la structure de l'ingénierie pédagogique.
+
+256
+00:15:01.972 --> 00:15:06.858
+Et là, je trouve que c'est intéressant parce que c'est vrai
+que c'est un moment de
+
+257
+00:15:06.897 --> 00:15:11.683
+socialisation, c'est un moment aussi où on est obligé, ça
+c'est un collègue qui me le disait,
+
+258
+00:15:11.684 --> 00:15:13.684
+je trouve que c'est très juste,
+
+259
+00:15:13.684 --> 00:15:17.183
+on est dans un temps contraint avec quelque part
+
+260
+00:15:18.386 --> 00:15:20.386
+un déroulement contraint.
+
+261
+00:15:20.386 --> 00:15:23.051
+Le cours, oui, il ne ralentit pas si on n'a pas eu le temps
+de prendre des notes.
+
+262
+00:15:23.052 --> 00:15:25.613
+Mais du coup, il y a une obligation de synthèse.
+
+263
+00:15:26.031 --> 00:15:28.031
+Ça travaille des compétences qui sont intéressantes.
+
+264
+00:15:30.000 --> 00:15:32.601
+Pour moi, c'est ça aussi la question, c'est quelle place on
+lui donne.
+
+265
+00:15:34.117 --> 00:15:36.117
+Jean-Marie, c'est oui et non.
+
+266
+00:15:39.304 --> 00:15:41.929
+Moi, on m'a souvent posé la question, on m'a souvent dit
+
+267
+00:15:42.804 --> 00:15:44.804
+« Vous ne voulez plus que les étudiants viennent en classe ?
+»
+
+268
+00:15:44.804 --> 00:15:49.291
+et en fait c'est pas du tout l'objectif qu'on poursuit chez
+Bicast,
+
+269
+00:15:49.310 --> 00:15:54.174
+en tout cas c'est pas ce qu'on préconise c'est pas du tout
+ce qu'on recommande je pense que le tout
+
+270
+00:15:54.213 --> 00:15:59.158
+distancié il a peut-être une raison d'être notamment dans la
+formation continue mais en formation initiale on
+
+271
+00:15:59.220 --> 00:16:01.681
+sait que il est moi-même vécu,
+
+272
+00:16:02.447 --> 00:16:07.431
+il se passe des choses sur un campus qui forment des hommes
+et des femmes pour demain et en fait il faut absolument
+
+273
+00:16:07.463 --> 00:16:11.353
+pas les oublier et ni les minimiser
+
+274
+00:16:12.978 --> 00:16:14.978
+Ouais.
+
+275
+00:16:14.978 --> 00:16:15.347
+Donc,
+
+276
+00:16:15.347 --> 00:16:19.188
+on se rend compte que le présentiel est
+
+277
+00:16:19.227 --> 00:16:21.227
+important.
+
+278
+00:16:21.227 --> 00:16:23.630
+D'ailleurs, ce que je retiens de nos échanges pour préparer,
+
+279
+00:16:23.692 --> 00:16:25.833
+vous allez me dire comment vous faites dans vos
+établissements,
+
+280
+00:16:26.247 --> 00:16:29.028
+c'est qu'il faut
+
+281
+00:16:31.153 --> 00:16:33.153
+du cours magistral augmenté.
+
+282
+00:16:33.153 --> 00:16:35.138
+C'est du cours à l'ancienne augmenté et du cours
+traditionnel.
+
+283
+00:16:35.356 --> 00:16:37.356
+Alors, on va commencer notre petit tour.
+
+284
+00:16:37.356 --> 00:16:39.059
+Jeff, comment ça se passe chez vous ?
+
+285
+00:16:39.639 --> 00:16:42.862
+Quand je dis ça, c'est qu'il faut un peu articuler entre les
+deux contraintes,
+
+286
+00:16:42.903 --> 00:16:47.845
+c'est-à-dire la sociabilisation et en même temps de la tech.
+
+287
+00:16:48.009 --> 00:16:52.954
+Nous, on a mis en place pendant le Covid, justement, un
+équipement de salles avec Jean-Marie, justement, pour,
+
+288
+00:16:53.970 --> 00:16:56.235
+je vais déjà dire, plus ou moins 8 ans de salles, 8 ans de
+C80.
+
+289
+00:16:58.954 --> 00:17:02.641
+Et en fait, ça nous amène à un élément important, parce que
+l'enseignement, il est chronologiquement,
+
+290
+00:17:03.641 --> 00:17:06.579
+systématiquement organisé dans un continuum assez déterminé.
+
+291
+00:17:07.282 --> 00:17:09.282
+Mais l'enregistrement court,
+
+292
+00:17:09.282 --> 00:17:13.680
+typiquement c'est quelque chose qui ne coûte pas trop en
+termes de temps à l'enseignant puisqu'il prépare
+
+293
+00:17:13.700 --> 00:17:17.462
+sa leçon, elle est enregistrée par contre pour l'étudiant ça
+crée un élément important,
+
+294
+00:17:17.485 --> 00:17:22.087
+c'est quand il a besoin de se rappeler d'un élément, il peut
+y avoir accès directement.
+
+295
+00:17:22.469 --> 00:17:24.751
+Et ça en termes d'apprentissage c'est extrêmement important,
+
+296
+00:17:24.766 --> 00:17:29.532
+la distance entre laquelle on se pose la question et la
+distance à laquelle l'information est
+
+297
+00:17:29.533 --> 00:17:32.704
+disponible, il y a une corrélation par rapport à la
+mémorisation facile.
+
+298
+00:17:33.079 --> 00:17:36.922
+Je donne un exemple, si mon prof me parle d'un tel concept
+dans l'impôt du 13 octobre Merci.
+
+299
+00:17:37.151 --> 00:17:41.996
+Mais moi, quand je prépare un travail, je me pose la
+question le 18 novembre, je ne me rappellerai pas ce qu'il a
+dit.
+
+300
+00:17:42.035 --> 00:17:44.918
+J'aurais peut-être une petite note, quoi que ce soit.
+
+301
+00:17:45.238 --> 00:17:49.442
+Par contre, si j'ai un cours en ligne, ou justement j'ai
+l'enregistrement du cours, je sais que c'était ce cours-là.
+
+302
+00:17:49.903 --> 00:17:54.301
+Avec Ubiquast, on peut chercher des mots-clés, trouver le
+moment où il en parle, je peux revoir le morceau qui
+m'intéresse.
+
+303
+00:17:54.692 --> 00:17:58.676
+Et là, j'ai diminué la distance temporelle entre le moment
+où je me pose la question,
+
+304
+00:17:58.988 --> 00:18:00.988
+le moment où c'est intéressant pour moi.
+
+305
+00:18:00.988 --> 00:18:02.770
+C'est pour ça que la notion d'augmenter est importante.
+
+306
+00:18:02.973 --> 00:18:07.044
+c'est à dire c'est nous pour augmenter avec nous Et le mot
+hybridation,
+
+307
+00:18:07.084 --> 00:18:11.188
+il a été fortement péjoré, comme on dit chez nous, à cause
+du Covid.
+
+308
+00:18:11.868 --> 00:18:13.868
+L'hybridation,
+
+309
+00:18:13.868 --> 00:18:17.594
+c'est un système d'enseignement qui combine les moments de
+rencontres sociaux et présentielles
+
+310
+00:18:18.032 --> 00:18:22.438
+avec des activités en ligne qui sont là pour aider nos
+étudiants à s'engager dans l'apprentissage.
+
+311
+00:18:22.844 --> 00:18:26.110
+Et ça, il faut le rappeler systématiquement, ce n'est pas
+l'enseignement à distance.
+
+312
+00:18:26.563 --> 00:18:31.094
+Et donc typiquement, ce qu'on a mis en place à Lausanne,
+c'est essentiellement beaucoup de captures,
+
+313
+00:18:31.095 --> 00:18:33.095
+beaucoup de captations de cours.
+
+314
+00:18:33.095 --> 00:18:37.192
+Et pour terminer, si vous regardez les travaux d'Emilie
+Nordman, En termes d'accessibilité,
+
+315
+00:18:37.251 --> 00:18:40.251
+l'enregistrement des cours a des plus-values
+exceptionnelles,
+
+316
+00:18:40.290 --> 00:18:45.056
+tant pour les étudiants qui ne sont pas natifs de la langue
+d'enseignement que pour les étudiants qui ont
+
+317
+00:18:45.057 --> 00:18:47.057
+différents troubles d'apprentissage.
+
+318
+00:18:47.057 --> 00:18:48.954
+Et là,
+
+319
+00:18:48.954 --> 00:18:52.509
+il n'y a pas faute non plus quand on regarde tous les
+avantages de la captation de cours et l'enregistrement des
+
+320
+00:18:52.510 --> 00:18:54.510
+cours par rapport à ça.
+
+321
+00:18:54.510 --> 00:18:57.400
+D'ailleurs, je passerai la parole à Anne, évidemment, et à
+Bertrand.
+
+322
+00:18:57.697 --> 00:18:59.822
+Juste rapidement, le chiffre, vous me disiez quand on
+préparait.
+
+323
+00:19:00.259 --> 00:19:04.204
+Les ECTF, c'est 20% le présentiel, alors S, c'est que du
+différentiel.
+
+324
+00:19:04.205 --> 00:19:07.407
+Ça dépend un peu de l'organisation du cours, mais
+généralement, quand on imagine un cours,
+
+325
+00:19:07.688 --> 00:19:12.290
+le présentiel dépasse rarement les 30-35% du temps ECTF
+qu'on attribue aux étudiants.
+
+326
+00:19:12.813 --> 00:19:15.157
+Et moi, j'aime bien toujours travailler en rapport de tiers.
+
+327
+00:19:15.173 --> 00:19:17.173
+Les fameuses trinités,
+
+328
+00:19:17.173 --> 00:19:20.376
+on revient à nos choses historiques dans la culture.
+
+329
+00:19:21.016 --> 00:19:26.001
+En gros, pour moi, un cours, c'est un tiers où je rencontre
+mes étudiants en présentiel, peu importe ce que je fais,
+
+330
+00:19:26.251 --> 00:19:28.313
+et peut-être pas trop justement de magistral.
+
+331
+00:19:28.771 --> 00:19:33.077
+Un tiers où j'ai mis une écologie d'apprentissage sur Moodle
+avec des enregistrements de cours, des exercices,
+
+332
+00:19:33.374 --> 00:19:35.374
+des formes de discussion.
+
+333
+00:19:35.374 --> 00:19:36.921
+Et un tiers qui est libre à l'étudiant pour étudier,
+justement.
+
+334
+00:19:37.382 --> 00:19:39.382
+Et ce deuxième tiers, on ne l'occupe pas assez.
+
+335
+00:19:39.382 --> 00:19:41.343
+C'est ça qui fait l'hybridation.
+
+336
+00:19:41.780 --> 00:19:43.780
+Anne, trois tiers.
+
+337
+00:19:44.304 --> 00:19:46.304
+J'ai pas dit quatre tiers, j'ai dit trois tiers.
+
+338
+00:19:46.304 --> 00:19:49.733
+Donc, on est bien dans les 100 %. Est-ce que c'est une
+formule qui…
+
+339
+00:19:51.577 --> 00:19:53.577
+L'idée,
+
+340
+00:19:53.577 --> 00:19:56.812
+c'est comment vous voyez un peu cette problématique au sein
+d'une grande école d'ingénieurs ?
+
+341
+00:19:57.711 --> 00:20:01.890
+Alors oui, à l'effret, on a également des cours en
+distanciel.
+
+342
+00:20:01.933 --> 00:20:05.656
+Et c'est vrai qu'avec la période Covid, on a appris en
+vitesse accélérée.
+
+343
+00:20:05.695 --> 00:20:10.234
+Là, c'était fast forward, du coup, où tout d'un coup,
+
+344
+00:20:10.273 --> 00:20:12.273
+on a tout fait en distanciel.
+
+345
+00:20:12.273 --> 00:20:16.422
+Et on a fait le job quand on a réussi à assurer les cours
+
+346
+00:20:17.359 --> 00:20:19.359
+du jour au lendemain.
+
+347
+00:20:20.748 --> 00:20:22.748
+Ensuite, avec le recul,
+
+348
+00:20:22.910 --> 00:20:27.496
+on a appris à apprécier aussi les bénéfices du
+
+349
+00:20:27.535 --> 00:20:29.535
+distanciel.
+
+350
+00:20:29.535 --> 00:20:31.539
+Et donc, aujourd'hui, les élèves, en moyenne,
+
+351
+00:20:31.601 --> 00:20:35.820
+ils ont un jour par semaine à distance, avec encore des
+cours en distanciel,
+
+352
+00:20:37.508 --> 00:20:40.961
+parce que parfois, pour un grand amphi,
+
+353
+00:20:41.273 --> 00:20:43.508
+la taille de l'amphi peut être immense.
+
+354
+00:20:44.304 --> 00:20:46.304
+À distance, il n'y a aucun problème.
+
+355
+00:20:46.304 --> 00:20:48.226
+et on peut...
+
+356
+00:20:48.911 --> 00:20:53.713
+Moi, j'aime beaucoup faire ça dans mes cours, faire
+travailler les étudiants en sous-groupe.
+
+357
+00:20:53.771 --> 00:20:57.775
+C'est beaucoup plus facile de trouver des salles de
+sous-commission sur Teams
+
+358
+00:20:57.853 --> 00:21:00.892
+qu'en physique.
+
+359
+00:21:01.853 --> 00:21:03.853
+Et les étudiants,
+
+360
+00:21:03.853 --> 00:21:07.517
+ils vont comme ça dans leurs canaux respectifs et travailler
+en
+
+361
+00:21:07.548 --> 00:21:11.048
+sous-commission, ça les rend actifs.
+
+362
+00:21:11.142 --> 00:21:14.252
+Donc voilà, le distanciel, oui,
+
+363
+00:21:14.361 --> 00:21:16.361
+on a appris à l'apprécier et à...
+
+364
+00:21:17.035 --> 00:21:19.035
+À l'utiliser.
+
+365
+00:21:19.035 --> 00:21:20.336
+De toute façon, ils attendent ça.
+
+366
+00:21:20.779 --> 00:21:22.779
+Absolument.
+
+367
+00:21:22.779 --> 00:21:23.799
+C'est passé totalement dans les mœurs.
+
+368
+00:21:25.400 --> 00:21:27.822
+Maintenant, la mise à disposition des cours, évidemment,
+
+369
+00:21:29.049 --> 00:21:33.471
+les supports de cours sont mis à disposition sur Moodle
+
+370
+00:21:34.580 --> 00:21:36.580
+à l'effret aussi.
+
+371
+00:21:36.580 --> 00:21:38.174
+Mais là,
+
+372
+00:21:38.174 --> 00:21:41.846
+c'est un chantier qu'on voudrait adresser maintenant.
+
+373
+00:21:41.939 --> 00:21:45.142
+C'est justement la prise de notes.
+
+374
+00:21:45.619 --> 00:21:50.483
+où on se rend compte que comme il y a tellement de choses à
+disposition des élèves,
+
+375
+00:21:51.226 --> 00:21:55.030
+des cours, des liens, des vidéos, plein de formats,
+
+376
+00:21:56.366 --> 00:21:58.366
+on se rend compte que les étudiants,
+
+377
+00:22:01.233 --> 00:22:03.233
+pourquoi ils prendraient des notes ?
+
+378
+00:22:03.233 --> 00:22:04.858
+Et donc,
+
+379
+00:22:05.374 --> 00:22:10.124
+on fait un gros travail en ce moment de pédagogie pour dire
+aux étudiants que c'est important de prendre des
+
+380
+00:22:10.140 --> 00:22:14.171
+notes, même s'il y a tous ces supports à dispo.
+
+381
+00:22:14.847 --> 00:22:18.290
+parce que ça développe l'esprit de synthèse,
+
+382
+00:22:18.331 --> 00:22:22.716
+ça permet d'aller à l'essentiel et c'est un des moyens
+d'apprentissage.
+
+383
+00:22:22.974 --> 00:22:26.841
+Mais d'ailleurs, quelqu'un me disait, alors ce n'est pas ici
+à cette table ronde, je passerai la parole après à Bertrand,
+
+384
+00:22:27.599 --> 00:22:32.450
+attention à ce que l'IA ne nous rende pas fainéants pour
+répondre à des
+
+385
+00:22:32.481 --> 00:22:34.481
+questions.
+
+386
+00:22:34.481 --> 00:22:36.309
+Bertrand, mais je suis bon, on n'est pas fainéants de toute
+façon dans une grande école comme Télécom.
+
+387
+00:22:36.622 --> 00:22:38.622
+Mais c'est vrai que c'est intéressant de savoir qu'il y a
+des fibres.
+
+388
+00:22:40.231 --> 00:22:43.778
+Le risque d'économie cognitive, il ne va pas falloir pas
+être fainéantiste.
+
+389
+00:22:46.173 --> 00:22:48.173
+Il est quand même réel,
+
+390
+00:22:48.173 --> 00:22:52.278
+tout simplement parce que les étudiants dans une grande
+école,
+
+391
+00:22:53.497 --> 00:22:56.864
+ils ont à apprendre des choses, mais ils ont aussi une
+expérience de vie étudiante à mener.
+
+392
+00:22:58.068 --> 00:23:00.068
+Et donc, ils ont quand même une pression du temps.
+
+393
+00:23:00.607 --> 00:23:03.685
+Et cette pression du temps, ça peut conduire à faire
+certaines optimisations.
+
+394
+00:23:05.794 --> 00:23:09.278
+Par exemple, puisqu'on parle de l'IA, en ce moment, c'est
+une vraie question.
+
+395
+00:23:09.857 --> 00:23:11.857
+il y avait
+
+396
+00:23:11.857 --> 00:23:15.502
+tout un tas de travaux qu'on faisait faire à la maison qui
+permettaient de consolider les apprentissages qui ne
+
+397
+00:23:15.541 --> 00:23:19.381
+sont juste plus possibles parce qu'une partie des étudiants
+rendent ça avec de l'IA.
+
+398
+00:23:20.982 --> 00:23:24.639
+Ça paraît complètement naturel, mais on est encore un petit
+peu démuni.
+
+399
+00:23:24.818 --> 00:23:27.615
+On s'est attaqué au problème, mais on est quand même encore
+un peu démuni.
+
+400
+00:23:27.662 --> 00:23:32.459
+On change un peu les demandes pédagogiques.
+
+401
+00:23:32.584 --> 00:23:36.225
+C'était un peu ma réaction sur le côté économie cognitive.
+
+402
+00:23:37.225 --> 00:23:39.553
+J'avais une question pour Jeff qui m'intéressera.
+
+403
+00:23:39.678 --> 00:23:43.170
+c'est parce qu'on a fait la même chose nous durant le Covid,
+
+404
+00:23:43.230 --> 00:23:47.795
+sur le côté on avait enregistrement possible complètement
+automatisé, mais un,
+
+405
+00:23:47.916 --> 00:23:52.779
+on avait des retours d'enseignants qui étaient un petit
+
+406
+00:23:52.803 --> 00:23:54.803
+peu contre,
+
+407
+00:23:54.803 --> 00:23:58.240
+parce que diffuser leurs cours sans avoir finalisé
+
+408
+00:23:58.318 --> 00:24:00.318
+complètement le produit,
+
+409
+00:24:00.318 --> 00:24:03.553
+ils n'étaient pas très très chauds pour tout dire,
+
+410
+00:24:04.053 --> 00:24:09.037
+et puis du coup c'est très intéressant de savoir comment
+c'était traité à Lausanne.
+
+411
+00:24:09.643 --> 00:24:13.243
+J'ai une autre réflexion par rapport à ce qu'a dit
+Jean-Marie au début sur les capsules.
+
+412
+00:24:13.865 --> 00:24:16.564
+Moi qui ai beaucoup pratiqué la classe inversée avec des
+capsules,
+
+413
+00:24:16.825 --> 00:24:20.529
+l'avantage de la capsule qu'on a nous-mêmes mis en scène
+
+414
+00:24:21.724 --> 00:24:26.529
+et produite, c'est qu'on gagne un facteur 3 à peu près sur
+la durée d'un cours.
+
+415
+00:24:26.560 --> 00:24:28.560
+C'est l'ordre de grandeur.
+
+416
+00:24:28.560 --> 00:24:29.264
+C'est intéressant.
+
+417
+00:24:29.264 --> 00:24:31.372
+C'est intéressant parce que ça permet de gagner du temps
+dans la classe.
+
+418
+00:24:31.810 --> 00:24:36.353
+C'est-à-dire, au lieu de faire un cours de deux heures, on
+fait un cours de 20 minutes et après, on peut travailler sur
+autre chose.
+
+419
+00:24:38.458 --> 00:24:40.458
+Mais ce truc-là, ça demande quand même beaucoup de montage.
+
+420
+00:24:40.560 --> 00:24:42.638
+Et je me demandais du coup, sur Ubicast,
+
+421
+00:24:43.841 --> 00:24:47.826
+peut-être que je ne suis pas complètement au courant des
+nouvelles possibilités,
+
+422
+00:24:47.827 --> 00:24:51.576
+mais est-ce que c'est possible de raccourcir, d'avoir des
+sortes de résumés un peu automatisés ?
+
+423
+00:24:52.013 --> 00:24:56.154
+Parce que je sais qu'il y avait beaucoup d'outils déjà au
+moment du Covid pour améliorer
+
+424
+00:24:57.169 --> 00:24:59.169
+la production des profs.
+
+425
+00:24:59.169 --> 00:25:01.806
+Mais voilà, je trouve que ça, c'est vraiment un sujet
+intéressant aussi.
+
+426
+00:25:02.466 --> 00:25:07.193
+Parce qu'un matériel, si quelqu'un a à revoir des heures et
+des heures de cours sur une semaine,
+
+427
+00:25:07.513 --> 00:25:09.513
+c'est quasi pas possible.
+
+428
+00:25:09.513 --> 00:25:10.990
+Ah ben non, ben non.
+
+429
+00:25:10.990 --> 00:25:14.716
+Remarquez, il y a l'IA aussi qui peut aider à structurer un
+cours, qui peut faire des synthèses et tout ça.
+
+430
+00:25:15.154 --> 00:25:17.154
+Alors Jeff, vous avez été interrogé par Bertrand,
+
+431
+00:25:17.154 --> 00:25:20.888
+Jean-Marie a été interpellée par Bertrand et il y a
+Christelle qui a posé des questions à Jeff.
+
+432
+00:25:21.326 --> 00:25:24.794
+Cette conférence part totalement à volo, vous avez compris,
+que tout le monde...
+
+433
+00:25:25.873 --> 00:25:27.873
+Jean-Marie...
+
+434
+00:25:28.534 --> 00:25:30.534
+Non, mais c'est super.
+
+435
+00:25:30.534 --> 00:25:31.236
+Il y a plein de choses intéressantes qui ont été dites.
+
+436
+00:25:31.316 --> 00:25:34.101
+Pour répondre à Bertrand, alors aujourd'hui, nous, sur les
+thématiques
+
+437
+00:25:34.519 --> 00:25:37.820
+IA et raccourcissement des cours,
+
+438
+00:25:38.547 --> 00:25:41.711
+on a des outils d'auto-enregistrement pour les enseignants
+pour qu'ils créent eux-mêmes leur capsule.
+
+439
+00:25:41.984 --> 00:25:45.555
+Mais partir, par exemple, d'un cours magistral de deux
+heures et en faire une capsule de 20 minutes,
+
+440
+00:25:46.570 --> 00:25:48.570
+on a creusé.
+
+441
+00:25:48.570 --> 00:25:50.930
+Aujourd'hui, ça ne nous semble pas possible, en tout cas de
+manière qualitative.
+
+442
+00:25:51.351 --> 00:25:53.617
+Possible, oui, il y a plein de systèmes qui vous le
+promettent.
+
+443
+00:25:53.976 --> 00:25:55.976
+Mais en fait, ce qu'on a observé dans nos tests.
+
+444
+00:25:56.510 --> 00:25:59.272
+c'est que ça ne synthétisait pas, l'IA raccourcissait.
+
+445
+00:25:59.573 --> 00:26:02.295
+Ça veut dire qu'elle tronque, elle ne synthétise pas.
+
+446
+00:26:02.596 --> 00:26:05.717
+Et ça, c'est un énorme problème d'un point de vue
+pédagogique parce qu'en fait,
+
+447
+00:26:05.756 --> 00:26:09.780
+on va éluder certains concepts alors qu'en fait, il fallait
+juste les intégrer dans une synthèse.
+
+448
+00:26:10.162 --> 00:26:12.162
+Donc ça, c'est un gros problème.
+
+449
+00:26:12.584 --> 00:26:14.584
+Maintenant, dans ce qu'a dit,
+
+450
+00:26:14.584 --> 00:26:18.209
+je rebondis sur ce qu'a dit Anne qui m'a amusé avec le jour
+en distanciel.
+
+451
+00:26:18.678 --> 00:26:21.491
+Ça me faisait penser aux offres d'emploi qu'on trouve
+pour...
+
+452
+00:26:22.842 --> 00:26:24.842
+On dit télétravail partiel possible.
+
+453
+00:26:25.464 --> 00:26:27.527
+En fait, ça me faisait un peu penser à ce concept-là.
+
+454
+00:26:28.749 --> 00:26:30.749
+Ça existe encore.
+
+455
+00:26:30.847 --> 00:26:32.847
+Ah oui, oui, oui.
+
+456
+00:26:32.847 --> 00:26:34.550
+Télétravail possible.
+
+457
+00:26:34.550 --> 00:26:36.972
+Et e-learning, je vous disais, vous avez employé le mot
+e-learning en précisant que c'était le temps d'avant.
+
+458
+00:26:37.456 --> 00:26:39.456
+On ne parle plus de e-learning aujourd'hui.
+
+459
+00:26:39.456 --> 00:26:42.597
+C'est un peu le même concept.
+
+460
+00:26:42.769 --> 00:26:44.878
+Jeff, répondez à Bertrand qui vous a interpellé aussi.
+
+461
+00:26:45.998 --> 00:26:49.502
+Oui, alors peut-être deux réponses que je peux communiquer.
+
+462
+00:26:50.082 --> 00:26:52.082
+C'est la première,
+
+463
+00:26:52.082 --> 00:26:56.352
+chez nous l'organisation de l'enseignement est vraiment
+dépendante des facultés, donc il y a toute liberté de le
+faire.
+
+464
+00:26:56.750 --> 00:26:59.930
+Ce qu'on observe c'est qu'en faculté de médecine ou de
+biologie ou HEC,
+
+465
+00:27:00.453 --> 00:27:02.453
+qui ont des grosses filières en première année,
+
+466
+00:27:02.453 --> 00:27:06.961
+l'enregistrement est systématique et les enseignants quelque
+part ça les aide aussi parce que
+
+467
+00:27:06.977 --> 00:27:09.196
+parfois il y arrive qu'il n'y a pas assez de place dans
+l'amphithéâtre.
+
+468
+00:27:09.555 --> 00:27:12.664
+Donc il y a une question un peu de logistique aussi et
+d'équité qui rentre en ligne de compte.
+
+469
+00:27:12.994 --> 00:27:17.037
+Et de ce côté-là, on n'a pas eu trop de plaintes des
+enseignants.
+
+470
+00:27:17.537 --> 00:27:19.537
+La question qui s'est posée, par contre,
+
+471
+00:27:19.537 --> 00:27:23.806
+c'était la question de savoir combien de temps les
+enregistrements restent disponibles aux étudiants pour
+éviter
+
+472
+00:27:23.822 --> 00:27:27.549
+justement le phénomène des étudiants qui bideraient des
+cours deux semaines avant l'examen.
+
+473
+00:27:27.971 --> 00:27:31.135
+Et donc, certaines facultés ont choisi de mettre à
+disposition les cours deux semaines,
+
+474
+00:27:31.136 --> 00:27:35.494
+trois semaines après leur diffusion, d'autres mettre sans
+limite.
+
+475
+00:27:36.103 --> 00:27:38.806
+Par contre, on essaie de travailler avec les enseignants
+quand les demandes arrivent.
+
+476
+00:27:39.463 --> 00:27:43.658
+ça date d'il y a longtemps mais Quand on enregistre un
+cours,
+
+477
+00:27:43.659 --> 00:27:45.659
+il faut que le prof sache que c'est un cours enregistré.
+
+478
+00:27:45.659 --> 00:27:47.559
+Donc moi,
+
+479
+00:27:47.559 --> 00:27:50.684
+je lui conseille vraiment d'organiser son cours magistral ou
+autre sur des moments de
+
+480
+00:27:50.723 --> 00:27:55.340
+10-15 minutes avec des dias intersectives qui, justement,
+sectionnent bien les moments.
+
+481
+00:27:56.098 --> 00:28:00.902
+De facto, du coup, sur un outil comme Ubiquass, une fois que
+vous avez un enregistrement d'une heure trente qui a été
+bien sectionné,
+
+482
+00:28:01.043 --> 00:28:03.715
+bien pensé pédagogiquement, en sachant que c'est enregistré,
+
+483
+00:28:04.184 --> 00:28:08.996
+on peut aisément en faire six morceaux de 15 minutes et ça
+évitera le problème que Jean-Marie évitait.
+
+484
+00:28:09.286 --> 00:28:12.989
+Et donc là, l'étudiant peut avoir des petits morceaux de 10,
+15 plutôt qu'un gros morceau d'une autre.
+
+485
+00:28:13.532 --> 00:28:15.532
+Et ça, il y a un outil qui fait ça très bien.
+
+486
+00:28:15.731 --> 00:28:20.594
+Maintenant, sur la production de vidéos, j'ai la chance
+d'avoir fait pas mal de MOOC dans mon précédent métier.
+
+487
+00:28:20.618 --> 00:28:24.000
+Donc, je peux me considérer comme un spécialiste de la vidéo
+pédagogique.
+
+488
+00:28:25.375 --> 00:28:27.782
+Quand on la crée, moi, je suis pour le script, je suis pour
+le prompteur.
+
+489
+00:28:28.391 --> 00:28:32.188
+Et si vous voulez un état de travail, généralement,
+
+490
+00:28:32.235 --> 00:28:37.110
+une vidéo de 7 à 8 minutes, qui est la tape normale, ça fait
+plus ou moins 1000 mots, puisqu'on parle de 100 mots la
+minute.
+
+491
+00:28:37.778 --> 00:28:42.762
+enfin moi je parle de son mot la minute peut-être d'autres
+plus lentement et généralement si vous demandez à un prof
+d'écrire un
+
+492
+00:28:42.763 --> 00:28:44.763
+script qui fait
+
+493
+00:28:44.763 --> 00:28:48.993
+1200 mots et qui le lit devant un prompteur et quelqu'un
+vient l'illustrer après il faut compter
+
+494
+00:28:49.110 --> 00:28:53.875
+6 à 7 heures de travail d'un monteur réalisateur pour faire
+ça donc ça demande des
+
+495
+00:28:53.876 --> 00:28:57.219
+moyens et nous à Lausanne on a mis une équipe à disposition
+quand même,
+
+496
+00:28:58.063 --> 00:29:02.641
+c'est beaucoup oui mais si vous travaillez des éléments qui
+
+497
+00:29:02.704 --> 00:29:06.891
+reviennent il faut choisir les thématiques pour que ça soit
+pas un truc à mettre à jour tous les deux ans mais
+
+498
+00:29:07.258 --> 00:29:12.064
+finalement si on y va petit à petit sur deux trois ans peut
+faire une collection d'essentiel vidéo qui
+
+499
+00:29:12.525 --> 00:29:17.365
+est assez intéressante d'accord ça veut dire qu'on parle
+dans le long terme jean marie ce qui ce qui émerge tous les
+
+500
+00:29:17.411 --> 00:29:22.216
+échanges après jean-maud rabertrand et anne leur point de
+vue c'est le prof en fait c'est le rôle du prof
+
+501
+00:29:22.396 --> 00:29:27.154
+et son implication on parlait de l'engagement des jeunes
+mais le rôle l'engagement du profil et
+
+502
+00:29:27.700 --> 00:29:29.700
+central.
+
+503
+00:29:29.700 --> 00:29:31.421
+De toute façon, c'est lui qui doit toujours avoir la main.
+
+504
+00:29:31.642 --> 00:29:36.505
+Oui, parce que c'est comme dans tout projet de conduite du
+changement.
+
+505
+00:29:36.919 --> 00:29:40.880
+Faire un changement sans y associer les utilisateurs, c'est
+courir à la catastrophe.
+
+506
+00:29:41.263 --> 00:29:44.747
+Effectivement, il faut emmener les enseignants avec soi dans
+ces changements, les associer.
+
+507
+00:29:45.029 --> 00:29:47.029
+Donc, ça rejoint ce que disait Jeff.
+
+508
+00:29:47.029 --> 00:29:48.451
+On n'enregistre pas...
+
+509
+00:29:48.497 --> 00:29:51.951
+Même si on enregistre de manière automatique, il faut au
+moins que l'enseignant soit au courant.
+
+510
+00:29:53.638 --> 00:29:58.349
+Moi, ce que je vois dans la plupart des établissements où on
+enregistre les cours, qui sont donnés en présentiel,
+
+511
+00:29:58.929 --> 00:30:01.708
+souvent la politique c'est de laisser la main à l'enseignant
+quand même.
+
+512
+00:30:01.770 --> 00:30:04.970
+Il a un petit bouton sur la chaire pour démarrer ou arrêter
+l'enregistrement.
+
+513
+00:30:06.411 --> 00:30:10.708
+Parfois il y a des loupés, ils oublient d'enregistrer, mais
+au moins ils gardent le contrôle,
+
+514
+00:30:11.270 --> 00:30:13.645
+même si on peut garantir que de toute façon,
+
+515
+00:30:14.395 --> 00:30:17.974
+le contenu va être téléversé sur une plateforme qui est
+propre à l'établissement,
+
+516
+00:30:18.380 --> 00:30:20.708
+dont les contenus ne sont pas mélangés avec ceux d'un autre
+établissement,
+
+517
+00:30:20.989 --> 00:30:25.067
+et dont les seules personnes qui auront le droit d'accès et
+de visionner le cours sont les étudiants qui étaient dans la
+salle.
+
+518
+00:30:25.676 --> 00:30:27.676
+déjà, ça enlève quelques freins.
+
+519
+00:30:28.119 --> 00:30:30.119
+Mais il faut les associer.
+
+520
+00:30:30.119 --> 00:30:33.965
+J'avais écrit une tribune il y a quelques temps sur ce sujet
+en disant que l'enseignant passait d'un rôle de
+
+521
+00:30:34.308 --> 00:30:36.605
+transmetteur à un rôle de coach, d'accompagnateur.
+
+522
+00:30:37.027 --> 00:30:40.574
+Et on en a pas mal discuté avec notamment des gens autour de
+cette table.
+
+523
+00:30:41.152 --> 00:30:44.699
+Donc oui, je pense qu'il y a un changement de paradigme en
+ce moment.
+
+524
+00:30:44.840 --> 00:30:46.840
+Tout à fait.
+
+525
+00:30:46.840 --> 00:30:49.480
+Anne, justement, les enseignants, est-ce qu'il y a,
+
+526
+00:30:50.043 --> 00:30:53.137
+on parlait de conduite du changement, ça me semble être le
+mot-clé.
+
+527
+00:30:53.788 --> 00:30:56.971
+Et c'est eux qui sont, d'abord, qui restent au cœur du
+process pédagogique.
+
+528
+00:30:57.231 --> 00:31:00.434
+Je crois que c'est bien de le rappeler parce que la techno
+ne fera pas tout.
+
+529
+00:31:00.934 --> 00:31:05.380
+Mais sans leur engagement total, ça ne marche pas bien.
+
+530
+00:31:05.458 --> 00:31:07.458
+C'est là où il y a un sujet, à mon avis.
+
+531
+00:31:08.083 --> 00:31:10.083
+Exactement.
+
+532
+00:31:10.083 --> 00:31:13.450
+Et c'était pour ça que j'ai commencé mon intervention avec
+un plaidoyer
+
+533
+00:31:13.606 --> 00:31:15.606
+pour le cours magistral,
+
+534
+00:31:15.606 --> 00:31:19.653
+parce que c'est quand même un moment important et on a
+vraiment des…
+
+535
+00:31:21.156 --> 00:31:25.418
+de très bons intervenants, de très bons enseignants qui font
+des cours magistraux
+
+536
+00:31:26.899 --> 00:31:28.899
+extraordinaires.
+
+537
+00:31:28.899 --> 00:31:29.740
+Et ça, il faut le reconnaître.
+
+538
+00:31:31.555 --> 00:31:33.555
+Comment vous les embarquez ?
+
+539
+00:31:33.555 --> 00:31:35.243
+Comment on les embarque ?
+
+540
+00:31:35.696 --> 00:31:39.500
+Déjà, on a des responsables de département, responsables de
+majeur,
+
+541
+00:31:39.516 --> 00:31:43.985
+de formation qui font un travail formidable de dialogue,
+
+542
+00:31:43.986 --> 00:31:45.986
+de donner des bonnes pratiques, etc.
+
+543
+00:31:46.422 --> 00:31:48.422
+avec les enseignants.
+
+544
+00:31:49.449 --> 00:31:52.154
+pour varier le format des cours,
+
+545
+00:31:52.213 --> 00:31:56.818
+notamment utiliser des outils mis à
+
+546
+00:31:56.834 --> 00:31:58.834
+disposition.
+
+547
+00:31:59.177 --> 00:32:03.740
+Mais on a aussi une démarche bottom-up où on demande aux
+
+548
+00:32:03.802 --> 00:32:08.146
+enseignants de partager leurs meilleures pratiques avec
+
+549
+00:32:08.849 --> 00:32:13.209
+des prix d'innovation pédagogique et d'ailleurs un des
+premiers prix.
+
+550
+00:32:14.513 --> 00:32:16.513
+d'innovation pédagogique qui a été remis,
+
+551
+00:32:16.513 --> 00:32:20.978
+c'était justement sur la fabrication de capsules vidéo en
+maths
+
+552
+00:32:21.439 --> 00:32:25.400
+pour les notions essentielles au moins,
+
+553
+00:32:25.502 --> 00:32:30.463
+c'est encapsulé et réutilisable à tout moment et on ne se
+pose plus de
+
+554
+00:32:30.494 --> 00:32:32.494
+questions.
+
+555
+00:32:33.806 --> 00:32:38.650
+Mais maintenant, les projets tournent beaucoup autour de
+l'IA générative,
+
+556
+00:32:38.713 --> 00:32:42.978
+évidemment, comment l'utiliser à bon escient.
+
+557
+00:32:44.673 --> 00:32:49.417
+Voilà, donc c'est aussi reconnaître les compétences et
+
+558
+00:32:50.878 --> 00:32:54.824
+mettre en avant ce qui est notre cœur de métier à tous.
+
+559
+00:32:54.863 --> 00:32:57.066
+On est tous là pour délivrer des cours.
+
+560
+00:32:57.067 --> 00:33:00.753
+Alors le doyen du Télécom, le doyen des études,
+
+561
+00:33:01.144 --> 00:33:05.566
+il arrive à embarquer tous les anciens parce qu'on l'a bien
+compris dans tout ce qui a été dit,
+
+562
+00:33:06.378 --> 00:33:09.894
+il faut séquencer, il faut monter, il faut restituer,
+
+563
+00:33:09.956 --> 00:33:13.097
+il faut proposer pour pouvoir consulter Attawad.
+
+564
+00:33:13.736 --> 00:33:16.199
+le temps, à Tawad, anytime, anywhere, any device.
+
+565
+00:33:16.318 --> 00:33:20.002
+J'en profite pour montrer que je connais un concept qui a
+déjà 20 ans d'ailleurs.
+
+566
+00:33:20.384 --> 00:33:22.384
+Mais Bertrand, justement,
+
+567
+00:33:22.384 --> 00:33:27.048
+tous les enseignants sont mobilisés autour de ça et je crois
+que c'est essentiel pour reprendre ma
+
+568
+00:33:27.049 --> 00:33:29.049
+question.
+
+569
+00:33:29.049 --> 00:33:31.939
+Alors, tous les enseignants sont mobilisés autour de ça.
+
+570
+00:33:32.439 --> 00:33:34.439
+Ce qui est intéressant, je trouve,
+
+571
+00:33:34.439 --> 00:33:39.048
+dans le fait de prendre le problème du côté du rôle du prof
+et de parler
+
+572
+00:33:39.064 --> 00:33:41.064
+du...
+
+573
+00:33:41.064 --> 00:33:42.463
+comme le vient de Tarane, du cours magistral.
+
+574
+00:33:42.502 --> 00:33:46.686
+Et c'est vrai qu'on a d'excellents profs, mais il faut aussi
+dire qu'ils ne sont pas tous excellents.
+
+575
+00:33:47.408 --> 00:33:49.408
+Et que c'est naturel,
+
+576
+00:33:49.510 --> 00:33:54.416
+parce que chacun aussi a ses forces à des endroits et des
+compétences à renforcer.
+
+577
+00:33:54.752 --> 00:33:58.010
+Les compétences qu'il faut pour faire un bon cours
+magistral,
+
+578
+00:33:59.104 --> 00:34:01.494
+il y en a plusieurs qui demandent à être travaillées.
+
+579
+00:34:01.854 --> 00:34:04.619
+Je l'ai moi-même fait quand j'ai fait ma formation de prof
+il y a bien longtemps.
+
+580
+00:34:05.026 --> 00:34:07.385
+Mais ne serait-ce que la manière dont on développe
+
+581
+00:34:07.848 --> 00:34:10.090
+le discours oral dont on le structure.
+
+582
+00:34:10.551 --> 00:34:12.693
+Et puis, pour moi,
+
+583
+00:34:12.694 --> 00:34:17.498
+il y a quelque chose qu'on fait passer quand ça marche très
+bien et c'est pour ça qu'on a aussi des
+
+584
+00:34:17.514 --> 00:34:19.514
+gens qui peuvent être très passionnants.
+
+585
+00:34:20.740 --> 00:34:22.740
+C'est le partage d'une expérience.
+
+586
+00:34:22.740 --> 00:34:26.779
+C'est-à-dire, pour moi, il y a l'activité sociale en amphi,
+c'est une activité de socialisation,
+
+587
+00:34:27.201 --> 00:34:31.951
+mais avec quelqu'un qui ne fait pas que transmettre des
+connaissances, il délivre aussi...
+
+588
+00:34:32.712 --> 00:34:36.335
+sa manière à lui d'avoir lu le savoir, de l'avoir structuré,
+
+589
+00:34:36.776 --> 00:34:38.776
+et ça c'est une expérience humaine.
+
+590
+00:34:39.018 --> 00:34:41.304
+Et donc ça aide quand même pour apprendre,
+
+591
+00:34:41.483 --> 00:34:44.163
+quand on partage avec quelqu'un une expérience humaine.
+
+592
+00:34:44.507 --> 00:34:46.968
+Donc ce côté-là, si c'est travaillé,
+
+593
+00:34:47.147 --> 00:34:49.593
+je pense que ça vaut beaucoup le coup.
+
+594
+00:34:49.983 --> 00:34:53.593
+Je trouve que notre discussion, et c'est très intéressant,
+
+595
+00:34:53.827 --> 00:34:58.702
+on se rend bien compte que là où peut-être le modèle court,
+
+596
+00:34:58.811 --> 00:35:00.858
+peut-être TDTP, exercice, enfin voilà,
+
+597
+00:35:01.548 --> 00:35:03.851
+C'est quelque chose qui était très généralisé,
+
+598
+00:35:03.892 --> 00:35:08.474
+mais qu'on est quand même dans un monde où il y a beaucoup
+plus de voix d'apprendre que ce qu'il y avait
+
+599
+00:35:08.856 --> 00:35:11.560
+au moment où toutes ces choses-là se sont mises en place.
+
+600
+00:35:12.278 --> 00:35:16.661
+Et pour moi, ça engage une autre réflexion, c'est que le
+rôle du prof,
+
+601
+00:35:16.981 --> 00:35:21.411
+on a parlé du coach, mais on pourrait parler du médiateur,
+on pourrait parler du metteur en scène,
+
+602
+00:35:21.412 --> 00:35:23.412
+on pourrait parler du scénariste.
+
+603
+00:35:23.412 --> 00:35:24.755
+Il y a plein de rôles.
+
+604
+00:35:25.132 --> 00:35:29.701
+que le prof avait peut-être un petit peu moins avant et que
+maintenant, il a un peu besoin de travailler.
+
+605
+00:35:30.182 --> 00:35:34.928
+Et ça veut dire qu'il faut offrir aussi aux enseignants la
+possibilité de se former sur tous ces rôles en
+
+606
+00:35:34.929 --> 00:35:36.929
+fonction de leur goût.
+
+607
+00:35:36.929 --> 00:35:37.593
+Ça, c'est un peu le...
+
+608
+00:35:37.790 --> 00:35:39.790
+L'hypothèse qu'on a prise à Télécom,
+
+609
+00:35:39.790 --> 00:35:43.657
+d'essayer de lancer une grosse initiative sur la formation
+des enseignants,
+
+610
+00:35:44.036 --> 00:35:48.903
+notamment des jeunes qui arrivent et qui sont confrontés
+directement à cet univers très riche
+
+611
+00:35:49.239 --> 00:35:53.083
+en termes de modalité d'apprentissage des étudiants.
+
+612
+00:35:53.544 --> 00:35:55.544
+Et ça, je finirai juste par cette petite anecdote.
+
+613
+00:35:55.825 --> 00:36:00.309
+Un jour, en discutant avec les étudiants, je me suis rendu
+compte qu'au lieu de lire le poli, d'aller au cours,
+
+614
+00:36:00.872 --> 00:36:02.872
+ils avaient utilisé des capsules.
+
+615
+00:36:03.386 --> 00:36:06.669
+d'une compagnie que je ne nommerai pas, mais qui n'était pas
+Télécom Paris.
+
+616
+00:36:07.109 --> 00:36:10.374
+Et ils utilisaient ça pour réviser les contrôles.
+
+617
+00:36:10.534 --> 00:36:12.534
+Donc, en fait, voilà.
+
+618
+00:36:12.534 --> 00:36:13.878
+Ça, c'est moche.
+
+619
+00:36:13.878 --> 00:36:15.175
+La question, c'est moche.
+
+620
+00:36:15.175 --> 00:36:17.683
+Ils utilisent les moyens qu'ils ont à leur disposition.
+
+621
+00:36:18.644 --> 00:36:22.464
+Mais vous avez tellement raison.
+
+622
+00:36:23.370 --> 00:36:26.933
+Jean-Marie, ce qui est important, ce que je retiens de tout
+ça, c'est que j'ai...
+
+623
+00:36:27.370 --> 00:36:29.370
+Alors, on est en plein festival de Cannes.
+
+624
+00:36:29.370 --> 00:36:31.027
+C'est peut-être pour ça que j'ai été inspiré.
+
+625
+00:36:31.027 --> 00:36:32.308
+C'est la scénarisation.
+
+626
+00:36:32.308 --> 00:36:36.072
+vers que tout maintenant doit être vu à la lueur de cette
+histoire,
+
+627
+00:36:36.073 --> 00:36:41.039
+ce storytelling on peut pas venir avec un paquet de
+coufeuilles qu'on
+
+628
+00:36:41.078 --> 00:36:45.727
+délivre il faut quand même séquencer et scénariser
+complètement,
+
+629
+00:36:45.891 --> 00:36:50.383
+et que ce soit en ligne ou en présentiel je pense que les
+témoignages nous l'ont montré
+
+630
+00:36:52.246 --> 00:36:56.369
+En ligne, il faut que ça aille vite, il faut que ce soit
+captivant,
+
+631
+00:36:56.408 --> 00:36:59.912
+mais c'est la même chose au présentiel, et c'était le cœur
+de nos échanges,
+
+632
+00:36:59.913 --> 00:37:02.799
+y compris lors de notre préparation.
+
+633
+00:37:02.916 --> 00:37:04.955
+Oui, effectivement.
+
+634
+00:37:05.018 --> 00:37:07.018
+Et là, les IA peuvent aider.
+
+635
+00:37:07.018 --> 00:37:08.557
+Pour scripter,
+
+636
+00:37:08.557 --> 00:37:12.682
+Jeff parlait de scripter ses vidéos et d'utiliser le
+prompteur, et là,
+
+637
+00:37:12.713 --> 00:37:15.728
+elles sont plutôt bonnes pour ça, les IA.
+
+638
+00:37:16.744 --> 00:37:18.853
+Chez nous, on a intégré un...
+
+639
+00:37:19.891 --> 00:37:24.796
+un des voisins de Télécom, on a intégré Aristote, qui est
+l'IA développée par Centrale Supélec.
+
+640
+00:37:26.659 --> 00:37:28.659
+On discute, on n'y est pas encore.
+
+641
+00:37:28.659 --> 00:37:30.183
+Elle fait d'autres choses aujourd'hui.
+
+642
+00:37:30.183 --> 00:37:32.706
+Elle chapitre, elle fait une description de la vidéo, elle
+crée des quiz.
+
+643
+00:37:33.565 --> 00:37:35.682
+Peut-être que bientôt, elle pourra, à partir d'une vidéo,
+
+644
+00:37:36.042 --> 00:37:39.448
+fabriquer un script pour que l'enseignant puisse
+s'enregistrer par la suite.
+
+645
+00:37:40.276 --> 00:37:42.276
+Oui, ça va bouger.
+
+646
+00:37:42.276 --> 00:37:46.276
+Déjà, les enseignants me disent beaucoup qu'ils ont déjà
+beaucoup progressé puisque le temps
+
+647
+00:37:46.839 --> 00:37:48.839
+disponible est...
+
+648
+00:37:48.839 --> 00:37:50.092
+Pour faire les quiz, par exemple,
+
+649
+00:37:50.492 --> 00:37:53.174
+ça passe par l'IA qui peut faire des quiz à partir d'un
+contenu.
+
+650
+00:37:53.194 --> 00:37:55.557
+Et ça, c'est du temps disponible qui est mis pour les
+étudiants.
+
+651
+00:37:55.858 --> 00:37:57.963
+Et ça, c'est du bonus, si je puis dire.
+
+652
+00:37:58.479 --> 00:38:02.502
+Moi, il y a une question, vous le savez, vous n'y échapperez
+pas, Jean-Marie, que je pose à chaque fois.
+
+653
+00:38:02.987 --> 00:38:04.987
+Est-ce que c'est cher ?
+
+654
+00:38:04.987 --> 00:38:06.994
+Est-ce que ça impose des investissements importants ?
+
+655
+00:38:07.166 --> 00:38:09.166
+Vous répondrez tout à l'heure, Jean-Marie.
+
+656
+00:38:09.166 --> 00:38:10.416
+Jeff,
+
+657
+00:38:10.416 --> 00:38:13.994
+est-ce qu'il faut se mettre en position de devoir investir
+massivement ou
+
+658
+00:38:14.135 --> 00:38:16.979
+raisonnablement pour aller vers ces nouveaux usages ?
+
+659
+00:38:19.094 --> 00:38:22.518
+Je pense qu'on peut produire avec différents moyens.
+
+660
+00:38:22.737 --> 00:38:24.737
+Comme on l'a dit, la scénarisation est importante.
+
+661
+00:38:24.737 --> 00:38:27.924
+Une fois que j'ai une vidéo bien scénarisée, je peux
+m'enregistrer avec mon PowerPoint,
+
+662
+00:38:27.940 --> 00:38:30.682
+me sonoriser et je vais faire une vidéo qui est
+pédagogiquement correcte,
+
+663
+00:38:31.166 --> 00:38:34.487
+même si elle n'aura peut-être pas l'attrait d'une vidéo
+faite par un professionnel.
+
+664
+00:38:34.948 --> 00:38:36.948
+Au niveau des équipements des salles, c'est un peu la même
+chose.
+
+665
+00:38:37.416 --> 00:38:42.198
+On a des systèmes qui sont assez établis, qui tiennent le
+coup quelques belles années.
+
+666
+00:38:42.573 --> 00:38:46.323
+Donc je pense que si on veut se lancer là-dedans, il faut
+plutôt identifier les grandes salles de cours.
+
+667
+00:38:46.770 --> 00:38:50.454
+et faire un plan sur 2, 3, 4, 5 ans pour les équiper au fur
+et à mesure.
+
+668
+00:38:51.474 --> 00:38:53.474
+Et en même temps, justement,
+
+669
+00:38:53.474 --> 00:38:57.560
+préparer l'enseignant à ce changement un petit peu de
+paradigme en les formant et en les amenant justement
+
+670
+00:38:58.161 --> 00:39:00.927
+à mieux scénariser un cours en imaginant par exemple qu'ils
+l'ont enregistré.
+
+671
+00:39:01.482 --> 00:39:03.482
+Mais surtout aussi accompagner les enseignants
+
+672
+00:39:06.942 --> 00:39:09.114
+dans l'interactivité qu'ils peuvent mettre dans leur cours.
+
+673
+00:39:09.286 --> 00:39:13.942
+C'est parce qu'on a 600 élèves devant soi qu'on est obligé
+systématiquement d'avoir ce
+
+674
+00:39:13.958 --> 00:39:15.958
+rapport un peu...
+
+675
+00:39:15.958 --> 00:39:17.126
+transmissive, on peut en effet,
+
+676
+00:39:17.126 --> 00:39:21.112
+avec pas mal d'outils de Class-on-responding-systems qui
+sont pas très chers finalement quand on
+
+677
+00:39:21.612 --> 00:39:23.812
+voit le prix d'une licence WUCLA pour autre,
+
+678
+00:39:23.813 --> 00:39:28.616
+on est quelque part pour des institutions à des rapports de
+1 franc ou 1 euro par
+
+679
+00:39:28.679 --> 00:39:30.679
+étudiant par an.
+
+680
+00:39:30.679 --> 00:39:31.843
+1 franc ?
+
+681
+00:39:31.843 --> 00:39:33.608
+Mais on n'a pas utilisé le mot franc depuis 20 ans, Jeff, en
+France.
+
+682
+00:39:33.609 --> 00:39:35.749
+Oui, mais en Suisse on est sur les francs.
+
+683
+00:39:36.124 --> 00:39:38.124
+Ah oui c'est vrai, bien expliqué.
+
+684
+00:39:38.124 --> 00:39:40.108
+Un sou, quand vous y êtes, un sou.
+
+685
+00:39:40.218 --> 00:39:42.218
+Un sou, ouais, voilà.
+
+686
+00:39:42.218 --> 00:39:44.339
+Donc, je pense qu'il faut imaginer un plan.
+
+687
+00:39:44.361 --> 00:39:46.460
+On ne change pas de paradigme comme ça sur deux mois.
+
+688
+00:39:46.503 --> 00:39:50.906
+Donc, le Covid, il a accéléré les choses, mais peut-être
+trop vite les mauvaises réflexions.
+
+689
+00:39:51.570 --> 00:39:56.195
+Donc, c'est se donner un plan de 4, 5, 6 ans et puis
+planifier avec de l'équipement,
+
+690
+00:39:56.196 --> 00:39:58.429
+de la formation de profs et de se dire que, voilà,
+
+691
+00:39:58.476 --> 00:40:03.335
+on vise quelque chose qui sera disponible dans 5 ans en
+optimisant un maximum les coûts.
+
+692
+00:40:03.336 --> 00:40:05.336
+Et je pense qu'on s'en sort bien.
+
+693
+00:40:05.664 --> 00:40:09.101
+Anne et Bertrand, moi, j'ai fait beaucoup de télé et je sais
+que...
+
+694
+00:40:09.462 --> 00:40:13.263
+Une caméra achetée un jour, il y aura une plus performante
+six mois après.
+
+695
+00:40:14.125 --> 00:40:18.527
+Les connexions, elles évoluent, les usages aussi.
+
+696
+00:40:18.722 --> 00:40:21.902
+Donc, c'est compliqué d'investir, Bertrand, sur du matériel.
+
+697
+00:40:21.903 --> 00:40:23.903
+Et pourtant, c'est indispensable.
+
+698
+00:40:25.480 --> 00:40:28.183
+Sur le matériel, il y a une petite réflexion que je me suis
+faite.
+
+699
+00:40:28.199 --> 00:40:30.699
+Parce qu'au moment du Covid, je pense qu'on a tous fait ça.
+
+700
+00:40:31.480 --> 00:40:33.543
+On a tous été tellement obligés de partir vite.
+
+701
+00:40:34.308 --> 00:40:36.511
+Donc, on a équipé pas mal de salles en hybride.
+
+702
+00:40:37.738 --> 00:40:40.060
+Et honnêtement, je trouve que ça marche très bien.
+
+703
+00:40:41.123 --> 00:40:43.165
+C'est quand même très robuste, ça continue de fonctionner.
+
+704
+00:40:43.166 --> 00:40:46.626
+Ce n'est pas autant utilisé que ce qu'on souhaiterait.
+
+705
+00:40:47.087 --> 00:40:49.087
+Et il y a pour moi deux raisons.
+
+706
+00:40:49.087 --> 00:40:52.455
+D'abord, il faut que ce soit extrêmement fluide au niveau de
+la mise en route.
+
+707
+00:40:53.197 --> 00:40:55.869
+Et on le voit dans l'administration,
+
+708
+00:40:56.431 --> 00:40:58.431
+les intervenants intérieurs et les externes.
+
+709
+00:40:58.853 --> 00:41:03.087
+Si un externe arrive et qu'il n'a pas tout de suite le truc,
+ça veut dire que quelque part,
+
+710
+00:41:03.088 --> 00:41:05.088
+il y a un manque de fluidité.
+
+711
+00:41:05.088 --> 00:41:06.603
+Et la deuxième chose, c'est vraiment l'audio.
+
+712
+00:41:06.603 --> 00:41:10.305
+Moi, je pense que l'audio, c'est vraiment le nerf de faire
+un bon hybride,
+
+713
+00:41:11.067 --> 00:41:14.090
+tout simplement parce que la classe en hybride,
+
+714
+00:41:14.110 --> 00:41:18.911
+elle devient interactive que quand les gens en salle
+entendent ceux qui sont à distance et
+
+715
+00:41:18.934 --> 00:41:20.934
+réciproquement.
+
+716
+00:41:20.934 --> 00:41:24.973
+Et ça, je ne trouve pas qu'on ait encore trouvé la
+martingale ou alors il faut des dalles super bien
+
+717
+00:41:25.098 --> 00:41:29.723
+équipées, mais souvent, c'est quand même des micros qu'on se
+jette en mousse.
+
+718
+00:41:31.942 --> 00:41:34.567
+Curieusement, moi, je trouve que c'est là qu'on a un petit
+peu la limite.
+
+719
+00:41:35.006 --> 00:41:39.749
+C'est que on sait avoir des publics distants et des
+
+720
+00:41:39.792 --> 00:41:44.394
+publics présents dans la même classe, mais les faire
+interagir, ça c'est plus compliqué.
+
+721
+00:41:45.097 --> 00:41:49.542
+Y compris par des petits QCM, parce que j'ai l'impression
+que ça c'est… Oui, les Wootlabs, tout ça, ça marche très
+bien.
+
+722
+00:41:49.543 --> 00:41:51.543
+De toute façon, c'est vraiment nécessaire.
+
+723
+00:41:52.198 --> 00:41:56.886
+Je pense que c'est un peu devenu l'incontournable du cours
+magistral.
+
+724
+00:41:57.402 --> 00:41:59.402
+Le must-have.
+
+725
+00:41:59.433 --> 00:42:02.058
+Oui, les gens savent qu'il faut faire des pauses.
+
+726
+00:42:02.382 --> 00:42:05.666
+que ce soit à l'oral, que ce soit via du BookLab, que ce
+soit via d'autres choses.
+
+727
+00:42:07.588 --> 00:42:10.209
+La plupart des enseignants, je pense, à l'école, nous,
+
+728
+00:42:10.272 --> 00:42:14.451
+ils font des espèces de cours hybrides où ils vont mélanger
+du cours, un parti de démo,
+
+729
+00:42:14.592 --> 00:42:18.545
+une partie où c'est l'étudiant qui travaille, etc.
+
+730
+00:42:19.904 --> 00:42:23.608
+C'est beaucoup plus rare d'avoir un cours magistral en
+entier sur deux heures de temps.
+
+731
+00:42:24.529 --> 00:42:28.826
+Anne, à l'Eiffray d'ailleurs, vous avez inauguré un nouveau
+campus, si j'ai bonne mémoire, dans une nouvelle ville.
+
+732
+00:42:29.170 --> 00:42:31.904
+Est-ce que vous avez encore des enfants pour des cours
+magistraux d'ailleurs ?
+
+733
+00:42:33.283 --> 00:42:35.283
+oui oui on en a oui oui bien sûr
+
+734
+00:42:38.649 --> 00:42:43.634
+en effet on a inauguré un campus à Bordeaux qui va
+
+735
+00:42:43.696 --> 00:42:48.337
+s'agrandir d'ailleurs probablement très bientôt on
+
+736
+00:42:48.338 --> 00:42:52.821
+va ouvrir un quatrième campus à Villejuif juste en face du
+campus
+
+737
+00:42:52.884 --> 00:42:57.728
+principal parce que on a besoin de salles de cours
+
+738
+00:42:57.946 --> 00:43:00.353
+supplémentaires et de salles de...
+
+739
+00:43:02.175 --> 00:43:04.175
+de cours magistraux.
+
+740
+00:43:04.175 --> 00:43:08.039
+Alors, vous êtes en plein investissement, c'est pour
+rebondir à ma question initiale, ça exige des
+investissements.
+
+741
+00:43:08.040 --> 00:43:11.703
+Et comment vous avez conçu justement dans ces nouveaux,
+puisque vous avez sur des nouveaux projets ?
+
+742
+00:43:12.844 --> 00:43:16.446
+Alors oui, comme vous le mentionnez,
+
+743
+00:43:17.438 --> 00:43:21.891
+on a équipé le campus principal surtout en salle hybride,
+
+744
+00:43:21.907 --> 00:43:23.907
+on a même un studio vidéo.
+
+745
+00:43:24.422 --> 00:43:29.297
+On a ensuite pris la panoplie des applis qui sont très
+
+746
+00:43:29.375 --> 00:43:32.647
+utiles, type BookLab et Miro.
+
+747
+00:43:34.907 --> 00:43:36.907
+Et maintenant,
+
+748
+00:43:36.907 --> 00:43:40.608
+on est en train d'analyser les besoins pour tout ce
+
+749
+00:43:40.609 --> 00:43:45.608
+qui est IA générative, pour équiper les gens.
+
+750
+00:43:46.890 --> 00:43:50.015
+Également, les gens qui le veulent s'équipent déjà,
+évidemment,
+
+751
+00:43:50.077 --> 00:43:54.968
+mais pour généraliser et améliorer les
+
+752
+00:43:55.077 --> 00:43:57.077
+pratiques de ce côté-là.
+
+753
+00:43:57.077 --> 00:43:59.468
+Mais là où on a investi aussi, et je voulais...
+
+754
+00:44:01.275 --> 00:44:05.480
+un petit peu en parler, c'est aussi dans tout ce qui est
+évaluation,
+
+755
+00:44:06.199 --> 00:44:10.766
+parce que dans notre culture de
+
+756
+00:44:10.844 --> 00:44:14.469
+l'écoute des étudiants, l'évaluation des enseignements,
+
+757
+00:44:14.891 --> 00:44:16.891
+c'est quelque chose de clé.
+
+758
+00:44:17.617 --> 00:44:19.617
+Et donc,
+
+759
+00:44:19.617 --> 00:44:22.883
+on a également investi dans une plateforme d'évaluation qui
+nous sert pour les
+
+760
+00:44:22.930 --> 00:44:24.930
+évaluations de chaque module,
+
+761
+00:44:25.023 --> 00:44:29.242
+et puis aussi pour des grandes entreprises.
+
+762
+00:44:29.246 --> 00:44:31.788
+enquêtes ou des enquêtes à prestage, etc.
+
+763
+00:44:32.230 --> 00:44:36.515
+Voilà, et ça, c'était un aspect important aussi de cette
+dernière année.
+
+764
+00:44:37.632 --> 00:44:39.632
+Mais de toute façon,
+
+765
+00:44:40.679 --> 00:44:45.038
+l'expérience client peut se dédupliquer à l'expérience
+
+766
+00:44:45.101 --> 00:44:48.085
+utilisateur quand l'étudiant, il a fait son cours après
+tout.
+
+767
+00:44:48.351 --> 00:44:52.304
+C'est important, Jean-Marie, le feedback, la culture du
+feedback, d'ailleurs.
+
+768
+00:44:53.910 --> 00:44:58.256
+Oui complètement, d'ailleurs c'est quelque chose que nous on
+avait intégré très tôt, puisque dans le lecteur vidéo du
+BICAS,
+
+769
+00:44:58.276 --> 00:45:00.276
+sur la partie droite, il y a une partie interactive,
+
+770
+00:45:00.397 --> 00:45:03.979
+où les gens peuvent poser des questions ou y répondre.
+
+771
+00:45:05.940 --> 00:45:07.963
+Là récemment on est sur un projet européen,
+
+772
+00:45:08.002 --> 00:45:11.666
+on récupère des enregistrements de sessions de réalité
+virtuelle,
+
+773
+00:45:12.088 --> 00:45:14.088
+où des étudiants sont dans un TP de chimie,
+
+774
+00:45:15.338 --> 00:45:20.291
+et justement l'intégration du replay permet à l'enseignant
+de
+
+775
+00:45:20.354 --> 00:45:22.354
+venir
+
+776
+00:45:22.354 --> 00:45:26.414
+revoir ce qu'a vécu l'étudiant dans son expérience immersive
+et de le
+
+777
+00:45:26.457 --> 00:45:31.324
+challenger sur les moments où il a été bon ou surtout pas
+bon en fait et ils peuvent échanger en asynchrone
+
+778
+00:45:31.363 --> 00:45:35.511
+sur ces moments là de manière synchronisée donc oui oui le
+feedback essentiel Un mot
+
+779
+00:45:36.410 --> 00:45:39.941
+sur l'IA parce qu'on a On l'a évoqué, on a évoqué les
+outils.
+
+780
+00:45:41.062 --> 00:45:45.884
+Alors, vous représentez la filière, vous l'avez dit dès le
+début, c'est-à-dire que quel est l'impact de l'IA ?
+
+781
+00:45:45.947 --> 00:45:48.712
+Parce qu'on promet quand même de sacrées évolutions, de
+sacrés changements.
+
+782
+00:45:48.713 --> 00:45:50.713
+Et d'ailleurs,
+
+783
+00:45:50.713 --> 00:45:54.540
+beaucoup d'établissements d'enseignement plus supérieurs
+s'appuient soit sur des plateformes existantes,
+
+784
+00:45:54.869 --> 00:45:59.275
+soit créent leurs propres outils maintenant pour augmenter
+leurs enseignements.
+
+785
+00:45:59.494 --> 00:46:02.447
+Quel est l'impact sur cette nouvelle approche des usages ?
+
+786
+00:46:02.910 --> 00:46:04.910
+Alors déjà, je pense que
+
+787
+00:46:04.910 --> 00:46:07.954
+DLLM, ce n'est pas à la portée de tout le monde de créer un
+large language model.
+
+788
+00:46:08.556 --> 00:46:11.798
+Je pense qu'il y a quelques players dans le monde, on va
+dire une dizaine.
+
+789
+00:46:12.220 --> 00:46:14.345
+Et ensuite, par contre, ils sont généralistes.
+
+790
+00:46:15.243 --> 00:46:17.642
+Et à ce moment-là, il faut venir ajouter une surcouche
+métier.
+
+791
+00:46:17.767 --> 00:46:19.767
+Et je pense que le rôle des techs, il est là.
+
+792
+00:46:19.899 --> 00:46:22.227
+C'est de prendre un besoin, une situation,
+
+793
+00:46:22.556 --> 00:46:26.212
+un problème qui existe dans le monde de l'enseignement et de
+venir entraîner,
+
+794
+00:46:26.509 --> 00:46:29.743
+adapter un modèle généraliste sur une problématique très
+métier.
+
+795
+00:46:30.352 --> 00:46:32.352
+Là, je pense que...
+
+796
+00:46:33.102 --> 00:46:36.665
+Il y a des forces en présence, en tout cas dans les membres
+d'EdTech France, sur ces sujets-là,
+
+797
+00:46:38.325 --> 00:46:40.325
+très clairement.
+
+798
+00:46:41.747 --> 00:46:43.747
+Et je n'ai plus la deuxième partie de la question.
+
+799
+00:46:46.325 --> 00:46:49.926
+Effectivement, c'est là-dessus qu'on va se distinguer dans
+les EdTech.
+
+800
+00:46:50.848 --> 00:46:55.614
+Maintenant, les IA répondent-elles à tout ?
+
+801
+00:46:56.645 --> 00:46:58.645
+Moi, je n'en suis pas intimement convaincu.
+
+802
+00:46:58.645 --> 00:47:00.770
+Je pense que ça bouge encore très vite.
+
+803
+00:47:01.110 --> 00:47:04.214
+Je pense aussi qu'elle donne la réponse qu'on a envie
+d'entendre.
+
+804
+00:47:04.734 --> 00:47:06.734
+Et donc,
+
+805
+00:47:06.734 --> 00:47:10.019
+il faut aussi se méfier et continuer surtout de travailler
+sur le développement de l'esprit critique de nos étudiants.
+
+806
+00:47:12.058 --> 00:47:14.058
+Et on a perdu notre animateur.
+
+807
+00:47:14.058 --> 00:47:17.612
+Je ne sais pas si quelqu'un veut rebondir sur ce que je
+viens de dire.
+
+808
+00:47:18.784 --> 00:47:20.784
+Je suis d'accord sur l'IA.
+
+809
+00:47:20.784 --> 00:47:21.706
+On est quand même au début encore.
+
+810
+00:47:23.253 --> 00:47:25.253
+À la fois, il y a un certain nombre de risques.
+
+811
+00:47:25.394 --> 00:47:27.394
+Je parlais d'économie cognitive au début.
+
+812
+00:47:27.830 --> 00:47:30.152
+pour lesquels on n'a pas encore de réponse.
+
+813
+00:47:30.652 --> 00:47:34.316
+Nous, on travaille à développer des réponses en interne avec
+l'aide de tous les collègues,
+
+814
+00:47:34.317 --> 00:47:36.719
+en allant voir ce qui se fait ailleurs aussi.
+
+815
+00:47:37.180 --> 00:47:41.445
+Mais je trouve que peut-être vous me contredirez, tant
+mieux, mais on n'a pas de solution définitive.
+
+816
+00:47:41.446 --> 00:47:43.446
+Moi, j'ai mes profs de langue qui me disent, mais qu'est-ce
+que je fais ?
+
+817
+00:47:43.446 --> 00:47:48.250
+Maintenant, avant, je leur donnais un truc à lire, mais à
+résumer, maintenant, ils ne le font plus, donc il faut faire
+autre chose.
+
+818
+00:47:48.688 --> 00:47:50.688
+Donc, on est quand même à l'aube de changer ça.
+
+819
+00:47:51.000 --> 00:47:55.875
+Pour moi, il y a quelque chose qui peut nous aider, c'est un
+peu les compétences sur cet aspect-là, c'est à dire le
+
+820
+00:47:56.382 --> 00:48:00.563
+le côté au lieu de se fixer des objectifs en termes de
+contenu, d'évaluation des contenus,
+
+821
+00:48:00.743 --> 00:48:02.743
+on passe en compétences.
+
+822
+00:48:02.743 --> 00:48:06.126
+Et là, l'IA, soit intégrée, soit on peut l'enlever.
+
+823
+00:48:06.165 --> 00:48:08.165
+Enfin, ce n'est plus le même problème.
+
+824
+00:48:08.985 --> 00:48:11.704
+Et ensuite, il y a un aspect qui m'intéresse.
+
+825
+00:48:13.626 --> 00:48:17.173
+La manière dont les choses progressent, c'est le côté
+adaptive learning qu'on peut avoir avec l'IA.
+
+826
+00:48:18.860 --> 00:48:21.235
+L'IA, c'est quelqu'un à qui on peut poser une question qui
+va...
+
+827
+00:48:21.730 --> 00:48:23.730
+jamais se moquer de nous quelque part.
+
+828
+00:48:23.991 --> 00:48:27.290
+Et ce truc-là, le fait d'enlever le regard de l'autre,
+
+829
+00:48:27.891 --> 00:48:31.313
+je pense que c'est très utile pour beaucoup d'étudiants,
+surtout dans des...
+
+830
+00:48:31.751 --> 00:48:34.954
+Alors, en Suisse et en Belgique, c'est peut-être un petit
+peu différent, mais
+
+831
+00:48:36.290 --> 00:48:39.032
+Jeff me contredira peut-être, mais en France,
+
+832
+00:48:39.033 --> 00:48:41.313
+il y a quand même une culture de...
+
+833
+00:48:42.594 --> 00:48:44.594
+Comment dire ?
+
+834
+00:48:44.594 --> 00:48:46.079
+De se montrer quand même à son avantage en cours qui...
+
+835
+00:48:47.678 --> 00:48:51.463
+Quelque part, limite l'interaction, on ne veut pas poser une
+question qui a l'air bête,
+
+836
+00:48:51.943 --> 00:48:54.924
+alors qu'à ChatGPT, à Perplexity,
+
+837
+00:48:56.666 --> 00:49:01.189
+à tous les autres, on peut poser une question bête et tout
+de suite se mettre à jour sur une connaissance.
+
+838
+00:49:01.431 --> 00:49:03.431
+Donc, je pense que cet aspect Adaptive Learning,
+
+839
+00:49:03.431 --> 00:49:07.720
+ce serait un truc intéressant à penser en termes de
+structuration, là encore,
+
+840
+00:49:07.721 --> 00:49:09.721
+de l'enseignement.
+
+841
+00:49:09.721 --> 00:49:11.052
+Là, je suis de retour, pardon.
+
+842
+00:49:11.052 --> 00:49:12.414
+Je ne sais pas ce qui s'est passé.
+
+843
+00:49:12.414 --> 00:49:13.996
+Je ne sais pas ce qui s'est passé.
+
+844
+00:49:13.996 --> 00:49:15.398
+Je l'ai dit beaucoup mal de toi.
+
+845
+00:49:15.398 --> 00:49:17.281
+C'est ce qu'on m'a raconté déjà.
+
+846
+00:49:17.320 --> 00:49:19.320
+Vous avez changé votre fond de compte.
+
+847
+00:49:19.562 --> 00:49:21.562
+Oui, parce qu'en fait,
+
+848
+00:49:21.562 --> 00:49:25.156
+c'est une métaphore que j'utilise tout le temps quand on me
+demande un peu comment les technologies font évoluer
+l'enseignant.
+
+849
+00:49:25.187 --> 00:49:28.593
+Donc, en fait, moi, je dis qu'on passe de la télévision au
+GPS.
+
+850
+00:49:29.578 --> 00:49:31.578
+J'aime bien cette métaphore.
+
+851
+00:49:31.578 --> 00:49:34.374
+Et donc, c'est pour ça que je me suis amusé à prompter
+quelque chose.
+
+852
+00:49:35.171 --> 00:49:37.171
+On passe de la télévision au GPS.
+
+853
+00:49:37.171 --> 00:49:37.860
+Oui, bon, en fait, non.
+
+854
+00:49:37.860 --> 00:49:39.307
+Ça veut dire qu'en fait, si je recule comme ça,
+
+855
+00:49:39.446 --> 00:49:42.450
+vous avez un enseignant dans le magistral qui finalement,
+
+856
+00:49:44.590 --> 00:49:46.590
+plus on est transmissible,
+
+857
+00:49:46.590 --> 00:49:50.137
+plus finalement on ressemble à ce qu'on voit à la télévision
+quand il y a un
+
+858
+00:49:50.138 --> 00:49:52.138
+documentaire ou autre.
+
+859
+00:49:52.138 --> 00:49:55.684
+Par contre, la fonction d'un GPS, c'est justement de guider
+les étudiants, pas à pas,
+
+860
+00:49:55.700 --> 00:49:57.700
+les accompagner dans le domaine des directives.
+
+861
+00:49:57.981 --> 00:50:02.653
+Et je pense que depuis l'avènement du Web 2, déjà il y a
+plus de 25 ans,
+
+862
+00:50:03.024 --> 00:50:05.024
+Le savoir, il est disponible partout.
+
+863
+00:50:05.024 --> 00:50:08.990
+Donc, ce qui fait la différence de nos enseignants, c'est la
+manière dont ils le présentent,
+
+864
+00:50:09.131 --> 00:50:11.369
+dont ils le travaillent, parce que ce sont des experts.
+
+865
+00:50:11.736 --> 00:50:13.736
+Et donc,
+
+866
+00:50:13.736 --> 00:50:16.994
+c'est aussi leur compétence à guider nos étudiants et
+étudiantes dans la navigation de ce nouveau savoir.
+
+867
+00:50:17.299 --> 00:50:19.299
+Et l'IA, c'est la même chose.
+
+868
+00:50:19.299 --> 00:50:21.096
+Il y a un esprit critique qui va être de plus en plus
+pointu.
+
+869
+00:50:21.455 --> 00:50:24.611
+Et c'est là que nos enseignants amènent une réelle
+plus-value auprès des étudiants et étudiantes.
+
+870
+00:50:25.565 --> 00:50:27.565
+OK.
+
+871
+00:50:27.565 --> 00:50:28.611
+Donc là, vous remettez le prof au cœur du dispositif.
+
+872
+00:50:28.971 --> 00:50:30.971
+C'était ce que j'avais dit tout à l'heure.
+
+873
+00:50:30.971 --> 00:50:32.565
+Jeff ne...
+
+874
+00:50:32.565 --> 00:50:34.339
+Ne tirez pas la couverture à vous, je l'avais dit le prompt.
+
+875
+00:50:36.602 --> 00:50:40.548
+Donc, sur l'IA, on a fini parce que j'ai été coupé au moment
+où Bertrand et Jean-Marie… Oui, pardon.
+
+876
+00:50:40.587 --> 00:50:42.587
+Anne n'a pas pu intervenir encore.
+
+877
+00:50:42.587 --> 00:50:43.766
+C'est bien ce que vous semblez.
+
+878
+00:50:43.946 --> 00:50:45.946
+Merci Jean-Marie.
+
+879
+00:50:45.946 --> 00:50:46.970
+Je t'en prie.
+
+880
+00:50:46.970 --> 00:50:50.274
+Oui, je voulais réagir sur l'IA parce que moi-même,
+
+881
+00:50:50.275 --> 00:50:53.602
+j'enseigne le design thinking et depuis quelques années
+maintenant,
+
+882
+00:50:53.680 --> 00:50:58.196
+j'utilise l'IA générative comme
+
+883
+00:50:58.883 --> 00:51:00.883
+étude de cas.
+
+884
+00:51:00.883 --> 00:51:01.680
+En fait, c'est...
+
+885
+00:51:01.776 --> 00:51:03.776
+Un terrain de jeu fantastique.
+
+886
+00:51:05.039 --> 00:51:07.039
+Et donc,
+
+887
+00:51:07.039 --> 00:51:10.348
+je demande aux étudiants de découvrir les nouveaux
+
+888
+00:51:10.403 --> 00:51:12.403
+usages de l'IA.
+
+889
+00:51:12.403 --> 00:51:15.567
+Et pour rebondir sur ce que vous disiez, Bertrand,
+
+890
+00:51:15.590 --> 00:51:18.692
+c'est qu'au début, les étudiants,
+
+891
+00:51:18.707 --> 00:51:22.301
+c'était vraiment utiliser l'IA pour la révision.
+
+892
+00:51:22.598 --> 00:51:27.488
+Donc, avoir les meilleures interfaces pour réviser, pouvoir
+poser n'importe quelle question,
+
+893
+00:51:27.942 --> 00:51:29.942
+avoir un contenu évidemment sécurisé.
+
+894
+00:51:30.672 --> 00:51:33.174
+pour ne pas recevoir n'importe quelle information en retour.
+
+895
+00:51:33.815 --> 00:51:35.899
+Mais maintenant, j'ai même des projets sur
+
+896
+00:51:39.203 --> 00:51:41.203
+apprendre de manière ludique,
+
+897
+00:51:41.203 --> 00:51:45.344
+c'est-à-dire que l'IA va me donner des films ou des
+
+898
+00:51:45.406 --> 00:51:47.703
+séries qui concernent ma matière,
+
+899
+00:51:47.750 --> 00:51:52.547
+donc pour pouvoir apprendre tout en m'amusant, des choses
+comme ça.
+
+900
+00:51:52.969 --> 00:51:57.594
+Et puis, les projets se diversifient complètement.
+
+901
+00:51:58.896 --> 00:52:00.896
+Aussi,
+
+902
+00:52:00.896 --> 00:52:04.363
+comment préparer les examens et faire un petit peu de
+méditation guidée par l'IA
+
+903
+00:52:05.882 --> 00:52:08.308
+pour me calmer et être prêt pour les examens.
+
+904
+00:52:08.503 --> 00:52:10.503
+Voilà, des choses comme ça.
+
+905
+00:52:10.503 --> 00:52:15.128
+C'est vrai que je faisais récemment un webinaire sur les
+langues qui sont vraiment l'exemple et qui incarnent
+
+906
+00:52:15.160 --> 00:52:18.191
+bien ce que l'apport de l'IA qui peut vous dire, vous aimez
+le sport,
+
+907
+00:52:18.300 --> 00:52:21.238
+on va vous faire voir un match commenté en anglais de foot.
+
+908
+00:52:21.582 --> 00:52:24.503
+Alors, vous savez que j'aime le foot, ça n'intéresse
+personne, mais je vous le dis.
+
+909
+00:52:25.068 --> 00:52:29.872
+et ça permet de travailler son anglais évidemment avec des
+commentaires en anglais et l'IA peut aller sur,
+
+910
+00:52:30.395 --> 00:52:32.395
+comme disait Dominique Volton,
+
+911
+00:52:32.395 --> 00:52:35.500
+le chercheur au CNAS la solitude de ses préférences mais
+c'est pas grave,
+
+912
+00:52:35.501 --> 00:52:37.501
+on n'est pas là pour faire de la philo quoique avec Jeff,
+
+913
+00:52:37.524 --> 00:52:42.360
+on n'est pas loin souvent et un enseignant me disait que la
+philo aide beaucoup quand on a
+
+914
+00:52:42.422 --> 00:52:44.422
+recours à l'IA.
+
+915
+00:52:44.422 --> 00:52:46.094
+Juste Bertrand, Anne,
+
+916
+00:52:46.094 --> 00:52:50.219
+Jeff est-ce qu'il y a des risques si on oublie un peu
+
+917
+00:52:51.110 --> 00:52:53.172
+on se met en dépendance de la tech ?
+
+918
+00:52:53.500 --> 00:52:56.458
+et comment justement fixer la bonne frontière.
+
+919
+00:52:58.084 --> 00:53:00.084
+Jean-François, le def, pardon.
+
+920
+00:53:00.706 --> 00:53:03.730
+Alors, moi, il y a un mot que je sors tous les jours depuis
+l'avènement de l'IA,
+
+921
+00:53:03.788 --> 00:53:07.534
+et je pense qu'il est valable aussi par rapport à la tech,
+c'est l'agentivité.
+
+922
+00:53:09.097 --> 00:53:12.581
+Et en fait, c'est le prof qui a l'agentivité, c'est
+l'enseignant qui a l'agentivité.
+
+923
+00:53:12.620 --> 00:53:16.167
+Donc, ça veut dire que ça lui de fixer les objectifs qu'il
+veut atteindre,
+
+924
+00:53:16.558 --> 00:53:20.105
+les manières dont il veut enseigner, et puis une fois qu'il
+s'est fixé sa roadmap,
+
+925
+00:53:20.230 --> 00:53:22.730
+de voir les outils qui viennent soutenir cette roadmap.
+
+926
+00:53:23.511 --> 00:53:26.948
+Si je fais le parallèle avec l'usage actuel de l'IA,
+
+927
+00:53:27.540 --> 00:53:29.723
+Tous les usages IA nous sont imposés par les GAFAM.
+
+928
+00:53:29.941 --> 00:53:34.605
+En fait, ils nous disent comment ils veulent qu'on utilise
+l'IA, qu'est-ce que c'est capable de faire.
+
+929
+00:53:34.945 --> 00:53:38.133
+Et on est en train de courir derrière cette caravane, alors
+qu'en fait,
+
+930
+00:53:38.148 --> 00:53:43.055
+il faut qu'on s'assoie autour d'une table avec les
+enseignants et enseignantes, et qu'on se dise, OK, dans
+l'enseignement supérieur,
+
+931
+00:53:43.477 --> 00:53:46.938
+en quoi l'IA est utile, et qu'on fasse cette roadmap de ce
+qu'on veut qu'elle fasse,
+
+932
+00:53:47.312 --> 00:53:52.203
+et qu'on s'assoie et qu'on voit à ce moment-là comment on va
+diriger le développement des
+
+933
+00:53:52.266 --> 00:53:54.266
+IA pour suivre notre modèle.
+
+934
+00:53:54.284 --> 00:53:58.044
+Et je pense que c'est tout le temps ça, c'est l'enseignant
+au centre, la volonté pédagogique au centre.
+
+935
+00:53:58.626 --> 00:54:03.404
+Et encore une fois, ce n'est pas parce que je mets un forum
+que soudain ma classe va discuter ensemble.
+
+936
+00:54:03.747 --> 00:54:05.943
+Je vais devoir trouver un scénario qui va les motiver à le
+faire.
+
+937
+00:54:06.466 --> 00:54:10.787
+Et donc, quelque part, les outils ne restent que des
+instruments de notre design pédagogique.
+
+938
+00:54:12.365 --> 00:54:14.365
+Anne ?
+
+939
+00:54:14.412 --> 00:54:16.412
+Oui,
+
+940
+00:54:16.412 --> 00:54:20.068
+les risques des nouvelles technologies et notamment de l'IA,
+
+941
+00:54:21.083 --> 00:54:23.083
+c'est…
+
+942
+00:54:23.083 --> 00:54:27.905
+C'est vraiment quelque chose au cœur des réflexions de
+
+943
+00:54:27.906 --> 00:54:32.663
+l'école, où on a des formations pour tous les enseignants,
+pour tout le staff,
+
+944
+00:54:33.928 --> 00:54:36.585
+sur l'utilisation de l'IA générative.
+
+945
+00:54:36.608 --> 00:54:40.553
+Donc très tôt, on a été sensibilisés à l'utilisation.
+
+946
+00:54:41.272 --> 00:54:45.288
+Évidemment, les outils de lutte contre la triche aussi,
+
+947
+00:54:45.350 --> 00:54:47.350
+qui sont remis en question,
+
+948
+00:54:47.350 --> 00:54:51.366
+et il faut être créatif sur les moyens d'évaluer les
+étudiants.
+
+949
+00:54:53.333 --> 00:54:58.278
+D'ailleurs, j'ai eu à faire des focus groupes auprès des
+étudiants sur comment lutter contre la triche,
+
+950
+00:54:58.297 --> 00:55:00.942
+parce que c'est eux les mieux placés pour nous en parler.
+
+951
+00:55:02.059 --> 00:55:04.059
+Voilà.
+
+952
+00:55:04.621 --> 00:55:07.348
+Et on voit que c'est…
+
+953
+00:55:07.528 --> 00:55:09.653
+Et ils balancent un peu ou pas quand ils parlent de la
+triche ?
+
+954
+00:55:11.496 --> 00:55:15.934
+Dans la mesure où eux-mêmes veulent être évalués de manière
+juste et
+
+955
+00:55:16.559 --> 00:55:18.559
+équitable.
+
+956
+00:55:18.559 --> 00:55:21.536
+Oui, évidemment qu'ils vont dire « ça, ce n'est pas normal »
+.
+
+957
+00:55:21.537 --> 00:55:23.537
+Ce n'est pas faux.
+
+958
+00:55:24.057 --> 00:55:27.124
+On a dit qu'il y a un peu une idée que maintenant, pour
+évaluer,
+
+959
+00:55:27.139 --> 00:55:32.045
+ils font tout à l'oral ou en salle d'examen un peu
+circonstanciée pour ne
+
+960
+00:55:32.046 --> 00:55:36.834
+pas justement avoir cette béquille en permanence parce que
+c'est lié à un sujet.
+
+961
+00:55:37.038 --> 00:55:39.038
+Voilà.
+
+962
+00:55:39.038 --> 00:55:43.272
+Et donc, développer l'esprit critique, je l'ai entendu dire
+plusieurs fois et oui,
+
+963
+00:55:43.459 --> 00:55:45.459
+c'est évidemment.
+
+964
+00:55:46.129 --> 00:55:50.833
+C'est pour ça qu'on a un volume non négligeable de
+
+965
+00:55:50.911 --> 00:55:53.935
+cours en sciences humaines et communication, et que ça va
+continuer.
+
+966
+00:55:54.654 --> 00:55:59.638
+Et que tout ce qui est vie étudiante, vie associative, ça a
+énormément d'importance,
+
+967
+00:55:59.661 --> 00:56:02.263
+parce que ça apprend à être actif,
+
+968
+00:56:03.247 --> 00:56:05.247
+et pas seulement apprenant.
+
+969
+00:56:06.466 --> 00:56:11.232
+Voilà, c'est tout cet écosystème, en fait.
+
+970
+00:56:12.580 --> 00:56:14.580
+Bertrand, même question pour vous.
+
+971
+00:56:15.464 --> 00:56:17.804
+Oui, j'aime beaucoup tout ce qui a été dit.
+
+972
+00:56:19.726 --> 00:56:22.593
+Les risques de l'IA et les risques de la tech en général,
+
+973
+00:56:22.929 --> 00:56:25.616
+on les connaît quand même de manière générale au niveau de
+la société.
+
+974
+00:56:25.694 --> 00:56:30.319
+On a pareil à Télécom Paris un département d'enseignement
+recherche sur les
+
+975
+00:56:30.351 --> 00:56:32.882
+aspects de sciences humaines,
+
+976
+00:56:32.913 --> 00:56:35.507
+économiques et sociales où ces questions se posent.
+
+977
+00:56:35.882 --> 00:56:40.788
+Vous avez peut-être vu le documentaire de les sacrifiés de
+l'IA qui vient d'un des sociologues de Télécom
+
+978
+00:56:40.866 --> 00:56:42.866
+Paris.
+
+979
+00:56:42.866 --> 00:56:45.123
+Donc il y a vraiment le côté social, sociétal,
+
+980
+00:56:45.324 --> 00:56:48.166
+et il ne faut peut-être pas qu'on oublie le côté carbone.
+
+981
+00:56:48.568 --> 00:56:53.494
+C'est bien joli de faire pondre à l'IA des trucs hyper
+créatifs et tout, mais au bout du compte, c'est durable,
+
+982
+00:56:54.572 --> 00:56:56.572
+la question se pose.
+
+983
+00:56:56.572 --> 00:57:00.439
+Alors on sait bien qu'il faut quand même y répondre dans la
+mesure où on pense que l'IA
+
+984
+00:57:00.533 --> 00:57:02.533
+est un levier industriel très fort.
+
+985
+00:57:02.986 --> 00:57:07.002
+Et donc c'est un levier probablement pédagogique, mais je
+pense qu'on a la même question que les autres.
+
+986
+00:57:07.283 --> 00:57:09.283
+Quelle place on veut lui donner ?
+
+987
+00:57:09.283 --> 00:57:10.471
+Est-ce qu'on doit utiliser ça comme gadget ?
+
+988
+00:57:10.536 --> 00:57:13.600
+dans tout ce qu'on fait, en regardant les vidéos de chat,
+
+989
+00:57:14.000 --> 00:57:16.000
+qui coûtent beaucoup de carbone.
+
+990
+00:57:16.080 --> 00:57:19.244
+Donc voilà, ça pour moi, c'est une des questions peut-être
+bateau,
+
+991
+00:57:19.322 --> 00:57:23.010
+mais qui mérite d'être citée dès qu'on parle de l'IA et de
+données.
+
+992
+00:57:24.252 --> 00:57:26.252
+Sur le côté tech,
+
+993
+00:57:26.588 --> 00:57:31.229
+on a parlé de l'aspect socialisation du cours magistral,
+
+994
+00:57:31.791 --> 00:57:35.057
+mais réciproquement, le côté numérique, il y a une tendance
+à l'isolement.
+
+995
+00:57:36.296 --> 00:57:40.682
+qui peut être très bien, on l'a vu, ça individualise les
+parcours d'apprenants,
+
+996
+00:57:41.201 --> 00:57:43.744
+ça permet peut-être l'adaptive learning, mais
+réciproquement,
+
+997
+00:57:44.342 --> 00:57:46.545
+ça met les gens quand même dans des silos.
+
+998
+00:57:47.225 --> 00:57:49.225
+Et donc,
+
+999
+00:57:49.225 --> 00:57:52.233
+c'est pour ça que je suis très d'accord avec ce qu'a dit
+Anne sur la complémentarité avec les activités sociales.
+
+1000
+00:57:53.053 --> 00:57:57.318
+On sait que ça, surtout dans une période où on a vu quand
+même beaucoup monter les problèmes,
+
+1001
+00:57:58.350 --> 00:58:00.537
+j'imagine que c'est le cas un peu partagé suite au Covid,
+
+1002
+00:58:01.740 --> 00:58:04.600
+les problèmes un peu psychiques de certains étudiants, on
+a...
+
+1003
+00:58:05.673 --> 00:58:08.195
+donc on voit monter le nombre de consultations, etc.
+
+1004
+00:58:08.736 --> 00:58:13.400
+Je pense qu'il y a une attention apportée sur l'isolement
+qui peut résulter d'une
+
+1005
+00:58:13.439 --> 00:58:18.166
+pratique un peu intensive de l'outil numérique dans son
+coin.
+
+1006
+00:58:18.642 --> 00:58:23.088
+Voilà un peu les risques que je vois sur ça,
+
+1007
+00:58:23.291 --> 00:58:26.306
+outre tout ce qu'on connaît sur les hallucinations et
+compagnie,
+
+1008
+00:58:26.307 --> 00:58:29.713
+c'est-à-dire l'esprit critique et l'esprit scientifique,
+
+1009
+00:58:30.353 --> 00:58:32.978
+ils sortent renforcés, je dirais, par contraste, quelque
+part.
+
+1010
+00:58:34.341 --> 00:58:36.341
+Posez vos questions à celles et ceux qui nous écoutent.
+
+1011
+00:58:36.341 --> 00:58:38.326
+On est une petite centaine depuis le début, n'hésitez pas.
+
+1012
+00:58:38.685 --> 00:58:40.685
+Un dernier point que je voulais aborder,
+
+1013
+00:58:40.685 --> 00:58:44.568
+parce que je voudrais revenir sur ce qu'avait dit Jeff quand
+on préparait cette intervention,
+
+1014
+00:58:44.951 --> 00:58:48.256
+être mis dans une posture passive, ça plaît beaucoup aux
+étudiants.
+
+1015
+00:58:48.474 --> 00:58:52.881
+Vous aviez commencé comme ça en me disant, au fond, eux, ils
+veulent s'asseoir et rester au fond de la classe.
+
+1016
+00:58:53.146 --> 00:58:55.146
+Mais en fait, j'ai l'impression que...
+
+1017
+00:58:55.310 --> 00:58:59.533
+tout le combat à mener, soit pour les providers de solutions
+comme
+
+1018
+00:59:00.236 --> 00:59:03.482
+Jean-Marie et Bicast, soit pour les enseignants, c'est
+l'engagement au contraire.
+
+1019
+00:59:03.896 --> 00:59:07.638
+Et c'est ça aussi peut-être qu'au fond, le vrai cœur du
+
+1020
+00:59:07.740 --> 00:59:12.169
+sujet.
+
+1021
+00:59:12.232 --> 00:59:15.044
+Peut-être comme la citation initiale était de moi,
+
+1022
+00:59:15.091 --> 00:59:20.013
+c'est vrai que les contraintes de changement, elles sont
+toujours difficilement acceptées,
+
+1023
+00:59:20.091 --> 00:59:24.841
+tant par les acteurs enseignants, mais surtout par les
+acteurs et actrices étudiants et étudiantes.
+
+1024
+00:59:25.294 --> 00:59:29.940
+Et donc c'est vrai que si on met en place des pratiques plus
+interactives qui nécessitent des
+
+1025
+00:59:29.941 --> 00:59:34.866
+changements de paradigme par rapport à ce qu'on connaît ou
+par rapport à la vision qu'on a de l'enseignement
+
+1026
+00:59:34.905 --> 00:59:36.905
+supérieur,
+
+1027
+00:59:36.905 --> 00:59:40.186
+ça nécessite une belle approche de conduite du changement
+auprès des étudiants et étudiantes.
+
+1028
+00:59:40.952 --> 00:59:42.952
+Et ça, il ne faut pas négliger cet aspect-là.
+
+1029
+00:59:43.085 --> 00:59:47.319
+Et puis on ne peut pas demander non plus à un étudiant qui
+suivrait sept périodes de cours dans la journée
+
+1030
+00:59:47.897 --> 00:59:51.194
+d'enchaîner sept cours magistraux où on va devoir...
+
+1031
+00:59:52.494 --> 00:59:56.660
+lui demander, l'initier ou l'activer à tous les moments.
+
+1032
+00:59:56.661 --> 00:59:58.661
+Donc voilà,
+
+1033
+00:59:58.661 --> 01:00:02.160
+imaginez si on nous demande de suivre un colloque ou dans
+chaque session de
+
+1034
+01:00:02.161 --> 01:00:06.644
+colloque ou de conférence, on nous interpelle à parler avec
+nos voisins, on répond à des questions, etc.
+
+1035
+01:00:07.285 --> 01:00:10.347
+Je pense qu'à la pause de midi, on aura peut-être envie de
+faire une bonne sieste.
+
+1036
+01:00:10.348 --> 01:00:14.316
+Il y a cette question de la gestion de la santé aussi
+physique parce qu'être actif,
+
+1037
+01:00:14.378 --> 01:00:17.285
+ça fatigue.
+
+1038
+01:00:17.503 --> 01:00:20.441
+Il faut quand même le mobiliser, Anna et Bertrand, je crois
+que vous m'êtes d'accord.
+
+1039
+01:00:21.982 --> 01:00:23.982
+L'engagement est au cœur de la solution.
+
+1040
+01:00:23.982 --> 01:00:26.248
+On a parlé de l'engagement des profs pour faire les cours,
+
+1041
+01:00:26.529 --> 01:00:30.709
+l'engagement de l'étudiant pour réagir, être proactif.
+
+1042
+01:00:30.794 --> 01:00:33.951
+Et même quand on parle de classe inversée, c'est bien le
+sujet.
+
+1043
+01:00:35.193 --> 01:00:37.193
+C'est le cœur de la machine, Anne.
+
+1044
+01:00:38.451 --> 01:00:40.451
+Oui,
+
+1045
+01:00:40.451 --> 01:00:44.998
+et c'est pour ça que j'insiste sur la partie varier les
+formats,
+
+1046
+01:00:45.044 --> 01:00:48.982
+parce que c'est vrai que certains étudiants sont plus
+visuels,
+
+1047
+01:00:49.029 --> 01:00:51.029
+d'autres une mémoire.
+
+1048
+01:00:51.029 --> 01:00:53.101
+plus auditif, même mémoire tactile,
+
+1049
+01:00:53.640 --> 01:00:57.867
+et donc varier les rythmes d'apprentissage par des
+
+1050
+01:00:58.367 --> 01:01:00.367
+stimulations différentes.
+
+1051
+01:01:00.367 --> 01:01:02.632
+Il y en a qui préfèrent être concentrés et écouter,
+
+1052
+01:01:02.750 --> 01:01:07.742
+d'autres qui préfèrent poser des questions et challenger
+
+1053
+01:01:08.382 --> 01:01:10.382
+le prof.
+
+1054
+01:01:10.382 --> 01:01:14.867
+C'est se mettre à disposition de tout ce panel d'étudiants
+qu'on a en face de nous
+
+1055
+01:01:14.945 --> 01:01:17.039
+et qui doivent…
+
+1056
+01:01:17.610 --> 01:01:22.595
+individuellement apprendre les notions qu'on leur propose.
+
+1057
+01:01:24.177 --> 01:01:26.716
+L'art grand, pour finir, et après on passera par la
+Jean-Marie.
+
+1058
+01:01:28.341 --> 01:01:30.341
+Oui, tout ça.
+
+1059
+01:01:30.341 --> 01:01:32.223
+On a déjà dit, vous êtes d'accord.
+
+1060
+01:01:32.606 --> 01:01:34.684
+Dites que ma question n'a pas de sens.
+
+1061
+01:01:34.747 --> 01:01:36.747
+Merci beaucoup.
+
+1062
+01:01:36.887 --> 01:01:38.887
+Pas du tout.
+
+1063
+01:01:38.887 --> 01:01:42.278
+Je voulais aussi réagir peut-être, si vous voulez bien, sur…
+
+1064
+01:01:44.194 --> 01:01:47.474
+Les risques d'un point de vue bilan carbone, etc.
+
+1065
+01:01:50.177 --> 01:01:54.040
+Dans la grande enquête annuelle qu'on a faite en février,
+
+1066
+01:01:54.798 --> 01:01:59.235
+on a demandé aux étudiants s'ils se sentaient concernés par
+l'empreinte
+
+1067
+01:01:59.251 --> 01:02:02.673
+carbone, leur empreinte carbone, celle de l'école, etc.
+
+1068
+01:02:03.095 --> 01:02:05.845
+Et ils ont répondu oui à plus de 81%.
+
+1069
+01:02:06.204 --> 01:02:09.030
+Ah, quand même Oui,
+
+1070
+01:02:09.031 --> 01:02:12.593
+mais ça n'exemple pas de faire le petit poupée, là, vous
+savez,
+
+1071
+01:02:13.474 --> 01:02:16.759
+qui bouffe le temps de trois bassines d'eau, là, ou je ne
+sais pas quoi, là.
+
+1072
+01:02:16.997 --> 01:02:18.997
+Comment ça s'appelle, là, les...
+
+1073
+01:02:20.982 --> 01:02:23.583
+Oui, les Starpacks, voilà, qui est incroyable, cette
+histoire.
+
+1074
+01:02:23.927 --> 01:02:26.826
+Ça consomme...
+
+1075
+01:02:26.841 --> 01:02:29.607
+Ce que je vous dis, mais c'est m'a énervé, en tout cas,
+quand j'ai découvert que...
+
+1076
+01:02:29.872 --> 01:02:33.919
+C'est ça, ça consomme de l'eau et de l'électricité à forte
+dose pour rien, quoi, en réalité.
+
+1077
+01:02:35.794 --> 01:02:38.263
+En tout cas, on a un électif, donc...
+
+1078
+01:02:38.410 --> 01:02:40.871
+C'est une matière optionnelle qui s'appelle Green IT.
+
+1079
+01:02:41.891 --> 01:02:46.616
+Et on voit une recrudescence de candidatures pour cet
+
+1080
+01:02:46.670 --> 01:02:48.670
+électif qui est assez notable.
+
+1081
+01:02:50.014 --> 01:02:52.014
+Green IT.
+
+1082
+01:02:52.014 --> 01:02:53.256
+Alors, attendez.
+
+1083
+01:02:53.256 --> 01:02:54.412
+Linda nous dit super webinaire.
+
+1084
+01:02:54.491 --> 01:02:56.491
+Merci à l'organisateur.
+
+1085
+01:02:56.491 --> 01:02:58.772
+Bon, je ne vais pas prendre pour moi parce que moi, je
+n'étais que l'animateur.
+
+1086
+01:02:59.069 --> 01:03:02.241
+C'est Jean-Marie qui nous a sollicité pour organiser ce
+webinaire.
+
+1087
+01:03:02.522 --> 01:03:04.522
+Jean-Marie, on a dit beaucoup de choses.
+
+1088
+01:03:04.537 --> 01:03:08.131
+Merci de nous accompagner aussi parce que ce n'est pas la
+première fois qu'on travaille ensemble.
+
+1089
+01:03:08.944 --> 01:03:10.944
+Non, c'est toujours...
+
+1090
+01:03:10.944 --> 01:03:12.792
+Très intéressant.
+
+1091
+01:03:12.792 --> 01:03:15.959
+On met vraiment le doigt, je pense, sur des sujets
+pertinents.
+
+1092
+01:03:18.380 --> 01:03:20.380
+J'aimerais rebondir sur les...
+
+1093
+01:03:20.380 --> 01:03:21.904
+Je suis d'humeur taquine.
+
+1094
+01:03:22.404 --> 01:03:27.232
+Mais sur le carbone, pardon,
+
+1095
+01:03:27.544 --> 01:03:31.169
+le secteur de la construction, c'est 38% des émissions de
+gaz à effet de serre.
+
+1096
+01:03:32.013 --> 01:03:35.435
+Vaut-il mieux construire un amphi ou utiliser une case
+virtuelle ?
+
+1097
+01:03:36.716 --> 01:03:38.716
+Voilà, je suis d'humeur taquine.
+
+1098
+01:03:38.756 --> 01:03:40.756
+Non, mais sinon, du point de vue d'un éditeur,
+
+1099
+01:03:41.258 --> 01:03:45.883
+les risques et ce sur quoi je demande toujours aux gens
+d'être vigilants,
+
+1100
+01:03:45.902 --> 01:03:50.789
+c'est la sécurité des données, la propriété intellectuelle,
+puisque dans un établissement d'enseignement supérieur,
+
+1101
+01:03:51.109 --> 01:03:56.000
+il y a des contenus sensibles, il faut le dire, la propriété
+intellectuelle des enseignants.
+
+1102
+01:03:56.687 --> 01:04:01.531
+et puis en découle la réversibilité combien de fois j'ai vu
+des clients ou des
+
+1103
+01:04:01.562 --> 01:04:04.968
+prospects être coincés sur une solution parce que leur
+éditeur américain
+
+1104
+01:04:06.400 --> 01:04:10.564
+n'est pas très clean sur les principes qui sont normalement
+de respecter la loi,
+
+1105
+01:04:11.025 --> 01:04:14.767
+d'avoir une solution réversible et donc de pouvoir récupérer
+ces données sans altération.
+
+1106
+01:04:15.290 --> 01:04:20.032
+Donc voilà, ça serait des petits risques sur lesquels
+j'essaie de faire un peu, de bâtir l'attention.
+
+1107
+01:04:20.033 --> 01:04:23.517
+Je voudrais dire que les enseignants qu'on a, c'est souvent
+des enseignants-chercheurs,
+
+1108
+01:04:23.532 --> 01:04:25.782
+donc s'il y a un assistant IA sur leur poste de travail,
+
+1109
+01:04:26.423 --> 01:04:30.611
+ça expose non seulement la partie enseignement, mais parfois
+aussi la partie recherche.
+
+1110
+01:04:30.657 --> 01:04:34.626
+Donc l'aspect souveraineté, je suis vraiment complètement…
+Non, mais alors là, on...
+
+1111
+01:04:34.864 --> 01:04:37.466
+On part pour deux heures, Bertrand, si tu veux commencer à
+aborder ça.
+
+1112
+01:04:38.887 --> 01:04:40.887
+Prochain webinaire.
+
+1113
+01:04:40.887 --> 01:04:45.137
+Un débat au Sénat sur la souveraineté et notamment sur la
+publication des
+
+1114
+01:04:45.192 --> 01:04:49.114
+articles de recherche et la massification de la fraude avec
+l'IA.
+
+1115
+01:04:49.200 --> 01:04:53.395
+Donc, c'est un sujet qui est assez intéressant et qui est
+parfois un peu inquiétant.
+
+1116
+01:04:54.286 --> 01:04:56.286
+Super édifiant.
+
+1117
+01:04:56.286 --> 01:04:57.239
+Merci pour ce webinaire.
+
+1118
+01:04:57.239 --> 01:04:58.287
+Moi, c'est too much, là.
+
+1119
+01:04:58.287 --> 01:04:59.302
+On se croit au Festival de Cannes.
+
+1120
+01:04:59.302 --> 01:05:03.552
+Je rappelle, Jeff, à Vendepoule, il est directeur aux
+affaires numériques à l'URC de Lausanne.
+
+1121
+01:05:03.567 --> 01:05:05.567
+On ira vous faire Anne,
+
+1122
+01:05:05.567 --> 01:05:09.284
+on ira vous faire coucou sur lequel campus vous êtes à
+l'Effray ?
+
+1123
+01:05:10.327 --> 01:05:12.327
+Le campus de Villejuif.
+
+1124
+01:05:12.327 --> 01:05:14.109
+Oui, historique.
+
+1125
+01:05:14.109 --> 01:05:15.425
+C'est le campus historique.
+
+1126
+01:05:15.894 --> 01:05:17.894
+Bertrand à Télécom, vous êtes où vous ?
+
+1127
+01:05:18.675 --> 01:05:20.675
+À Palaiso, sur le plateau.
+
+1128
+01:05:20.675 --> 01:05:21.956
+Oui, bien sûr.
+
+1129
+01:05:21.956 --> 01:05:22.644
+Oui, c'est ça.
+
+1130
+01:05:22.644 --> 01:05:23.831
+On est comme on parlait dans ses livres.
+
+1131
+01:05:23.831 --> 01:05:25.301
+Le grand bâtiment jaune.
+
+1132
+01:05:25.301 --> 01:05:26.144
+Le grand bâtiment jaune.
+
+1133
+01:05:26.144 --> 01:05:26.942
+Le grand bâtiment jaune.
+
+1134
+01:05:26.942 --> 01:05:28.847
+Jean-Marie, vous êtes partout.
+
+1135
+01:05:28.847 --> 01:05:30.331
+Vous êtes dans le cloud.
+
+1136
+01:05:30.331 --> 01:05:32.269
+C'est ça.
+
+1137
+01:05:32.269 --> 01:05:36.355
+basez à Paris mais nous on a du télétravail total dans
+l'équipe donc j'ai deux tiers de l'équipe qui est partout en
+France
+
+1138
+01:05:36.356 --> 01:05:41.105
+donc proche de vos campus merci beaucoup c'était vraiment un
+super webinaire et puis on
+
+1139
+01:05:41.121 --> 01:05:46.051
+remettra ça très vite j'imagine je vous souhaite une très
+bonne fin de journée le replay sera disponible sur Campus
+
+1140
+01:05:46.105 --> 01:05:51.066
+Matin il y aura une synthèse qui sera également proposée
+pour tous nos lecteurs merci beaucoup et à très bientôt au
+revoir
+
+1141
+01:05:51.067 --> 01:05:53.801
+au revoir au revoir merci

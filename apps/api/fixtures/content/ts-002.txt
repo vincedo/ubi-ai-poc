@@ -1,0 +1,120 @@
+# TypeScript Generics
+
+A major part of software engineering is building components that not only have well-defined and consistent APIs, but are also reusable. Components that are capable of working on the data of today as well as the data of tomorrow will give you the most flexible capabilities for building up large software systems.
+
+In languages like C# and Java, one of the main tools in the toolbox for creating reusable components is _generics_, that is, being able to create a component that can work over a variety of types rather than a single one.
+
+## Hello World of Generics
+
+Without generics, we would either have to give the identity function a specific type or use `any`, which loses type information. Instead, we use a _type variable_:
+
+```ts
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+```
+
+We can call it in one of two ways — explicitly passing the type argument, or using type argument inference:
+
+```ts
+let output = identity<string>("myString");
+let output = identity("myString"); // type argument inferred
+```
+
+## Working with Generic Type Variables
+
+The compiler enforces that you use generically typed parameters correctly. Accessing `.length` on a generic `Type` causes an error since `Type` could be anything:
+
+```ts
+function loggingIdentity<Type>(arg: Type): Type {
+  console.log(arg.length); // Error: Type doesn't necessarily have .length
+  return arg;
+}
+
+// Fix: constrain to arrays
+function loggingIdentity<Type>(arg: Type[]): Type[] {
+  console.log(arg.length); // OK
+  return arg;
+}
+```
+
+## Generic Interfaces and Classes
+
+```ts
+interface GenericIdentityFn<Type> {
+  (arg: Type): Type;
+}
+
+class GenericNumber<NumType> {
+  zeroValue: NumType;
+  add: (x: NumType, y: NumType) => NumType;
+}
+```
+
+Generic classes are only generic over their instance side — static members cannot use the class's type parameter.
+
+## Generic Constraints
+
+Use `extends` to constrain a generic type to have specific properties:
+
+```ts
+interface Lengthwise {
+  length: number;
+}
+
+function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
+  console.log(arg.length); // OK
+  return arg;
+}
+```
+
+### Using Type Parameters in Generic Constraints
+
+```ts
+function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+  return obj[key];
+}
+```
+
+### Using Class Types in Generics
+
+```ts
+function create<Type>(c: { new (): Type }): Type {
+  return new c();
+}
+```
+
+## Generic Parameter Defaults
+
+Declaring a default for a generic type parameter makes it optional:
+
+```ts
+declare function create<
+  T extends HTMLElement = HTMLDivElement,
+  U extends HTMLElement[] = T[]
+>(element?: T, children?: U): Container<T, U>;
+```
+
+Rules:
+- A type parameter is deemed optional if it has a default
+- Required type parameters must not follow optional type parameters
+- Default types must satisfy the constraint for the type parameter
+
+## Variance Annotations
+
+Covariance and contravariance describe the relationship between two generic types.
+
+- **Covariant** (`out T`): relationship from `Producer<T>` to `Producer<U>` is same as `T` to `U`
+- **Contravariant** (`in T`): relationship is reversed
+- **Invariant** (`in out T`): no subtype relationship
+
+TypeScript automatically infers variance. Only use variance annotations in rare cases involving circular types, and only when they match the structural variance.
+
+```ts
+interface Producer<out T> { make(): T; }
+interface Consumer<in T> { consume: (arg: T) => void; }
+interface ProducerConsumer<in out T> {
+  consume: (arg: T) => void;
+  make(): T;
+}
+```

@@ -17,6 +17,8 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    text-decoration: none;
+    color: inherit;
   }
   .brand-icon {
     width: 2.5rem;
@@ -33,14 +35,14 @@
     font-family: 'Manrope', sans-serif;
     font-size: 0.875rem;
     font-weight: 900;
-    color: #1e3a5f;
+    color: var(--color-primary);
     margin: 0;
   }
   .brand-sub {
     font-size: 0.625rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #6b7280;
+    color: var(--color-on-surface-variant);
     margin: 0.25rem 0 0;
   }
   .header-actions {
@@ -54,7 +56,7 @@
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 50%;
-    color: #6b7280;
+    color: var(--color-on-surface-variant);
     transition: background 0.2s;
     &:hover {
       background: rgba(0, 0, 0, 0.05);
@@ -96,7 +98,7 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   text-decoration: none;
-  color: #4b5563;
+  color: var(--color-on-surface-variant);
   font-size: 0.875rem;
   font-weight: 500;
   border-left: 4px solid transparent;
@@ -108,21 +110,44 @@
   }
 
   &.nav-active {
-    border-left-color: #2563eb;
-    background: rgba(37, 99, 235, 0.05);
-    color: #1d4ed8;
+    border-left-color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 5%, transparent);
+    color: var(--color-primary);
     font-weight: 700;
   }
 }
 
 .sidebar-footer {
   padding: 1.5rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebar-danger-zone {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 0.75rem;
 }
 
 .sidebar-cta {
   width: 100%;
   justify-content: center;
   border-radius: 0.5rem;
+}
+
+.sidebar-reset {
+  width: 100%;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotating {
+  animation: spin 1s linear infinite;
 }
 
 .app-main {

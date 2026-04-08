@@ -12,15 +12,30 @@ beforeEach(() => {
 
 describe('SqliteChatRepository', () => {
   it('createSession and listSessions', async () => {
-    await repo.createSession({ id: 's1', model: 'mistral-large-latest', individualMediaIds: [] });
-    await repo.createSession({ id: 's2', model: 'mistral-small-latest', individualMediaIds: [] });
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+    });
+    await repo.createSession({
+      id: 's2',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+    });
 
     const sessions = await repo.listSessions();
     expect(sessions).toHaveLength(2);
   });
 
   it('addMessage and getSessionWithMessages', async () => {
-    await repo.createSession({ id: 's1', model: 'mistral-large-latest', individualMediaIds: [] });
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+    });
     await repo.addMessage({ id: 'msg1', chatSessionId: 's1', role: 'user', content: 'Hello' });
     await repo.addMessage({
       id: 'msg2',
@@ -43,7 +58,12 @@ describe('SqliteChatRepository', () => {
   });
 
   it('updateSessionCost', async () => {
-    await repo.createSession({ id: 's1', model: 'mistral-large-latest', individualMediaIds: [] });
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+    });
     await repo.updateSessionCost('s1', 1500, 0.012);
 
     const result = await repo.getSessionWithMessages('s1');
@@ -56,8 +76,13 @@ describe('SqliteChatRepository', () => {
     expect(sessions).toEqual([]);
   });
 
-  it('updateSessionCost accumulates across calls', async () => {
-    await repo.createSession({ id: 's1', model: 'mistral-large-latest', individualMediaIds: [] });
+  it('updateSessionCost overwrites with the latest values', async () => {
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+    });
     await repo.updateSessionCost('s1', 1000, 0.008);
     await repo.updateSessionCost('s1', 500, 0.004);
 
@@ -67,7 +92,12 @@ describe('SqliteChatRepository', () => {
   });
 
   it('addMessage with sources persists sources field', async () => {
-    await repo.createSession({ id: 's1', model: 'mistral-large-latest', individualMediaIds: [] });
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+    });
     const sources = [
       { mediaId: 'm1', mediaTitle: 'Source 1', mediaType: 'pdf' as const, pageNumber: 1 },
     ];
@@ -82,5 +112,68 @@ describe('SqliteChatRepository', () => {
     const result = await repo.getSessionWithMessages('s1');
     expect(result!.messages).toHaveLength(1);
     expect(result!.messages[0].sources).toEqual(sources);
+  });
+
+  it('createSession stores title', async () => {
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+      title: 'What is this video about?',
+    });
+
+    const result = await repo.getSessionWithMessages('s1');
+    expect(result!.session.title).toBe('What is this video about?');
+  });
+
+  it('createSession defaults title to empty string', async () => {
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+    });
+
+    const result = await repo.getSessionWithMessages('s1');
+    expect(result!.session.title).toBe('');
+  });
+
+  it('listSessions includes title', async () => {
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+      title: 'My chat session',
+    });
+
+    const sessions = await repo.listSessions();
+    expect(sessions[0].title).toBe('My chat session');
+  });
+
+  it('deleteSession removes session and its messages', async () => {
+    await repo.createSession({
+      id: 's1',
+      chatPresetId: null,
+      chatPresetName: '',
+      individualMediaIds: [],
+    });
+    await repo.addMessage({ id: 'msg1', chatSessionId: 's1', role: 'user', content: 'Hello' });
+    await repo.addMessage({ id: 'msg2', chatSessionId: 's1', role: 'assistant', content: 'Hi' });
+
+    const deleted = await repo.deleteSession('s1');
+    expect(deleted).toBe(true);
+
+    const result = await repo.getSessionWithMessages('s1');
+    expect(result).toBeNull();
+
+    const sessions = await repo.listSessions();
+    expect(sessions).toHaveLength(0);
+  });
+
+  it('deleteSession returns false for nonexistent session', async () => {
+    const deleted = await repo.deleteSession('nonexistent');
+    expect(deleted).toBe(false);
   });
 });

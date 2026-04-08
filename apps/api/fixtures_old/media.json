@@ -1,0 +1,82 @@
+[
+  {
+    "id": "vid-001",
+    "type": "video",
+    "title": "Introduction to Machine Learning",
+    "teacher": "Dr. Sarah Chen",
+    "class": "CS401",
+    "module": "Module 1 - Foundations"
+  },
+  {
+    "id": "vid-002",
+    "type": "video",
+    "title": "Neural Networks Deep Dive",
+    "teacher": "Dr. Sarah Chen",
+    "class": "CS401",
+    "module": "Module 2 - Neural Networks"
+  },
+  {
+    "id": "vid-003",
+    "type": "video",
+    "title": "Reinforcement Learning Seminar",
+    "teacher": "Dr. Sarah Chen",
+    "class": "CS401",
+    "module": "Module 4 - Advanced"
+  },
+  {
+    "id": "vid-004",
+    "type": "video",
+    "title": "Capstone Project Guidelines",
+    "teacher": "Dr. Sarah Chen",
+    "class": "CS401",
+    "module": "Administrative"
+  },
+  {
+    "id": "aud-001",
+    "type": "audio",
+    "title": "Guest Lecture: AI in Healthcare",
+    "teacher": "Prof. James Martin",
+    "class": "CS401",
+    "module": "Module 3 - Applications"
+  },
+  {
+    "id": "aud-002",
+    "type": "audio",
+    "title": "Ethics in Artificial Intelligence",
+    "teacher": "Dr. Liu Wei",
+    "class": "CS490",
+    "module": "Module 1 - Ethics"
+  },
+  {
+    "id": "aud-003",
+    "type": "audio",
+    "title": "Interview: Future of LLMs",
+    "teacher": "External Speaker",
+    "class": "CS490",
+    "module": "Module 2 - LLMs"
+  },
+  {
+    "id": "pdf-001",
+    "type": "pdf",
+    "title": "CS401 Course Syllabus 2024",
+    "teacher": "Dr. Sarah Chen",
+    "class": "CS401",
+    "module": "Administrative"
+  },
+  {
+    "id": "pdf-002",
+    "type": "pdf",
+    "title": "Lab Safety and Computing Ethics",
+    "teacher": "Department",
+    "class": "CS401",
+    "module": "Administrative"
+  },
+  {
+    "id": "pdf-003",
+    "type": "pdf",
+    "title": "Research Paper: Transformer Architecture",
+    "teacher": "Vaswani et al.",
+    "class": "CS401",
+    "module": "Module 2 - Neural Networks"
+  }
+]

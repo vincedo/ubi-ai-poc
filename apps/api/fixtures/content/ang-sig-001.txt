@@ -1,0 +1,40 @@
+# Angular Signals Documentation
+
+## Overview
+
+Angular Signals enable granular state tracking throughout an application, allowing the framework to optimize rendering updates. A signal wraps a value and notifies consumers when changes occur.
+
+## Key Signal Types
+
+**Writable Signals** are created via the `signal()` function and can be modified using `.set()` or `.update()` methods:
+
+```ts
+const count = signal(0);
+count.set(3);
+count.update((value) => value + 1);
+```
+
+**Computed Signals** derive values from other signals using the `computed()` function. They are lazily evaluated, memoized, and read-only:
+
+```ts
+const doubleCount = computed(() => count() * 2);
+```
+
+## Reactive Contexts
+
+Angular monitors signal reads within reactive contexts—runtime states established during:
+- Effect callback execution
+- Computed signal evaluation
+- Component template rendering
+
+As the documentation states: "If a tracked signal changes, Angular will _eventually_ re-run the consumer."
+
+## Advanced Features
+
+- **Dynamic Dependencies**: Computed signals only track signals actually read during derivation
+- **Equality Functions**: Custom equality checks determine whether new values trigger updates
+- **Type Checking**: Use `isSignal()` and `isWritableSignal()` for type validation
+- **Untracked Reads**: Call `untracked()` to read signals without establishing dependencies
+- **Async Operations**: Signal reads after asynchronous boundaries aren't tracked; read signals before `await`
+
+The documentation also references linked signals for dependent state and resources for asynchronous data integration.

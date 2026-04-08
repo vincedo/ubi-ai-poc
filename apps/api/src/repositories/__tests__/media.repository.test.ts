@@ -15,8 +15,8 @@ describe('SqliteMediaRepository', () => {
     id: 'media-1',
     title: 'Test Video',
     type: 'video' as const,
+    teacher: 'Test Teacher',
     transcriptionStatus: 'none' as const,
-    ingestionStatus: 'none' as const,
   };
 
   it('save and findById', async () => {
@@ -39,13 +39,6 @@ describe('SqliteMediaRepository', () => {
   it('findById returns null for missing', async () => {
     const found = await repo.findById('nonexistent');
     expect(found).toBeNull();
-  });
-
-  it('updateIngestionStatus', async () => {
-    await repo.save(sampleMedia);
-    await repo.updateIngestionStatus('media-1', 'done');
-    const found = await repo.findById('media-1');
-    expect(found!.ingestionStatus).toBe('done');
   });
 
   it('updateTranscriptionStatus', async () => {

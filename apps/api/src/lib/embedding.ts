@@ -1,7 +1,8 @@
+import type { EmbeddingModelV3 } from '@ai-sdk/provider';
 import { mistral, openai } from '../config.js';
 import { EMBEDDING_MODELS } from '@ubi-ai/shared';
 
-export function getEmbeddingModel(embeddingModelId: string) {
+export function getEmbeddingModel(embeddingModelId: string): EmbeddingModelV3 {
   const config = EMBEDDING_MODELS[embeddingModelId];
   if (!config) throw new Error(`Unknown embedding model: ${embeddingModelId}`);
 

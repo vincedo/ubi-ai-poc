@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm';
+import { eq, inArray } from 'drizzle-orm';
 import { media } from '../db/schema/media.js';
 import type { Media, NewMedia } from '../db/schema/media.js';
 import type { AppDatabase } from '../plugins/db.js';
@@ -16,13 +16,14 @@ export class SqliteMediaRepository implements MediaRepository {
     return rows[0] ?? null;
   }
 
+  async findByIds(ids: string[]): Promise<Media[]> {
+    if (ids.length === 0) return [];
+    return this.db.select().from(media).where(inArray(media.id, ids));
+  }
+
   async save(data: NewMedia): Promise<Media> {
     const rows = await this.db.insert(media).values(data).returning();
     return rows[0];
-  }
-
-  async updateIngestionStatus(id: string, status: Media['ingestionStatus']): Promise<void> {
-    await this.db.update(media).set({ ingestionStatus: status }).where(eq(media.id, id));
   }
 
   async updateTranscriptionStatus(id: string, status: Media['transcriptionStatus']): Promise<void> {

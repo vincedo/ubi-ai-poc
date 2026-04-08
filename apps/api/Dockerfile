@@ -24,4 +24,4 @@ WORKDIR /app/apps/api
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "pnpm drizzle-kit push && pnpm dev"]
+CMD ["pnpm", "dev"]

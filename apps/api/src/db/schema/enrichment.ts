@@ -1,12 +1,16 @@
-import { index, integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { index, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
 import type { JobStatus } from '@ubi-ai/shared';
 import { media } from './media.js';
+import { enrichmentPreset } from './preset.js';
 
 export const enrichmentResult = sqliteTable('enrichment_result', {
   mediaId: text('media_id')
     .primaryKey()
     .references(() => media.id),
+  enrichmentPresetId: text('enrichment_preset_id').references(() => enrichmentPreset.id, {
+    onDelete: 'cascade',
+  }),
   title: text('title').notNull(),
   summary: text('summary').notNull(),
   keywords: text('keywords').$type</* JSON string[] */ string>().notNull(),
@@ -28,9 +32,7 @@ export const enrichmentJob = sqliteTable(
       .references(() => media.id),
     model: text('model').notNull(),
     status: text('status').$type<JobStatus>().notNull().default('queued'),
-    promptTokens: integer('prompt_tokens'),
-    completionTokens: integer('completion_tokens'),
-    estimatedCost: real('estimated_cost'),
+    llmCallId: text('llm_call_id'),
     startedAt: text('started_at'),
     completedAt: text('completed_at'),
     error: text('error'),

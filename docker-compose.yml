@@ -6,6 +6,15 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
 
+  guardrails:
+    build:
+      context: ./apps/guardrails
+      dockerfile: Dockerfile
+      args:
+        GUARDRAILS_TOKEN: ${GUARDRAILS_TOKEN}
+    ports:
+      - "8000:8000"
+
   api:
     build:
       context: .
@@ -16,8 +25,10 @@ services:
     environment:
       - QDRANT_URL=http://qdrant:6333
       - DB_PATH=/app/data/app.db
+      - GUARDRAILS_URL=http://guardrails:8000
     depends_on:
       - qdrant
+      - guardrails
     volumes:
       - sqlite_data:/app/data
 

@@ -1,0 +1,315 @@
+<div class="inspect-dialog" role="dialog" aria-label="LLM call details">
+  <div class="dialog-header">
+    <h2 class="dialog-title">RAG Pipeline Inspector</h2>
+    <button class="btn-close" (click)="close()" aria-label="Close dialog">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-state" aria-live="polite">
+      <mat-spinner diameter="32"></mat-spinner>
+      <span>Loading inspection data...</span>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="error-state" role="alert">
+      <span class="material-symbols-outlined">error</span>
+      <span>{{ error() }}</span>
+    </div>
+  }
+
+  @if (call(); as c) {
+    <div class="dialog-body" aria-live="polite">
+      <!-- Always-visible summary bar -->
+      <div class="cost-bar">
+        @if (c.type === 'chat') {
+          @if (data.presetName) {
+            <span class="cost-item">
+              <span class="cost-label">PRESET</span>
+              <span class="cost-value">{{ data.presetName }}</span>
+            </span>
+          }
+          <span class="cost-item">
+            <span class="cost-label">SCOPE</span>
+            <span class="cost-value">{{ c.scope === null ? 'All media' : c.scope.length + ' media' }}</span>
+          </span>
+        }
+        <div class="llm-group">
+          <span class="llm-group-label">LLM CALL</span>
+          <div class="llm-group-items">
+            <span class="cost-item">
+              <span class="cost-label">MODEL</span>
+              <span class="cost-value">{{ c.model }}</span>
+            </span>
+            <span class="cost-item">
+              <span class="cost-label">PROMPT TOKENS</span>
+              <span class="cost-value">{{ c.promptTokens | number }}</span>
+            </span>
+            <span class="cost-item">
+              <span class="cost-label">COMPLETION TOKENS</span>
+              <span class="cost-value">{{ c.completionTokens | number }}</span>
+            </span>
+            <span class="cost-item">
+              <span class="cost-label">COST</span>
+              <span class="cost-value">{{ formatCost(c.cost) }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <mat-accordion>
+        @if (c.type === 'chat') {
+          <!-- Step 1: Query -->
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="step-badge">1</span>
+                Query
+              </mat-panel-title>
+              <mat-panel-description>The user's message that triggered this exchange</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p class="query-text">{{ extractUserQuery(c.messages) }}</p>
+          </mat-expansion-panel>
+
+          <!-- Step 2: Retrieval -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="step-badge">2</span>
+                Retrieval
+              </mat-panel-title>
+              <mat-panel-description>Chunks retrieved from Qdrant via vector search</mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="scope-section">
+              <span class="prompt-section-label">Scope</span>
+              @if (c.scope === null) {
+                <p class="scope-all">All media in collection</p>
+              } @else {
+                <ul class="scope-list" aria-label="Media in scope">
+                  @for (item of c.scope; track item.id) {
+                    <li class="scope-item">
+                      <span class="source-type">{{ item.type }}</span>
+                      <span class="scope-title">{{ item.title }}</span>
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+
+            @if (c.preset; as p) {
+              <div class="retrieval-meta" aria-label="Retrieval settings">
+                <span class="retrieval-meta-item">
+                  <span class="cost-label">EMBEDDING MODEL</span>
+                  <span class="cost-value">{{ p.embeddingModel }}</span>
+                </span>
+                <span class="retrieval-meta-item">
+                  <span class="cost-label">TOP K</span>
+                  <span class="cost-value">{{ p.retrievalTopK }}</span>
+                </span>
+                <span class="retrieval-meta-item">
+                  <span class="cost-label">DISTANCE</span>
+                  <span class="cost-value">{{ p.distanceMetric }}</span>
+                </span>
+                <span class="retrieval-meta-item">
+                  <span class="cost-label">COLLECTION</span>
+                  <span class="cost-value mono">{{ p.collectionName }}</span>
+                </span>
+                <span class="retrieval-meta-item">
+                  <span class="cost-label">CHUNK SIZE</span>
+                  <span class="cost-value">{{ p.chunkSize }}</span>
+                </span>
+                <span class="retrieval-meta-item">
+                  <span class="cost-label">OVERLAP</span>
+                  <span class="cost-value">{{ p.chunkOverlap }}</span>
+                </span>
+                <span class="retrieval-meta-item">
+                  <span class="cost-label">SENTENCE-AWARE</span>
+                  <span class="cost-value">{{ p.sentenceAwareSplitting ? 'Yes' : 'No' }}</span>
+                </span>
+              </div>
+            }
+            @if (parseSources(c.sources); as sources) {
+              @if (sources.length === 0) {
+                <p class="empty-state">No sources retrieved.</p>
+              } @else {
+                <ul class="sources-list" aria-label="Retrieved sources">
+                  @for (source of sources; track $index) {
+                    <li class="source-item">
+                      <span class="source-title">{{ source.mediaTitle }}</span>
+                      <span class="source-meta">
+                        <span class="source-type">{{ source.mediaType }}</span>
+                        <span class="source-location">{{ sourceLocation(source) }}</span>
+                      </span>
+                    </li>
+                  }
+                </ul>
+              }
+            }
+          </mat-expansion-panel>
+
+          <!-- Step 3: Augmented Prompt -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="step-badge">3</span>
+                Augmented Prompt
+              </mat-panel-title>
+              <mat-panel-description>System instructions plus injected context sent to the LLM</mat-panel-description>
+            </mat-expansion-panel-header>
+            @if (splitSystemPrompt(c.systemPrompt); as parts) {
+              <div class="prompt-section">
+                <div class="prompt-section-header">
+                  <span class="prompt-section-label">Instructions</span>
+                  @if (c.preset) {
+                    <span class="prompt-level-badge">{{ c.preset.chatSystemPrompt }}</span>
+                  }
+                </div>
+                <pre class="mono-block">{{ parts.instructions }}</pre>
+              </div>
+              @if (parts.context) {
+                <div class="prompt-section">
+                  <span class="prompt-section-label">Injected Context</span>
+                  <pre class="mono-block">{{ parts.context }}</pre>
+                </div>
+              }
+            }
+          </mat-expansion-panel>
+
+          <!-- Step 4: Conversation History -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="step-badge">4</span>
+                Conversation History
+              </mat-panel-title>
+              <mat-panel-description>Prior message turns passed to the LLM</mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="messages-list">
+              @for (msg of parseMessages(c.messages); track $index) {
+                <div class="message-item">
+                  <span class="message-role">{{ msg.role }}</span>
+                  <p class="message-content">{{ msg.content }}</p>
+                </div>
+              }
+            </div>
+          </mat-expansion-panel>
+
+          <!-- Step 5: Response -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="step-badge">5</span>
+                Response
+              </mat-panel-title>
+              <mat-panel-description>The assistant's generated output</mat-panel-description>
+            </mat-expansion-panel-header>
+            <pre class="mono-block">{{ c.response }}</pre>
+          </mat-expansion-panel>
+
+          <!-- Step 6: Guardrails -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="step-badge">6</span>
+                Guardrails
+              </mat-panel-title>
+              <mat-panel-description>Input and output safety validation results</mat-panel-description>
+            </mat-expansion-panel-header>
+            @if (parseGuardrails(c.guardrails); as guards) {
+              @if (guards.length === 0) {
+                <p class="empty-state guardrails-unavailable">
+                  <span class="material-symbols-outlined">shield_question</span>
+                  Guardrails unavailable
+                </p>
+              } @else {
+                <div class="guardrails-list">
+                  @for (guard of guards; track guard.phase) {
+                    <div class="guard-item">
+                      <div class="guard-header">
+                        <span class="guard-name">{{ guard.phase }}-safety</span>
+                        @if (guard.unavailable) {
+                          <span class="guard-status guard-status--unavailable">
+                            <span class="material-symbols-outlined">shield_question</span>
+                            unavailable
+                          </span>
+                        } @else if (guard.passed) {
+                          <span class="guard-status guard-status--pass">
+                            <span class="material-symbols-outlined">verified_user</span>
+                            passed
+                          </span>
+                        } @else {
+                          <span class="guard-status guard-status--fail">
+                            <span class="material-symbols-outlined">gpp_bad</span>
+                            failed
+                          </span>
+                        }
+                      </div>
+                      @if (guard.validators.length > 0) {
+                        <ul class="validator-list" aria-label="Validator results for {{ guard.phase }}-safety">
+                          @for (v of guard.validators; track v.name) {
+                            <li class="validator-item">
+                              <span class="material-symbols-outlined validator-icon"
+                                [class.validator-icon--pass]="v.passed"
+                                [class.validator-icon--fail]="!v.passed">
+                                {{ v.passed ? 'check_circle' : 'cancel' }}
+                              </span>
+                              <span class="validator-name">{{ v.name }}</span>
+                              @if (v.error) {
+                                <span class="validator-error">{{ v.error }}</span>
+                              }
+                            </li>
+                          }
+                        </ul>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+            }
+          </mat-expansion-panel>
+        }
+
+        @if (c.type === 'enrichment') {
+          <!-- Prompt -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Prompt</mat-panel-title>
+            </mat-expansion-panel-header>
+            @if (splitEnrichmentPrompt(c.userPrompt); as parts) {
+              <div class="prompt-section">
+                <span class="prompt-section-label">Instructions</span>
+                <pre class="mono-block">{{ parts.instructions }}</pre>
+              </div>
+              @if (parts.transcript) {
+                <div class="prompt-section">
+                  <span class="prompt-section-label">Transcript</span>
+                  <pre class="mono-block">{{ parts.transcript }}</pre>
+                </div>
+              }
+            }
+          </mat-expansion-panel>
+
+          <!-- Output Schema -->
+          @if (c.outputSchema) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Output Schema</mat-panel-title>
+              </mat-expansion-panel-header>
+              <pre class="mono-block">{{ formatJson(c.outputSchema) }}</pre>
+            </mat-expansion-panel>
+          }
+
+          <!-- Response -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>Response</mat-panel-title>
+            </mat-expansion-panel-header>
+            <pre class="mono-block">{{ formatJson(c.response) }}</pre>
+          </mat-expansion-panel>
+        }
+      </mat-accordion>
+    </div>
+  }
+</div>

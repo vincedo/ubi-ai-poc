@@ -55,8 +55,6 @@ describe('SqliteEnrichmentRepository', () => {
 
     await repo.updateJob('j1', {
       status: 'done',
-      promptTokens: 100,
-      completionTokens: 50,
       completedAt: new Date().toISOString(),
     });
   });

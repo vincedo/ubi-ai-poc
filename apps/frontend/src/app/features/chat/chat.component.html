@@ -1,12 +1,7 @@
 <div class="chat-layout">
-  <app-media-tree
-    class="scope-panel"
-    [courseTree]="courseService.tree()"
-    selectionMode="checkboxes"
-    title="Scope"
-    [(selectedMediaIds)]="chatService.individualMediaIds"
-  />
+  <app-session-panel class="session-panel" />
   <section class="chat-center">
+    <app-stats-bar />
     <app-message-thread class="message-thread" />
     <app-chat-input class="chat-input" />
   </section>

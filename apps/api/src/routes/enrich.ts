@@ -1,22 +1,39 @@
 import { FastifyPluginAsync } from 'fastify';
-import { generateText, Output } from 'ai';
-import { mistral } from '../config.js';
+import {
+  generateText,
+  Output,
+  APICallError,
+  LoadAPIKeyError,
+  TypeValidationError,
+  JSONParseError,
+} from 'ai';
 import { enrichmentSchema } from '../schemas/enrichment.js';
 import { estimateCost } from '../lib/cost.js';
-import { LANGUAGE_MODELS, type LanguageModel, type MCQ } from '@ubi-ai/shared';
+import { getEnrichmentPrompt } from '../lib/prompts.js';
+import { getLanguageModel } from '../lib/model-provider.js';
+import { z } from 'zod';
+import { type LanguageModel, type MCQ } from '@ubi-ai/shared';
+
+const enrichBodySchema = z.object({ presetId: z.string().uuid() });
 
 export const enrichRoutes: FastifyPluginAsync = async (fastify) => {
   // Generate enrichment via LLM (ephemeral result, not persisted until user confirms)
-  fastify.post<{ Params: { mediaId: string }; Body: { model?: string } }>(
+  fastify.post<{ Params: { mediaId: string }; Body: { presetId?: string } }>(
     '/enrich/:mediaId',
     async (req, reply) => {
       const { mediaId } = req.params;
-      const model = (req.body?.model ?? 'mistral-large-latest') as LanguageModel;
-      if (!LANGUAGE_MODELS.includes(model)) {
-        return reply
-          .code(400)
-          .send({ error: `Unknown model. Valid: ${LANGUAGE_MODELS.join(', ')}` });
+      const bodyParsed = enrichBodySchema.safeParse(req.body);
+      if (!bodyParsed.success) {
+        return reply.code(400).send({ error: 'presetId (UUID) is required' });
       }
+      const { presetId } = bodyParsed.data;
+
+      const enrichmentPreset = await fastify.repos.preset.findEnrichmentPresetById(presetId);
+      if (!enrichmentPreset) {
+        return reply.code(404).send({ error: 'Enrichment preset not found' });
+      }
+
+      const model = enrichmentPreset.languageModel as LanguageModel;
 
       const { repos } = fastify;
 
@@ -39,9 +56,12 @@ export const enrichRoutes: FastifyPluginAsync = async (fastify) => {
 
       try {
         const { output, usage } = await generateText({
-          model: mistral(model),
+          model: getLanguageModel(model),
           output: Output.object({ schema: enrichmentSchema }),
-          prompt: `Analyze this educational media content and generate enrichment metadata in JSON:\n\n${transcript.rawText.slice(0, 8000)}`,
+          prompt: getEnrichmentPrompt(
+            enrichmentPreset.enrichmentPrompt as any,
+            transcript.rawText.slice(0, 8000),
+          ),
         });
 
         const promptTokens = usage?.inputTokens ?? 0;
@@ -49,9 +69,6 @@ export const enrichRoutes: FastifyPluginAsync = async (fastify) => {
         try {
           await repos.enrichment.updateJob(jobId, {
             status: 'done',
-            promptTokens,
-            completionTokens,
-            estimatedCost: estimateCost(model, promptTokens, completionTokens),
             completedAt: new Date().toISOString(),
           });
         } catch (dbErr) {
@@ -61,7 +78,31 @@ export const enrichRoutes: FastifyPluginAsync = async (fastify) => {
           );
         }
 
-        return { ...output, mediaId };
+        let llmCallId: string | undefined;
+        try {
+          const llmCallRow = await repos.llmCall.insert({
+            type: 'enrichment',
+            model,
+            systemPrompt: null,
+            userPrompt: getEnrichmentPrompt(
+              enrichmentPreset.enrichmentPrompt as any,
+              transcript.rawText.slice(0, 8000),
+            ),
+            messages: null,
+            outputSchema: JSON.stringify(z.toJSONSchema(enrichmentSchema)),
+            response: JSON.stringify(output),
+            sources: null,
+            promptTokens,
+            completionTokens,
+            cost: estimateCost(model, promptTokens, completionTokens),
+          });
+          llmCallId = llmCallRow.id;
+          await repos.enrichment.updateJobLlmCallId(jobId, llmCallRow.id);
+        } catch (err) {
+          fastify.log.error(err, 'Failed to record LLM call for inspection');
+        }
+
+        return { ...output, mediaId, llmCallId };
       } catch (err) {
         try {
           await repos.enrichment.updateJob(jobId, {
@@ -75,11 +116,25 @@ export const enrichRoutes: FastifyPluginAsync = async (fastify) => {
             'Failed to mark enrichment job as failed',
           );
         }
-        const msg =
-          err instanceof Error && err.message.includes('schema')
-            ? 'Could not extract learning materials from content'
-            : 'Enrichment generation failed — please try again';
-        return reply.code(422).send({ error: msg });
+        fastify.log.error({ err, mediaId, jobId }, 'Enrichment generation failed');
+
+        if (err instanceof LoadAPIKeyError) {
+          return reply.code(500).send({ error: 'LLM service misconfigured — check API keys' });
+        }
+        if (err instanceof APICallError) {
+          if (err.statusCode === 401 || err.statusCode === 403) {
+            return reply.code(500).send({ error: 'LLM service misconfigured — check API keys' });
+          }
+          if (err.statusCode === 429) {
+            return reply.code(429).send({ error: 'LLM rate limited — please retry in a moment' });
+          }
+        }
+        if (err instanceof TypeValidationError || err instanceof JSONParseError) {
+          return reply
+            .code(422)
+            .send({ error: 'Could not extract learning materials from content' });
+        }
+        return reply.code(422).send({ error: 'Enrichment generation failed — please try again' });
       }
     },
   );
@@ -103,7 +158,13 @@ export const enrichRoutes: FastifyPluginAsync = async (fastify) => {
   // Save/update enrichment result (idempotent — validates input with Zod)
   fastify.put<{
     Params: { mediaId: string };
-    Body: { title: string; summary: string; keywords: string[]; mcqs: unknown[] };
+    Body: {
+      title: string;
+      summary: string;
+      keywords: string[];
+      mcqs: unknown[];
+      presetId?: string;
+    };
   }>('/enrich/:mediaId', async (req, reply) => {
     const { mediaId } = req.params;
     const parsed = enrichmentSchema.safeParse(req.body);
@@ -113,6 +174,7 @@ export const enrichRoutes: FastifyPluginAsync = async (fastify) => {
         .send({ error: 'Invalid enrichment data', details: parsed.error.issues });
     }
     const { title, summary, keywords, mcqs } = parsed.data;
+    const presetId = req.body?.presetId;
     try {
       await fastify.repos.enrichment.upsertResult({
         mediaId,
@@ -120,6 +182,7 @@ export const enrichRoutes: FastifyPluginAsync = async (fastify) => {
         summary,
         keywords,
         mcqs: mcqs as MCQ[],
+        enrichmentPresetId: presetId,
       });
       return { ok: true };
     } catch (dbErr) {

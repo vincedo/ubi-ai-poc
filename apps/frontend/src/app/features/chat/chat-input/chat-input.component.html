@@ -1,5 +1,43 @@
 <div class="input-area">
+  <!-- Media chips -->
+  @if (selectedMedia().length > 0) {
+    <div class="media-chips" aria-label="Selected media">
+      @for (media of selectedMedia(); track media.id) {
+        <span class="media-chip" [attr.aria-label]="media.title">
+          {{ media.type === 'unknown' ? 'Unknown media' : media.title }}
+          @if (!attachmentLocked()) {
+            <button
+              class="chip-remove"
+              (click)="removeMedia(media.id)"
+              aria-label="Remove {{ media.title }}"
+            >
+              ×
+            </button>
+          }
+        </span>
+      }
+    </div>
+  }
+
   <div class="input-wrapper">
+    <!-- Attachment button -->
+    <button
+      class="attach-btn"
+      [class.locked]="!canAttach()"
+      [disabled]="!canAttach()"
+      [matTooltip]="
+        attachmentLocked()
+          ? 'Media selection is locked for this session'
+          : !chatService.selectedChatPresetId()
+            ? 'Select a preset first'
+            : 'Attach media'
+      "
+      (click)="togglePopover()"
+      aria-label="Attach media"
+    >
+      <span class="material-symbols-outlined">attach_file</span>
+    </button>
+
     <label for="chat-input" class="sr-only">Ask a question about your media</label>
     <textarea
       #textarea
@@ -9,6 +47,7 @@
       rows="1"
       (keydown)="onKeydown($event, textarea)"
     ></textarea>
+
     <div class="input-actions">
       @if (chatService.isStreaming()) {
         <button class="stop-btn" title="Stop generating" (click)="chatService.stop()">
@@ -20,20 +59,45 @@
       </button>
     </div>
   </div>
+
+  <!-- Attachment popover -->
+  @if (popoverOpen()) {
+    <div class="attach-popover" (keydown.escape)="closePopover()">
+      <app-media-tree
+        [courseTree]="courseService.tree()"
+        [loading]="courseService.treeLoading()"
+        selectionMode="checkboxes"
+        title="Select Media"
+        [(selectedMediaIds)]="chatService.individualMediaIds"
+      />
+    </div>
+    <div class="popover-backdrop" (click)="closePopover()"></div>
+  }
+
   <div class="input-footer">
-    <p class="input-hint">Powered by UbiCast AI Engine · Mistral + Qdrant</p>
-    <div class="model-picker">
-      <mat-form-field appearance="outline" class="model-field">
-        <mat-select
-          [value]="chatService.selectedModel()"
-          (selectionChange)="chatService.selectedModel.set($event.value)"
-          aria-label="Select language model"
-        >
-          @for (m of models; track m) {
-            <mat-option [value]="m">{{ m }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+<div class="preset-picker">
+      <select
+        class="preset-select"
+        [attr.disabled]="attachmentLocked() || chatService.isStreaming() ? true : null"
+        [value]="chatService.selectedChatPresetId()"
+        (change)="onPresetChange($event)"
+        aria-label="Select chat preset"
+      >
+        <option value="" disabled [selected]="!chatService.selectedChatPresetId()">
+          Select a preset…
+        </option>
+        @for (preset of presetService.chatPresets(); track preset.id) {
+          <option
+            [value]="preset.id"
+            [attr.disabled]="preset.ingestionStatus !== 'done' ? true : null"
+          >
+            {{ preset.name }}
+            @if (preset.ingestionStatus !== 'done') {
+              (not ingested)
+            }
+          </option>
+        }
+      </select>
     </div>
   </div>
 </div>

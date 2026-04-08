@@ -21,7 +21,7 @@
   justify-content: center;
   flex: 1;
   gap: 1rem;
-  color: #94a3b8;
+  color: var(--color-on-surface-variant);
   .welcome-icon {
     width: 3rem;
     height: 3rem;
@@ -38,6 +38,13 @@
     font-size: 0.875rem;
     text-align: center;
     max-width: 20rem;
+  }
+  .welcome-hint {
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--color-on-surface-variant);
+    max-width: 24rem;
+    margin-top: 0.25rem;
   }
 }
 
@@ -78,7 +85,7 @@
 .avatar-user {
   background: var(--color-surface-container-highest);
   .material-symbols-outlined {
-    color: #64748b;
+    color: var(--color-on-surface-variant);
   }
 }
 
@@ -97,6 +104,7 @@
 }
 
 .ai-bubble {
+  position: relative;
   background: var(--color-surface-container-high);
   color: var(--color-on-surface);
   border-top-left-radius: 0.25rem;
@@ -152,6 +160,30 @@
   flex: 1;
 }
 
+.btn-inspect {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background 0.15s;
+  .material-symbols-outlined {
+    font-size: 1.125rem;
+  }
+  &:hover {
+    background: var(--color-primary-fixed-dim);
+  }
+}
+
 .sources {
   padding: 0 0.25rem;
 }
@@ -164,7 +196,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #94a3b8;
+  color: var(--color-on-surface-variant);
   margin-bottom: 0.5rem;
   .material-symbols-outlined {
     font-size: 0.875rem;
@@ -199,7 +231,7 @@
 .source-title {
   font-size: 0.75rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--color-on-surface);
 }
 .source-badge {
   font-size: 0.625rem;
@@ -234,7 +266,7 @@
 
 .streaming-text {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: var(--color-on-surface-variant);
   font-style: italic;
   margin-left: 0.25rem;
 }

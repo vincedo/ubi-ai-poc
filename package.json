@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "api": "pnpm --filter api dev",
-    "frontend": "pnpm --filter @ubi-ai/shared build && pnpm --filter frontend start",
+    "frontend": "pnpm --filter @ubi-ai/shared build && rm -rf apps/frontend/.angular/cache && pnpm --filter frontend start",
     "dev": "concurrently \"pnpm api\" \"pnpm frontend\"",
     "test": "pnpm --filter api test",
     "format": "prettier --write \"**/*.{ts,html,scss,json}\""

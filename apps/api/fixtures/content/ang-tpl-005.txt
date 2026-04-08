@@ -1,0 +1,27 @@
+# Expression Syntax in Angular
+
+Angular expressions are JavaScript-based but have important distinctions.
+
+## Supported Features
+
+**Value Literals:** Angular supports strings, booleans, numbers, objects, arrays, null, RegExp, and template strings. BigInt is notably unsupported.
+
+**Globals:** Only `undefined` and `$any` are available. Standard JavaScript globals like `Number`, `parseInt`, and `Infinity` are not supported in template expressions.
+
+**Operators:** Angular supports most standard JavaScript operators including arithmetic, logical, comparison, and assignment operators. Additionally, it supports pipes and optional chaining (though Angular's optional chaining returns `null` rather than `undefined` when the left side is nullish).
+
+**Non-standard Features:** The pipe operator and non-null assertion (TypeScript) are supported.
+
+## Key Limitations
+
+**Unsupported Operators:** Bitwise operators, destructuring assignments, the comma operator, and the `new` keyword are prohibited.
+
+**No Declarations:** Variables, functions, arrow functions, and classes cannot be declared within expressions.
+
+**Context:** Expressions evaluate within the component class context with implied `this`, though template variables can shadow class members.
+
+## Event Handler Differences
+
+Event listener statements differ from expressions in two ways:
+- They permit assignment operators (excluding destructuring)
+- They prohibit pipes

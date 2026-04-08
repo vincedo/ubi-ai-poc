@@ -26,6 +26,7 @@ export class CourseService {
 
   /** Shared tree signal — loaded once, consumed by multiple components. */
   readonly tree = signal<CourseWithMedia[]>([]);
+  readonly treeLoading = signal(false);
 
   getTree(): Observable<CourseWithMedia[]> {
     return this.http.get<CourseWithMedia[]>(`${this.API}/courses/tree`);
@@ -33,9 +34,16 @@ export class CourseService {
 
   /** Call once at app startup or when tree data is needed. */
   loadTree(): void {
+    this.treeLoading.set(true);
     this.getTree().subscribe({
-      next: (tree) => this.tree.set(tree),
-      error: (err) => console.error('Failed to load course tree:', err),
+      next: (tree) => {
+        this.tree.set(tree);
+        this.treeLoading.set(false);
+      },
+      error: (err) => {
+        console.error('Failed to load course tree:', err);
+        this.treeLoading.set(false);
+      },
     });
   }
 

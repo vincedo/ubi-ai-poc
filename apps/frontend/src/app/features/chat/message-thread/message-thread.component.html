@@ -4,7 +4,8 @@
       <div class="welcome-icon">
         <span class="material-symbols-outlined">auto_awesome</span>
       </div>
-      <p class="welcome-text">Select items from the corpus and ask a question to get started.</p>
+      <p class="welcome-text">Attach media and start a conversation.</p>
+      <p class="welcome-hint">Without a selection, your question is answered from the entire knowledge base.</p>
     </div>
   }
 
@@ -23,6 +24,15 @@
         </div>
         <div class="ai-body">
           <div class="bubble ai-bubble">
+            @if (msg.llmCallId) {
+              <button
+                class="btn-inspect"
+                (click)="openInspect(msg.llmCallId!)"
+                aria-label="Inspect LLM call"
+              >
+                <span class="material-symbols-outlined">data_object</span>
+              </button>
+            }
             @if (msg.content) {
               <div [innerHTML]="msg.content | markdown"></div>
             }
